@@ -93,6 +93,14 @@ The benchmark datasets themselves are public (linked in each campaign's
 summary) — the logs here are enough to check the scoring and methodology
 against them independently.
 
+## Further reading
+
+The campaign write-ups, in plain language, on the product site:
+
+- [72.9% — and the three questions we miss](https://mnemosyne-os.io/blog/full-haystack-72-9) — the full-haystack run behind this repository: the protocol, the levers we refuted, the misses we own.
+- [We gave personality control of memory. It cost 31 points.](https://mnemosyne-os.io/blog/personality-lens-31-points) — the ablation that measured a feature making retrieval worse.
+- [The benchmark page](https://mnemosyne-os.io/benchmark) — the current published number and what it does and does not claim.
+
 ## License
 
 - **Data** — logs, ledgers, summaries and documentation: [CC-BY 4.0](LICENSE).
