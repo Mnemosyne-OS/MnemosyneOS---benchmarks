@@ -38,6 +38,28 @@ See `METHODOLOGY.md §5` for the 3 remaining misses, and
 `results/engine-multisession-8q.jsonl` for the per-question verdicts, both runs
 behind each one, and the two first-run HITs that were discarded for not replaying.
 
+## Lexical channel (campaign 2026-08) — hybrid retrieval, fully local
+
+A second retrieval channel (Okapi BM25 over a persistent inverted index inside
+the vault, fused with the dense ranking by RRF, literature defaults untuned)
+was added and measured under a **strict** judge. Raw runs and the reading key
+live in [`lexical-2026-08/`](../lexical-2026-08/SUMMARY.md); ledgers are
+mechanical extractions (`extract-ledgers.mjs`), never hand-written.
+
+| Measurement | Vector only | + lexical channel | Published rows |
+|---|---|---|---|
+| Evidence sessions retrieved (deterministic, dev sample) | 38/48 | **41/48** | `lexical-2026-08/runs/recall-*.json` |
+| Answer-bearing chunk served (deterministic, 35 tracked) | 25/35 | **30/35** | idem |
+| **Holdout** — 48 questions never seen in development | — | **+4/−0 sessions, +2/−0 chunks** | `lexical-2026-08/runs/recall-hold-*.json` |
+| End-to-end, **strict** judge, both-runs replay rule | 29/48 | **37/48** (+9/−1 paired, p = 0.0215) | ✅ `results/lexical-baseline-strict-48q.jsonl` + `results/lexical-fusion-strict-48q.jsonl` |
+
+Retrieval is the instrument (no LLM, byte-identical replays); the strict judge
+is the confirmation (measured noise floor ≈2.6 verdicts/48 — deltas under ~5
+questions are not resolvable here). The development sample runs ~13 points
+easier than its parent set, which is exactly why the holdout exists. **No
+product comparison is claimed**: both arms are our own montages under our own
+protocol. `node verify.js` recomputes every cell above.
+
 ## Baseline, per category (full-haystack, 48q)
 
 | Category | Score |

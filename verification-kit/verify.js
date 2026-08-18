@@ -107,5 +107,83 @@ if (base && eng) {
   console.log('\n! COMPOSED HEADLINE skipped — needs both the baseline and engine ledgers.');
 }
 
+// ── Lexical-channel campaign (2026-08) ───────────────────────────────────────
+// Two kinds of evidence, both recomputed from committed artifacts:
+//   1. The strict answer-side pair: the two lexical ledgers above (already
+//      verified row-by-row by the generic loop) — here we recompute the PAIRED
+//      delta from the baseline_correct field on every row.
+//   2. Deterministic retrieval measurements (no LLM anywhere): raw per-question
+//      recall files in lexical-2026-08/runs/, including the 48-question HOLDOUT
+//      never seen during development.
+const lexBase = ledgers.get('lexical-baseline-strict-48q.jsonl');
+const lexFusion = ledgers.get('lexical-fusion-strict-48q.jsonl');
+const lexRunsDir = join(HERE, '..', 'lexical-2026-08', 'runs');
+const loadRecall = (f) => JSON.parse(readFileSync(join(lexRunsDir, f), 'utf8')).rows;
+const recallAgg = (rows) => ({
+  all: rows.filter((r) => r.all).length,
+  n: rows.length,
+  loc: rows.filter((r) => r.locatable).length,
+  chunk: rows.filter((r) => r.locatable && r.chunk).length,
+});
+
+if (lexBase && lexFusion) {
+  const gains = lexFusion.rows.filter((r) => r.correct && r.baseline_correct === false).length;
+  const regressions = lexFusion.rows.filter((r) => !r.correct && r.baseline_correct === true).length;
+  const EXP = { gains: 9, regressions: 1 };
+  const okPair = gains === EXP.gains && regressions === EXP.regressions;
+  allOk = allOk && okPair;
+  console.log(`\n${okPair ? '✓' : '✗'} LEXICAL CHANNEL — paired strict delta (answer side, development sample)`);
+  console.log(`  recomputed from the rows' baseline_correct field: +${gains} gained / −${regressions} regressed (claimed +${EXP.gains}/−${EXP.regressions})`);
+  console.log('  29/48 → 37/48 under the both-runs replay rule; exact binomial on 9-vs-1 flips gives p = 0.0215.');
+  console.log('  ⚠ This 48-question sample was used during development and runs ~13 points easier than');
+  console.log('    its parent set. The transfer evidence is the deterministic holdout below, not this pair.');
+
+  try {
+    const control = recallAgg(loadRecall('recall-control.json'));
+    const fusionMem = loadRecall('recall-fusion.json');
+    const fusionPers = loadRecall('recall-fusion-persistent.json');
+    const postFix = loadRecall('recall-post-fix.json');
+    const fm = recallAgg(fusionMem), fp = recallAgg(fusionPers), pf = recallAgg(postFix);
+
+    const EXPECT = { control: { all: 38, chunk: 25, loc: 35 }, fusion: { all: 41, chunk: 30, loc: 35 } };
+    const okDev = control.all === EXPECT.control.all && control.chunk === EXPECT.control.chunk
+      && fp.all === EXPECT.fusion.all && fp.chunk === EXPECT.fusion.chunk;
+
+    // The persistent index must reproduce the in-memory ranking question-by-question,
+    // and the app-isolation fix must not have moved the CORE-mode ranking.
+    const persByld = new Map(fusionPers.map((r) => [r.id, r]));
+    const pfByld = new Map(postFix.map((r) => [r.id, r]));
+    const sameRow = (a, b) => !!b && a.all === b.all && a.locatable === b.locatable && a.chunk === b.chunk;
+    const okStorage = fusionMem.every((r) => sameRow(r, persByld.get(r.id)));
+    const okIsolation = fusionMem.every((r) => sameRow(r, pfByld.get(r.id)));
+
+    const holdOff = loadRecall('recall-hold-off.json');
+    const holdOnM = new Map(loadRecall('recall-hold-on.json').map((r) => [r.id, r]));
+    let sGain = 0, sLoss = 0, cGain = 0, cLoss = 0;
+    for (const o of holdOff) {
+      const x = holdOnM.get(o.id);
+      if (!x) throw new Error(`holdout run missing question ${o.id}`);
+      if (x.all && !o.all) sGain++;
+      if (!x.all && o.all) sLoss++;
+      if (o.locatable && x.locatable) {
+        if (x.chunk && !o.chunk) cGain++;
+        if (!x.chunk && o.chunk) cLoss++;
+      }
+    }
+    const okHold = sGain === 4 && sLoss === 0 && cGain === 2 && cLoss === 0;
+
+    const okLex = okDev && okStorage && okIsolation && okHold;
+    allOk = allOk && okLex;
+    console.log(`${okLex ? '✓' : '✗'} LEXICAL CHANNEL — deterministic retrieval (no LLM in the loop)`);
+    console.log(`  development sample: evidence sessions ${control.all}/${control.n} → ${fp.all}/${fp.n} · answer chunk ${control.chunk}/${control.loc} → ${fp.chunk}/${fp.loc} ${okDev ? '(matches the published 38→41 and 25→30)' : 'MISMATCH'}`);
+    console.log(`  storage equivalence: persistent index reproduces the in-memory ranking on all ${fusionMem.length} questions → ${okStorage ? 'ok' : 'MISMATCH'}`);
+    console.log(`  app-isolation fix: CORE-mode ranking unchanged on all ${fusionMem.length} questions → ${okIsolation ? 'ok' : 'MISMATCH'}`);
+    console.log(`  HOLDOUT (48 questions never seen during development): sessions +${sGain}/−${sLoss}, answer chunks +${cGain}/−${cLoss} → ${okHold ? 'zero regressions, as published' : 'MISMATCH'}`);
+  } catch (e) {
+    console.log(`✗ LEXICAL CHANNEL — recall files unreadable: ${e.message}`);
+    allOk = false;
+  }
+}
+
 console.log(`\n${allOk ? '✓ ALL LEDGERS CONSISTENT' : '✗ ONE OR MORE LEDGERS FAILED'} — every published headline, including the composed one, is the exact sum of the published rows.`);
 process.exit(allOk ? 0 : 1);

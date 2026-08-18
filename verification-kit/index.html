@@ -276,6 +276,27 @@
 
 <section>
   <div class="wrap">
+    <span class="label">Campaign 2026-08 — the lexical channel</span>
+    <div class="col prose">
+      <p>A second, fully local retrieval channel — Okapi BM25 over a persistent inverted index inside the vault, merged with the dense ranking by Reciprocal Rank Fusion (literature defaults, deliberately untuned) — measured under a <strong>strict</strong> judge, with a 48-question <strong>holdout</strong> never seen during development.</p>
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Measurement</th><th>Vector only</th><th>+ lexical channel</th></tr></thead>
+        <tbody>
+          <tr><td>Evidence sessions retrieved (deterministic, no LLM)</td><td>38/48</td><td><b>41/48</b></td></tr>
+          <tr><td>Answer-bearing chunk served (35 tracked)</td><td>25/35</td><td><b>30/35</b></td></tr>
+          <tr><td><b>Holdout</b> — 48 questions never seen in development</td><td>—</td><td><b>+4/−0 sessions · +2/−0 chunks</b></td></tr>
+          <tr><td>End-to-end, <b>strict judge</b>, both-runs replay rule</td><td>29/48</td><td><b>37/48</b> (+9/−1 paired, p&nbsp;=&nbsp;0.0215)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note"><b>Audit it:</b> raw runs and the reading key live in <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/tree/main/lexical-2026-08"><code class="mono">lexical-2026-08/</code></a>; the ledgers are <a href="results/lexical-baseline-strict-48q.jsonl"><code class="mono">lexical-baseline-strict-48q.jsonl</code></a> and <a href="results/lexical-fusion-strict-48q.jsonl"><code class="mono">lexical-fusion-strict-48q.jsonl</code></a> — mechanically extracted (<code class="mono">extract-ledgers.mjs</code>), both runs named on every row. <code class="mono">node verify.js</code> recomputes every cell above, including the holdout, and fails on any mismatch. The development sample runs ~13 points easier than its parent set (why the holdout exists), the judge's noise floor is ≈2.6 verdicts/48, and <b>no product comparison is claimed</b> — both arms are our own montages under our own protocol.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
     <span class="label">The auditable ledger — baseline, 48 questions</span>
     <div class="col prose"><p>Every question, every verdict. This is the full record behind the 64.6%. Filter it, scan it, then run <code class="mono">verify.js</code> and watch the same 31/48 fall out.</p></div>
     <div class="toolbar" role="group" aria-label="Filter the ledger">

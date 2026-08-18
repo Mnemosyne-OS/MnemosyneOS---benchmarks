@@ -1,0 +1,439 @@
+{
+  "label": "fusion-persistent",
+  "topK": 32,
+  "fusion": "1",
+  "rows": [
+    {
+      "id": "7161e7e2",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "c4f10528",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "89527b6b",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "e9327a54",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "4c36ccef",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6ae235be",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "7e00a6cb",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "1903aded",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "e47becba",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "118b2229",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "51a45a95",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "58bf7951",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "1e043500",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "c5e8278d",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6ade9755",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6f9b354f",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6a1eabeb",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6aeb4375",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "830ce83f",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "852ce960",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "945e3d21",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "d7c942c3",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "71315a70",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "89941a93",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "gpt4_2655b836",
+      "cat": "temporal-reasoning",
+      "evidence": 3,
+      "found": 3,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "gpt4_2487a7cb",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "gpt4_76048e76",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "gpt4_2312f94c",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0bb5a684",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "08f4fc43",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "2c63a862",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "gpt4_385a5000",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "8a2466db",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "06878be2",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "75832dbd",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "0edc2aef",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "35a27287",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "32260d93",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "195a1a1b",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "afdc33df",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "0a995998",
+      "cat": "multi-session",
+      "evidence": 3,
+      "found": 3,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "6d550036",
+      "cat": "multi-session",
+      "evidence": 4,
+      "found": 2,
+      "all": false,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "gpt4_59c863d7",
+      "cat": "multi-session",
+      "evidence": 4,
+      "found": 3,
+      "all": false,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "b5ef892d",
+      "cat": "multi-session",
+      "evidence": 3,
+      "found": 3,
+      "all": true,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "e831120c",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "3a704032",
+      "cat": "multi-session",
+      "evidence": 3,
+      "found": 0,
+      "all": false,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "gpt4_d84a3211",
+      "cat": "multi-session",
+      "evidence": 4,
+      "found": 4,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "aae3761f",
+      "cat": "multi-session",
+      "evidence": 3,
+      "found": 3,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    }
+  ]
+}

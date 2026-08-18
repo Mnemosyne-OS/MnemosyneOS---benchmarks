@@ -1,0 +1,439 @@
+{
+  "label": "hold-on",
+  "topK": 32,
+  "fusion": "ON (default)",
+  "rows": [
+    {
+      "id": "0e5e2d1a",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "1568498a",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "16c90bf4",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "18dcd5a5",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "1b9b7252",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1d4da289",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "1de5cff2",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "28bcfaac",
+      "cat": "single-session-assistant",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "001be529",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0862e8bf",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0862e8bf_abs",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "15745da0",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "15745da0_abs",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "19b5f2b3",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "19b5f2b3_abs",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1faac195",
+      "cat": "single-session-user",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "06f04340",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 0,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "07b6f563",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "09d032c9",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "0a34ad58",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1a1907b4",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1c0ddc50",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1d4e3b97",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "1da05512",
+      "cat": "single-session-preference",
+      "evidence": 1,
+      "found": 1,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "00ca467f",
+      "cat": "multi-session",
+      "evidence": 3,
+      "found": 1,
+      "all": false,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0100672e",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "078150f1",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "099778bb",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "09ba9854",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "09ba9854_abs",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "0ea62687",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "10d9b85a",
+      "cat": "multi-session",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "01493427",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "031748ae",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "031748ae_abs",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "06db6396",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "07741c44",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "07741c45",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "08e075c7",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0977f2af",
+      "cat": "knowledge-update",
+      "evidence": 2,
+      "found": 1,
+      "all": false,
+      "locatable": true,
+      "chunk": false
+    },
+    {
+      "id": "0bc8ad92",
+      "cat": "temporal-reasoning",
+      "evidence": 3,
+      "found": 2,
+      "all": false,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0bc8ad93",
+      "cat": "temporal-reasoning",
+      "evidence": 3,
+      "found": 3,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "0db4c65d",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "2a1811e2",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "2ebe6c90",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "2ebe6c92",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 1,
+      "all": false,
+      "locatable": false,
+      "chunk": null
+    },
+    {
+      "id": "370a8ff4",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": true,
+      "chunk": true
+    },
+    {
+      "id": "4dfccbf7",
+      "cat": "temporal-reasoning",
+      "evidence": 2,
+      "found": 2,
+      "all": true,
+      "locatable": false,
+      "chunk": null
+    }
+  ]
+}

@@ -49,6 +49,7 @@ are the source behind it.
 | Campaign | Headline | |
 |---|---|---|
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
+| [Lexical channel — hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 37/48** (reproduced ×2, p = 0.0215), holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
 
 ## What "full-haystack" means
 

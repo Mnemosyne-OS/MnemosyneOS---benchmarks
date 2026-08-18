@@ -1,0 +1,727 @@
+{
+  "engine": "full",
+  "topK": 32,
+  "reserve": "3",
+  "results": [
+    {
+      "id": "7161e7e2",
+      "cat": "single-session-assistant",
+      "gold": "Admon was assigned to the 8 am - 4 pm (Day Shift) on Sundays.",
+      "generated": "According to the GM Social Media Agent shift schedule from 2023/05/20, Admon's rotation on a Sunday is the 8 am - 4 pm (Day Shift).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "c4f10528",
+      "cat": "single-session-assistant",
+      "gold": "Miss Bee Providore",
+      "generated": "Based on memory records from 2023/05/26, the restaurant in the Cihampelas Walk area that serves the Nasi Goreng you researched is Miss Bee Providore. The specific dish is \"Miss Bee's Nasi Goreng\" (Source 1, Source 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "89527b6b",
+      "cat": "single-session-assistant",
+      "gold": "The Plesiosaur had a blue scaly body.",
+      "generated": "Based on the memory context, the Plesiosaur in the image description for the children's book \"The Amazing Adventures of Dinosaurs\" has a blue scaly body (Sources 1, 2, 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "fuzzy",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "e9327a54",
+      "cat": "single-session-assistant",
+      "gold": "The Sugar Factory at Icon Park.",
+      "generated": "Based on the memory context from a conversation on 2023/05/25, the unique dessert shop in Orlando that offers \"giant milkshakes\" is The Sugar Factory, located at Icon Park.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "fuzzy",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "4c36ccef",
+      "cat": "single-session-assistant",
+      "gold": "Roscioli",
+      "generated": "Based on a conversation from 2023/05/21, the recommended romantic Italian restaurant in Rome was Roscioli.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6ae235be",
+      "cat": "single-session-assistant",
+      "gold": "Atmospheric distillation, fluid catalytic cracking (FCC), alkylation, and hydrotreating.",
+      "generated": "Based on memory from 2023/05/30, the refining processes used at the CITGO Lake Charles Refinery are:\n\n*   Atmospheric distillation\n*   Fluid catalytic cracking (FCC)\n*   Alkylation\n*   Hydrotreating",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "fuzzy",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "7e00a6cb",
+      "cat": "single-session-assistant",
+      "gold": "International Budget Hostel",
+      "generated": "Based on the memory context from 2023/05/25, the recommended hostel situated near the Red Light District in Amsterdam is the **International Budget Hostel**.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "1903aded",
+      "cat": "single-session-assistant",
+      "gold": "Transcriptionist.",
+      "generated": "Based on the conversation from 2023/05/23, the 7th job on the list of work-from-home jobs for seniors was \"Transcriptionist\".",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "e47becba",
+      "cat": "single-session-user",
+      "gold": "Business Administration",
+      "generated": "Based on a conversation on 2023/05/24, you graduated with a degree in Business Administration (Source 2).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "118b2229",
+      "cat": "single-session-user",
+      "gold": "45 minutes each way",
+      "generated": "Based on the provided memory context, your daily commute is one hour each way.\n\nA conversation on May 27, 2023, explicitly mentions, \"An hour each way is a significant amount of time that can be utilized for personal development, entertainment, or relaxation\" in the context of your commute (Source 9).\n\nSupporting data indicates this commute is taken by train every weekday, departing from Oakdale station at 7:15 am to go downtown (Sources 10, 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "51a45a95",
+      "cat": "single-session-user",
+      "gold": "Target",
+      "generated": "The $5 coupon for coffee creamer was located in your email inbox. The specific store where the coupon was redeemed is not specified in the memory context.\n\nThis is documented in a user message from 2023/05/29 (Source 2) and confirmed by the dream consolidation ledger for coupon organization (Source 33), which notes the redemption occurred on Sunday, 2023/05/28.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "abstained",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "58bf7951",
+      "cat": "single-session-user",
+      "gold": "The Glass Menagerie",
+      "generated": "You attended a production of \"The Glass Menagerie\" at the local community theater. This is documented in a conversation session dated 2023/05/30 and corroborated by the theater arts memory consolidation ledger.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "1e043500",
+      "cat": "single-session-user",
+      "gold": "Summer Vibes",
+      "generated": "Based on the memory context, the name of the Spotify playlist you created is \"Summer Vibes\". This was mentioned on 2023/05/22.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "c5e8278d",
+      "cat": "single-session-user",
+      "gold": "Johnson",
+      "generated": "Based on a user statement from 2023/05/20, your previous last name was Johnson.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6ade9755",
+      "cat": "single-session-user",
+      "gold": "Serenity Yoga",
+      "generated": "Based on the memory context, here is the status of your yoga classes:\n\n*   As of 2023/05/29, you stated you were hoping to get back into yoga and were looking for a studio suitable for a beginner (Source 31, Source 2).\n*   A source from 2023/05/27 indicates you attend or have a connection to a studio named \"Serenity Yoga\" (Source 3, Source 22).\n*   You also maintain a home practice using the Down Dog application, favoring vinyasa flow classes (Source 3, Source 22).\n\nPer the RECENCY RULE, the information from 2023/05/29 indicating you are currently searching for a studio supersedes the earlier mention of attending Serenity Yoga.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6f9b354f",
+      "cat": "single-session-user",
+      "gold": "a lighter shade of gray",
+      "generated": "Based on memory logs from 2023/05/27, you repainted your bedroom walls a lighter shade of gray (Source 9).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6a1eabeb",
+      "cat": "knowledge-update",
+      "gold": "25 minutes and 50 seconds (or 25:50)",
+      "generated": "Based on a conversation on 2023/05/26, your personal best time for a 5K run was 25 minutes and 50 seconds (25:50).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6aeb4375",
+      "cat": "knowledge-update",
+      "gold": "four",
+      "generated": "Based on a conversation on September 30, 2023, you have tried four different Korean restaurants in your city (Source 13).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "830ce83f",
+      "cat": "knowledge-update",
+      "gold": "the suburbs",
+      "generated": "Based on the memory context, conflicting information exists regarding Rachel's recent relocation.\n\nApplying the RECENCY RULE:\n*   The most recent source (Source 17, Date: 2023/05/29) states that your friend Rachel \"just moved back to the suburbs again.\" The context of the conversation suggests a location near Tampa, Florida.\n*   An older source (Source 5, Date: 2023/05/24) states she moved to a new apartment in Chicago.\n\nTherefore, the most current data indicates Rachel moved to the suburbs, likely near Tampa, FL.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "852ce960",
+      "cat": "knowledge-update",
+      "gold": "$400,000",
+      "generated": "Based on the most recent memory context, you were pre-approved for a $400,000 mortgage from Wells Fargo. This information is from a source dated 2023/11/30 (Source 1, Source 34) and supersedes earlier mentions of a $350,000 pre-approval from 2023/08/11 (Source 2, Source 3, Source 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "945e3d21",
+      "cat": "knowledge-update",
+      "gold": "Three times a week.",
+      "generated": "Based on the memory context, you attend yoga classes three times a week.\n\nA productivity planning session on 2023/11/30 documents your statement that you are more focused on days you attend yoga classes, which is \"three times a week\" (Source 24). The schedule created during that session designates Tuesday, Thursday, and Friday as \"Yoga Day!\" (Source 3, 32).\n\nAn earlier entry from 2023/08/11 confirms you find your yoga practice helpful for feeling \"more grounded and centered, especially on days when I'm feeling anxious\" (Source 8).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "d7c942c3",
+      "cat": "knowledge-update",
+      "gold": "Yes.",
+      "generated": "Yes. As of 2023/04/30, your mom is using the same grocery list app as you.\n\nAccording to a conversation on that date, you stated: \"my mom is actually using the same grocery list app as me now, so we can easily share lists and keep track of what we need\" (Source 1).\n\nThis information supersedes an older entry from 2023/03/11, where you mentioned your mom was \"still stuck on her old paper list\" (Source 27).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "71315a70",
+      "cat": "knowledge-update",
+      "gold": "10-12 hours",
+      "generated": "Based on the memory context, you have spent 10-12 hours on your abstract ocean sculpture.\n\nThis figure is based on the most recent records, which supersede an earlier mention:\n*   **10-12 hours:** Stated on 2023/06/17 (Source 2, Source 3) and confirmed in a consolidated summary (Source 33).\n*   **5-6 hours:** An earlier figure stated on 2023/06/11 (Source 1).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "89941a93",
+      "cat": "knowledge-update",
+      "gold": "4",
+      "generated": "Based on the memory context, you currently own a total of 4 bikes.\n\n*   **As of 2023/02/22**, you owned 3 bikes: a road bike, a mountain bike, and a commuter bike (Sources 2, 8, 33).\n*   **By 2023/10/10**, you had purchased a new hybrid bike, bringing the total to 4 (Sources 4, 33, 35).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_2655b836",
+      "cat": "temporal-reasoning",
+      "gold": "GPS system not functioning correctly",
+      "generated": "Based on the memory context, the first issue you had with your new car (the 2018 Honda Civic) after its first service on March 15, 2023, was an issue with the GPS system on March 22, 2023. The dealership subsequently replaced the entire system.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_2487a7cb",
+      "cat": "temporal-reasoning",
+      "gold": "'Data Analysis using Python' webinar",
+      "generated": "Based on the memory context, you attended the \"Data Analysis using Python\" webinar first.\n\n*   You participated in the \"Data Analysis using Python\" webinar approximately two months prior to 2023/05/26, around March 26, 2023 (Sources 2, 35).\n*   You attended the \"Effective Time Management\" workshop on \"last Saturday\" relative to 2023/05/26, which was May 20, 2023 (Source 32).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "fuzzy",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_76048e76",
+      "cat": "temporal-reasoning",
+      "gold": "bike",
+      "generated": "Based on the memory context, you took care of your car first in February.\n\nYou washed your car on February 3rd (Source 5). Your hybrid bike was taken in for repairs in \"mid-February\" (Source 2, 3, 34).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_2312f94c",
+      "cat": "temporal-reasoning",
+      "gold": "Samsung Galaxy S22",
+      "generated": "Based on the provided memory context, you received the Samsung Galaxy S22 first.\n\nYou got the Samsung Galaxy S22 on February 20th (Source 22). The Dell XPS 13 arrived on February 25th (Source 2).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "0bb5a684",
+      "cat": "temporal-reasoning",
+      "gold": "7 days. 8 days (including the last day) is also acceptable.",
+      "generated": "Based on the memory context, you attended the \"Effective Communication in the Workplace\" workshop 7 days before the team meeting.\n\nThe workshop was on January 10, 2023 (Sources 1, 4, 5, 6, 33, 34), and the team meeting was scheduled for January 17, 2023 (Sources 3, 10, 14, 33, 34).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "08f4fc43",
+      "cat": "temporal-reasoning",
+      "gold": "30 days. 31 days (including the last day) is also acceptable.",
+      "generated": "30 days passed between the Sunday mass at St. Mary's Church and the Ash Wednesday service at the cathedral.\n\n*   **Sunday mass at St. Mary's Church:** Occurred on January 2nd, 2023 (Source 3).\n*   **Ash Wednesday service at the cathedral:** Occurred on February 1st, 2023 (Source 2, Source 4).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "2c63a862",
+      "cat": "temporal-reasoning",
+      "gold": "14 days. 15 days (including the last day) is also acceptable.",
+      "generated": "Based on the memory context, it took 14 days.\n\nYou started working with your agent, Rachel, on February 15, 2022 (Source 8), and you viewed the house that \"really checks all the boxes\" on March 1, 2022 (Source 23, Source 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_385a5000",
+      "cat": "temporal-reasoning",
+      "gold": "Tomatoes",
+      "generated": "Based on the memory context, the tomato seeds were started first.\n\nAccording to Source 6, the user began starting tomato seeds indoors on February 20th. According to Source 1, the user started the marigold seeds sometime after they arrived on March 3rd.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "8a2466db",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer responses that suggest resources specifically tailored to Adobe Premiere Pro, especially those that delve into its advanced settings. They might not prefer general video editing resources or resources related to other video editing software.",
+      "generated": "Based on your stated preference for using Adobe Premiere Pro (Source 1), the following resources for learning video editing were identified in a session on 2023/05/29 (Source 34):\n\n*   **YouTube Channels:**\n    *   Premiere Bro\n    *   Video Copilot\n    *   Adobe Creative Cloud\n\n*   **Online Course Platforms:**\n    *   Udemy\n    *   LinkedIn Learning\n    *   Skillshare\n\n*   **Forums/Communities:**\n    *   Reddit's r/premierepro\n    *   Adobe's Premiere Pro forum\n\n*   **Third-Party Plugins:**\n    *   Video Copilot's Orb",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": false
+      }
+    },
+    {
+      "id": "06878be2",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer suggestions of Sony-compatible accessories or high-quality photography gear that can enhance their photography experience. They may not prefer suggestions of other brands' equipment or low-quality gear.",
+      "generated": "Based on your stated interests and recent research, here are accessory recommendations to complement your current photography setup:\n\n*   **Tripod Upgrade:** You identified the **Manfrotto MT057CXPRO4 Carbon Fiber Tripod** as a potential upgrade from your Manfrotto BeFree Live. This would provide better support for your Canon EF 70-200mm f/2.8L lens (Source 33).\n\n*   **Camera Rain Cover:** For your upcoming trip to Yellowstone in June 2023, you were considering a rain cover for your Sony A7R IV. Brands you researched include **OP/TECH USA**, **Think Tank Photo**, **Aquapac**, **Vortex Media**, and **MegaGear** (Source 33).\n\n*   **Flash System:** You decided to acquire a **Godox V1 flash** for your Sony A7R IV. You also researched compatible cases from brands such as Godox, Nanuk, Pelican, Think Tank Photo, Lowepro, and Vello (Source 33).\n\n*   **Camera Bag Upgrade:** To carry more equipment, including your DJI Mavic Air 2 drone, you researched the **Peak Design Everyday Backpack 30L** and the **F-Stop Gear Loka UL 40L** as potential upgrades (Source 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": false
+      }
+    },
+    {
+      "id": "75832dbd",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer suggestions related to recent research papers, articles, or conferences that focus on artificial intelligence in healthcare, particularly those that involve deep learning for medical image analysis. They would not be interested in general AI topics or those unrelated to healthcare.",
+      "generated": "Based on your stated interests, here are recommendations for recent publications and conferences mentioned in the memory context:\n\n**1. AI in Healthcare (from 2023/05/30):**\n*   **Publications:**\n    *   \"A Survey on Artificial Intelligence in Healthcare\" - Journal of Medical Systems (2020)\n    *   \"Artificial Intelligence in Healthcare: A Review of the Current State and Future Prospects\" - Journal of Clinical Medicine (2020)\n    *   \"AI in Healthcare: A Systematic Review of the Literature\" - Journal of Healthcare Engineering (2020)\n    *   \"AI in Healthcare: Trends, Opportunities, and Challenges\" - Accenture (2020)\n*   **Conferences/Webinars:**\n    *   AI in Healthcare Summit\n    *   Healthcare AI and Analytics Summit\n    *   AI in Medicine Webinar Series (hosted by the American Medical Association)\n\n**2. Natural Language Processing (NLP) (from 2023/05/29):**\n*   **Conferences:**\n    *   The \"NLP Workshops\" website lists various conferences, including ACL, NAACL, and EMNLP, with some focused on healthcare, finance, and education.\n\n**3. Environmental Sustainability & Climate Change (from 2023/05/29):**\n*   **Publications:**\n    *   The Conversation - Environment + Energy\n    *   Environmental Defense Fund (EDF) Blog\n    *   Climate Central\n    *   Sustainability Magazine\n    *   The Guardian - Environment",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": false
+      }
+    },
+    {
+      "id": "0edc2aef",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer suggestions of hotels in Miami that offer great views, possibly of the ocean or the city skyline, and have unique features such as a rooftop pool or a hot tub on the balcony. They may not prefer suggestions of basic or budget hotels without these features.",
+      "generated": "Based on your stated preferences, I can provide a recommendation for the type of hotel you would enjoy for your upcoming trip to Miami.\n\nYour travel planning history, particularly for your Seattle trip, indicates a strong preference for luxury hotels that offer exceptional views and specific amenities. You expressed significant interest in rooms with a \"hot tub on the balcony with a view of the city skyline\" (Source 8) and ultimately selected a package at The Edgewater Hotel because the \"hot tub on the balcony with a view of the Space Needle sounds amazing\" (Source 27). You also inquired about rooftop pools (Source 8) and rooms with fireplaces (Source 11).\n\nWhile the memory context does not contain specific hotel names in Miami, I can recommend that you search for accommodations that match these established preferences. You should look for luxury, beachfront hotels, likely in areas like South Beach or Brickell, that offer:\n\n*   Rooms with private balconies and ocean or city skyline views.\n*   Amenities such as a rooftop pool or, specifically, a private hot tub on the balcony.\n*   Special packages, similar to the \"Space Needle Romance Package\" you favored, which may include spa credits or complimentary meals (Source 27).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "abstained",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "35a27287",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer responses that suggest cultural events where they can practice their language skills, particularly Spanish and French. They would also appreciate if the event has a focus on language learning resources. They would not prefer events that do not provide opportunities for language practice or cultural exchange.",
+      "generated": "Based on the provided memory context, there are no specific cultural events listed for this upcoming weekend (June 3-4, 2023).\n\nHowever, the context does mention two events scheduled for June that align with your stated interests:\n\n1.  The **Governors Ball Music Festival** in Randall's Island Park, NYC, is listed with the dates June 5-7 (Source 5). While this begins the following week, it aligns with your interest in discovering new music and attending live shows (Source 5).\n2.  The **Women Who Tech Summit**, a virtual conference, is noted as occurring in June 2023, although specific dates are not provided (Source 17). This matches your goal of attending more events focused on women in tech (Source 17).\n\nGiven your preferences for events that celebrate language diversity and cultural exchange (Source 1), museum activities related to ancient civilizations (Source 11), and dance (Source 4), you could use the methods previously discussed to find local happenings. These include searching platforms like Eventbrite and Meetup, or following local cultural organizations on social media (Sources 2, 4).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "32260d93",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer recommendations for stand-up comedy specials on Netflix, especially those that are known for their storytelling. They may not prefer recommendations for other genres or platforms.",
+      "generated": "Based on your stated preferences, a recommendation can be formulated.\n\nOn 2023/05/29, you stated that you had just finished \"Stranger Things\" and were \"craving something similar\" (Source 9). In the same conversation, you expressed intrigue in the recommendations for *The X-Files* and *Twin Peaks* (Source 12).\n\n**Recommendation:** *The X-Files*.\n\n**Rationale:** This series aligns with your expressed interest in a show similar to *Stranger Things*, combining sci-fi, mystery, and paranormal investigation (Source 9). You have already identified it as a show you are intrigued by (Source 12).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "195a1a1b",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer suggestions that involve relaxing activities that can be done in the evening, preferably before 9:30 pm. They would not prefer suggestions that involve using their phone or watching TV, as these activities have been affecting their sleep quality.",
+      "generated": "Based on your stated preferences and activities, here are some recommendations for evening activities:\n\n1.  **Creative Practice:** You have an established routine of practicing guitar for about 30 minutes every evening (Source 26). You could also use this time for your journaling practice (Source 5).\n2.  **Physical Activity:** You have decided to schedule jogging sessions for Thursday evenings (Source 11, Source 33). On other nights, you could engage in a less physically demanding activity like a short walk (Source 19) or gentle stretches as part of a relaxing bedtime routine (Source 30).\n3.  **Relaxing Entertainment:** You could continue listening to audiobooks, which you do during your commute (Source 7). Since you are interested in discovering new music (Source 24), you could also listen to new artists.\n4.  **Social Outing:** You mentioned enjoying a new bar you visited (Source 1). Combining this with your interest in discovering new music (Source 24), you could go to a bar or venue that features live music.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "afdc33df",
+      "cat": "single-session-preference",
+      "gold": "The user would prefer responses that acknowledge and build upon their existing efforts to organize their kitchen, such as utilizing their new utensil holder to keep countertops clutter-free. They would also appreciate tips that address their concern for maintaining their granite surface, particularly around the sink area. Preferred responses would provide practical and actionable steps to maintain cleanliness, leveraging the user's current tools and setup. They might not prefer generic or vague suggestions that do not take into account their specific kitchen setup or concerns.",
+      "generated": "Based on the memory context, here is a synthesis of relevant data regarding kitchen cleanliness and organization:\n\n*   **Existing Routine:** You have previously established a daily 10-minute tidy of the kitchen after dinner, which includes wiping down counters and putting away dirty dishes (Source 1, 35).\n\n*   **General Cleaning Optimization:**\n    *   Prioritize the kitchen as a high-traffic area that requires the most attention (Source 6).\n    *   Adopt a \"clean as you go\" methodology, such as wiping counters immediately after cooking (Source 6).\n    *   Keep cleaning supplies stored in an accessible location, like under the sink, to improve efficiency (Source 6).\n    *   Schedule regular deep cleaning sessions for tasks like cleaning the oven (Source 6).\n\n*   **Utensil & Countertop Organization:**\n    *   You have an ongoing project to organize kitchen utensils and have purchased a new utensil holder to reduce countertop clutter (Source 10, 35).\n    *   Recommendations for utensil organization include:\n        *   Purging duplicate or unnecessary items and categorizing the rest (Source 17).\n        *   Using dividers within the holder to separate utensil groups (Source 17).\n        *   Placing the most frequently used utensils at the front for easy access (Source 17).\n        *   Utilizing the holder's vertical space for longer items like spatulas and whisks (Source 17).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "miss",
+        "flexible": true,
+        "strict": false
+      }
+    },
+    {
+      "id": "0a995998",
+      "cat": "multi-session",
+      "gold": "3",
+      "generated": "Based on the memory context, you have a total of 3 clothing items to pick up or return.\n\n*   **1 new pair of boots** to pick up from Zara (Source 2, 18, 33).\n*   **1 old pair of boots** to return to Zara (Source 18).\n*   **1 navy blue blazer** to pick up from the dry cleaner (Source 3, 17, 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "6d550036",
+      "cat": "multi-session",
+      "gold": "2",
+      "generated": "Based on the memory context, you have led or are currently leading a total of 7 projects.\n\n1.  **Verde Fashion Co.:** Your sustainable fashion brand. (Source: 34)\n2.  **E-commerce Platform:** A new platform you are setting up. (Source: 34)\n3.  **Illuvium Influencer Marketing Strategy:** A project you developed for the web 3 video game. (Source: 34)\n4.  **Neuromarketing for Entrepreneurs:** A 6-module course you are developing. (Source: 34)\n5.  **Customer Data Analysis Project:** A project to analyze customer data using clustering analysis. (Source: 34)\n6.  **Marketing Research Class Project:** A past project where you led the data analysis team. (Source: 34)\n7.  **Social Media Campaign for New Product Launch:** A project with a deadline of May 1, 2023, for which you were responsible for all major tasks. (Source: 35)\n\nAdditionally, you are preparing to take on a new role as a team lead in the marketing department, which implies leadership of future projects (Sources: 7, 31, 34).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "gpt4_59c863d7",
+      "cat": "multi-session",
+      "gold": "I have worked on or bought five model kits. The scales of the models are: Revell F-15 Eagle (scale not mentioned), Tamiya 1/48 scale Spitfire Mk.V, 1/16 scale German Tiger I tank, 1/72 scale B-29 bomber, and 1/24 scale '69 Camaro.",
+      "generated": "Based on the provided memory, you have worked on or bought a total of 6 specific model kits.\n\nHere is the enumeration of each kit:\n\n1.  **Revell F-15 Eagle kit:** Mentioned as recently finished (Source 3, Source 33).\n2.  **Tamiya 1/48 scale Spitfire Mk.V:** Mentioned as recently finished (Source 16).\n3.  **1/72 scale B-29 bomber model kit:** Acquired at a model show and planned for a future project (Source 28, Source 33).\n4.  **1/24 scale '69 Camaro model kit:** Acquired at a model show (Source 33).\n5.  **1/16 scale German Tiger I tank:** Owned and part of a diorama project (Source 33).\n6.  **Zero fighter plane model:** Owned and planned for a diorama project (Source 33).\n\nAdditionally, you own an unspecified quantity of \"Ferrari models\" and other \"Model tanks\" (Source 33). These are not included in the final count as their exact number is not specified.",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": false,
+        "matchType": "abstained",
+        "flexible": false,
+        "strict": false
+      }
+    },
+    {
+      "id": "b5ef892d",
+      "cat": "multi-session",
+      "gold": "8 days.",
+      "generated": "Based on the provided memory context, you have spent a total of 8 days on camping trips in the United States this year.\n\nThis total is derived from the following trips:\n*   **5 days:** A camping trip to Yellowstone National Park in March 2023 (Source 5).\n*   **3 days:** A solo camping trip to Big Sur in early April 2023 (Source 14).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "e831120c",
+      "cat": "multi-session",
+      "gold": "3.5 weeks",
+      "generated": "Based on the memory context, it took you a total of 3.5 weeks to watch the Marvel Cinematic Universe movies and the main Star Wars films.\n\nThis is calculated as follows:\n*   **Marvel Cinematic Universe:** You watched the MCU movies over a period of \"two weeks\" (Sources 9, 33, 34).\n*   **Star Wars:** You watched the main Star Wars films in \"a week and a half\" (Sources 1, 34).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "3a704032",
+      "cat": "multi-session",
+      "gold": "3",
+      "generated": "Based on the provided memory context, you acquired a total of 3 plants in the last month.\n\nThe instances are:\n*   **1 Snake plant:** Acquired from your sister in \"April 2023\" (Source 33). The date is imprecise but is counted as it is not demonstrably outside the one-month window.\n*   **1 Peace lily:** Acquired from a nursery on approximately 2023/05/12 (Source 33).\n*   **1 Succulent:** Acquired from a nursery on approximately 2023/05/12 (Source 33).",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "gpt4_d84a3211",
+      "cat": "multi-session",
+      "gold": "$185",
+      "generated": "Based on the memory context, you have spent a total of $185.00 on bike-related expenses since the start of the year.\n\nThis total is composed of the following expenses, all listed in Source 33:\n*   **$120.00:** Bell Zephyr helmet (2023/04/10)\n*   **$25.00:** New chain (2023/04/20)\n*   **$40.00:** New set of bike lights (2023/04/20)",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    },
+    {
+      "id": "aae3761f",
+      "cat": "multi-session",
+      "gold": "15 hours for getting to the three destinations (or 30 hours for the round trip)",
+      "generated": "Based on the provided memory, you spent a total of 15 hours driving to three road trip destinations.\n\nThis total is calculated from the following trips:\n*   **6 hours** to Washington D.C. (Source 1)\n*   **5 hours** to the mountains in Tennessee (Source 12)\n*   **4 hours** to the Outer Banks in North Carolina (Source 15)",
+      "nSrc": 35,
+      "nDream": 3,
+      "infra": false,
+      "judge": {
+        "heuristic": true,
+        "matchType": "exact",
+        "flexible": true,
+        "strict": true
+      }
+    }
+  ]
+}
