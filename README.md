@@ -28,16 +28,22 @@ node scoring.js --selftest   # audit the grader on real cases
 `verify.js` proves each advertised score is the **exact sum of the published
 per-question rows** — no hidden questions, no arithmetic massaging. Every ledger
 recomputes in full: baseline (64.6%), engine multi-session (5/8), local-sovereign
-(50%), and the two strict-judge arms of the August campaign (29/48 and 37/48).
+(50%), and all four arms of the August campaign — vector-only and fused, each read
+by both the strict and the flexible judge (29/48, 37/48, 34/48, 39/48).
 
 **The current headline is 77.1% (37/48), August 2026, under a *strict* judge** —
 one 48-question run, replayed a second time and agreeing verdict for verdict, with
 the retrieval gain confirmed on a 48-question holdout never seen during development.
-Under July's *flexible* judge, the same build measures 81.3% (39/48, same
-both-runs rule) — that one is not in `verify.js`, because the kit's August ledgers
-carry the strict verdicts; it is derivable from the `judge.flexible` field of the
-published raw runs in `lexical-2026-08/runs/`. Which judge graded a number changes
-what it means, so every score here names its judge.
+Under July's *flexible* judge, the same answers measure 81.3% (39/48, same
+both-runs rule) — and `verify.js` recomputes that one too, from its own published
+ledger. Which judge graded a number changes what it means, so every score here
+names its judge, and both leniencies of the August campaign ship as ledgers rather
+than as an assertion.
+
+The two graders disagree about more than the headline: under the strict judge the
+channel gains **+9/−1** questions, under the flexible one **+7/−2**. The flexible
+reading is the weaker evidence, and it is published at full strength rather than
+rounded away.
 
 **July's 72.9% is a different kind of number, and `verify.js` says so out loud.** It was
 never measured in a single 48-question engine run — only the multi-session

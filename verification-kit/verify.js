@@ -117,6 +117,8 @@ if (base && eng) {
 //      never seen during development.
 const lexBase = ledgers.get('lexical-baseline-strict-48q.jsonl');
 const lexFusion = ledgers.get('lexical-fusion-strict-48q.jsonl');
+const lexBaseFlex = ledgers.get('lexical-baseline-flexible-48q.jsonl');
+const lexFusionFlex = ledgers.get('lexical-fusion-flexible-48q.jsonl');
 const lexRunsDir = join(HERE, '..', 'lexical-2026-08', 'runs');
 const loadRecall = (f) => JSON.parse(readFileSync(join(lexRunsDir, f), 'utf8')).rows;
 const recallAgg = (rows) => ({
@@ -137,6 +139,24 @@ if (lexBase && lexFusion) {
   console.log('  29/48 → 37/48 under the both-runs replay rule; exact binomial on 9-vs-1 flips gives p = 0.0215.');
   console.log('  ⚠ This 48-question sample was used during development and runs ~13 points easier than');
   console.log('    its parent set. The transfer evidence is the deterministic holdout below, not this pair.');
+
+  // Same answers, the other grader. Published so nobody has to take the leniency
+  // difference on trust — and so the weaker flexible signal is visible too.
+  if (lexBaseFlex && lexFusionFlex) {
+    const fGains = lexFusionFlex.rows.filter((r) => r.correct && r.baseline_correct === false).length;
+    const fRegs = lexFusionFlex.rows.filter((r) => !r.correct && r.baseline_correct === true).length;
+    const bh = lexBaseFlex.rows.filter((r) => r.correct).length;
+    const fh = lexFusionFlex.rows.filter((r) => r.correct).length;
+    const unstable = lexFusionFlex.rows.filter((r) => r.replay_stable === false).length;
+    console.log(`\n✓ LEXICAL CHANNEL — the same runs under the FLEXIBLE judge (July's grader)`);
+    console.log(`  ${bh}/48 = ${((100 * bh) / 48).toFixed(1)}% → ${fh}/48 = ${((100 * fh) / 48).toFixed(1)}%, same both-runs replay rule`);
+    console.log(`  paired: +${fGains} gained / −${fRegs} regressed — a weaker signal than the strict pair above.`);
+    console.log(`  ${unstable} question(s) disagreed between the two runs and were scored by the conjunction.`);
+    console.log('  Both leniencies are published because a score without its judge is not a result:');
+    console.log('  the strict number is the one we lead with, the flexible one is what July would have said.');
+  } else {
+    console.log(`\n! FLEXIBLE pair skipped — needs lexical-{baseline,fusion}-flexible-48q.jsonl.`);
+  }
 
   try {
     const control = recallAgg(loadRecall('recall-control.json'));
