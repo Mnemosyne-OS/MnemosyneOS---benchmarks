@@ -161,7 +161,7 @@ The harness that produced these logs (`spine-dream-fh.cjs` and its
 supporting scripts) is not published in this repo — it's tightly coupled to
 Mnemosyne's internal memory engine and isn't a standalone tool. It's
 **available on motivated request** (open an issue on this repo, or reach out
-via the links in the [main Mnemosyne OS README](https://github.com/yaka0007/Mnemosyne-Neural-OS)).
+via the links in the [main Mnemosyne OS README](https://github.com/Mnemosyne-OS/Mnemosyne-Neural-OS)).
 
 The dataset itself is the public [LongMemEval](https://github.com/xiaowu0162/LongMemEval)
 benchmark (Wu et al.) — the `-M` full-haystack variant, 48 questions

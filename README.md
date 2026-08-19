@@ -1,11 +1,11 @@
 # Mnemosyne Benchmarks
 
 Transparency archive for benchmark campaigns run against
-[Mnemosyne OS](https://github.com/yaka0007/Mnemosyne-Neural-OS)'s memory
+[Mnemosyne OS](https://github.com/Mnemosyne-OS/Mnemosyne-Neural-OS)'s memory
 engine — methodology, honest caveats, and the raw run logs behind every
 published number.
 
-> **📊 [Live results page →](https://yaka0007.github.io/MnemosyneOS---benchmarks/verification-kit/)** — the numbers, the per-question ledger, and how to recompute them yourself.
+> **📊 [Live results page →](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)** — the numbers, the per-question ledger, and how to recompute them yourself.
 
 **Why a separate repo:** a benchmark claim deserves scrutiny the product
 README isn't the place for. Everything here is real run output — not curated
@@ -26,11 +26,20 @@ node scoring.js --selftest   # audit the grader on real cases
 ```
 
 `verify.js` proves each advertised score is the **exact sum of the published
-per-question rows** — no hidden questions, no arithmetic massaging. All three
-ledgers recompute in full: baseline (64.6%), engine multi-session (5/8), and
-local-sovereign (50%).
+per-question rows** — no hidden questions, no arithmetic massaging. Every ledger
+recomputes in full: baseline (64.6%), engine multi-session (5/8), local-sovereign
+(50%), and the two strict-judge arms of the August campaign (29/48 and 37/48).
 
-**The 72.9% headline is composed, and `verify.js` says so out loud.** It was
+**The current headline is 77.1% (37/48), August 2026, under a *strict* judge** —
+one 48-question run, replayed a second time and agreeing verdict for verdict, with
+the retrieval gain confirmed on a 48-question holdout never seen during development.
+Under July's *flexible* judge, the same build measures 81.3% (39/48, same
+both-runs rule) — that one is not in `verify.js`, because the kit's August ledgers
+carry the strict verdicts; it is derivable from the `judge.flexible` field of the
+published raw runs in `lexical-2026-08/runs/`. Which judge graded a number changes
+what it means, so every score here names its judge.
+
+**July's 72.9% is a different kind of number, and `verify.js` says so out loud.** It was
 never measured in a single 48-question engine run — only the multi-session
 category was re-run with the engine, and the other 40 rows are carried from the
 baseline ledger. The tool recomputes and prints that composition
@@ -39,8 +48,13 @@ quietly detach from how it was built. It is therefore a **lower bound**: the 40
 carried questions were never retried, so a full re-run can only raise it.
 Details in the kit's `RESULTS.md` and `METHODOLOGY.md §5`.
 
+This is why 72.9% and 77.1% are published side by side rather than as a single
+progression: one is a composed lower bound under a flexible judge, the other a
+measured run under a strict one. July's campaign stays exactly as it was
+published, DOI-pinned — a number improved on is not a number withdrawn.
+
 **➡️ Rendered results page:
-[yaka0007.github.io/MnemosyneOS---benchmarks/verification-kit](https://yaka0007.github.io/MnemosyneOS---benchmarks/verification-kit/)**
+[mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)**
 — that's the live site; the files in [`verification-kit/`](verification-kit/)
 are the source behind it.
 

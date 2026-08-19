@@ -94,7 +94,7 @@
   .hero-lead b { color: var(--text); font-weight: 600; }
 
   /* ── stat trio ─────────────────────────────────────────── */
-  .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line);
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1px; background: var(--line);
     border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin: 40px 0 8px; }
   .stat { background: var(--surface); padding: 22px 20px; }
   .stat .n { font-family: var(--mono); font-size: clamp(1.9rem, 5vw, 2.6rem); font-weight: 600; letter-spacing: -0.02em;
@@ -222,10 +222,15 @@
       <div class="frac">31 / 48 · full-haystack</div>
       <div class="d">Baseline — retrieval only, no consolidation engine. <span class="badge-v ok">✓ recomputable</span></div>
     </div>
-    <div class="stat reported">
+    <div class="stat">
       <div class="n">72.9%</div>
-      <div class="frac">35 / 48 · composed · lower bound</div>
-      <div class="d">Full engine, with memory consolidation — 30/40 carried from the baseline + 5/8 measured on multi-session. <span class="badge-v ok">✓ recomputable</span></div>
+      <div class="frac">35 / 48 · composed · July floor</div>
+      <div class="d">Full engine, with memory consolidation, <b>flexible</b> judge — 30/40 carried from the baseline + 5/8 measured on multi-session. <span class="badge-v ok">✓ recomputable</span></div>
+    </div>
+    <div class="stat reported">
+      <div class="n">77.1%</div>
+      <div class="frac">37 / 48 · measured · <b>strict</b> judge</div>
+      <div class="d">Full engine + the lexical channel, August — one 48-question run, reproduced twice, verdict for verdict. <span class="badge-v ok">✓ recomputable</span></div>
     </div>
     <div class="stat">
       <div class="n">50%</div>
@@ -233,7 +238,7 @@
       <div class="d">Fully local, 3B model, zero cloud. <span class="badge-v ok">✓ recomputable</span></div>
     </div>
   </div>
-  <p class="label" style="margin-top:14px">LongMemEval-M · full-haystack variant (~480 distractor sessions per question) · answers gemini-2.5-pro / Qwen2.5-3B · flexible LLM judge · e5 embeddings</p>
+  <p class="label" style="margin-top:14px">LongMemEval-M · full-haystack variant (~480 distractor sessions per question) · answers gemini-2.5-pro / Qwen2.5-3B · LLM judge, <b>flexible</b> in July and <b>strict</b> in August — each score below says which one graded it · e5 embeddings</p>
 </div>
 
 <section>
@@ -287,7 +292,7 @@
           <tr><td>Evidence sessions retrieved (deterministic, no LLM)</td><td>38/48</td><td><b>41/48</b></td></tr>
           <tr><td>Answer-bearing chunk served (35 tracked)</td><td>25/35</td><td><b>30/35</b></td></tr>
           <tr><td><b>Holdout</b> — 48 questions never seen in development</td><td>—</td><td><b>+4/−0 sessions · +2/−0 chunks</b></td></tr>
-          <tr><td>End-to-end, <b>strict judge</b>, both-runs replay rule</td><td>29/48</td><td><b>37/48</b> (+9/−1 paired, p&nbsp;=&nbsp;0.0215)</td></tr>
+          <tr><td>End-to-end, <b>strict judge</b>, both-runs replay rule</td><td>29/48 · 60.4%</td><td><b>37/48 · 77.1%</b> (+9/−1 paired, p&nbsp;=&nbsp;0.0215)</td></tr>
         </tbody>
       </table>
     </div>
