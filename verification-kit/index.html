@@ -1,6 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mnemosyne OS — Benchmark provenance</title>
+<meta name="description" content="The audit kit behind Mnemosyne OS's LongMemEval-M results: per-question ledgers, the grader, and a one-command verifier that recomputes every published figure. Misses are listed at the same rank as hits.">
+<link rel="canonical" href="https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Mnemosyne OS — Benchmarks">
+<meta property="og:title" content="Mnemosyne OS — Benchmark provenance">
+<meta property="og:description" content="The audit kit behind Mnemosyne OS's LongMemEval-M results: per-question ledgers, the grader, and a one-command verifier that recomputes every published figure. Misses are listed at the same rank as hits.">
+<meta property="og:url" content="https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Mnemosyne OS — Benchmark provenance">
+<meta name="twitter:description" content="The audit kit behind Mnemosyne OS's LongMemEval-M results: per-question ledgers, the grader, and a one-command verifier that recomputes every published figure. Misses are listed at the same rank as hits.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Brand",
+      "@id": "https://mnemosyne-os.io/#brand",
+      "name": "Mnemosyne OS",
+      "alternateName": [
+        "Mnemosyne Neural OS",
+        "MnemosyneOS",
+        "Mnemosyne OS Infinity Edition"
+      ],
+      "disambiguatingDescription": "The desktop memory operating system published by XPACEGEMS LLC. Installable on Windows, macOS and Linux, storing its vaults on the user’s own machine. Unrelated to the Mnemosyne spaced-repetition flashcard application, and to the open-source agent-memory libraries that share the name.",
+      "logo": "https://mnemosyne-os.io/favicon.svg",
+      "sameAs": [
+        "https://mnemosyne-os.com",
+        "https://docs.mnemosyne-os.io",
+        "https://github.com/Mnemosyne-OS/Mnemosyne-Neural-OS",
+        "https://www.reddit.com/r/MnemosyneOS/",
+        "https://x.com/MNEMOSYNE_OS",
+        "https://www.youtube.com/@MNEMOSYNE-OS",
+        "https://mnemosyne-os.io/discord"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://mnemosyne-os.io/#org",
+      "name": "XPACEGEMS LLC",
+      "url": "https://mnemosyne-os.io",
+      "brand": {
+        "@id": "https://mnemosyne-os.io/#brand"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/#dataset",
+      "name": "Mnemosyne OS — LongMemEval-M full-haystack verification kit",
+      "description": "The audit kit behind Mnemosyne OS's LongMemEval-M results: per-question ledgers, the grader, and a one-command verifier that recomputes every published figure. Misses are listed at the same rank as hits.",
+      "url": "https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/",
+      "identifier": "https://doi.org/10.5281/zenodo.21727140",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://mnemosyne-os.io/#org"
+      },
+      "publisher": {
+        "@id": "https://mnemosyne-os.io/#org"
+      },
+      "isBasedOn": "https://arxiv.org/abs/2410.10813",
+      "measurementTechnique": "LongMemEval-M, full-haystack variant (~480 distractor sessions per question)",
+      "keywords": [
+        "LongMemEval",
+        "long-term memory for AI",
+        "retrieval-augmented generation",
+        "benchmark provenance",
+        "Mnemosyne OS"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/#page",
+      "url": "https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/",
+      "name": "Mnemosyne OS — Benchmark provenance",
+      "description": "The audit kit behind Mnemosyne OS's LongMemEval-M results: per-question ledgers, the grader, and a one-command verifier that recomputes every published figure. Misses are listed at the same rank as hits.",
+      "about": {
+        "@id": "https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/#dataset"
+      },
+      "publisher": {
+        "@id": "https://mnemosyne-os.io/#org"
+      },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+
 <style>
   :root {
     --bg: #f6f5f1; --surface: #fffffe; --surface-2: #f0efe9;
@@ -199,6 +290,8 @@
   }
 </style>
 
+</head>
+<body>
 <header>
   <div class="wrap">
     <div class="topbar">
@@ -488,3 +581,5 @@
     });
   }
 </script>
+</body>
+</html>
