@@ -1,0 +1,3699 @@
+[
+ {
+  "id": "10M/1/abstention/0",
+  "chatId": "1",
+  "category": "abstention",
+  "index": 0,
+  "question": "What are the qualifications or expertise of Johnny, who collaborated during the code review for tuning logic?",
+  "goldAnswer": "",
+  "difficulty": "easy",
+  "rubric": [
+   "Based on the provided chat, there is no information related to Johnny's qualifications or expertise"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/1/abstention/1",
+  "chatId": "1",
+  "category": "abstention",
+  "index": 1,
+  "question": "What was the agenda or format of the knowledge sharing session where the pipeline design document was shared?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the agenda or format of the knowledge sharing session"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/1/contradiction_resolution/0",
+  "chatId": "1",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I set up diagnostic logs to capture shard distribution errors in my sharding implementation?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: you mentioned setting up diagnostic logs for shard distribution errors",
+   "LLM response should mention: you said you've never set up such logs",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 17,
+  "score": 0.25
+ },
+ {
+  "id": "10M/1/contradiction_resolution/1",
+  "chatId": "1",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Do I usually include exact error messages when I ask about debugging strategies for vector lookups during dense search integration?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said that exact error messages are always included when discussing debugging strategies",
+   "LLM response should mention: you also mentioned never having logged errors for vector lookups during dense search integration",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/event_ordering/0",
+  "chatId": "1",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "How did my discussions about the development phases of our RAG system progress from 2024-08-01 to 2024-10-22 in order? Mention ONLY and ONLY twenty items.",
+  "goldAnswer": "Your discussions about the RAG system development phases progressed as follows: 1) Initiating the core ingestion pipeline foundation, 2) Evaluating batch versus streaming ingestion strategies, 3) Addressing metadata extraction and normalization challenges, 4) Implementing initial vectorization and indexing workflows, 5) Setting up vector database clusters, 6) Building basic sparse retrieval indexes, 7) Developing core API scaffolding for ingestion and retrieval, 8) Integrating authentication and authorization into APIs, 9) Establishing logging and monitoring foundations, 10) Applying infrastructure as code for environment reproducibility, 11) Prototyping hybrid sparse-dense retrieval approaches, 12) Integrating dense vector search with approximate nearest neighbors, 13) Combining retrieval scores for hybrid ranking, 14) Prototyping query pipelines with hybrid retrieval, 15) Implementing query rewriting for improved recall, 16) Conducting initial evaluation metrics and relevance testing, 17) Extending APIs for hybrid search queries, 18) Handling multi-language tokenization, 19) Implementing caching strategies for frequent queries, and 20) Finalizing logging of query performance and errors.",
+  "difficulty": "hard",
+  "rubric": [
+   "Core ingestion pipeline initiation",
+   "Batch vs streaming ingestion strategies",
+   "Metadata extraction and normalization",
+   "Vectorization and indexing workflows",
+   "Vector database cluster setup",
+   "Sparse retrieval index implementation",
+   "Core API scaffolding",
+   "Authentication and authorization integration",
+   "Logging and monitoring foundation",
+   "Infrastructure as code implementation",
+   "Hybrid sparse-dense retrieval prototyping",
+   "Dense vector search with approximate nearest neighbors",
+   "Combining retrieval scores for hybrid ranking",
+   "Query pipeline prototyping with hybrid retrieval",
+   "Query rewriting for improved recall",
+   "Evaluation metrics and relevance testing",
+   "Extending APIs for hybrid search",
+   "Multi-language tokenization",
+   "Caching strategies for frequent queries",
+   "Logging query performance and errors"
+  ],
+  "gold": 47,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 28,
+  "score": 0.16163054956794892
+ },
+ {
+  "id": "10M/1/event_ordering/1",
+  "chatId": "1",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you reconstruct the sequence in which I brought up the various error types and their handling challenges from 2024-11-01 to 2025-01-21 in order? Mention ONLY and ONLY eleven items.",
+  "goldAnswer": "You mentioned the different error types and their handling challenges in this sequence: 1) Issues related to token limits and query segmentation, 2) Problems with context window resizing and size mismatches, 3) Difficulties encountered during indexing and scoring, 4) Challenges in reranking and feedback parsing, 5) Version conflicts during model saving, 6) Errors in evaluation metrics and spelling correction, 7) Encryption key management and documentation formatting errors, 8) Query parsing and synonym expansion issues, 9) Intent reformulation and encoding mismatches, 10) Language detection and vector alignment errors, 11) Stemming rule failures, relevance scoring problems, and code switching errors.",
+  "difficulty": "hard",
+  "rubric": [
+   "Token limit and segmentation errors",
+   "Context window resizing and mismatch errors",
+   "Index scoring errors",
+   "Rerank score and feedback parse errors",
+   "Version conflict errors",
+   "Metric calculation and spell check errors",
+   "Encryption key and documentation format errors",
+   "Query parse and synonym mismatch errors",
+   "Intent reform and encoding mismatch errors",
+   "Language detection and vector alignment errors",
+   "Stemming rule, relevance score, and code switch errors"
+  ],
+  "gold": 43,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": 0.15700282971498236
+ },
+ {
+  "id": "10M/1/information_extraction/0",
+  "chatId": "1",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "What detection rate and total number of test records did I mention when setting up logs to catch that specific error?",
+  "goldAnswer": "You mentioned targeting a 98% detection rate across 10,000 test records.",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should state: 98% detection rate"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 23,
+  "score": 1
+ },
+ {
+  "id": "10M/1/information_extraction/1",
+  "chatId": "1",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "What version of the vector database am I evaluating for indexing over 1 million documents?",
+  "goldAnswer": "Milvus 2.3.1",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: Milvus 2.3.1"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": 0
+ },
+ {
+  "id": "10M/1/instruction_following/0",
+  "chatId": "1",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "What improvements can I make to speed up the process of handling queries?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: inclusion of latency numbers",
+   "LLM response should contain: mention of timing metrics"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 31,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/instruction_following/1",
+  "chatId": "1",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "What targets should I consider when planning to handle increased load on my system?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: numerical latency goals"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": 1
+ },
+ {
+  "id": "10M/1/knowledge_update/0",
+  "chatId": "1",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How many tasks have I logged in Jira for the sprint on 2024-11-05, and what is my sprint completion target percentage?",
+  "goldAnswer": "There are 17 tasks logged in Jira, with a sprint completion target of 88%.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 17 tasks",
+   "LLM response should state: 88%"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 25,
+  "score": 1
+ },
+ {
+  "id": "10M/1/knowledge_update/1",
+  "chatId": "1",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How many tasks are logged in Jira for load balancing, and what is the sprint completion target percentage?",
+  "goldAnswer": "There are 14 tasks logged for load balancing, with a sprint completion target of 85%.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 14 tasks",
+   "LLM response should state: 85%"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": 0
+ },
+ {
+  "id": "10M/1/multi_session_reasoning/0",
+  "chatId": "1",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many documents am I planning to handle in total when combining my Elasticsearch and Solr projects?",
+  "goldAnswer": "1.8 million documents",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: costs 1.8 million"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 18,
+  "score": 0
+ },
+ {
+  "id": "10M/1/multi_session_reasoning/1",
+  "chatId": "1",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How many queries per second am I aiming to support across sharding, load balancing, and partitioning efforts combined?",
+  "goldAnswer": "5,000 queries per second",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 5,000"
+  ],
+  "gold": 3,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 23,
+  "score": 1
+ },
+ {
+  "id": "10M/1/preference_following/0",
+  "chatId": "1",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm planning to estimate costs for running multiple cloud instances. How would you suggest structuring the calculation to handle different providers and instance counts?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: uses or references AWS EC2 cost of $0.11/hour",
+   "LLM response should contain: includes calculation for 500 instances"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 18,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/preference_following/1",
+  "chatId": "1",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm setting up a system to handle a large number of vector searches. How would you suggest structuring the indexing and search process to keep things running smoothly?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions Milvus 2.3.0 or compatible versions",
+   "LLM response should contain: addresses indexing strategies for millions of vectors"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 24,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/summarization/0",
+  "chatId": "1",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize my overall progress and key developments in improving my vector search and logging capabilities 2024-08-01 to 2024-10-22?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you explored various vector indexing strategies",
+   "LLM response should contain: weighing various vector indexing strategies trade-offs in terms of accuracy, speed, and scalability",
+   "LLM response should contain: integrated vector search techniques with log aggregation tools, focusing on efficient querying and real-time data handling",
+   "LLM response should contain: you designed a high-availability architecture combining Elasticsearch and Faiss to meet demanding query volumes and uptime requirements",
+   "LLM response should contain: you refined your API design to support vector search operations effectively",
+   "LLM response should contain: you incorporated monitoring and alerting mechanisms to ensure system reliability and performance, demonstrating a comprehensive development from foundational concepts to practical solutions"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 30,
+  "score": 0.8333333333333334
+ },
+ {
+  "id": "10M/1/summarization/1",
+  "chatId": "1",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize how my system architecture and performance optimization plans evolved from 2024-07-01 to 2024-07-29?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on designing a modular system capable of handling high daily query volumes with strict response time and uptime requirements",
+   "LLM response should contain: you explored advanced load balancing algorithms and health check implementations to ensure high availability and efficient traffic distribution",
+   "LLM response should contain: incorporated distributed caching solutions like Redis Cluster to enhance scalability and fault tolerance",
+   "LLM response should contain: you integrated microservices architecture with container orchestration and message queues to improve modularity and inter-service communication",
+   "LLM response should contain: you refined deployment strategies, CI/CD pipeline configurations, and monitoring setups to maintain high deployment success rates and system reliability"
+  ],
+  "gold": 10,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/temporal_reasoning/0",
+  "chatId": "1",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days are there between when I launch the testing suite development and when I start the deployment preparation for the RAG system?",
+  "goldAnswer": "There are 14 days between launching the testing suite development on February 15 and starting the deployment preparation on March 1.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 14 days",
+   "LLM response should state: from February 15, 2025 till March 1, 2025"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 23,
+  "score": 0.5
+ },
+ {
+  "id": "10M/1/temporal_reasoning/1",
+  "chatId": "1",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days passed between when I started working on the context window management module and when I began developing the query rewriting pipelines for our RAG system?",
+  "goldAnswer": "45 days passed between starting the context window management module on November 1, 2024, and beginning the development of query rewriting pipelines on December 16, 2024.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 45 days",
+   "LLM response should state: from November 1, 2024 till December 16, 2024"
+  ],
+  "gold": 9,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 25,
+  "score": 0.5
+ },
+ {
+  "id": "10M/2/abstention/0",
+  "chatId": "2",
+  "category": "abstention",
+  "index": 0,
+  "question": "What are the detailed steps involved in the debugging strategy for the Unreal Engine setup error code 0x80070005?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the detailed steps of the debugging strategy for the Unreal Engine setup error"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/2/abstention/1",
+  "chatId": "2",
+  "category": "abstention",
+  "index": 1,
+  "question": "What are the criteria or considerations that led to the decision to allocate 300MB memory per module in the multi-agent framework?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the criteria or considerations behind allocating 300MB memory per module"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/2/contradiction_resolution/0",
+  "chatId": "2",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever automated build notifications in Jenkins as part of my deployment process?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never automated any build notifications in Jenkins",
+   "LLM response should mention: you also mentioned integrating multiple Jenkins plugins",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 22,
+  "score": 0.75
+ },
+ {
+  "id": "10M/2/contradiction_resolution/1",
+  "chatId": "2",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I revised my data flow designs for this project?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you've iterated on your data flow designs multiple times",
+   "LLM response should mention: you also mentioned that you have never revised any data flow designs",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 27,
+  "score": 0.75
+ },
+ {
+  "id": "10M/2/event_ordering/0",
+  "chatId": "2",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you list the order in which I brought up different features and version updates of the CARLA Simulator from 2024-07-01 to 2024-07-29? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned the CARLA Simulator features and version updates in this order: 1) Support for Python 3.7 APIs and environment setup, 2) API support for up to 10 sensor types in v0.9.14, 3) Availability of 15 pre-built urban maps in v0.9.15, 4) Lidar support with 128 channels in v0.9.17, 5) GPU requirements for 4K rendering in v0.9.18, 6) RAM requirements for multi-agent scenarios in v0.9.19, 7) Dataset support with 10,000 annotated frames in v0.9.20, 8) Built-in anonymization for data logs in v0.9.21, 9) Reinforcement learning support for 50 concurrent agents in v0.9.22, 10) Enhanced sensor configurations and integration with Unreal Engine in versions v0.9.23 through v0.9.27, including Python 3.8 API and up to 45 sensor data types.",
+  "difficulty": "medium",
+  "rubric": [
+   "Python 3.7 API support and environment setup",
+   "API support for 10 sensor types in v0.9.14",
+   "15 pre-built urban maps in v0.9.15",
+   "Lidar with 128 channels in v0.9.17",
+   "GPU requirements for 4K rendering in v0.9.18",
+   "RAM requirements for multi-agent scenarios in v0.9.19",
+   "Dataset support with 10,000 annotated frames in v0.9.20",
+   "Anonymization for data logs in v0.9.21",
+   "RL support for 50 concurrent agents in v0.9.22",
+   "Enhanced sensor configurations and Unreal Engine integration in v0.9.23 to v0.9.27"
+  ],
+  "gold": 5,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 25,
+  "score": 0.13769319392558227
+ },
+ {
+  "id": "10M/2/event_ordering/1",
+  "chatId": "2",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you list the order in which I brought up different aspects of my deployment and CI/CD pipeline setup from 2025-02-01 to 2025-02-25, in order? Mention ONLY and ONLY twelve items.",
+  "goldAnswer": "You mentioned these aspects in this order: 1) Initial Jenkins configuration handling concurrent builds with retry logic, 2) Docker setup and environment variable configuration for deployment, 3) AWS provisioning of instances and CloudFormation template assistance, 4) Load balancing with AWS ELB and related concerns, 5) Enhancements to Jenkins with security scans and monitoring integrations, 6) Backup deployment to AWS S3 and availability improvements, 7) Automation of release management with GitHub Actions workflows, 8) Integration of auth checks in Jenkins pipelines, 9) Optimization of Jenkins pipelines including doc builds and build time reduction, 10) Environment configuration for log aggregation on AWS nodes using Docker and Kubernetes, 11) Incident script integration and error handling improvements in Jenkins, 12) MongoDB integration for storing build logs and related error handling.",
+  "difficulty": "medium",
+  "rubric": [
+   "Jenkins initial setup with retry logic",
+   "Docker and environment variable configuration",
+   "AWS instance provisioning and CloudFormation",
+   "AWS ELB load balancing and scalability",
+   "Jenkins security scans and monitoring",
+   "AWS S3 backup deployment and availability",
+   "GitHub Actions release automation",
+   "Jenkins auth checks integration",
+   "Jenkins pipeline optimization and doc builds",
+   "Log aggregation environment setup with Docker/Kubernetes",
+   "Jenkins incident scripts and error handling",
+   "MongoDB integration for build logs"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/2/information_extraction/0",
+  "chatId": "2",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "What delay did I find in the physics calculations per frame when I profiled the main loop?",
+  "goldAnswer": "You found a 380ms delay in physics calculations per frame at 30fps.",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should state: 380ms delay"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 25,
+  "score": 1
+ },
+ {
+  "id": "10M/2/information_extraction/1",
+  "chatId": "2",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How many points did I simulate when mocking the sensor APIs with unittest.mock?",
+  "goldAnswer": "You simulated 5,000 points.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 5,000 points"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 19,
+  "score": 1
+ },
+ {
+  "id": "10M/2/instruction_following/0",
+  "chatId": "2",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "How is the system handling performance when rendering more complex scenes?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions fps or frames per second",
+   "LLM response should contain: provides numerical frame rate values"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": 0.5
+ },
+ {
+  "id": "10M/2/instruction_following/1",
+  "chatId": "2",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "How well does my algorithm perform?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: exact numerical success rate",
+   "LLM response should contain: specific percentage or ratio"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": 1
+ },
+ {
+  "id": "10M/2/knowledge_update/0",
+  "chatId": "2",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "What event processing capacity does my log tool support per minute without downtime?",
+  "goldAnswer": "1,200 events per minute",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 1,200 events per minute"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 23,
+  "score": 0
+ },
+ {
+  "id": "10M/2/knowledge_update/1",
+  "chatId": "2",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "What percentage of the reward function engineering has been completed, and when is the safety metrics integration expected to be finished?",
+  "goldAnswer": "The reward function engineering is 20% complete, with safety metrics integration scheduled within the next week.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 20% complete"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 15,
+  "score": 1
+ },
+ {
+  "id": "10M/2/multi_session_reasoning/0",
+  "chatId": "2",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How much total delay have I noted across the agent updates, pedestrian updates, and camera data sync issues?",
+  "goldAnswer": "The total delay is 750ms, combining 300ms from agent updates, 250ms from pedestrian updates, and 200ms from camera data sync.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: total delay is 750ms",
+   "LLM response should state: 300ms from agent updates",
+   "LLM response should state: 250ms from pedestrian updates",
+   "LLM response should state: 200ms from camera data sync"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0
+ },
+ {
+  "id": "10M/2/multi_session_reasoning/1",
+  "chatId": "2",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How many different error types related to sensor data debugging did I mention across my sessions?",
+  "goldAnswer": "Seven different sensor data debugging error types were mentioned.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: Seven"
+  ],
+  "gold": 7,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": 0
+ },
+ {
+  "id": "10M/2/preference_following/0",
+  "chatId": "2",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm trying to improve the structure of my code to make it run more smoothly. What changes would you suggest to the way my modules interact?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: recommends reducing calls between modules"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 32,
+  "score": 0
+ },
+ {
+  "id": "10M/2/preference_following/1",
+  "chatId": "2",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm working on improving my traffic simulation code. How would you suggest I incorporate variability in vehicle speeds?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions or suggests a speed variance close to 15%"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": 1
+ },
+ {
+  "id": "10M/2/summarization/0",
+  "chatId": "2",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize the overall progress and key developments in my traffic simulation project, including how I addressed performance issues, optimized agent behaviors, and integrated real-time data from 2024-08-01 to 2024-10-13?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on managing agent density and spawn rates",
+   "LLM response should contain: implemented grid-based spatial partitioning to reduce agent overlaps and improve performance",
+   "LLM response should contain: you incorporated advanced collision detection techniques, including quad trees and PhysX integration",
+   "LLM response should contain: integrated real-time data streams and adaptive traffic signal timing using Unreal Engine's timer system and ROS 2",
+   "LLM response should contain: you optimized UI responsiveness and logging strategies to maintain high update rates and minimize overhead"
+  ],
+  "gold": 25,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 28,
+  "score": 0.2
+ },
+ {
+  "id": "10M/2/summarization/1",
+  "chatId": "2",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you give me a summary of how the performance optimization efforts for my self-driving car simulation progressed from 2025-01-16 to 2025-01-31?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: investigations traced memory spikes to unoptimized Lidar data structures and physics calculations that overloaded single threads",
+   "LLM response should contain: implemented data structure improvements, including k-d trees for efficient Lidar point management, and introduced parallel processing techniques using joblib and CUDA streams to offload compute-heavy tasks to the GPU",
+   "LLM response should contain: rendering optimizations were pursued by adopting deferred shading and frustum culling to reduce overdraw and unnecessary draw calls",
+   "LLM response should contain: profiling tools like Intel VTune and Nsight Compute guided your efforts, revealing delays caused by thread lock contention and synchronization issues",
+   "LLM response should contain: The optimization journey was iterative, involving continuous profiling, code refactoring, and leveraging advanced rendering and parallelization techniques to steadily reduce runtime and improve scalability"
+  ],
+  "gold": 9,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0.2
+ },
+ {
+  "id": "10M/2/temporal_reasoning/0",
+  "chatId": "2",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days are there between when I start setting up the deployment pipeline and when I begin the production monitoring and maintenance planning phase?",
+  "goldAnswer": "There are 15 days between starting the Deployment Pipeline Setup phase on February 1 and beginning the Production Monitoring, Documentation, and Maintenance Planning phase on February 16.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 15 days",
+   "LLM response should state: from February 1, 2025 till February 16, 2025"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 20,
+  "score": 1
+ },
+ {
+  "id": "10M/2/temporal_reasoning/1",
+  "chatId": "2",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days after I started the research phase did I begin the architecture design phase for the self-driving car simulation project?",
+  "goldAnswer": "The architecture design phase began 15 days after the research phase started, since the research phase kicked off on July 1 and the architecture design phase started on July 16.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 15 days",
+   "LLM response should state: from July 1, 2025 till July 16, 2025"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": 0.5
+ },
+ {
+  "id": "10M/3/abstention/0",
+  "chatId": "3",
+  "category": "abstention",
+  "index": 0,
+  "question": "What are the specific criteria or factors that led to choosing FastAPI 0.78 over other frameworks for the backend?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific criteria or factors behind choosing FastAPI 0.78"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/3/abstention/1",
+  "chatId": "3",
+  "category": "abstention",
+  "index": 1,
+  "question": "What specific feedback did the team provide during the code review sessions for the unit test scripts?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific feedback provided during the code review sessions"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/3/contradiction_resolution/0",
+  "chatId": "3",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I shared any protocol optimization tips with my team before?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you've never shared any protocol optimization tips with your team",
+   "LLM response should mention: you also mentioned posting 15 protocol optimization tips highlighting faster delivery",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0.75
+ },
+ {
+  "id": "10M/3/contradiction_resolution/1",
+  "chatId": "3",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever encrypted behavior logs to protect data privacy?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you are encrypting behavior logs and protecting data privacy",
+   "LLM response should mention: you also mentioned that you've never encrypted any behavior logs",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 24,
+  "score": 0.5
+ },
+ {
+  "id": "10M/3/event_ordering/0",
+  "chatId": "3",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you list the order in which I brought up different development phases and technical focuses for my multi-agent AI platform from 2024-08-01 to 2024-09-19, in order? Mention ONLY and ONLY twenty items.",
+  "goldAnswer": "You mentioned the development phases and technical focuses in this order: 1) Infrastructure setup and backend server frameworks, 2) Database schema design for agent states, 3) Implementation of core communication protocols, 4) Development of basic API endpoints for agent control, 5) Containerization and orchestration setup, 6) Scaffolding the initial environment simulation, 7) Implementation of authentication and authorization, 8) Establishing logging and monitoring infrastructure, 9) Integration of version control with CI, 10) Building a basic frontend skeleton for dashboards, 11) Kicking off initial prototyping for agent communication, 12) Defining shared and individual goal structures, 13) Working on synchronization and conflict resolution for agent goals, 14) Developing a prototype UI for goal visualization, 15) Simulating cooperation and competition among agents, 16) Logging agent interactions for analysis, 17) Extending APIs for goal management, 18) Implementing error handling in communication layers, 19) Writing unit tests for communication modules, 20) Integrating the communication prototype with core infrastructure.",
+  "difficulty": "medium",
+  "rubric": [
+   "Infrastructure setup and backend server frameworks",
+   "Database schema design for agent states",
+   "Implementation of core communication protocols",
+   "Development of basic API endpoints for agent control",
+   "Containerization and orchestration setup",
+   "Scaffolding the initial environment simulation",
+   "Implementation of authentication and authorization",
+   "Establishing logging and monitoring infrastructure",
+   "Integration of version control with CI",
+   "Building a basic frontend skeleton for dashboards",
+   "Kicking off initial prototyping for agent communication",
+   "Defining shared and individual goal structures",
+   "Working on synchronization and conflict resolution for agent goals",
+   "Developing a prototype UI for goal visualization",
+   "Simulating cooperation and competition among agents",
+   "Logging agent interactions for analysis",
+   "Extending APIs for goal management",
+   "Implementing error handling in communication layers",
+   "Writing unit tests for communication modules",
+   "Integrating the communication prototype with core infrastructure"
+  ],
+  "gold": 20,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 27,
+  "score": 0.34569665003790806
+ },
+ {
+  "id": "10M/3/event_ordering/1",
+  "chatId": "3",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you list the order in which I brought up different technical challenges and debugging topics related to my multi-agent AI platform from 2025-01-01 to 2025-01-30, in order? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned the technical challenges and debugging topics in this order: 1) High CPU usage warnings during simulations with PyTorch, 2) Message delay errors while testing MQTT communication, 3) Function redundancy causing delays in simulation code with FastAPI, 4) Node overload errors and dynamic load balancing in Kubernetes, 5) Memory leak issues in PyTorch simulations, 6) Race condition errors during parallel task execution with RLlib, 7) Cache miss errors affecting simulation processing with Redis, 8) High latency and scenario mismatch errors during MQTT and UAT testing, 9) Test failure errors with false positives in regression tests using pytest, 10) Data discrepancy errors in compiled metrics reports.",
+  "difficulty": "medium",
+  "rubric": [
+   "High CPU usage with PyTorch",
+   "Message delay in MQTT",
+   "Function redundancy in FastAPI simulation",
+   "Node overload and load balancing in Kubernetes",
+   "Memory leak in PyTorch simulations",
+   "Race condition in parallel tasks with RLlib",
+   "Cache miss errors with Redis",
+   "High latency and scenario mismatch in MQTT and UAT",
+   "Test failure errors in pytest regression tests",
+   "Data discrepancy in metrics compilation"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/3/information_extraction/0",
+  "chatId": "3",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "What version of the platform did I say supports up to 2,000 agents with response times under 150ms?",
+  "goldAnswer": "Kubernetes 1.25",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: Kubernetes 1.25"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": 1
+ },
+ {
+  "id": "10M/3/information_extraction/1",
+  "chatId": "3",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How many reward calculations per second did I say the module needs to handle?",
+  "goldAnswer": "The module needs to handle 300 reward calculations per second.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 300 reward"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": 1
+ },
+ {
+  "id": "10M/3/instruction_following/0",
+  "chatId": "3",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "What are some ways I can improve the speed of my database queries?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mention of actual query durations"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 28,
+  "score": 0
+ },
+ {
+  "id": "10M/3/instruction_following/1",
+  "chatId": "3",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "I'm trying to improve the design of my system. Can you help me identify areas where it might be optimized?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: naming modules explicitly"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": 1
+ },
+ {
+  "id": "10M/3/knowledge_update/0",
+  "chatId": "3",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How many agents does my protocol logic cover, and what reliability level does it achieve?",
+  "goldAnswer": "The protocol logic covers 25 agents with a reliability of 93%.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 25 agents",
+   "LLM response should state: 93%"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 23,
+  "score": 0
+ },
+ {
+  "id": "10M/3/knowledge_update/1",
+  "chatId": "3",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How many agents have I covered with integration tests, and what impact has this had on pass rates and team agreement?",
+  "goldAnswer": "Integration tests cover 15 agents, which has improved pass rates and increased team consensus on validation outcomes.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 15 agents",
+   "LLM response should state: improved pass rates and increased team consensus on validation outcomes"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0.5
+ },
+ {
+  "id": "10M/3/multi_session_reasoning/0",
+  "chatId": "3",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many agents in total did I mention while debugging issues related to timeouts, format mismatches, and state overload?",
+  "goldAnswer": "130 agents",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 130 agents"
+  ],
+  "gold": 3,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": 0
+ },
+ {
+  "id": "10M/3/multi_session_reasoning/1",
+  "chatId": "3",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How many agents have I completed work on when combining my progress on reward functions, Q-learning, and policy gradients?",
+  "goldAnswer": "55 agents",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 55 agents"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0
+ },
+ {
+  "id": "10M/3/preference_following/0",
+  "chatId": "3",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm setting up authentication for a platform with a high number of users logging in simultaneously. What would you suggest I consider when choosing an authentication service?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions token validation speed",
+   "LLM response should contain: discusses handling large numbers of simultaneous logins"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": 1
+ },
+ {
+  "id": "10M/3/preference_following/1",
+  "chatId": "3",
+  "category": "preference_following",
+  "index": 1,
+  "question": "Can you help me set up a logging pipeline that can reliably handle over a thousand events per minute and integrate smoothly with a Python web framework?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions ELK Stack or Elasticsearch-based solutions"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 29,
+  "score": 1
+ },
+ {
+  "id": "10M/3/summarization/0",
+  "chatId": "3",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize the overall progress and key developments in setting up and optimizing the backend infrastructure for our multi-agent AI platform from 2024-08-01 to 2024-09-19?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: backend infrastructure setup for the multi-agent AI platform began with selecting FastAPI 0.78 and Python 3.9",
+   "LLM response should contain: Early challenges included addressing latency spikes caused by improper server configurations in Flask, leading to a transition towards FastAPI with asynchronous capabilities",
+   "LLM response should contain: The team progressively implemented features such as JWT-based authentication, load balancing with NGINX, and robust error handling including circuit breakers",
+   "LLM response should contain: Parallel efforts involved optimizing MQTT-based agent communication, scaling message throughput to hundreds of messages per second with low latency, and integrating TLS 1.3 for secure message passing",
+   "LLM response should contain: Throughout the development, sprint planning, team collaboration, and monitoring strategies were established to track progress, manage risks, and maintain 99.8% uptime targets"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": 0
+ },
+ {
+  "id": "10M/3/summarization/1",
+  "chatId": "3",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize how I identified and resolved the technical challenges in my multi-agent AI platform from 2025-01-01 to 2025-01-30?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you initially encountered high CPU usage during simulations involving multiple agents, which you began addressing by profiling your PyTorch code and optimizing batch processing",
+   "LLM response should contain: you identified specific bottlenecks such as unoptimized matrix operations and thread contention due to oversubscribed CPU cores",
+   "LLM response should contain: recurring spikes and errors linked to logging and profiling under heavy load, prompting the integration of a ResourceMonitor module to efficiently track CPU metrics and manage data collection bugs",
+   "LLM response should contain: tackled issues related to outdated dependencies and test baselines, improving error diagnosis and regression test reliability",
+   "LLM response should contain: you refined your debugging and error handling approaches, incorporating detailed logging and systematic profiling to enhance the platform's stability and performance"
+  ],
+  "gold": 5,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": 0
+ },
+ {
+  "id": "10M/3/temporal_reasoning/0",
+  "chatId": "3",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days after I finished finalizing stakeholder interviews did I start focusing on setting up the development environment?",
+  "goldAnswer": "I started focusing on setting up the development environment 10 days after finalizing the stakeholder interviews.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 10 days",
+   "LLM response should state: from 2024-07-09 till 2024-07-19"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 20,
+  "score": 0
+ },
+ {
+  "id": "10M/3/temporal_reasoning/1",
+  "chatId": "3",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days after I started the comprehensive testing suite phase did I begin setting up the deployment pipeline?",
+  "goldAnswer": "The deployment pipeline setup started 11 days after the comprehensive testing suite phase kicked off.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 12 days",
+   "LLM response should state: from January 21, 2025 till February 1, 2025"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 23,
+  "score": 0.5
+ },
+ {
+  "id": "10M/4/abstention/0",
+  "chatId": "4",
+  "category": "abstention",
+  "index": 0,
+  "question": "Could you provide the detailed content or key sections of the design overview document I shared with my team about modularity benefits?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the detailed content or key sections of the design overview document"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/4/abstention/1",
+  "chatId": "4",
+  "category": "abstention",
+  "index": 1,
+  "question": "What was the outcome or feedback from the study group sessions with Rebecca and Kristy?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the outcomes or feedback from the study group sessions with Rebecca and Kristy"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/4/contradiction_resolution/0",
+  "chatId": "4",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever formulated heat equation problems before?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never formulated any heat equation problems before",
+   "LLM response should mention: you also mentioned you completed 5 heat equation problems",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": 0.5
+ },
+ {
+  "id": "10M/4/contradiction_resolution/1",
+  "chatId": "4",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever constructed a Green's function for the operator L = d²/dx² - k² on the interval [0,1]?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have constructed a Green's function for d²/dx² - 1",
+   "LLM response should mention: you mentioned that you have never constructed any Green's function for L = d²/dx² - k²",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": 0.25
+ },
+ {
+  "id": "10M/4/event_ordering/0",
+  "chatId": "4",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you list the order in which I brought up different aspects of Green's functions and related PDE solution methods from 2025-03-01 to 2025-03-31, in order? Mention ONLY and ONLY nine items.",
+  "goldAnswer": "You mentioned these aspects in this order: 1) Starting with the definition and basic understanding of Green's functions for PDEs, 2) Moving into construction methods for Green's functions using homogeneous solutions and boundary conditions, 3) Exploring Green's identities and integral formulas to link Green's functions to PDE solutions, 4) Applying Green's functions to solve inhomogeneous PDEs and incorporating boundary conditions, 5) Investigating symmetry and reciprocity properties of Green's functions, 6) Connecting Green's functions to eigenfunction expansions, 7) Applying Green's functions to specific PDEs like Laplace and Poisson equations, 8) Tackling analytical and computational approaches including numerical methods, and finally 9) Examining limitations and generalizations of Green's functions in complex PDE contexts.",
+  "difficulty": "medium",
+  "rubric": [
+   "Definition and basic understanding",
+   "Construction methods and boundary conditions",
+   "Green's identities and integral formulas",
+   "Solving inhomogeneous PDEs and boundary incorporation",
+   "Symmetry and reciprocity properties",
+   "Connection to eigenfunction expansions",
+   "Application to Laplace and Poisson equations",
+   "Analytical and computational approaches",
+   "Limitations and generalizations"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 30,
+  "score": 0.15669671883720243
+ },
+ {
+  "id": "10M/4/event_ordering/1",
+  "chatId": "4",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you list the order in which I brought up different aspects of my PDE preparation process from 2024-07-01 to 2024-07-27, in order? Mention ONLY and ONLY eleven items.",
+  "goldAnswer": "You mentioned aspects of your PDE preparation in this order: 1) Starting your PDE journey and assessing foundational skills, 2) Solidifying calculus and algebra basics with differentiation techniques, 3) Diagnostic testing to identify weak areas, 4) Setting learning goals based on assessments, 5) Finalizing your preparation phase and reflecting on baseline competence, 6) Curating and expanding your study resources, 7) Developing a detailed study schedule and organizing study time, 8) Setting up symbolic computation tools and building your PDE toolkit, 9) Creating a glossary of PDE terminology to strengthen conceptual understanding, 10) Establishing milestones and progress tracking methods, 11) Forming a study group and planning for continuous self-assessment.",
+  "difficulty": "medium",
+  "rubric": [
+   "Starting journey and skill assessment",
+   "Calculus and algebra foundation",
+   "Diagnostic testing",
+   "Learning goals from assessments",
+   "Finalizing preparation phase",
+   "Resource curation",
+   "Study scheduling",
+   "Symbolic computation tools",
+   "Glossary creation",
+   "Milestones and tracking",
+   "Study group and self-assessment"
+  ],
+  "gold": 8,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/4/information_extraction/0",
+  "chatId": "4",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "How long did I say it would take me to confirm the discriminant for that PDE?",
+  "goldAnswer": "You said it would take you around 15 minutes to calculate and confirm the discriminant.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 15 minutes"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/4/information_extraction/1",
+  "chatId": "4",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How long did I say the video I watched on separation of variables was?",
+  "goldAnswer": "You said the video was 30 minutes long.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 30 minutes"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/4/instruction_following/0",
+  "chatId": "4",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "How do I use Green's functions to solve a PDE?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: worked numerical or symbolic examples"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/4/instruction_following/1",
+  "chatId": "4",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "How do I use the 'plot' function in MATLAB?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: example MATLAB code",
+   "LLM response should contain: code snippet showing function usage"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/4/knowledge_update/0",
+  "chatId": "4",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How many problems from Section 14.3 on gradients have I solved correctly, and how much time did I spend on them?",
+  "goldAnswer": "You solved 9 problems correctly out of 12, spending 50 minutes.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 9 problems",
+   "LLM response should state: 50 minutes"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/4/knowledge_update/1",
+  "chatId": "4",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "What score did I achieve on my ODE quiz after practicing 25 problems?",
+  "goldAnswer": "88%",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 88%"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/4/multi_session_reasoning/0",
+  "chatId": "4",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many total problems did I practice across calculus, integration, and ODE sets based on my progress updates?",
+  "goldAnswer": "85 problems",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 85 problems"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/4/multi_session_reasoning/1",
+  "chatId": "4",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How many times did I work with Rebecca on solving heat or wave equations involving sine initial conditions across my sessions?",
+  "goldAnswer": "You worked with Rebecca on solving heat or wave equations with sine initial conditions 3 times.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 3 times"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/4/preference_following/0",
+  "chatId": "4",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm planning how to organize my study sessions for the next few chapters. How would you suggest structuring my note-taking and review periods to make the most of my time?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: suggests digital note-taking or a mix that accounts for speed"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/4/preference_following/1",
+  "chatId": "4",
+  "category": "preference_following",
+  "index": 1,
+  "question": "When preparing for upcoming exams, what strategies would you recommend to balance reading new material and revisiting summaries of previous chapters so that I can optimize my study flow?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: suggests digital note-taking or a mix that accounts for speed"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/4/summarization/0",
+  "chatId": "4",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize my learning journey and progress with Green's functions, including how my understanding and study habits evolved from 2025-03-01 to 2025-03-31?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on understanding continuity and jump conditions at the source point, ensuring the Green's function satisfies boundary conditions",
+   "LLM response should contain: you applied these concepts to solve boundary value problems, gradually tackling more complex PDEs such as the heat and wave equations",
+   "LLM response should contain: Your study habits evolved to include daily dedicated hours, reviewing one or two properties per session, utilizing visualization tools like MATLAB and Desmos",
+   "LLM response should contain: you practiced formulating well-posed problems, verifying existence, uniqueness, and stability, and integrating numerical methods for evaluating integrals"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/4/summarization/1",
+  "chatId": "4",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize my learning journey and progress with understanding the physical interpretations and solution methods of PDEs, including how I tackled different types, identified limitations of separation of variables, and approached non-separable cases from 2024-08-01 to 2024-10-22?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: exploring the physical interpretations of various types, such as elliptic PDEs modeling steady-state phenomena like temperature distribution",
+   "LLM response should contain: exploring parabolic PDEs representing diffusion processes like heat flow, and hyperbolic PDEs describing wave propagation",
+   "LLM response should contain: deepened your understanding by practicing separation of variables on classic equations like the heat and wave equations, recognizing the importance of boundary and initial conditions in shaping solutions",
+   "LLM response should contain: As you encountered PDEs with non-homogeneous or nonlinear terms, you identified the limitations of separation of variables",
+   "LLM response should contain: you learned to find particular solutions to handle non-homogeneous terms and transform PDEs into homogeneous forms amenable to separation of variables",
+   "LLM response should contain: you applied these concepts to a variety of PDEs, marking non-separable cases clearly and using eigenfunction expansions, numerical methods, or transformations"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/4/temporal_reasoning/0",
+  "chatId": "4",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days passed between when I started intensifying my PDE preparation by targeting weak areas and when I began focusing on improving my note-taking and problem-solving methods?",
+  "goldAnswer": "13 days passed between starting to intensify PDE preparation on July 7 and beginning to work on note-taking and problem-solving methods on July 20.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 13 days",
+   "LLM response should state: from July 7, 2024 till July 20, 2024"
+  ],
+  "gold": 5,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/4/temporal_reasoning/1",
+  "chatId": "4",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days after I started learning the fundamental concepts of PDEs did I begin studying separation of variables and Fourier series?",
+  "goldAnswer": "46 days elapsed between starting the journey into fundamental PDE concepts on August 1, 2024, and beginning the study of separation of variables and Fourier series on September 16, 2024.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 46 days",
+   "LLM response should state: from August 1, 2024 till September 16, 2024"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/5/abstention/0",
+  "chatId": "5",
+  "category": "abstention",
+  "index": 0,
+  "question": "What motivated my choice to focus on geometric interpretations when studying normed spaces?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the motivation behind focusing on geometric interpretations"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/5/abstention/1",
+  "chatId": "5",
+  "category": "abstention",
+  "index": 1,
+  "question": "Can you tell me more about Devin's background and expertise in spectral theory?",
+  "goldAnswer": "",
+  "difficulty": "easy",
+  "rubric": [
+   "Based on the provided chat, there is no information related to Devin's background or expertise in spectral theory"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/5/contradiction_resolution/0",
+  "chatId": "5",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever discussed norm properties with Devin or anyone else before?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: you mentioned discussing norm properties with Devin",
+   "LLM response should mention: you said you've never discussed them with Devin or anyone else",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/5/contradiction_resolution/1",
+  "chatId": "5",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever discussed self-adjoint operator extensions with Devin?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have discussed self-adjoint operator extensions with Devin",
+   "LLM response should mention: you also mentioned that you have never engaged in any discussions about this topic with him",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 25,
+  "score": null
+ },
+ {
+  "id": "10M/5/event_ordering/0",
+  "chatId": "5",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you list the order in which I brought up different foundational and advanced concepts in Functional Analysis from 2024-08-01 to 2024-10-22, in order? Mention ONLY and ONLY twenty items.",
+  "goldAnswer": "You mentioned the concepts in this order: 1) Foundations of normed and Banach spaces and core definitions, 2) Specific examples of normed spaces like ℓ^p spaces and their norms, 3) Completeness in Banach spaces and convergence of Cauchy sequences, 4) Basic properties of norms and metrics including the triangle inequality, 5) Equivalence of norms and their relation to topology, 6) Continuous linear functionals within normed spaces, 7) Open and closed sets in normed spaces and their topological significance, 8) Convergence and Cauchy sequences linked to completeness, 9) Proofs of completeness in Banach spaces, 10) Examples of completeness failure in non-Banach spaces, 11) Introduction to Hilbert spaces and inner product structures, 12) The parallelogram law connecting inner products and norms, 13) Orthogonality in inner product spaces, 14) The projection theorem and best approximations, 15) The Riesz representation theorem relating functionals to inner products, 16) Examples of Hilbert spaces like L² and sequence spaces, 17) Completeness and characterization of Hilbert spaces, 18) The Gram-Schmidt orthogonalization process, 19) Bessel's inequality and Parseval's identity in orthonormal expansions, 20) Application of Hilbert space concepts to Fourier series.",
+  "difficulty": "medium",
+  "rubric": [
+   "Foundations of normed and Banach spaces",
+   "Examples of normed spaces and ℓ^p norms",
+   "Completeness and Cauchy sequences in Banach spaces",
+   "Properties of norms and metrics",
+   "Equivalence of norms and topology",
+   "Continuous linear functionals",
+   "Open and closed sets in normed spaces",
+   "Convergence and Cauchy sequences linked to completeness",
+   "Proofs of completeness",
+   "Completeness failure examples",
+   "Introduction to Hilbert spaces",
+   "Parallelogram law",
+   "Orthogonality in inner product spaces",
+   "Projection theorem",
+   "Riesz representation theorem",
+   "Examples of Hilbert spaces",
+   "Completeness and characterization of Hilbert spaces",
+   "Gram-Schmidt orthogonalization",
+   "Bessel's inequality and Parseval's identity",
+   "Hilbert space applications to Fourier series"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/5/event_ordering/1",
+  "chatId": "5",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you list the order in which I brought up different key concepts related to linear operators and their properties from 2024-11-01 to 2025-01-21, in order? Mention ONLY and ONLY twenty items.",
+  "goldAnswer": "You mentioned these key concepts in this order: 1) Exploration of boundedness and properties of linear operators, 2) Study of operator norms and the equivalence between norms and continuity, 3) Discussion of kernel and range of operators and their structural properties, 4) Examination of adjoint operators in Hilbert spaces and inner product relations, 5) Investigation of invertibility and the bounded inverse theorem, 6) Study of operator algebra basics and operator composition, 7) Delving into compact operators and their properties, 8) Classification and understanding of finite rank operators, 9) Exploration of operator topologies focusing on convergence and continuity, 10) Application of knowledge to elementary operator equations, 11) Beginning spectral theory for bounded operators including spectrum and resolvent, 12) Study of spectral radius and its implications, 13) Classification of different types of spectrum, 14) Analysis of the spectral mapping theorem and how spectra transform under functions, 15) Exploration of Gelfand theory for commutative Banach algebras and spectral implications, 16) Study of the spectral theorem for normal operators and spectral decomposition, 17) Delving into functional calculus basics applying functions to operators, 18) Focus on examples like shift and multiplication operators within spectral theory, 19) Working on spectral decomposition concepts breaking down operators into spectral components, 20) Applying spectral theory to differential operators connecting abstract concepts to concrete problems.",
+  "difficulty": "medium",
+  "rubric": [
+   "Boundedness and properties of linear operators",
+   "Operator norms and continuity equivalence",
+   "Kernel and range of operators",
+   "Adjoint operators in Hilbert spaces",
+   "Invertibility and bounded inverse theorem",
+   "Operator algebra basics and composition",
+   "Compact operators and properties",
+   "Finite rank operators classification",
+   "Operator topologies and convergence",
+   "Elementary operator equations",
+   "Spectral theory for bounded operators",
+   "Spectral radius and implications",
+   "Types of spectrum classification",
+   "Spectral mapping theorem",
+   "Gelfand theory and spectral implications",
+   "Spectral theorem for normal operators",
+   "Functional calculus basics",
+   "Examples like shift and multiplication operators",
+   "Spectral decomposition concepts",
+   "Spectral theory applied to differential operators"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/5/information_extraction/0",
+  "chatId": "5",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "Which version of the tokenization library am I using in my implementation?",
+  "goldAnswer": "You are using version 4.35.0 of the Hugging Face Transformers library for tokenization.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 4.35.0"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": null
+ },
+ {
+  "id": "10M/5/information_extraction/1",
+  "chatId": "5",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How long did I say I spent computing the norm using SageMath?",
+  "goldAnswer": "I spent 15 minutes on this.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 15 minutes"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/5/instruction_following/0",
+  "chatId": "5",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "Can you help me prove that the sequence defined by x_n = 1/n approaches zero?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: step-by-step reasoning involving epsilon and delta"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/5/instruction_following/1",
+  "chatId": "5",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "How does the Fredholm alternative help determine the solvability of linear equations?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: geometric intuition of solution spaces"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/5/knowledge_update/0",
+  "chatId": "5",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How many questions did I answer correctly on my initial quiz about linear operator definitions?",
+  "goldAnswer": "14 out of 20 questions",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 14 questions"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/5/knowledge_update/1",
+  "chatId": "5",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "What score did I achieve on my quiz about the parallelogram law following my additional study time?",
+  "goldAnswer": "79%",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 79%"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/5/multi_session_reasoning/0",
+  "chatId": "5",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many total minutes did Devin and I spend discussing vector addition from 2024-07-01 till 2024-07-31",
+  "goldAnswer": "350 minutes",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 350 minutes"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/5/multi_session_reasoning/1",
+  "chatId": "5",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "Across my quizzes on vector spaces, norm properties, and completeness, how many questions did I miss in total on topics related to axioms, metric axioms, and Hilbert criteria?",
+  "goldAnswer": "14 questions",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 14 questions"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/5/preference_following/0",
+  "chatId": "5",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I’m planning to enroll in an online course to improve my problem-solving skills. Which platform would you recommend I go with?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: Suggest Udemy"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/5/preference_following/1",
+  "chatId": "5",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I want to pick an online course that gives me plenty of practice problems to work through. Which platform would you recommend I go with?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: Suggest Udemy"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/5/summarization/0",
+  "chatId": "5",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize my learning journey and progress with the concept of completeness in normed and Banach spaces, including how I worked through understanding Cauchy sequences, convergence, and examples of completeness and incompleteness across different spaces?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on grasping the definitions of Cauchy sequences and convergence",
+   "LLM response should contain: explored the completeness property, learning that Banach spaces are normed spaces where every Cauchy sequence converges within the space",
+   "LLM response should contain: you studied examples of incompleteness, such as sequences in the rationals that fail to converge within the space",
+   "LLM response should contain: practiced proving sets are closed by showing they contain all their limit points",
+   "LLM response should contain: you reinforced your understanding by examining norm equivalence and how it preserves topological properties like convergence and completeness"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/5/summarization/1",
+  "chatId": "5",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize my learning journey and progress with operator theory, including how my understanding of boundedness, spectrum, and resolvent sets developed over time?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you explored definitions and applied them to simple operators",
+   "LLM response should contain: you deepened your understanding by verifying linearity properties and boundedness criteria through step-by-step problem solving and practical examples",
+   "LLM response should contain: progressed to spectral theory, learning to identify the spectrum and resolvent set of operators and extending to matrix operators",
+   "LLM response should contain: you engaged with computational tools like MATLAB and SageMath to verify eigenvalues and invertibility, which reinforced your theoretical knowledge",
+   "LLM response should contain: Your grasp of these concepts evolved through iterative practice, error analysis, and reflection, culminating in a more confident application of spectral theory to both finite and infinite-dimensional operators"
+  ],
+  "gold": 19,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/5/temporal_reasoning/0",
+  "chatId": "5",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days passed between when I started exploring applications of functional analysis in quantum mechanics and when I began advanced problem solving in functional spaces?",
+  "goldAnswer": "45 days passed between starting to explore applications of functional analysis in quantum mechanics on April 1, 2025, and beginning advanced problem solving in functional spaces on May 16, 2025.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 45 days",
+   "LLM response should state: from April 1, 2025 till May 16, 2025"
+  ],
+  "gold": 3,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/5/temporal_reasoning/1",
+  "chatId": "5",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days after I started exploring compact operators did I begin synthesizing functional analysis concepts?",
+  "goldAnswer": "27 days elapsed between when I started exploring compact operators on February 16 and when I began synthesizing functional analysis concepts on March 15.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 27 days",
+   "LLM response should state: from February 16 till March 15"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/6/abstention/0",
+  "chatId": "6",
+  "category": "abstention",
+  "index": 0,
+  "question": "What feedback did Brian give during the 15-minute folk piece practice in the Shell Avenue living room?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific feedback Brian provided during the practice"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/6/abstention/1",
+  "chatId": "6",
+  "category": "abstention",
+  "index": 1,
+  "question": "What specific techniques did John suggest during the 10-minute critique session at Harmony Hub?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific techniques John suggested during the 10-minute critique session"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/6/contradiction_resolution/0",
+  "chatId": "6",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever adjusted my chair height to help prevent wrist strain during my practice sessions?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you've adjusted your chair height by 3 inches to prevent wrist strain",
+   "LLM response should mention: you also mentioned that you've never adjusted your chair height",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/6/contradiction_resolution/1",
+  "chatId": "6",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever joined any violin-related groups on Reddit?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never joined any violin-related groups on Reddit",
+   "LLM response should mention: you also mentioned joining the \"Beginner Musicians\" forum",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/6/event_ordering/0",
+  "chatId": "6",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you walk me through the order in which I brought up different ideas about incorporating my musical interests into university events and lectures from January 1, 2021 to February 25, 2021, in order? Mention ONLY and ONLY seven items.",
+  "goldAnswer": "You mentioned your ideas in this order: 1) Considering how ukulele skills could enhance lectures at New Jeffreytown University, possibly at Campus Plaza events, 2) Thinking of integrating ukulele into a cultural lecture at Campus Hall for 50 students, 3) Considering a ukulele demo for a university event at Campus Plaza for 40 colleagues, 4) Planning a ukulele snippet for a university lecture at Campus Hall for 45 students, 5) Planning to mention ukulele learning in a university seminar at Campus Plaza for 30 attendees, 6) Considering a ukulele workshop for students at Campus Hall targeting 35 participants, 7) Dreaming of small university gigs at Campus Plaza once skilled.",
+  "difficulty": "medium",
+  "rubric": [
+   "Ukulele skills enhancing lectures at New Jeffreytown University (Campus Plaza)",
+   "Integrating ukulele into cultural lecture at Campus Hall",
+   "Ukulele demo at Campus Plaza for colleagues",
+   "Ukulele snippet for lecture at Campus Hall",
+   "Mentioning ukulele learning in seminar at Campus Plaza",
+   "Ukulele workshop for students at Campus Hall",
+   "Dreaming of small gigs at Campus Plaza"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/6/event_ordering/1",
+  "chatId": "6",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you walk me through the order in which I brought up different ways my family and tutor have supported my ukulele practice from March 1, 2021 to April 24, 2021, in order? Mention ONLY and ONLY six items.",
+  "goldAnswer": "You mentioned the different ways of support in this order: 1) My music tutor John's initial advice on daily practice planning and confidence boosting, 2) My husband Brian's involvement with setting up practice equipment and organizing materials, 3) My daughter Barbara's help with selecting calming decor and timing warm-ups, 4) My son Christian's assistance with testing and adjusting practice tools and recording motivational videos, 5) My son Marvin's encouragement during goal reviews and cheering sessions, 6) Additional support and motivational ideas shared by Keith during accountability calls.",
+  "difficulty": "medium",
+  "rubric": [
+   "Tutor John's practice planning and confidence tips",
+   "Husband Brian's equipment setup and material organization",
+   "Daughter Barbara's decor selection and timing support",
+   "Son Christian's equipment testing and motivational videos",
+   "Son Marvin's cheering and goal review encouragement",
+   "Keith's accountability calls and motivational resources"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/6/information_extraction/0",
+  "chatId": "6",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "How many business cards did I order from Vistaprint and what was the total cost?",
+  "goldAnswer": "I ordered 50 business cards from Vistaprint for $20.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 50 business",
+   "LLM response should state: $20"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 17,
+  "score": null
+ },
+ {
+  "id": "10M/6/information_extraction/1",
+  "chatId": "6",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How much did I say I paid for the SD card I got from TechMart?",
+  "goldAnswer": "You said you got the SD card for $10.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $10"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 21,
+  "score": null
+ },
+ {
+  "id": "10M/6/instruction_following/0",
+  "chatId": "6",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "How can I get started with keeping a journal?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions of feelings or moods",
+   "LLM response should contain: emotional context in journaling"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/6/instruction_following/1",
+  "chatId": "6",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "What options do you recommend for accessories to go with my instrument?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: brand names mentioned",
+   "LLM response should contain: price details provided"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/6/knowledge_update/0",
+  "chatId": "6",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How much time do I dedicate to my morning rhythm variation drills?",
+  "goldAnswer": "30 minutes",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 30 minutes"
+  ],
+  "gold": 4,
+  "hit": 4,
+  "missingIds": 0,
+  "served": 21,
+  "score": null
+ },
+ {
+  "id": "10M/6/knowledge_update/1",
+  "chatId": "6",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How long is my open mic performance slot at Coral Bay Club?",
+  "goldAnswer": "7 minutes",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 7 minutes"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/6/multi_session_reasoning/0",
+  "chatId": "6",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many $30 sessions with John have I mentioned attending or planning to attend so far?",
+  "goldAnswer": "You have mentioned attending or planning to attend 10 sessions costing $30 each with John.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 10 sessions"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/6/multi_session_reasoning/1",
+  "chatId": "6",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How have my incremental changes to morning and evening practice durations combined with my goals for rhythm and performance accuracy influenced my overall practice efficiency and progress towards mastering complex songs?",
+  "goldAnswer": "Your incremental morning practice extensions from 50 to 70 minutes, combined with added focused evening slots (targeted chord practice, recording analysis, mock performances), alongside rhythm improvement targets (15-20%) and aiming for 90% accuracy on 5 complex songs, have synergistically increased your practice efficiency by enabling focused, balanced skill development. This structured layering of time and goals has optimized your progress, allowing steady technical mastery while managing performance readiness and anxiety, reflecting a well-rounded, efficient practice routine.",
+  "difficulty": "hard",
+  "rubric": [
+   "LLM response should state: Your incremental morning practice extensions from 50 to 70 minutes, combined with added focused evening slots",
+   "LLM response should state: rhythm improvement targets (15-20%)",
+   "LLM response should state: aiming for 90% accuracy on 5 complex songs",
+   "LLM response should state: your progress has synergistically increased your practice efficiency by enabling focused, balanced skill development",
+   "LLM response should state: This structured layering of time and goals has optimized your progress, allowing steady technical mastery while managing performance readiness and anxiety"
+  ],
+  "gold": 6,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/6/preference_following/0",
+  "chatId": "6",
+  "category": "preference_following",
+  "index": 0,
+  "question": "What should I keep in mind when choosing a ukulele for different playing styles?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions the Kala ukulele as the current instrument",
+   "LLM response should contain: avoids suggesting the Mahalo model or similar lower-tier options"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/6/preference_following/1",
+  "chatId": "6",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm planning how to allocate my budget for improving my skills and gear. How would you suggest I divide my spending?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: recommends investing more in lessons or practice",
+   "LLM response should contain: suggests limiting spending on accessories"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": null
+ },
+ {
+  "id": "10M/6/summarization/0",
+  "chatId": "6",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize how my collaborations and interactions with my peers and mentors have developed from November 1, 2021 to December 27, 2021 and influenced my musical growth?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: your mentor John at Harmony Hub provided targeted advice on learning challenging pieces",
+   "LLM response should contain: John critiqued your performances with actionable feedback",
+   "LLM response should contain: John encouraged improvisation, fostering your technical and emotional growth",
+   "LLM response should contain: peer collaborations with Nicole, Keith, and Shannon introduced diverse perspectives and practical support, from tempo adjustments and co-teaching sessions to joint performances and brand promotion efforts",
+   "LLM response should contain: Family support also played a role, with Barbara and Brian contributing to practice planning and emotional encouragement",
+   "LLM response should contain: interactions have collectively enhanced your skills, confidence, and professional outlook, demonstrating a progression from individual learning to integrated community engagement"
+  ],
+  "gold": 4,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/6/summarization/1",
+  "chatId": "6",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you provide a detailed summary of my overall progress and experiences with my ukulele practice and mentorship, capturing how various sessions, feedback, and resources have influenced my development and preparation from September 1, 2021 to October 28, 2021?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "LLM response should contain: John emphasized focused practice on a select set of songs, helping you polish key pieces for performances and addressing specific technical challenges",
+   "LLM response should contain: introduced structured tools such as a monthly practice planner to enhance organization and consistency",
+   "LLM response should contain: John’s feedback highlighted measurable improvements, including significant boosts in finger agility, dynamics, timing, and overall technique",
+   "LLM response should contain: John’s advice extended beyond technique to include stage presence coaching, anxiety management strategies, and recording setup tips, fostering a holistic development approach",
+   "LLM response should contain: Parallel to John’s mentorship, you balanced family support and peer feedback, integrating diverse perspectives to refine your skills and maintain motivation",
+   "LLM response should contain: Performance opportunities, such as gigs and open mic nights facilitated through Harmony Hub, provided practical platforms to apply your learning and build confidence",
+   "LLM response should contain: Regular reviews and reflection guides from John encouraged structured self-assessment, enhancing your focus and enabling you to set clear, actionable goals",
+   "LLM response should contain: Managing challenges like pre-gig tension and shaky hands was addressed through both mental and physical preparation techniques, supported by mentor insights",
+   "LLM response should contain: Your journey reflects a dynamic interplay of expert guidance, personal discipline, and community engagement"
+  ],
+  "gold": 7,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/6/temporal_reasoning/0",
+  "chatId": "6",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days passed between when I started preparing for my ukulele journey and when I began my first active practice session?",
+  "goldAnswer": "31 days passed between starting preparations on March 1, 2021, and beginning the first active practice session on April 1, 2021.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 31 days",
+   "LLM response should state: from March 1, 2021 till April 1, 2021"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/6/temporal_reasoning/1",
+  "chatId": "6",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days passed between when I was exploring performance opportunities with my ukulele and when I started journaling about my ukulele journey?",
+  "goldAnswer": "31 days passed between when I was exploring performance opportunities on September 9, 2021, and when I started journaling about my ukulele journey on October 10, 2021.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 31 days",
+   "LLM response should state: from September 9, 2021 till October 10, 2021"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/7/abstention/0",
+  "chatId": "7",
+  "category": "abstention",
+  "index": 0,
+  "question": "Can you share the specific advice Samuel gave about savings strategies ",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific advice Samuel gave about savings strategies"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/7/abstention/1",
+  "chatId": "7",
+  "category": "abstention",
+  "index": 1,
+  "question": "Could you share the key points from the free YouTube pottery tutorial I watched?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the key points of the YouTube pottery tutorial you watched"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/7/contradiction_resolution/0",
+  "chatId": "7",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever moved my old couch to storage?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you moved your old couch to storage",
+   "LLM response should mention: you also mentioned that you have never moved your old couch to storage",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/7/contradiction_resolution/1",
+  "chatId": "7",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever signed up for any community volunteering events before?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never signed up for any community volunteering events",
+   "LLM response should mention: you also referred to signing up online for a food drive",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/7/event_ordering/0",
+  "chatId": "7",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you walk me through the order in which I brought up different aspects of my relationship and shared activities with Jenna from May 1, 2022 to August 27, 2022, in order? Mention ONLY and ONLY eight items.",
+  "goldAnswer": "You mentioned aspects of your relationship and shared activities with Jenna in this order: 1) Discussing pottery classes and planning to join together, 2) Jenna offering to drive you to the pottery studio and her supportive role, 3) Jenna's encouragement and morale boosts during your pottery progress, 4) Jenna photographing your pottery work and the impact on your confidence, 5) Brainstorming and planning a coastal trip together, 6) Booking accommodations and shared travel preparations, 7) Experiencing and enjoying various moments during the trip including tours, walks, and shared memories, 8) Reviewing trip photos and reflecting on nostalgia and future plans.",
+  "difficulty": "medium",
+  "rubric": [
+   "Pottery class discussions",
+   "Jenna's driving offer and support",
+   "Encouragement during pottery progress",
+   "Photographing pottery and confidence boost",
+   "Coastal trip brainstorming",
+   "Travel bookings and preparations",
+   "Trip experiences and shared moments",
+   "Photo review and nostalgic reflections"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/7/event_ordering/1",
+  "chatId": "7",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you walk me through the order in which I brought up different aspects of my fitness and financial discussions with Jenna from May 3, 2021 to September 7, 2021, in order? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned these aspects in this order: 1) Jenna noticing my renewed focus and discussing workout ideas over coffee at home, 2) Going on a weekend walk together at Sunset Beach, 3) Planning and praising consistency over tea at home with upcoming hikes, 4) Hiking multiple distances at Reef Trail and bonding over fitness goals, 5) Running and planning runs at Coral Beach with increasing distances and goals, 6) Discussing budget and financial planning over coffee at Ocean View Lounge, 7) Supporting grocery budget caps and shopping together, 8) Celebrating savings and planning budget dates over tea and picnics, 9) Setting retirement goals and discussing investment plans over dinners and coffee, 10) Reviewing progress and insurance quotes while planning future financial steps.",
+  "difficulty": "medium",
+  "rubric": [
+   "Fitness focus and workout ideas over coffee",
+   "Weekend walk at Sunset Beach",
+   "Planning hikes and praising consistency over tea",
+   "Hiking at Reef Trail and bonding",
+   "Running at Coral Beach and setting goals",
+   "Budget discussion over coffee at Ocean View Lounge",
+   "Grocery budget cap and shopping support",
+   "Celebrating savings and budget dates",
+   "Retirement goals and investment discussions",
+   "Financial progress, insurance quotes, and planning next steps"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/7/information_extraction/0",
+  "chatId": "7",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "What time did I say I searched for flights on Skyscanner?",
+  "goldAnswer": "You said you searched for flights on Skyscanner at 8 PM.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 8 PM"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 20,
+  "score": null
+ },
+ {
+  "id": "10M/7/information_extraction/1",
+  "chatId": "7",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How much did I say dinner cost at the place where Jenna seemed distant?",
+  "goldAnswer": "You said dinner cost $40 at Sea Breeze Cafe last night.",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should state: $40"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 21,
+  "score": null
+ },
+ {
+  "id": "10M/7/instruction_following/0",
+  "chatId": "7",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "What are some good options I can use to improve my health?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: listing app names",
+   "LLM response should contain: providing cost information"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/7/instruction_following/1",
+  "chatId": "7",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "What are some healthy options I can consider for my meals?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: itemized list of costs",
+   "LLM response should contain: category-by-category breakdown"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/7/knowledge_update/0",
+  "chatId": "7",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "What time do I set aside for my Saturday budget review sessions?",
+  "goldAnswer": "5 PM",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 5 PM"
+  ],
+  "gold": 4,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/7/knowledge_update/1",
+  "chatId": "7",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "When is the desk assembly scheduled to take place?",
+  "goldAnswer": "The desk assembly is scheduled for the afternoon of November 7 to accommodate a delivery delay.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: November 7"
+  ],
+  "gold": 4,
+  "hit": 4,
+  "missingIds": 0,
+  "served": 16,
+  "score": null
+ },
+ {
+  "id": "10M/7/multi_session_reasoning/0",
+  "chatId": "7",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How much of my $50 date budget have I spent on the movie and picnic combined, and how much do I have left?",
+  "goldAnswer": "You have spent $30 in total ($15 on the movie and $15 on the picnic), leaving you with $20 remaining.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: spent $30 in total",
+   "LLM response should state: $20 remaining"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/7/multi_session_reasoning/1",
+  "chatId": "7",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How many ideas have I shared at the philosophy club across meetings from May 1, 2022 to August 27, 2022?",
+  "goldAnswer": "14 ideas",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 14 ideas"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/7/preference_following/0",
+  "chatId": "7",
+  "category": "preference_following",
+  "index": 0,
+  "question": "What should I keep in mind when planning my workout schedule around different times of the day near Palm Street?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions quieter conditions in the morning",
+   "LLM response should contain: avoids recommending evening workouts"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/7/preference_following/1",
+  "chatId": "7",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm planning to update the lighting in my living room. What kind of bulbs would you suggest I use?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions warm or soft lighting options",
+   "LLM response should contain: avoids recommending harsh fluorescent bulbs"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 20,
+  "score": null
+ },
+ {
+  "id": "10M/7/summarization/0",
+  "chatId": "7",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize how I've been managing my work-life balance and personal time from March 5, 2020 to March 30, 2021?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on reducing work stress by using tools like the Calm app and implementing strategies such as setting boundaries and prioritizing tasks",
+   "LLM response should contain: incorporated regular personal and social activities, including art nights, workouts, trivia, hiking, and quality time with Jenna and family",
+   "LLM response should contain: you emphasized planning and scheduling personal time as non-negotiable, using time-blocking and effective task management to protect this time",
+   "LLM response should contain: You also developed strategies to maintain this balance long-term, such as delegating tasks, reflecting regularly, and communicating openly with loved ones"
+  ],
+  "gold": 4,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/7/summarization/1",
+  "chatId": "7",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize how Jenna and I have developed our fitness and financial routines together from May 3, 2021 to September 7, 2021?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you discussed workout ideas and established a regular schedule that included varied activities like jogging, hiking, yoga, and strength training",
+   "LLM response should contain: Jenna's encouragement and participation helped maintain motivation, and you both planned hikes and runs at local spots such as Reef Trail and Coral Beach, gradually increasing distance and intensity",
+   "LLM response should contain: you began with budget discussions over coffee, setting spending limits and celebrating savings milestones with budget-friendly outings like picnics",
+   "LLM response should contain: You established regular financial check-ins, shared budgeting responsibilities, and set joint goals including building an emergency fund and planning for retirement",
+   "LLM response should contain: you maintained open communication, involved Jenna in decision-making, and balanced celebrating progress with maintaining discipline"
+  ],
+  "gold": 4,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 26,
+  "score": null
+ },
+ {
+  "id": "10M/7/temporal_reasoning/0",
+  "chatId": "7",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many months passed between my teaching feedback review and when I started reflecting on my personal relationships?",
+  "goldAnswer": "10 months passed between the teaching feedback review on April 1, 2020, and starting to reflect on personal relationships on February 1, 2021.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 10 months",
+   "LLM response should state: from April 1, 2020 till February 1, 2021"
+  ],
+  "gold": 5,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/7/temporal_reasoning/1",
+  "chatId": "7",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days were there between when I started exploring new educational interests and when I began planning my travel for a mental recharge?",
+  "goldAnswer": "There were 92 days between starting my journey to explore new educational interests on May 1, 2022, and beginning to plan my travel for mental recharge on August 1, 2022.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 92 days",
+   "LLM response should state: from May 1, 2022 till August 1, 2022"
+  ],
+  "gold": 7,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": null
+ },
+ {
+  "id": "10M/8/abstention/0",
+  "chatId": "8",
+  "category": "abstention",
+  "index": 0,
+  "question": "What specific maintenance steps did I learn from the YouTube videos about checking oil levels?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific maintenance steps learned from the YouTube videos about checking oil levels"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/8/abstention/1",
+  "chatId": "8",
+  "category": "abstention",
+  "index": 1,
+  "question": "Could you provide details about the local fair near Normal on I-55, such as the types of food stalls or events featured?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific details of the local fair near Normal on I-55"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/8/contradiction_resolution/0",
+  "chatId": "8",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I driven hybrid vehicles before?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you are getting used to the hybrid's smooth acceleration",
+   "LLM response should mention: you also mentioned that you've never driven a hybrid before",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/8/contradiction_resolution/1",
+  "chatId": "8",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I sent any messages to my mom during this trip?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you sent a WhatsApp text to your mom about your progress",
+   "LLM response should mention: you also mentioned that you have never sent any messages to her during this trip",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 4,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 18,
+  "score": null
+ },
+ {
+  "id": "10M/8/event_ordering/0",
+  "chatId": "8",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you walk me through the order in which I brought up different personal feelings and concerns about my road trip from May 1, 2022 to October 3, 2022, in order? Mention ONLY and ONLY eight items.",
+  "goldAnswer": "You mentioned your personal feelings and concerns in this order: 1) The excitement and thrill of exploring new routes and landscapes, 2) Anxiety about missing key sights if rushing through certain routes, 3) Frustration with conflicting or mixed reviews about road quality and traffic, 4) Anxiety related to specific road conditions and delays such as roadwork and storms, 5) Worries about running low on gas and signal dead zones in remote stretches, 6) Concerns about vehicle choices including stress about driving different cars and rental issues, 7) Comfort and pride in choosing eco-friendly options like hybrids, and 8) Final reflections on balancing scenic desires with practical travel concerns.",
+  "difficulty": "medium",
+  "rubric": [
+   "Excitement and thrill",
+   "Anxiety about missing sights",
+   "Frustration with reviews",
+   "Anxiety about road conditions",
+   "Anxiety about gas and signal",
+   "Stress about vehicle and rentals",
+   "Comfort with hybrid choice",
+   "Balancing scenic and practical concerns"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/8/event_ordering/1",
+  "chatId": "8",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you list the order in which I brought up different aspects of my transportation and navigation plans from January 2, 2023 to March 10, 2023, in order? Mention ONLY and ONLY five items.",
+  "goldAnswer": "You mentioned these aspects in this order: 1) Confirming and verifying the Hertz Corolla hybrid rental pickup at JFK Airport including deposit details, 2) Emailing Hertz to confirm rental details and insurance coverage, 3) Calling Hertz to verify pickup specifics at Terminal 5, 4) Discussing the inspection process and tire checks at Hertz Brooklyn, 5) Downloading and using offline maps and verifying GPS coverage and route accuracy for the trip.",
+  "difficulty": "easy",
+  "rubric": [
+   "Initial rental pickup confirmation and deposit discussion",
+   "Email confirmation and insurance verification",
+   "Phone call confirmation and Terminal 5 pickup details",
+   "Vehicle inspection and tire check discussion",
+   "Offline maps download and GPS navigation accuracy"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 29,
+  "score": null
+ },
+ {
+  "id": "10M/8/information_extraction/0",
+  "chatId": "8",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "When I called KOA Flagstaff to check on the tent space, how much area did they confirm was available for our setup?",
+  "goldAnswer": "They confirmed 25 square feet available for our setup.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 25 square feet"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/8/information_extraction/1",
+  "chatId": "8",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "What wait time did I mention for the ride when using the app?",
+  "goldAnswer": "You mentioned a 25-minute wait time for the ride.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 25-minute"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/8/instruction_following/0",
+  "chatId": "8",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "Can you update me on the current status of my budget?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mention of fuel costs",
+   "LLM response should contain: fuel expenses detailed alongside budget"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/8/instruction_following/1",
+  "chatId": "8",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "When can I expect someone to come out for help with my vehicle?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: specific time or time window for the service call"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/8/knowledge_update/0",
+  "chatId": "8",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "What is the total amount I should expect to pay on my final bill at the Holiday Inn, including any minibar charges?",
+  "goldAnswer": "$130, which includes the minibar charge added to the accommodation expenses",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $130"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/8/knowledge_update/1",
+  "chatId": "8",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How many photos have I tagged for my blog header?",
+  "goldAnswer": "15 photos have been tagged for the blog header.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 15 photos"
+  ],
+  "gold": 5,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 15,
+  "score": null
+ },
+ {
+  "id": "10M/8/multi_session_reasoning/0",
+  "chatId": "8",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How many hours in total did I spend at the Grand Canyon during my trip, combining all my stops and hikes?",
+  "goldAnswer": "11 hours",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 11 hours"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/8/multi_session_reasoning/1",
+  "chatId": "8",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How much have I allocated in total for event-related expenses across my budgets for flyers, venue fees, and snacks?",
+  "goldAnswer": "You have allocated a total of $100 for event flyers, $20 for venue fees, and $10 for snacks, summing up to $130.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $100 for event flyers",
+   "LLM response should state: $20 for venue fees",
+   "LLM response should state: $10 for snacks",
+   "LLM response should state: $130 in total"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/8/preference_following/0",
+  "chatId": "8",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm planning the route for our upcoming trip. How would you suggest I map it out?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: recommends routes without tolls",
+   "LLM response should contain: offers detours that bypass toll roads",
+   "LLM response should contain: acknowledges avoiding toll fees in route planning"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/8/preference_following/1",
+  "chatId": "8",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm trying to decide which vehicle to focus on for my daily commute. What should I keep in mind when comparing different models?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: discusses comfort features or ride quality",
+   "LLM response should contain: compares models with attention to comfort features or ride quality factors"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/8/summarization/0",
+  "chatId": "8",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you give me a summary of how Chris and I planned and managed our accommodations, travel logistics, and daily routines throughout our road trip preparations from January 2, 2023 to March 10, 2023?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: Chris suggested starting accommodation bookings at Denny's on Coral Street and aimed for about 10 stops along your 2,400-mile route",
+   "LLM response should contain: Chris esearched and confirmed campgrounds, such as the KOA near St. Louis and Flagstaff, carefully considering costs and amenities to fit your budget",
+   "LLM response should contain: Chris also managed vehicle rental details, including confirming the Hertz Corolla hybrid reservation and insurance costs",
+   "LLM response should contain: Chris proposed daily 5-minute check-in calls and flagged important alerts like a storm in Oklahoma, suggesting a 1-day delay to ensure safety",
+   "LLM response should contain: Chris recommended practical packing choices, such as bringing two REI sleeping bags for campground nights, and curated entertainment options like Spotify playlists to enhance the trip experience",
+   "LLM response should contain: you balanced driving shifts, rest, and sightseeing stops, integrating landmarks like Cadillac Ranch and Lake Erie into your itinerary"
+  ],
+  "gold": 5,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/8/summarization/1",
+  "chatId": "8",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you summarize how my travel decisions and habits evolved from April 8, 2023 to April 25, 2023 and how they influenced my overall experience and personal growth?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you faced challenges with long driving stretches, leading to fatigue and physical discomfort, which prompted you to shift towards shorter, 3-hour max drives",
+   "LLM response should contain: shift towards shorter, 3-hour max drives reduced your fatigue by about 20%, improved your physical comfort, and allowed for more flexibility and spontaneous exploration",
+   "LLM response should contain: you reevaluated your travel style by limiting the number of stops, moving from 10-stop marathons to 2-stop max trips, which decreased your stress by 35% and enhanced your patience",
+   "LLM response should contain: These adjustments helped you handle unexpected detours and fees more calmly, contributing to your emotional resilience",
+   "LLM response should contain: you prioritized experiences over material possessions, focusing on deeper engagement with fewer locations, which enriched your cultural immersion",
+   "LLM response should contain: Habit changes such as increasing nightly sleep to 8-9 hours and boosting hydration by 25% further supported your well-being during travel and daily life"
+  ],
+  "gold": 7,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/8/temporal_reasoning/0",
+  "chatId": "8",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days passed between when I started the final preparations for our road trip and when we actually began the trip?",
+  "goldAnswer": "58 days passed between starting the final preparations on January 2, 2023, and beginning the road trip on March 1, 2023.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 58 days",
+   "LLM response should state: from January 2, 2023 till March 1, 2023"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/8/temporal_reasoning/1",
+  "chatId": "8",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days passed between when I started the final stretch of our road trip at Motel 6 in Culver City and when I got back home to New Jeffreytown and began unpacking?",
+  "goldAnswer": "8 days passed between starting the final stretch of the road trip at Motel 6 in Culver City and returning home to New Jeffreytown to unpack.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 8 days",
+   "LLM response should state: from April 8 till April 16"
+  ],
+  "gold": 7,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/9/abstention/0",
+  "chatId": "9",
+  "category": "abstention",
+  "index": 0,
+  "question": "What are the steps for filing a claim with Allianz insurance as per the policy?",
+  "goldAnswer": "",
+  "difficulty": "hard",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the exact steps for filing a claim with Allianz insurance"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/9/abstention/1",
+  "chatId": "9",
+  "category": "abstention",
+  "index": 1,
+  "question": "What were the factors considered when deciding to extend the dolphin watching time to 1.5 hours?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the factors considered for extending dolphin watching time"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/9/contradiction_resolution/0",
+  "chatId": "9",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Have I ever initiated the booking process for Soneva Jani or any other resort?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never initiated any booking process for Soneva Jani",
+   "LLM response should mention: you said you have started the booking process for Soneva Jani",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 3,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/9/contradiction_resolution/1",
+  "chatId": "9",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever taken a seaplane transfer during my trips?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said you have never taken a seaplane transfer during any of your trips",
+   "LLM response should mention: you also referred to safety experiences during seaplane transfers",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 4,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 20,
+  "score": null
+ },
+ {
+  "id": "10M/9/event_ordering/0",
+  "chatId": "9",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you walk me through the order in which I brought up various preparations and plans for our trip from September 23, 2024 to October 3, 2024, in order? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned the trip preparations and plans in this order: 1) Confirming the main booking details and cost, 2) Double-checking transportation timing preferences, 3) Reviewing insurance coverage specifics, 4) Allocating days for planned activities within the itinerary, 5) Selecting and discussing luxury items for the trip, 6) Scheduling and prioritizing health-related appointments, 7) Ensuring home security arrangements are set, 8) Discussing overall expectations for relaxation during the trip, 9) Reconfirming booking details as the trip approached, 10) Finalizing and reviewing the full itinerary together.",
+  "difficulty": "medium",
+  "rubric": [
+   "Booking confirmation",
+   "Transportation timing",
+   "Insurance review",
+   "Activity allocation",
+   "Luxury items",
+   "Health appointments",
+   "Home security",
+   "Trip expectations",
+   "Booking reconfirmation",
+   "Itinerary finalization"
+  ],
+  "gold": 10,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/9/event_ordering/1",
+  "chatId": "9",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you walk me through the order in which I brought up different interactions with the resort staff from October 13, 2024 to October 22, 2024, in order? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned interactions with the resort staff in this order: 1) Kareem offering the jet skiing package, 2) Kareem checking in after the lagoon ride for feedback, 3) Kareem proposing the parasailing session, 4) Kareem following up after the parasailing flight, 5) Nimal offering the memory box at the gift shop, 6) Nimal suggesting the luggage scale rental, 7) Nimal introducing the farewell ceremony with the palm leaf arch, 8) Nimal collecting feedback via a short survey, 9) Nimal confirming the seaplane transfer with a dock briefing, 10) Nimal seeing us off with a sincere farewell chat.",
+  "difficulty": "medium",
+  "rubric": [
+   "Kareem offers jet skiing package",
+   "Kareem checks in post-ride for feedback",
+   "Kareem proposes parasailing session",
+   "Kareem follows up post-flight",
+   "Nimal offers memory box",
+   "Nimal offers luggage scale rental",
+   "Nimal introduces farewell ceremony",
+   "Nimal collects feedback survey",
+   "Nimal confirms seaplane transfer briefing",
+   "Nimal sees us off with farewell chat"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/9/information_extraction/0",
+  "chatId": "9",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "How many pages did I say the album I ordered has, and what was the cost?",
+  "goldAnswer": "The album has 50 pages and cost $75.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 50 pages",
+   "LLM response should state: $75"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/9/information_extraction/1",
+  "chatId": "9",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How did I learn about the options to customize my water-based activities, and who would I coordinate with to explore extending or combining these experiences?",
+  "goldAnswer": "You learned about the available water-based activity options, including the possibility to extend or combine sessions, through discussions about the jet skiing package and follow-up inquiries about longer or combined experiences. Kareem, the tour coordinator, is the person you would contact via the Soneva app, phone, or in person to arrange and customize these activities.",
+  "difficulty": "hard",
+  "rubric": [
+   "LLM response should state: You learned about the possibility to extend or combine sessions, through discussions about the jet skiing package and follow-up inquiries about longer or combined experiences",
+   "LLM response should state: Kareem, the tour coordinator, is the person you would contact via the Soneva app, phone, or in person to arrange and customize these activities"
+  ],
+  "gold": 3,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/9/instruction_following/0",
+  "chatId": "9",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "What should I consider when choosing between different snacks?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mention of portion amounts",
+   "LLM response should contain: reference to quantity per item"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 25,
+  "score": null
+ },
+ {
+  "id": "10M/9/instruction_following/1",
+  "chatId": "9",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "What should I bring for the trip?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions exact counts of items",
+   "LLM response should contain: provides numeric details for each item"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/9/knowledge_update/0",
+  "chatId": "9",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How long is the family vision meeting scheduled to last, and what is the budget for refreshments?",
+  "goldAnswer": "The meeting is scheduled for 90 minutes with a refreshments budget of $75.",
+  "difficulty": "moderate",
+  "rubric": [
+   "LLM response should state: 90 minutes",
+   "LLM response should state: $75"
+  ],
+  "gold": 4,
+  "hit": 4,
+  "missingIds": 0,
+  "served": 17,
+  "score": null
+ },
+ {
+  "id": "10M/9/knowledge_update/1",
+  "chatId": "9",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How much does the seaplane ride to Velaa Private Island cost per person?",
+  "goldAnswer": "$650 per person",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $650"
+  ],
+  "gold": 4,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 19,
+  "score": null
+ },
+ {
+  "id": "10M/9/multi_session_reasoning/0",
+  "chatId": "9",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "Given my finalized budget and allocations, how much can I realistically spend on spa sessions at Dusit Thani without exceeding my total budget, considering my accommodation, transfers, insurance, and extras?",
+  "goldAnswer": "You can afford one spa session at Dusit Thani costing $400, while allocating $500 for the all-inclusive package and $900 for other activities and dining, keeping your total within $13,500.",
+  "difficulty": "hard",
+  "rubric": [
+   "LLM response should state: You can afford one spa session at Dusit Thani costing $400",
+   "LLM response should state: allocating $500 for the all-inclusive package",
+   "LLM response should state: $900 for other activities and dining"
+  ],
+  "gold": 3,
+  "hit": 3,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/9/multi_session_reasoning/1",
+  "chatId": "9",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How much total time am I planning to spend on the first and second islands combined during my tour?",
+  "goldAnswer": "3.5 hours",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 3.5 hours"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 20,
+  "score": null
+ },
+ {
+  "id": "10M/9/preference_following/0",
+  "chatId": "9",
+  "category": "preference_following",
+  "index": 0,
+  "question": "I'm planning some water activities and want to make the most of the time on the lagoon. What would you suggest I focus on during the experience?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: focuses on jet skiing details",
+   "LLM response should contain: avoids suggesting parasailing or other water activities not aligned with jet skiing"
+  ],
+  "gold": 5,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/9/preference_following/1",
+  "chatId": "9",
+  "category": "preference_following",
+  "index": 1,
+  "question": "I'm planning a dinner by the water and trying to decide between different types of settings. What are some options I should consider?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mentions secluded shoreline settings",
+   "LLM response should contain: includes beach dining options"
+  ],
+  "gold": 3,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/9/summarization/0",
+  "chatId": "9",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize how my spouse and I have developed and maintained our connection and shared experiences from October 23, 2024 to November 29, 2024?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you and your spouse have actively nurtured your relationship through a variety of meaningful activities and rituals",
+   "LLM response should contain: Starting with extended coffee chats and brainstorming sessions at Brew Haven, you established a strong foundation of communication and excitement",
+   "LLM response should contain: You introduced regular at-home rituals like weekly sunset dates and storytelling nights to recreate honeymoon memories, enhancing emotional intimacy",
+   "LLM response should contain: Collaborative efforts such as selecting photos, reviewing online content, and planning future travel and budgets further strengthened your teamwork and synergy",
+   "LLM response should contain: you balanced deep reflections on personal growth and trust with lighter, engaging conversations and activities, consistently rating your connection around 9/10"
+  ],
+  "gold": 5,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/9/summarization/1",
+  "chatId": "9",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you give me a summary of how my spouse and I planned and prepared for our Maldives honeymoon, including the key decisions and arrangements we made along the way from September 21, 2024 to October 3, 2024?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: You and your spouse carefully planned your Maldives honeymoon by first confirming your $10,800 booking for a 6-night stay at Soneva Jani, ensuring all details were accurate and the deposit was paid",
+   "LLM response should contain: You coordinated with family by updating your mom on your 15-day travel itinerary and made arrangements for your daughters' care",
+   "LLM response should contain: you double-checked seaplane transfer times aiming for a 9 AM departure and confirmed your $50,000 medical coverage with Allianz for peace of mind",
+   "LLM response should contain: You allocated 6 days for activities within your 15-day plan, selecting a mix of relaxation and adventure, and chose luxury items like $120 evening dresses for special dinners",
+   "LLM response should contain: you maintained open communication with your spouse to align expectations, manage logistics, and build excitement for your trip, culminating in a well-organized and thoughtfully prepared honeymoon experience"
+  ],
+  "gold": 5,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 31,
+  "score": null
+ },
+ {
+  "id": "10M/9/temporal_reasoning/0",
+  "chatId": "9",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days passed between my last full day at Soneva Jani and when I started reflecting on our honeymoon back home?",
+  "goldAnswer": "3 days passed between my last full day at Soneva Jani on October 14 and when I began reflecting on our honeymoon back home on October 17.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 3 days",
+   "LLM response should state: from October 14 till October 17"
+  ],
+  "gold": 6,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 32,
+  "score": null
+ },
+ {
+  "id": "10M/9/temporal_reasoning/1",
+  "chatId": "9",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days passed between when I started the exploration phase of our honeymoon and when we had our first romantic beach dinner at Soneva Jani?",
+  "goldAnswer": "4 days passed between starting the exploration phase on October 4, 2024, and having the first romantic beach dinner on October 8, 2024.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 4 days",
+   "LLM response should state: from October 4 till October 8"
+  ],
+  "gold": 5,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/10/abstention/0",
+  "chatId": "10",
+  "category": "abstention",
+  "index": 0,
+  "question": "Could you provide the exact itinerary and schedule for the virtual tour of the Grand Wailea Resort?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the exact itinerary or schedule of the virtual tour of the Grand Wailea Resort"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/10/abstention/1",
+  "chatId": "10",
+  "category": "abstention",
+  "index": 1,
+  "question": "What was discussed during the Zoom call with Pamela about travel logistics for her group of 15 friends?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "Based on the provided chat, there is no information related to the specific discussions during the Zoom call with Pamela"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/10/contradiction_resolution/0",
+  "chatId": "10",
+  "category": "contradiction_resolution",
+  "index": 0,
+  "question": "Has Pamela ever helped coordinate with vendors or saved setup time during my events?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said Pamela has never helped coordinate with vendors",
+   "LLM response should mention: you also mentioned that she arrived to help coordinate with vendors",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 4,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/10/contradiction_resolution/1",
+  "chatId": "10",
+  "category": "contradiction_resolution",
+  "index": 1,
+  "question": "Have I ever coordinated with volunteers to assist with guest relocations?",
+  "goldAnswer": "",
+  "difficulty": "clear",
+  "rubric": [
+   "LLM response should state: there is contradictory information",
+   "LLM response should mention: You said that Pamela rallied volunteers to help with guest relocations",
+   "LLM response should mention: you also mentioned that you have never coordinated with any volunteers",
+   "LLM response should mention: which statement is correct?"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 15,
+  "score": null
+ },
+ {
+  "id": "10M/10/event_ordering/0",
+  "chatId": "10",
+  "category": "event_ordering",
+  "index": 0,
+  "question": "Can you walk me through the order in which I brought up different aspects of my beach wedding planning from July 1, 2023 to July 6, 2023, including venue options, guest capacities, permit fees, weather considerations, and accessibility concerns, in order? Mention ONLY and ONLY five items.",
+  "goldAnswer": "You mentioned these aspects in the following order: 1) Initial research on beach destinations with ideal weather and temperature ranges, 2) Discussion of specific venue options and their guest capacities, 3) Exploration of beach wedding permit fees and application processes across locations, 4) Consideration of weather-related factors and backup plans, 5) Evaluation of accessibility and logistical concerns for guests.",
+  "difficulty": "medium",
+  "rubric": [
+   "Weather and destination research",
+   "Venue options and guest capacities",
+   "Permit fees and application processes",
+   "Weather-related backup planning",
+   "Accessibility and guest logistics"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/10/event_ordering/1",
+  "chatId": "10",
+  "category": "event_ordering",
+  "index": 1,
+  "question": "Can you walk me through the order in which I brought up different aspects of event setup and guest management from July 16, 2023 to August 4, 2023, in order? Mention ONLY and ONLY ten items.",
+  "goldAnswer": "You mentioned the aspects in this order: 1) Adjusting the lighting setup to save power, 2) Addressing delays in music timing and playlist adjustments, 3) Managing guest seating and complaints by adding extra chairs, 4) Preparing for weather concerns by moving guests under a tent, 5) Troubleshooting video glitches by repositioning cameras, 6) Handling last-minute menu changes to accommodate dietary needs, 7) Flagging potential delays in toasts and trimming speeches, 8) Noticing guest comfort issues related to heat and adding fans and water bottles, 9) Softening lights to create a warmer evening vibe, and 10) Introducing fun activities like a quick dance game and limbo contest to energize the crowd.",
+  "difficulty": "medium",
+  "rubric": [
+   "Lighting setup and power saving",
+   "Music timing delays and playlist cuts",
+   "Guest seating adjustments for complaints",
+   "Weather concerns and guest relocation",
+   "Video glitch troubleshooting and camera repositioning",
+   "Menu changes for dietary needs",
+   "Toast delays and speech trimming",
+   "Guest heat discomfort and cooling measures",
+   "Lighting ambiance softening",
+   "Adding fun dance activities"
+  ],
+  "gold": 2,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/10/information_extraction/0",
+  "chatId": "10",
+  "category": "information_extraction",
+  "index": 0,
+  "question": "How many chairs did I say I rented from Seaside Rentals?",
+  "goldAnswer": "You said you rented 100 chairs from Seaside Rentals.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 100 chairs"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 20,
+  "score": null
+ },
+ {
+  "id": "10M/10/information_extraction/1",
+  "chatId": "10",
+  "category": "information_extraction",
+  "index": 1,
+  "question": "How much did I say it costs to rent each lantern?",
+  "goldAnswer": "You said it costs $10 to rent each lantern.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $10"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/10/instruction_following/0",
+  "chatId": "10",
+  "category": "instruction_following",
+  "index": 0,
+  "question": "What are the costs involved in the decorations for the event?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: mention of floral budget",
+   "LLM response should contain: details about flower-related costs"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/10/instruction_following/1",
+  "chatId": "10",
+  "category": "instruction_following",
+  "index": 1,
+  "question": "What services are available for visitors during their stay?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: clear mention of available support services",
+   "LLM response should contain: detailed description of visitor help offerings"
+  ],
+  "gold": 1,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 30,
+  "score": null
+ },
+ {
+  "id": "10M/10/knowledge_update/0",
+  "chatId": "10",
+  "category": "knowledge_update",
+  "index": 0,
+  "question": "How much do the 100 napkins cost with the discount I secured?",
+  "goldAnswer": "$120 for 100 pieces",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $120"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/10/knowledge_update/1",
+  "chatId": "10",
+  "category": "knowledge_update",
+  "index": 1,
+  "question": "How many members are on my team handling lighting fixes and guest concerns?",
+  "goldAnswer": "There are 8 members on the team.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 8 members"
+  ],
+  "gold": 4,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 22,
+  "score": null
+ },
+ {
+  "id": "10M/10/multi_session_reasoning/0",
+  "chatId": "10",
+  "category": "multi_session_reasoning",
+  "index": 0,
+  "question": "How much will I spend in total if I rent 10 wooden arches from Beachside Rentals and 10 from Ocean Breeze Rentals at their quoted prices?",
+  "goldAnswer": "You will spend $1,000 in total: $500 for 10 arches from Beachside Rentals at $50 each, and $500 for 10 arches from Ocean Breeze Rentals at $50 each.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $1,000 in total",
+   "LLM response should state: $500 for 10 arches from Beachside Rentals",
+   "LLM response should state: $500 for 10 arches from Ocean Breeze Rentals"
+  ],
+  "gold": 2,
+  "hit": 2,
+  "missingIds": 0,
+  "served": 17,
+  "score": null
+ },
+ {
+  "id": "10M/10/multi_session_reasoning/1",
+  "chatId": "10",
+  "category": "multi_session_reasoning",
+  "index": 1,
+  "question": "How much did I spend in total on catering, and what percentage of guests rated the local cuisine highly across all sessions?",
+  "goldAnswer": "You spent a total of $10,000 on catering, with between 85% and 90% of guests rating the local cuisine highly.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: $10,000 on catering",
+   "LLM response should state: between 85% and 90% of guests rating the local cuisine highly"
+  ],
+  "gold": 6,
+  "hit": 5,
+  "missingIds": 0,
+  "served": 21,
+  "score": null
+ },
+ {
+  "id": "10M/10/preference_following/0",
+  "chatId": "10",
+  "category": "preference_following",
+  "index": 0,
+  "question": "How should I allocate my budget between flowers and lighting to create a cohesive look for the event?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: allocates approximately twice as much budget to flowers as to lighting",
+   "LLM response should contain: emphasizes flower arrangements in the plan",
+   "LLM response should contain: suggests lighting options within the smaller budget portion"
+  ],
+  "gold": 6,
+  "hit": 4,
+  "missingIds": 0,
+  "served": 23,
+  "score": null
+ },
+ {
+  "id": "10M/10/preference_following/1",
+  "chatId": "10",
+  "category": "preference_following",
+  "index": 1,
+  "question": "How should I organize the travel bookings for my group at Sandy Shore Bistro to get started?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: recommends starting with the 20 key relatives",
+   "LLM response should contain: acknowledges a phased or prioritized booking approach"
+  ],
+  "gold": 1,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ },
+ {
+  "id": "10M/10/summarization/0",
+  "chatId": "10",
+  "category": "summarization",
+  "index": 0,
+  "question": "Can you summarize how my wedding décor plans have developed from July 1, 2023 to July 6, 2023, including how I've incorporated personal touches, managed the budget, and balanced different theme ideas?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you focused on incorporating sentimental items like Laura's lace and family photos to add emotional depth",
+   "LLM response should contain: you prioritized key décor elements such as flowers, lighting, and custom artisan pieces while adjusting your budget to accommodate these priorities",
+   "LLM response should contain: You also worked on blending your preference for a minimalist 'Coastal Serenity' theme with Tracy's desire for decorative accents",
+   "LLM response should contain: you incorporated eco-friendly choices, including recycled cotton napkins and solar-powered lighting, ensuring sustainability aligned with your aesthetic"
+  ],
+  "gold": 16,
+  "hit": 0,
+  "missingIds": 0,
+  "served": 28,
+  "score": null
+ },
+ {
+  "id": "10M/10/summarization/1",
+  "chatId": "10",
+  "category": "summarization",
+  "index": 1,
+  "question": "Can you give me a summary of how the venue wrap-up and equipment return process developed throughout our planning, including how I coordinated with vendors and Ka'anapali staff to meet all deadlines and secure refunds?",
+  "goldAnswer": "",
+  "difficulty": "medium",
+  "rubric": [
+   "LLM response should contain: you established clear communication with Ka'anapali staff to define cleanup standards, such as clearing specific beach areas to meet refund criteria",
+   "LLM response should contain: organized the return of various rented equipment, prioritizing items with earlier deadlines and higher late fees, like lanterns and tables",
+   "LLM response should contain: managed waste disposal responsibly, engaging services like Green Maui and Island Cleanup",
+   "LLM response should contain: you documented all processes meticulously, including inspections and returns, to provide evidence for refunds and compliance",
+   "LLM response should contain: Regular follow-ups and contingency plans were implemented to address any issues promptly, ensuring smooth vendor exits and final venue restoration"
+  ],
+  "gold": null
+ },
+ {
+  "id": "10M/10/temporal_reasoning/0",
+  "chatId": "10",
+  "category": "temporal_reasoning",
+  "index": 0,
+  "question": "How many days do I have to finalize the guest list and travel plans before the wedding event launch begins?",
+  "goldAnswer": "There are 3 days between when I start finalizing the guest list and travel plans on July 7 and when the wedding event launch begins on July 10.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 3 days",
+   "LLM response should state: from July 7 till July 10"
+  ],
+  "gold": 2,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 24,
+  "score": null
+ },
+ {
+  "id": "10M/10/temporal_reasoning/1",
+  "chatId": "10",
+  "category": "temporal_reasoning",
+  "index": 1,
+  "question": "How many days after the start of closing our wedding at Ka'anapali Beach did my reflection period begin?",
+  "goldAnswer": "The reflection period began 10 days after the start of closing the wedding at Ka'anapali Beach.",
+  "difficulty": "easy",
+  "rubric": [
+   "LLM response should state: 10 days",
+   "LLM response should state: from August 11 till August 21"
+  ],
+  "gold": 4,
+  "hit": 1,
+  "missingIds": 0,
+  "served": 27,
+  "score": null
+ }
+]

@@ -70,6 +70,7 @@ are the source behind it.
 |---|---|---|
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
 | [Lexical channel — hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 37/48** (reproduced ×2, p = 0.0215), holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
+| [BEAM — how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M — a **20 % relative loss for a 76× larger haystack**, where the benchmark paper's own baselines lose 60 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
 
 ## What "full-haystack" means
 
@@ -126,6 +127,11 @@ The campaign write-ups, in plain language, on the product site:
 
 - **Data** — logs, ledgers, summaries and documentation: [CC-BY 4.0](LICENSE).
   Reuse them, cite them, requote the numbers, just credit the source.
-- **Code** — `verification-kit/verify.js`, `scoring.js`, `index.html`:
-  [MIT](LICENSE-CODE), so you can fork the grader and check it against your own
-  results without a content licence getting in the way.
+- **Code** — `verification-kit/verify.js`, `scoring.js`, `index.html`,
+  `beam-2026-09/verify.js`: [MIT](LICENSE-CODE), so you can fork the grader and
+  check it against your own results without a content licence getting in the way.
+- **Third-party data** — the `question`, `goldAnswer` and `rubric` fields inside
+  the run files are the benchmarks' own, redistributed under their licences:
+  [LongMemEval](https://github.com/xiaowu0162/LongMemEval) (MIT) and
+  [BEAM](https://github.com/mohammadtavakoli78/BEAM) (MIT). Our CC-BY covers what
+  we measured, never what they wrote.
