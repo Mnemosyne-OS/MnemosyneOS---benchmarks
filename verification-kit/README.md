@@ -69,7 +69,7 @@ number can't quietly detach from how it was built. See `RESULTS.md`.
 
 ## Why the engine isn't here
 
-The harness that drives the memory engine is coupled to Mnemosyne's private core;
+The harness that drives the memory engine is coupled to the private core of Mnemosyne OS;
 it isn't a standalone tool, and publishing it would expose engine internals
 without adding anything you need to check the numbers. Everything required to
 audit the **scoring and methodology** is in this folder. See `METHODOLOGY.md §7`.

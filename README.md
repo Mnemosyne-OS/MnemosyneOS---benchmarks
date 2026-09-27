@@ -1,137 +1,173 @@
-# Mnemosyne Benchmarks
+# Mnemosyne OS Benchmarks
 
-Transparency archive for benchmark campaigns run against
-[Mnemosyne OS](https://github.com/Mnemosyne-OS/Mnemosyne-Neural-OS)'s memory
-engine — methodology, honest caveats, and the raw run logs behind every
+Transparency archive for the benchmark campaigns run against the memory engine
+of [Mnemosyne OS](https://github.com/Mnemosyne-OS/Mnemosyne-Neural-OS). Each
+campaign ships its methodology, its caveats and the raw run logs behind every
 published number.
 
-> **📊 [Live results page →](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)** — the numbers, the per-question ledger, and how to recompute them yourself.
+> **📊 [Live results page →](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)**
+> The numbers, the per-question ledger, and how to recompute them yourself.
 
-**Why a separate repo:** a benchmark claim deserves scrutiny the product
-README isn't the place for. Everything here is real run output — not curated
-screenshots — so the numbers can be checked, not just trusted.
+**Why a separate repo:** a benchmark claim deserves more scrutiny than a product
+README can give it. Everything here is real run output, so you can check the
+numbers instead of trusting them.
+
+## The numbers
+
+| Benchmark | Score | Judge | Campaign |
+|---|---|---|---|
+| LongMemEval-M, full haystack | **77.1 %** (37/48) | strict | [2026-08](lexical-2026-08/SUMMARY.md) |
+| LongMemEval-M, full haystack | **81.3 %** (39/48) | flexible, same answers | [2026-08](lexical-2026-08/SUMMARY.md) |
+| LongMemEval-M, full haystack | **72.9 %** (35/48), lower bound | flexible | [2026-07](fullhaystack-2026-07/SUMMARY.md) |
+| BEAM, 100K tier | **61.7 %** (400 questions) | BEAM's official judge | [2026-09](beam-2026-09/SUMMARY.md) |
+| BEAM, 10M tier | **49.2 %** (200 questions) | BEAM's official judge | [2026-09](beam-2026-09/SUMMARY.md) |
+
+Each score names its judge. Two judges grade the same answers differently, so
+two scores from two judges never form a progression.
 
 ## Recompute the numbers yourself
 
-Don't take the headline on faith — re-derive it. The
-[**verification kit**](verification-kit/) ships the exact grader, the
-per-question verdicts behind each score, and a one-command tool that recomputes
-the accuracy from those verdicts — no memory engine, no network, no
-dependencies:
+The [**verification kit**](verification-kit/) ships the exact grader, the
+per-question verdicts behind each LongMemEval score, and a tool that recomputes
+the accuracy from those verdicts. The BEAM campaign has its own
+[`verify.js`](beam-2026-09/verify.js). Both run offline, with no memory engine
+and no dependencies:
 
 ```bash
 cd verification-kit
-node verify.js          # recompute every score from its per-question rows
+node verify.js               # recompute every LongMemEval score from its rows
 node scoring.js --selftest   # audit the grader on real cases
+
+cd ../beam-2026-09
+node verify.js               # recompute 61.7 % and 49.2 % from their rows
 ```
 
 `verify.js` proves each advertised score is the **exact sum of the published
-per-question rows** — no hidden questions, no arithmetic massaging. Every ledger
-recomputes in full: baseline (64.6%), engine multi-session (5/8), local-sovereign
-(50%), and all four arms of the August campaign — vector-only and fused, each read
-by both the strict and the flexible judge (29/48, 37/48, 34/48, 39/48).
+per-question rows**. Every ledger recomputes in full: baseline (64.6 %), engine
+multi-session (5/8), local-sovereign (50 %), and the four arms of the August
+campaign. Those four arms are vector-only and fused retrieval, each read by the
+strict and the flexible judge (29/48, 37/48, 34/48, 39/48). The BEAM script
+exits non-zero on the first mismatch.
 
-**The current headline is 77.1% (37/48), August 2026, under a *strict* judge** —
-one 48-question run, replayed a second time and agreeing verdict for verdict, with
-the retrieval gain confirmed on a 48-question holdout never seen during development.
-Under July's *flexible* judge, the same answers measure 81.3% (39/48, same
-both-runs rule) — and `verify.js` recomputes that one too, from its own published
-ledger. Which judge graded a number changes what it means, so every score here
-names its judge, and both leniencies of the August campaign ship as ledgers rather
-than as an assertion.
+### LongMemEval: 77.1 %, 81.3 % and 72.9 %
 
-The two graders disagree about more than the headline: under the strict judge the
-channel gains **+9/−1** questions, under the flexible one **+7/−2**. The flexible
-reading is the weaker evidence, and it is published at full strength rather than
-rounded away.
+**The current LongMemEval headline is 77.1 % (37/48), August 2026, strict
+judge.** It comes from one 48-question run, replayed a second time with the
+same verdict on every question. A 48-question holdout, never seen during
+development, confirmed the retrieval gain.
 
-**July's 72.9% is a different kind of number, and `verify.js` says so out loud.** It was
-never measured in a single 48-question engine run — only the multi-session
-category was re-run with the engine, and the other 40 rows are carried from the
-baseline ledger. The tool recomputes and prints that composition
-(`30/40 carried + 5/8 measured = 35/48`) on every run, so the number cannot
-quietly detach from how it was built. It is therefore a **lower bound**: the 40
-carried questions were never retried, so a full re-run can only raise it.
-Details in the kit's `RESULTS.md` and `METHODOLOGY.md §5`.
+July's *flexible* judge grades the same answers at 81.3 % (39/48), under the
+same both-runs rule. `verify.js` recomputes that score from its own ledger.
 
-This is why 72.9% and 77.1% are published side by side rather than as a single
-progression: one is a composed lower bound under a flexible judge, the other a
-measured run under a strict one. July's campaign stays exactly as it was
-published, DOI-pinned — a number improved on is not a number withdrawn.
+The two judges also disagree on the gain. Under the strict judge the lexical
+channel wins **+9/−1** questions. Under the flexible judge it wins **+7/−2**.
+We publish the weaker reading at full strength.
 
-**➡️ Rendered results page:
-[mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)**
-— that's the live site; the files in [`verification-kit/`](verification-kit/)
-are the source behind it.
+**July's 72.9 % is a composed number, and `verify.js` prints its
+composition.** Only the multi-session category was re-run with the engine. The
+other 40 rows come from the baseline ledger. The tool prints
+`30/40 carried + 5/8 measured = 35/48` on every run. The 40 carried questions
+were never retried, so 72.9 % is a **lower bound**. Details are in the kit's
+`RESULTS.md` and `METHODOLOGY.md §5`.
+
+72.9 % and 77.1 % sit side by side for that reason. One is a composed lower
+bound under a flexible judge. The other is a measured run under a strict judge.
+July's campaign stays exactly as published, DOI-pinned.
+
+### BEAM: 61.7 % and 49.2 %
+
+[BEAM](https://github.com/mohammadtavakoli78/BEAM) (ICLR 2026) asks ten kinds
+of memory questions, including abstention, contradiction and event ordering.
+Mnemosyne OS was run at both tiers the benchmark ships, graded by **BEAM's own
+judge**.
+
+**A 76× larger haystack costs 20 % of the score** (61.7 % at 100K, 49.2 % at
+10M). The benchmark paper's own baselines lose 60 % over the same range. That
+ratio compares Mnemosyne OS to itself on one rig, and it is what the campaign
+is published for. Other systems report BEAM scores with their own reader and
+judge, so those scores measure different setups. Details are in the
+[campaign summary](beam-2026-09/SUMMARY.md).
+
+**Rendered results page:
+[mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/verification-kit/)**.
+The files in [`verification-kit/`](verification-kit/) are the source behind it.
 
 ## Campaigns
 
 | Campaign | Headline | |
 |---|---|---|
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
-| [Lexical channel — hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 37/48** (reproduced ×2, p = 0.0215), holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
-| [BEAM — how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M — a **20 % relative loss for a 76× larger haystack**, where the benchmark paper's own baselines lose 60 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
+| [Lexical channel: hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 37/48** (reproduced ×2, p = 0.0215), holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
+| [BEAM: how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M, a **20 % relative loss for a 76× larger haystack**. The benchmark paper's own baselines lose 60 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
 
 ## What "full-haystack" means
 
 [LongMemEval](https://github.com/xiaowu0162/LongMemEval) is a public,
 independent long-term-memory benchmark. Its **full-haystack** variant surrounds
-every question's evidence with ~480 distractor sessions from other personas —
-the closest published setup to a real, lived-in memory vault. Most reported
-numbers (including the original paper's) use the easier `-S` variant instead.
-Mnemosyne's numbers above are on the harder one.
+the evidence of every question with ~480 distractor sessions from other
+personas. It is the closest published setup to a real memory vault that has
+been used for months. Most reported numbers, including the original paper's,
+use the easier `-S` variant. The LongMemEval numbers of Mnemosyne OS above are
+on the harder one.
 
 ## Ground rules for anything published here
 
-1. **A HIT is only counted if it replays.** Judge noise and sampling variance
-   produce false positives; every cited result was independently re-run.
-2. **One configuration, no cherry-picking.** The number in a headline is one
-   uniform config across the full question set, not a best-of-N.
-3. **Caveats stay attached to the number.** If a result is a lower bound, or a
-   trade-off rather than a clean win, that's stated next to it — see each
-   campaign's summary.
+1. **A HIT counts only if it replays.** Judge noise and sampling variance
+   produce false positives, so every cited result was re-run.
+2. **One configuration, no cherry-picking.** A headline number comes from one
+   uniform configuration across the full question set, never a best-of-N.
+3. **Caveats stay attached to the number.** A lower bound or a trade-off is
+   stated next to the score. Each campaign summary lists its caveats.
 
-These rules are written down as an enforceable contract in [`AGENTS.md`](AGENTS.md)
-— the ledger format, the replay discipline, the rule that a composed figure may
-never be presented as a measured one, and the checklist that has to pass before
-anything here is updated. It's addressed to whoever (or whatever) publishes the
-next number, and it's public for the same reason the logs are.
+[`AGENTS.md`](AGENTS.md) writes these rules down as an enforceable contract:
+the ledger format, the replay discipline, the rule that a composed figure is
+always labelled as composed, and the checklist to pass before anything here is
+updated. It addresses whoever publishes the next number, person or agent. It
+is public for the same reason the logs are.
 
 ## Reproducing a campaign
 
-**Be clear about what this repo does and doesn't let you do.** It lets you audit
-the **scoring** — the grader, the per-question verdicts, the arithmetic, the
-replay discipline, and every row traced back to the public dataset. It does not
-let you reproduce the **retrieval**: the engine that produced the answers is
-closed, so you cannot re-run generation and get these logs back. That is a real
-limit and we'd rather state it than let the word "reproducible" imply otherwise.
+This repo lets you audit the **scoring**: the grader, the per-question
+verdicts, the arithmetic, the replay discipline, and every row traced back to
+the public dataset.
 
-The internal harness scripts aren't published here — they're coupled to
-Mnemosyne's core engine, not standalone tools. They're available on
-**motivated request**: open an issue on this repo explaining what you'd like
-to verify or extend.
+Reproducing the **retrieval** requires the engine that produced the answers,
+and that engine is closed. Re-running generation from this repo is therefore
+out of reach, and we say so plainly.
 
-The benchmark datasets themselves are public (linked in each campaign's
-summary) — the logs here are enough to check the scoring and methodology
-against them independently.
+The internal harness scripts depend on the core engine of Mnemosyne OS, so
+they are kept out of this repo. They are available on **motivated request**:
+open an issue on this repo and explain what you would like to verify or
+extend.
+
+The benchmark datasets are public and linked in each campaign summary. The logs
+here are enough to check the scoring and the methodology against them.
 
 ## Further reading
 
 The campaign write-ups, in plain language, on the product site:
 
-- [72.9% — and the three questions we miss](https://mnemosyne-os.io/blog/full-haystack-72-9) — the full-haystack run behind this repository: the protocol, the levers we refuted, the misses we own.
-- [We gave personality control of memory. It cost 31 points.](https://mnemosyne-os.io/blog/personality-lens-31-points) — the ablation that measured a feature making retrieval worse.
-- [The benchmark page](https://mnemosyne-os.io/benchmark) — the current published number and what it does and does not claim.
+- [AI memory compared: mem0, Zep, Letta, Cognee, Supermemory, us](https://mnemosyne-os.io/blog/agent-memory-tools-compared):
+  where each published memory score comes from, with our BEAM rows next to the
+  others and which judge graded each one.
+- [72.9 % and the three questions we miss](https://mnemosyne-os.io/blog/full-haystack-72-9):
+  the full-haystack run behind this repository, the protocol, the levers we
+  refuted, and the questions we miss.
+- [We gave personality control of memory. It cost 31 points.](https://mnemosyne-os.io/blog/personality-lens-31-points):
+  the ablation that measured a feature making retrieval worse.
+- [The benchmark page](https://mnemosyne-os.io/benchmark): the current
+  published number and the claims it supports.
 
 ## License
 
-- **Data** — logs, ledgers, summaries and documentation: [CC-BY 4.0](LICENSE).
-  Reuse them, cite them, requote the numbers, just credit the source.
-- **Code** — `verification-kit/verify.js`, `scoring.js`, `index.html`,
-  `beam-2026-09/verify.js`: [MIT](LICENSE-CODE), so you can fork the grader and
-  check it against your own results without a content licence getting in the way.
-- **Third-party data** — the `question`, `goldAnswer` and `rubric` fields inside
-  the run files are the benchmarks' own, redistributed under their licences:
-  [LongMemEval](https://github.com/xiaowu0162/LongMemEval) (MIT) and
-  [BEAM](https://github.com/mohammadtavakoli78/BEAM) (MIT). Our CC-BY covers what
-  we measured, never what they wrote.
+- **Data**: logs, ledgers, summaries and documentation are under
+  [CC-BY 4.0](LICENSE). Reuse them, cite them, requote the numbers, and credit
+  the source.
+- **Code**: `verification-kit/verify.js`, `scoring.js`, `index.html` and
+  `beam-2026-09/verify.js` are under [MIT](LICENSE-CODE). You can fork the
+  grader and check it against your own results.
+- **Third-party data**: the `question`, `goldAnswer` and `rubric` fields inside
+  the run files belong to the benchmarks. They are redistributed under their
+  licences: [LongMemEval](https://github.com/xiaowu0162/LongMemEval) (MIT) and
+  [BEAM](https://github.com/mohammadtavakoli78/BEAM) (MIT). Our CC-BY covers
+  what we measured. The benchmark text stays under its authors' licence.

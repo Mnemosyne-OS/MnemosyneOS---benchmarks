@@ -40,7 +40,7 @@ questions, the haystack sessions, and the ground-truth answers used below.
 |---|---|---|
 | **Baseline** | Retrieval only (semantic search → LLM answer), **no consolidation engine**. The honest floor. | `results/baseline-longmemeval-m-48q.jsonl` |
 | **Local sovereign** | The full path run **entirely on-device** with a 3B local model — zero cloud, no data leaves the machine. | `results/local-sovereign-12q.jsonl` |
-| **Full engine** | Baseline + Mnemosyne's memory-consolidation layer, **re-run on the multi-session category only** (8 of the 48 questions). Composed with the carried baseline rows this gives the headline — see §5. | `results/engine-multisession-8q.jsonl` |
+| **Full engine** | Baseline + the memory-consolidation layer of Mnemosyne OS, **re-run on the multi-session category only** (8 of the 48 questions). Composed with the carried baseline rows this gives the headline — see §5. | `results/engine-multisession-8q.jsonl` |
 
 **Models.** Answers: `gemini-2.5-pro` (cloud runs) or `Qwen2.5-3B` (local run).
 Judge: `gemini-2.5-flash`. Embeddings: e5-base (768-dimensional). Retrieval:
@@ -183,7 +183,7 @@ readability; the verdicts they carry are the real graded verdicts.
 
 ## 7. What is *not* in this repo, and why
 
-The harness that runs the memory engine is coupled to Mnemosyne's private core
+The harness that runs the memory engine is coupled to the private core of Mnemosyne OS
 and is not published — it is not a standalone tool, and publishing it would
 expose engine internals without adding anything you need to check the numbers.
 Everything required to audit the **scoring and methodology** is here. Everything
