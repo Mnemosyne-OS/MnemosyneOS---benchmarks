@@ -1,0 +1,32 @@
+{
+  "_about": "Judge verdicts overturned by a human reading of the full answer. The run files in ./runs/ are left exactly as the judge wrote them. extract-ledgers.mjs applies this list, and every overturned verdict stays visible in the ledgers: the row carries a human_audit field and each run keeps the judge's original verdict in judge_verdict. verify.js prints this list on every run.",
+  "audited": "2026-09-27/28. Every HIT of the fused arm, both runs, both leniencies, read against the LongMemEval ground truth.",
+  "overrides": [
+    {
+      "question_id": "gpt4_76048e76",
+      "runs": ["duel-full-lexfusion.json", "duel-full-lexfusion-r2.json"],
+      "leniencies": ["strict", "flexible"],
+      "verdict": "MISS",
+      "expected": "bike",
+      "answer_says": "you took care of your car first",
+      "reason": "A-vs-B substitution. The answer picks the car and mentions the bike later, so it answers the question wrong. Both judges said YES in both runs.",
+      "found_by": "Julien Gelee (Koperateur), 2026-09-27"
+    },
+    {
+      "question_id": "6ade9755",
+      "runs": ["duel-full-lexfusion-r2.json"],
+      "leniencies": ["strict", "flexible"],
+      "verdict": "MISS",
+      "expected": "Serenity Yoga",
+      "answer_says": "the information from 2023/05/29 indicating you are currently searching for a studio supersedes the earlier mention of attending Serenity Yoga",
+      "reason": "The answer names the right studio, then concludes the user no longer attends it. The judge saw the name and said YES. Run 1 answers correctly, so the question fails the both-runs rule.",
+      "found_by": "Mnemosyne OS maintainers, human audit prompted by Julien Gelee's report, 2026-09-28"
+    }
+  ],
+  "kept_after_review": [
+    {
+      "question_id": "0edc2aef",
+      "reason": "Run 1 recommends Airbnb first, the ground truth describes hotels. The answer keeps every stated preference (high-end, ocean or skyline view, hot tub, rooftop pool) and proposes nothing basic. Judged a correct answer to a preference question, verdict left as the judge wrote it. The data to argue otherwise is in the run files."
+    }
+  ]
+}

@@ -1,13 +1,14 @@
 # LongMemEval-M full-haystack — campaign summary (2026-07-13/14)
 
-**Status: closed.** Every HIT below was replayed before being counted (§4).
+**Status: closed.** Every engine HIT below was replayed before being counted
+(§4). The 64.6 % baseline is a single measured run.
 
 ## Headline
 
 | Measurement | Value |
 |---|---|
 | LongMemEval-M full-haystack, 48-question stratified set, baseline (topK32, no consolidation) | **64.6 %** (31/48) |
-| Same, with the full engine on the multi-session category | **72.9 %** (35/48) — *composed*, and a *lower bound* |
+| Same, with the full engine on the multi-session category | **72.9 %** (35/48) — *composed* |
 | Multi-session category | **1/8 → 5/8** (12.5 % → 62.5 %), every HIT replay-stable |
 | Reference: the LongMemEval paper's GPT-4o full-context result | ~60 % — on the **easier** `-S` variant |
 | Reference: oracle-variant ceiling (evidence-only vaults, no distractors) | ~84 % |
@@ -18,7 +19,7 @@ evidence for every question, mixing dozens of unrelated personas' first-person
 conversations into the corpus. It is the variant closest to a real, lived-in
 memory vault — not the easier `-S` slice most published numbers use.
 
-**72.9 % is composed, and it is a stated lower bound.** Two separate facts:
+**72.9 % is composed.**
 
 1. **Composed** — only the multi-session category (8 questions) was re-run with
    the full engine (spine-sort → per-topic consolidation → dream-tier retrieval).
@@ -26,9 +27,11 @@ memory vault — not the easier `-S` slice most published numbers use.
    never been a single 48-question run of the full engine, and 72.9 % should not
    be quoted as one. `node verify.js` in the verification kit recomputes and
    prints the composition: `30/40 carried + 5/8 measured = 35/48`.
-2. **Lower bound** — the knowledge-update and preference-tracking categories were
-   never retried with the engine, so a full re-run can only raise the figure (see
-   "Open next steps" below).
+2. **Withdrawn on 2026-09-28: "lower bound".** This summary said a full re-run
+   could only raise the figure. Nothing showed that, and an August full-engine
+   run of the same 48 questions under the same flexible judge scored 34/48.
+   The DOI-pinned copy still carries the old sentence; [`../ERRATUM.md`](../ERRATUM.md)
+   applies to it.
 
 ## What was tested
 
@@ -148,9 +151,8 @@ because negative results belong in the record.
 
 ## Open next steps
 
-- Re-run the knowledge-update and preference-tracking categories with the same
-  engine — they were never retried, so 72.9 % is an honest lower bound, not a
-  ceiling.
+- Re-run all 48 questions with the full engine in one run. Until then 72.9 %
+  stays a composed figure.
 - Ship windowed slicing with retrieval-side per-topic dedupe, to capture its
   gain without its cost (root cause #3).
 - A query-decomposition pass for temporal questions that compare two dates.

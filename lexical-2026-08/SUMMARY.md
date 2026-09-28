@@ -3,9 +3,15 @@
 **Claim under audit:** adding a second, fully local retrieval channel (Okapi
 BM25 over a persistent inverted index, merged with the dense ranking by
 Reciprocal Rank Fusion) moved the strict-judge score on LongMemEval-M
-full-haystack from **29/48 to 37/48**, reproduced across two independent runs,
-with the retrieval gain confirmed on a 48-question holdout never seen during
-development.
+full-haystack from **29/48 to 35/48**, the fused arm reproduced across two
+independent runs. On 48 questions never seen during development, the channel
+retrieved more evidence sessions and lost none. That holdout measures retrieval
+only.
+
+> **Corrected on 2026-09-28.** This summary said 29/48 → 37/48 with p = 0.0215.
+> A human audit overturned two judge verdicts, one of them reported by Julien
+> Gelee. The list is in [`human-audit.json`](human-audit.json), the full record
+> in [`../ERRATUM.md`](../ERRATUM.md).
 
 Everything below is recomputable by a stranger:
 
@@ -17,7 +23,7 @@ cd ../verification-kit && node verify.js
 
 | File | What it is |
 | --- | --- |
-| `runs/duel-full.rejudged.json` | Baseline arm: full engine, **vector-only** retrieval, 48 questions, per-question judge verdicts (flexible AND strict). |
+| `runs/duel-full.rejudged.json` | Baseline arm: full engine, **vector-only** retrieval, 48 questions, per-question judge verdicts (flexible AND strict). **One run**, never replayed. |
 | `runs/duel-full-lexfusion.json` | + lexical channel, run 1. Same answerer, judge, prompts, budget. |
 | `runs/duel-full-lexfusion-r2.json` | + lexical channel, **run 2** — the independent replay behind every published HIT. |
 | `runs/recall-control.json` | Deterministic retrieval measurement (no LLM), channel OFF, development sample. |
@@ -26,7 +32,8 @@ cd ../verification-kit && node verify.js
 | `runs/recall-hold-off.json` / `runs/recall-hold-on.json` | The **holdout**: 48 questions never seen during development, measured OFF and ON. |
 | `runs/recall-post-fix.json` | After the app-isolation fix inside the channel — `verify.js` asserts the CORE-mode ranking did not move. |
 | `runs/boost-off.json` / `runs/boost-on-v2.json` | The earlier **multiplier** experiment (2× cosine boost on exact-term matches), committed for context. It measured ~neutral and motivated rank fusion; it feeds **no headline**. |
-| `extract-ledgers.mjs` | Derives the two `verification-kit/results/lexical-*.jsonl` ledgers from the run files. **No ledger row is written by hand** — re-run it and diff. |
+| `human-audit.json` | Judge verdicts overturned by a human reading (2026-09-27/28), with the reason and who found each one. The run files are left as the judge wrote them. |
+| `extract-ledgers.mjs` | Derives the four `verification-kit/results/lexical-*.jsonl` ledgers from the run files and `human-audit.json`. **No ledger row is written by hand** — re-run it and diff. |
 
 ## The numbers, and which instrument produced each
 
@@ -36,15 +43,16 @@ Two instruments, deliberately kept apart:
    byte-identical outputs): evidence sessions 38/48 → 41/48, answer-bearing
    chunk 25/35 → 30/35 on the development sample; **+4/−0 sessions and +2/−0
    chunks, zero regressions, on the holdout**. This is the instrument.
-2. **Strict LLM judge, end-to-end**: 29/48 → 37/48 under the replay rule (a
-   HIT counts only if both independent runs agree — they agreed on all 48
-   verdicts). Paired per-question: **+9 gained / −1 regressed**; exact
-   binomial on 9-vs-1 flips gives **p = 0.0215**. This is the confirmation.
+2. **Strict LLM judge, end-to-end**: 29/48 → 35/48 under the replay rule (a
+   HIT counts only if both independent runs are a HIT). Paired per-question:
+   **+9 gained / −3 regressed**; exact binomial on 9-vs-3 flips gives
+   **p = 0.146**. The answer-side gain is not statistically significant.
 
 Do not conflate the two "regression" statements: the **holdout retrieval**
 shows zero regressions; the **answer-side pair** on the development sample
-shows one (−1), visible in `lexical-fusion-strict-48q.jsonl` via
-`baseline_correct`.
+shows three (−3), visible in `lexical-fusion-strict-48q.jsonl` via
+`baseline_correct`. Two of the three are the verdicts the human audit
+overturned: the vector-only arm answered them correctly.
 
 ## Caveats, printed next to the number
 
@@ -53,8 +61,10 @@ shows one (−1), visible in `lexical-fusion-strict-48q.jsonl` via
   holdout exists.
 - The answer-side judge has a measured noise floor of **≈2.6 verdicts per 48**
   on byte-identical replays: a gap under ~5 questions is not resolvable by
-  this bench. The +8 clears it; smaller deltas in these files should not be
-  quoted as findings.
+  this bench. The net +6 barely clears it; smaller deltas in these files
+  should not be quoted as findings.
+- The vector-only arm is one run. Its 29/48 carries judge noise that the
+  both-runs rule removes from the fused arm only.
 - Fusion parameters are the literature defaults (BM25 `k1=1.5`, `b=0.75`; RRF
   `k=60`), deliberately untuned.
 - **No product comparison is claimed.** The baseline and treatment arms are

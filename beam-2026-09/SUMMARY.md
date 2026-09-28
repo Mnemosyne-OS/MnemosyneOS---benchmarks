@@ -1,8 +1,8 @@
 # beam-2026-09 — BEAM, and how far the score falls when the haystack grows
 
 **What was measured:** the retrieval and answering pipeline of Mnemosyne OS, run against
-[BEAM](https://github.com/mohammadtavakoli78/BEAM) (ICLR 2026), at both tiers
-the benchmark ships, scored by **BEAM's own official judge**.
+[BEAM](https://github.com/mohammadtavakoli78/BEAM) (ICLR 2026), at two of its
+tiers, 100K and 10M, scored by **BEAM's own official judge**.
 
 | Tier | Corpus | Score | Questions |
 | --- | --- | --- | --- |

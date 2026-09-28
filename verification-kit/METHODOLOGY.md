@@ -50,21 +50,35 @@ top-32 chunks × 2400 chars for the cloud runs, top-5 for the local run.
 
 ## 3. How answers are graded
 
-Every answer is graded twice, and both are transparent:
+Two graders run on every answer. **The LLM judge decides; the heuristic is
+recorded for reference.** `scoring.js` → `finalVerdict` writes this rule down.
 
-1. **Deterministic heuristic** (`scoring.js` → `scoreAnswer`): exact-substring,
+1. **LLM judge** (`scoring.js` → `judgePrompt` / `parseJudgeVerdict`): the exact
+   prompt sent to the judge model. The July campaign uses the **`flexible`**
+   leniency. The August campaign publishes **`strict`**, which is the default
+   branch of `judgePrompt`, and `flexible` beside it. The prompt includes the
+   hard exception that an answer which declines or says "cannot determine" is
+   scored **NO**. The judge receives the expected answer and the generated
+   answer. It does **not** receive the question.
+2. **Deterministic heuristic** (`scoring.js` → `scoreAnswer`): exact-substring,
    numeric/money/duration match, word-number equivalence, a fuzzy content-word
-   overlap, and an abstention check (declining to answer is only correct when
-   the ground truth itself is "not mentioned"). Run `node scoring.js --selftest`
-   to watch it decide real-shaped cases.
-2. **LLM judge** (`scoring.js` → `judgePrompt` / `parseJudgeVerdict`): the exact
-   prompt sent to the judge model, at the **`flexible`** leniency used for the
-   headline numbers. The prompt is reproduced verbatim so you can see what the
-   judge is and isn't asked to accept — including the hard exception that an
-   answer which declines or says "cannot determine" is scored **NO**.
+   overlap, and an abstention check. Run `node scoring.js --selftest` to watch
+   it decide real-shaped cases. It never overrules the judge: a substring
+   match cannot tell "bike first" from "car first, bike later".
 
-The published headline for a run is `flexible`-judge scoring. Nothing is graded
-by a hidden or per-question rule.
+The harness skips the judge for an empty answer or a ground truth that is
+itself "not mentioned". The verdict is then scored MISS. In the August campaign
+this happened 0 times out of 144 answers.
+
+**Human audit.** A judge verdict that a human reading shows to be wrong is
+overturned in a committed file, never in the run files:
+`lexical-2026-08/human-audit.json`. The ledgers show both verdicts on the row,
+and `verify.js` prints the list. Nothing is graded by a hidden or per-question
+rule.
+
+Until 2026-09-28 this section said "every answer is graded twice", and the
+ledgers' `match_type` field carried the heuristic's label. That read as if the
+heuristic decided some rows. It never did. See [`ERRATUM.md`](../ERRATUM.md).
 
 ---
 
@@ -96,20 +110,19 @@ See `RESULTS.md` for the table. The headline:
   aggregation from **1/8 to 5/8**; composed with the unchanged other categories
   this is **35/48 = 72.9%**.
 
-**Two distinct caveats apply to 72.9%. They are separate claims and we keep them
-separate**, because collapsing them into one vague "lower bound" would hide the
-second:
-
-**Caveat 1 — it is composed, not measured in one run.** Only the multi-session
+**It is composed, not measured in one run.** Only the multi-session
 category (8 questions) was re-run with the engine. The other 40 rows are carried
 verbatim from the baseline ledger. There has never been a single 48-question run
 of the full engine. `verify.js` prints this composition — `30/40 carried + 5/8
 measured = 35/48` — every time it runs, so the number cannot quietly detach from
 how it was built. Do not quote 72.9% as a measured 48-question engine result.
 
-**Caveat 2 — it is a lower bound.** Because those 40 carried questions were never
-retried with consolidation, a full engine re-run can only raise the figure, not
-lower it.
+**Withdrawn on 2026-09-28: "it is a lower bound".** This section used to say
+that a full engine re-run could only raise 72.9%. Nothing showed that. An
+August full-engine run of the same 48 questions, under the same flexible judge,
+scored 34/48 = 70.8% (`results/lexical-baseline-flexible-48q.jsonl`). The
+engine build differs between July and August, so this does not measure July's
+engine either. It is enough to show the claim was never established.
 
 **A third thing worth stating plainly:** of the 5 multi-session HITs, one
 (`e831120c`) was *already* a baseline HIT. The engine's net recovery is **4
@@ -166,9 +179,10 @@ verdicts and asserts they equal the claimed headline.
 node scoring.js --selftest
 ```
 
-`scoring.js` is the entire grading logic. Point it at the public LongMemEval
-ground-truth answers and you can confirm it is a fair grader, not one tuned to
-inflate our score.
+`scoring.js` holds the heuristic, the judge prompt and the rule that decides
+between them. Point it at the public LongMemEval ground-truth answers and you
+can check it is a fair grader. The one decision it does not hold is the human
+audit, which lives in `lexical-2026-08/human-audit.json`.
 
 **Trace any row to the public dataset.** Every `question_id` in `results/*.jsonl`
 is the official LongMemEval id. Look it up in the public release to see the

@@ -1,16 +1,25 @@
 /**
  * scoring.js — the exact grader used to score every Mnemosyne OS benchmark run.
  *
- * This is the WHOLE grading logic: a deterministic heuristic pass
- * (exact / numeric / fuzzy / abstention matching) plus the LLM-judge prompt
- * and its verdict parser. It depends on nothing — no memory engine, no network.
- * It is published verbatim so the grading can be audited and re-run against the
- * public LongMemEval ground truth. The number you see is a product of THIS file.
+ * It holds a deterministic heuristic pass (exact / numeric / fuzzy / abstention
+ * matching), the LLM-judge prompt, its verdict parser, and finalVerdict(), the
+ * rule that says which of the two decides. It depends on nothing — no memory
+ * engine, no network. It is published verbatim so the grading can be audited
+ * and re-run against the public LongMemEval ground truth.
  *
- * Two entry points matter:
+ * Entry points:
  *   scoreAnswer(groundTruth, generated, sourcesCount) -> { correct, matchType, abstained }
  *   judgePrompt(groundTruth, generated, leniency)     -> the exact string sent to the judge model
  *   parseJudgeVerdict(reply)                          -> boolean (last YES/NO wins)
+ *   finalVerdict(groundTruth, generated, judgeVerdict)-> the verdict a ledger records
+ *
+ * Two limits, stated here so nobody has to find them (reported by Julien Gelee,
+ * 2026-09-28): the judge prompt carries the expected answer and the generated
+ * answer, and NOT the question; and "strict" is the default branch of
+ * judgePrompt (any leniency other than "flexible" or "lenient").
+ *
+ * Until 2026-09-28 this header called the file "the WHOLE grading logic". The
+ * rule combining heuristic and judge was missing, so that was wrong.
  *
  * Run `node scoring.js --selftest` to see the grader decide a handful of cases.
  */
@@ -63,10 +72,18 @@ export function scoreAnswer(groundTruth, generated, sourcesCount) {
   const normalizedNum = WORD_TO_NUMBER[cleanNum] || cleanNum;
   if (normalizedNum.length >= 1 && numericRaw) {
     const genNumClean = genLower.replace(/,/g, '');
-    const numRegex = new RegExp(`\\b${escapeRegExp(normalizedNum)}\\b`);
+    // A number matches only as a whole number: "3" must not match "30", "13",
+    // "3.5", "3,000" or "Source 33". `\b` alone is not enough, because "." and
+    // "," are non-word characters, so the digits on either side are excluded
+    // explicitly. A zero decimal part is the same number ("$185" = "$185.00").
+    // (Until 2026-09-27 the raw form was matched with a bare `includes`, so
+    // "3" matched "It took 30 days". Reported by Julien Gelee.)
+    const whole = (n) => (/^\d/.test(n)
+      ? new RegExp(`(?<![\\d.,])${escapeRegExp(n)}(?!\\d|,\\d|\\.\\d*[1-9])`)
+      : new RegExp(`\\b${escapeRegExp(n)}\\b`));
     const wordEquiv = WORD_TO_NUMBER[normalizedNum];
     const wordMatch = wordEquiv ? new RegExp(`\\b${wordEquiv}\\b`).test(genNumClean) : false;
-    return numRegex.test(genNumClean) || genLower.includes(numericRaw) || wordMatch
+    return whole(normalizedNum).test(genNumClean) || whole(numericRaw).test(genLower) || wordMatch
       ? { correct: true, abstained: false, matchType: 'exact' }
       : { correct: false, abstained: false, matchType: 'miss' };
   }
@@ -85,8 +102,23 @@ export function scoreAnswer(groundTruth, generated, sourcesCount) {
   return { correct: false, abstained: false, matchType: 'miss' };
 }
 
-// The judge is only consulted on top of the heuristic. Three leniency levels;
-// the published headline numbers use "flexible".
+// Which grader decides. The harness sends every answer to the judge, whatever
+// the heuristic said, and the judge's verdict IS the verdict. A substring match
+// cannot tell "bike first" from "car first, bike later", so it never overrules
+// the judge. The harness skips the judge for an empty answer and for a ground
+// truth that is itself "not mentioned"; the verdict is then null and the
+// ledger scores it MISS. In the 2026-08 campaign that happened 0 times out of
+// 144 answers. A human audit can still overturn a judge verdict: those
+// overrides are listed in lexical-2026-08/human-audit.json, never here.
+export function finalVerdict(groundTruth, generated, judgeVerdict) {
+  if (!generated.trim() || abstentionExpected(groundTruth)) return null;
+  return judgeVerdict;
+}
+
+// Three leniency levels. "strict" is the default branch below. The 2026-07
+// campaign is scored "flexible"; the 2026-08 campaign publishes "strict" as its
+// headline and "flexible" beside it. The judge receives the expected answer
+// and the generated answer only, never the question.
 export function judgePrompt(groundTruth, generated, leniency) {
   let leniencyInstruction = 'Assess if the Generated Answer contains or implies the Expected Ground Truth, explicitly or logically.\nIf the Generated Answer explicitly contains additional information but still correctly answers the Expected Ground Truth, answer YES.';
   if (leniency === 'flexible') {
@@ -124,14 +156,46 @@ if (process.argv[1] && process.argv[1].endsWith('scoring.js') && process.argv.in
     ['3', 'you need to pick up or return a total of 2 items of clothing.', 32, false],
     ['The Glass Menagerie', 'the play you attended was a production of "The Glass Menagerie".', 32, true],
     ['Tomatoes', 'the marigold seeds were started on March 3rd.', 32, false],
+    // A number matches only as a whole number (reported 2026-09-27).
+    ['3', 'It took 30 days', 32, false],
+    ['3', 'It took 13 days', 32, false],
+    ['3', 'you acquired 2 plants (Source 33).', 32, false],
+    ['3', 'about 3.5 hours', 32, false],
+    ['3', 'you walked 3,000 steps', 32, false],
+    ['5', 'about 2.5 hours', 32, false],
+    ['3', 'you have a total of 3 clothing items to pick up.', 32, true],
+    ['$185', 'you have spent a total of $185.00 on bike expenses.', 32, true],
+    ['$185', 'you have spent a total of $185.50 on bike expenses.', 32, false],
+    ['1,200', 'about 1200 dollars', 32, true],
+    ['1,200', 'about 11,200 dollars', 32, false],
   ];
   let ok = 0;
   for (const [gt, gen, src, want] of cases) {
     const r = scoreAnswer(gt, gen, src);
     const pass = r.correct === want;
     ok += pass ? 1 : 0;
-    console.log(`${pass ? 'ok  ' : 'FAIL'} [${r.matchType.padEnd(9)}] want=${want} got=${r.correct}  gt="${gt}"`);
+    console.log(`${pass ? 'ok  ' : 'FAIL'} [${r.matchType.padEnd(9)}] want=${want} got=${r.correct}  gt="${gt}"  gen="${gen}"`);
   }
-  console.log(`\nself-test: ${ok}/${cases.length} expected verdicts reproduced`);
-  process.exit(ok === cases.length ? 0 : 1);
+  // Which grader decides. gpt4_76048e76 (LongMemEval-M): the answer picks the
+  // wrong item and names the right one later, so the heuristic says HIT. The
+  // judge's verdict stands whatever the heuristic says.
+  const bike = 'Based on the memory context, you took care of your car first in February.\n\nYou washed your car on February 3rd (Source 5). Your hybrid bike was taken in for repairs in "mid-February" (Source 2, 3, 34).';
+  const precedence = [
+    // [label, groundTruth, generated, judgeVerdict, wantHeuristic, wantFinal]
+    ['heuristic HIT, judge NO', 'bike', bike, false, true, false],
+    ['heuristic miss, judge YES', 'bike', 'You had your bicycle repaired first.', true, false, true],
+    ['judge unreachable', 'bike', bike, null, true, null],
+    ['abstention expected (judge skipped)', 'You did not mention this information.', 'I do not know.', true, true, null],
+    ['empty answer (judge skipped)', 'bike', '', true, false, null],
+  ];
+  for (const [label, gt, gen, judge, wantHeur, wantFinal] of precedence) {
+    const heur = scoreAnswer(gt, gen, 32).correct;
+    const fin = finalVerdict(gt, gen, judge);
+    const pass = heur === wantHeur && fin === wantFinal;
+    ok += pass ? 1 : 0;
+    console.log(`${pass ? 'ok  ' : 'FAIL'} [precedence] ${label}: heuristic=${heur} judge=${judge} -> final=${fin} (want ${wantFinal})`);
+  }
+  const total = cases.length + precedence.length;
+  console.log(`\nself-test: ${ok}/${total} expected verdicts reproduced`);
+  process.exit(ok === total ? 0 : 1);
 }

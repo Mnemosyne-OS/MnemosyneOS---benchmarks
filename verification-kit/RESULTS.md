@@ -2,13 +2,15 @@
 
 All numbers below are recomputable from this repo with `node verify.js` — including
 the 72.9% headline, which is *composed* from two ledgers (see below).
-Dataset: **LongMemEval-M**. Grader: `scoring.js` (heuristic + `flexible` LLM judge).
+Dataset: **LongMemEval-M**. Grader: the LLM judge of `scoring.js` decides every
+verdict (`flexible` for July, `strict` and `flexible` for August); the heuristic
+is recorded beside it for reference.
 
 ## Headline
 
 | Configuration | Variant | Score | Published rows |
 |---|---|---|---|
-| **Full engine** (baseline + consolidation) | full-haystack | **72.9%** (35/48) — *composed, lower bound* | ✅ composed — see below |
+| **Full engine** (baseline + consolidation) | full-haystack | **72.9%** (35/48) — *composed* | ✅ composed — see below |
 | **Baseline** (retrieval only, no consolidation) | full-haystack | **64.6%** (31/48) | ✅ `results/baseline-longmemeval-m-48q.jsonl` |
 | **Local sovereign** (3B on-device, zero cloud) | oracle sample | **50.0%** (6/12) | ✅ `results/local-sovereign-12q.jsonl` |
 
@@ -23,13 +25,15 @@ multi-session category was re-run with the engine. The figure is:
 | Multi-session, **measured with the engine** | 5/8 | `results/engine-multisession-8q.jsonl` |
 | **Composed total** | **35/48 = 72.9%** | `node verify.js` recomputes this |
 
-Two consequences, stated plainly:
+**It is not a like-for-like single-run measurement**, and shouldn't be quoted
+as one. The composition is printed by `verify.js` on every run so it can't
+quietly detach from the number.
 
-1. **It is a lower bound.** The 40 carried questions were never retried with the
-   engine, so a full re-run can only raise the number, not lower it.
-2. **It is not a like-for-like single-run measurement**, and shouldn't be quoted
-   as one. The composition is printed by `verify.js` on every run so it can't
-   quietly detach from the number.
+Until 2026-09-28 this page also called 72.9% a lower bound that a full re-run
+could only raise. That claim is withdrawn. Nothing showed it, and an August
+full-engine run of the same 48 questions under the same flexible judge scored
+34/48 (`results/lexical-baseline-flexible-48q.jsonl`). See
+[`ERRATUM.md`](../ERRATUM.md).
 
 The engine's contribution is concentrated where memory actually gets hard —
 **multi-session aggregation: 1/8 → 5/8**. Note that 1 of those 5 (`e831120c`)
@@ -51,7 +55,15 @@ mechanical extractions (`extract-ledgers.mjs`), never hand-written.
 | Evidence sessions retrieved (deterministic, dev sample) | 38/48 | **41/48** | `lexical-2026-08/runs/recall-*.json` |
 | Answer-bearing chunk served (deterministic, 35 tracked) | 25/35 | **30/35** | idem |
 | **Holdout** — 48 questions never seen in development | — | **+4/−0 sessions, +2/−0 chunks** | `lexical-2026-08/runs/recall-hold-*.json` |
-| End-to-end, **strict** judge, both-runs replay rule | 29/48 | **37/48** (+9/−1 paired, p = 0.0215) | ✅ `results/lexical-baseline-strict-48q.jsonl` + `results/lexical-fusion-strict-48q.jsonl` |
+| End-to-end, **strict** judge, both-runs replay rule | 29/48 (one run) | **35/48** (+9/−3 paired, p = 0.146) | ✅ `results/lexical-baseline-strict-48q.jsonl` + `results/lexical-fusion-strict-48q.jsonl` |
+| The same answers, **flexible** judge, same rule | 34/48 (one run) | **37/48** (+7/−4 paired, p = 0.549) | ✅ `results/lexical-*-flexible-48q.jsonl` |
+
+The end-to-end rows were 37/48 and 39/48 until 2026-09-28. A human audit
+overturned two judge verdicts (`gpt4_76048e76`, reported by Julien Gelee, and
+`6ade9755`), listed in
+[`lexical-2026-08/human-audit.json`](../lexical-2026-08/human-audit.json) and in
+[`ERRATUM.md`](../ERRATUM.md). The answer-side gain is not statistically
+significant. The holdout measures retrieval only: it holds no answers.
 
 Retrieval is the instrument (no LLM, byte-identical replays); the strict judge
 is the confirmation (measured noise floor ≈2.6 verdicts/48 — deltas under ~5

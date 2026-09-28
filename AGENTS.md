@@ -117,10 +117,18 @@ legitimate — but it must be labelled everywhere the number appears, and
 35/48  = 72.9%
 ```
 
-Composition and "lower bound" are **two separate caveats**. Do not merge them into
-one vague sentence — collapsing them hides the fact that no single full run ever
-happened. Extend the composed-headline block in `verify.js` for any new composed
-figure; never assert one in prose alone.
+Never call a composed figure a "lower bound" unless a measurement shows it.
+This repo did, for 72.9 %, and an external audit found a full-engine run that
+scored lower (see `ERRATUM.md`). Extend the composed-headline block in
+`verify.js` for any new composed figure; never assert one in prose alone.
+
+## Overturning a judge verdict
+
+A judge verdict that a human reading shows to be wrong is overturned in
+`<campaign>/human-audit.json`, with the reason and who found it. Never edit a
+run file, and never flip a ledger row by hand: the extraction script applies
+the audit, the row shows both verdicts, and `verify.js` prints the list.
+Review the debatable cases too, and record the ones you keep.
 
 ---
 

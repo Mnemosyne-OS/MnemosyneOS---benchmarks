@@ -100,9 +100,10 @@ if (base && eng) {
   console.log(`    ${String(engHits).padStart(2)}/${eng.rows.length}   measured with the engine (multi-session only)`);
   console.log(`    ${String(hits).padStart(2)}/${total}  = ${acc.toFixed(1)}%   recomputed`);
   console.log(`          claimed: ${CLAIMED.hits}/${CLAIMED.total} = ${CLAIMED.pct}%  → ${ok ? 'ok' : 'MISMATCH'}`);
-  console.log('  Because the 40 carried questions were never retried with the engine, they can only');
-  console.log('  improve on a full re-run — which is why 72.9% is published as a LOWER BOUND, and');
-  console.log('  why it must not be quoted as a measured 48-question engine result.');
+  console.log('  It must not be quoted as a measured 48-question engine result. Until 2026-09-28 it');
+  console.log('  was also called a LOWER BOUND. That claim is withdrawn: nothing shows a full re-run');
+  console.log('  can only raise it, and the August full-engine run of the same 48 questions under the');
+  console.log('  same flexible judge scored 34/48 (lexical-baseline-flexible-48q.jsonl).');
 } else {
   console.log('\n! COMPOSED HEADLINE skipped — needs both the baseline and engine ledgers.');
 }
@@ -128,15 +129,43 @@ const recallAgg = (rows) => ({
   chunk: rows.filter((r) => r.locatable && r.chunk).length,
 });
 
+// Exact two-sided binomial (sign test) on paired flips: a gains, b losses.
+const signTest = (a, b) => {
+  const n = a + b, k = Math.min(a, b);
+  let c = 1, tail = 0;
+  for (let i = 0; i <= n; i++) { if (i <= k) tail += c; c = (c * (n - i)) / (i + 1); }
+  return Math.min(1, (2 * tail) / 2 ** n);
+};
+
 if (lexBase && lexFusion) {
+  // Verdicts a human reading overturned. Printed on every run so the correction
+  // cannot quietly detach from the numbers it changed.
+  try {
+    const audit = JSON.parse(readFileSync(join(HERE, '..', 'lexical-2026-08', 'human-audit.json'), 'utf8'));
+    console.log(`\n! HUMAN AUDIT — ${audit.overrides.length} judge verdict(s) overturned (lexical-2026-08/human-audit.json)`);
+    for (const o of audit.overrides) {
+      console.log(`    ${o.question_id.padEnd(16)} ${o.verdict} in ${o.runs.join(' + ')}: expected "${o.expected}", answer says "${o.answer_says}"`);
+      console.log(`    ${''.padEnd(16)} found by ${o.found_by}`);
+    }
+    for (const k of audit.kept_after_review ?? []) console.log(`    ${k.question_id.padEnd(16)} reviewed, judge verdict kept`);
+  } catch (e) {
+    console.log(`✗ HUMAN AUDIT — lexical-2026-08/human-audit.json unreadable: ${e.message}`);
+    allOk = false;
+  }
+
   const gains = lexFusion.rows.filter((r) => r.correct && r.baseline_correct === false).length;
   const regressions = lexFusion.rows.filter((r) => !r.correct && r.baseline_correct === true).length;
-  const EXP = { gains: 9, regressions: 1 };
+  const EXP = { gains: 9, regressions: 3 };
   const okPair = gains === EXP.gains && regressions === EXP.regressions;
   allOk = allOk && okPair;
+  const bh = lexBase.rows.filter((r) => r.correct).length;
+  const fh = lexFusion.rows.filter((r) => r.correct).length;
   console.log(`\n${okPair ? '✓' : '✗'} LEXICAL CHANNEL — paired strict delta (answer side, development sample)`);
   console.log(`  recomputed from the rows' baseline_correct field: +${gains} gained / −${regressions} regressed (claimed +${EXP.gains}/−${EXP.regressions})`);
-  console.log('  29/48 → 37/48 under the both-runs replay rule; exact binomial on 9-vs-1 flips gives p = 0.0215.');
+  console.log(`  ${bh}/48 → ${fh}/48 under the both-runs replay rule; exact binomial on ${gains}-vs-${regressions} flips gives p = ${signTest(gains, regressions).toFixed(3)}.`);
+  console.log('  Not significant at 0.05. Published at 29/48 → 37/48, p = 0.0215 until the audit of');
+  console.log('  2026-09-27/28 overturned two verdicts (see HUMAN AUDIT above).');
+  console.log('  ⚠ The vector-only arm (29/48) is ONE run, never replayed. Only the fused arm has two.');
   console.log('  ⚠ This 48-question sample was used during development and runs ~13 points easier than');
   console.log('    its parent set. The transfer evidence is the deterministic holdout below, not this pair.');
 
@@ -150,7 +179,7 @@ if (lexBase && lexFusion) {
     const unstable = lexFusionFlex.rows.filter((r) => r.replay_stable === false).length;
     console.log(`\n✓ LEXICAL CHANNEL — the same runs under the FLEXIBLE judge (July's grader)`);
     console.log(`  ${bh}/48 = ${((100 * bh) / 48).toFixed(1)}% → ${fh}/48 = ${((100 * fh) / 48).toFixed(1)}%, same both-runs replay rule`);
-    console.log(`  paired: +${fGains} gained / −${fRegs} regressed — a weaker signal than the strict pair above.`);
+    console.log(`  paired: +${fGains} gained / −${fRegs} regressed (p = ${signTest(fGains, fRegs).toFixed(3)}) — a weaker signal than the strict pair above.`);
     console.log(`  ${unstable} question(s) disagreed between the two runs and were scored by the conjunction.`);
     console.log('  Both leniencies are published because a score without its judge is not a result:');
     console.log('  the strict number is the one we lead with, the flexible one is what July would have said.');

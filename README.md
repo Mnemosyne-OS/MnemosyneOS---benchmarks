@@ -12,13 +12,18 @@ published number.
 README can give it. Everything here is real run output, so you can check the
 numbers instead of trusting them.
 
+> **Erratum, 2026-09-28.** An external audit by Julien Gelee found a wrong
+> verdict and several sentences that claimed more than the files show. The
+> August scores went from 77.1 % to 72.9 % (strict) and from 81.3 % to 77.1 %
+> (flexible). Everything that changed is in [ERRATUM.md](ERRATUM.md).
+
 ## The numbers
 
 | Benchmark | Score | Judge | Campaign |
 |---|---|---|---|
-| LongMemEval-M, full haystack | **77.1 %** (37/48) | strict | [2026-08](lexical-2026-08/SUMMARY.md) |
-| LongMemEval-M, full haystack | **81.3 %** (39/48) | flexible, same answers | [2026-08](lexical-2026-08/SUMMARY.md) |
-| LongMemEval-M, full haystack | **72.9 %** (35/48), lower bound | flexible | [2026-07](fullhaystack-2026-07/SUMMARY.md) |
+| LongMemEval-M, full haystack | **72.9 %** (35/48) | strict | [2026-08](lexical-2026-08/SUMMARY.md) |
+| LongMemEval-M, full haystack | **77.1 %** (37/48) | flexible, same answers | [2026-08](lexical-2026-08/SUMMARY.md) |
+| LongMemEval-M, full haystack | **72.9 %** (35/48), composed | flexible | [2026-07](fullhaystack-2026-07/SUMMARY.md) |
 | BEAM, 100K tier | **61.7 %** (400 questions) | BEAM's official judge | [2026-09](beam-2026-09/SUMMARY.md) |
 | BEAM, 10M tier | **49.2 %** (200 questions) | BEAM's official judge | [2026-09](beam-2026-09/SUMMARY.md) |
 
@@ -46,39 +51,43 @@ node verify.js               # recompute 61.7 % and 49.2 % from their rows
 per-question rows**. Every ledger recomputes in full: baseline (64.6 %), engine
 multi-session (5/8), local-sovereign (50 %), and the four arms of the August
 campaign. Those four arms are vector-only and fused retrieval, each read by the
-strict and the flexible judge (29/48, 37/48, 34/48, 39/48). The BEAM script
+strict and the flexible judge (29/48, 35/48, 34/48, 37/48). The BEAM script
 exits non-zero on the first mismatch.
 
-### LongMemEval: 77.1 %, 81.3 % and 72.9 %
+### LongMemEval: the August run and the July composition
 
-**The current LongMemEval headline is 77.1 % (37/48), August 2026, strict
-judge.** It comes from one 48-question run, replayed a second time with the
-same verdict on every question. A 48-question holdout, never seen during
-development, confirmed the retrieval gain.
+**The August headline is 72.9 % (35/48), strict judge.** The fused arm ran
+twice on the same 48 questions, and a HIT counts only if both runs are a HIT.
+Two verdicts were overturned by a human audit on 2026-09-27/28, listed in
+[`lexical-2026-08/human-audit.json`](lexical-2026-08/human-audit.json).
 
-July's *flexible* judge grades the same answers at 81.3 % (39/48), under the
+July's *flexible* judge grades the same answers at 77.1 % (37/48), under the
 same both-runs rule. `verify.js` recomputes that score from its own ledger.
 
-The two judges also disagree on the gain. Under the strict judge the lexical
-channel wins **+9/−1** questions. Under the flexible judge it wins **+7/−2**.
-We publish the weaker reading at full strength.
+The lexical channel gains **+9/−3** questions under the strict judge
+(p = 0.146) and **+7/−4** under the flexible judge. Neither answer-side gain is
+statistically significant. The retrieval gain is measured without any LLM: 48
+questions never seen during development show +4/−0 evidence sessions. That
+holdout measures retrieval only, not answers. The vector-only arm is one run,
+never replayed.
 
 **July's 72.9 % is a composed number, and `verify.js` prints its
 composition.** Only the multi-session category was re-run with the engine. The
 other 40 rows come from the baseline ledger. The tool prints
-`30/40 carried + 5/8 measured = 35/48` on every run. The 40 carried questions
-were never retried, so 72.9 % is a **lower bound**. Details are in the kit's
-`RESULTS.md` and `METHODOLOGY.md §5`.
+`30/40 carried + 5/8 measured = 35/48` on every run. It was also called a lower
+bound until 2026-09-28. That claim is withdrawn: an August full-engine run of
+the same 48 questions scored 34/48 under the same judge. Details are in the
+kit's `RESULTS.md` and `METHODOLOGY.md §5`.
 
-72.9 % and 77.1 % sit side by side for that reason. One is a composed lower
-bound under a flexible judge. The other is a measured run under a strict judge.
-July's campaign stays exactly as published, DOI-pinned.
+The August strict score and the July composition both come to 35/48. That is a
+coincidence: different engine builds, different judges, different methods.
+July's campaign stays as published, DOI-pinned, and the erratum applies to it.
 
 ### BEAM: 61.7 % and 49.2 %
 
 [BEAM](https://github.com/mohammadtavakoli78/BEAM) (ICLR 2026) asks ten kinds
 of memory questions, including abstention, contradiction and event ordering.
-Mnemosyne OS was run at both tiers the benchmark ships, graded by **BEAM's own
+Mnemosyne OS was run at two of its tiers, 100K and 10M, graded by **BEAM's own
 judge**.
 
 **A 76× larger haystack costs 20 % of the score** (61.7 % at 100K, 49.2 % at
@@ -97,7 +106,7 @@ The files in [`verification-kit/`](verification-kit/) are the source behind it.
 | Campaign | Headline | |
 |---|---|---|
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
-| [Lexical channel: hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 37/48** (reproduced ×2, p = 0.0215), holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
+| [Lexical channel: hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 35/48** (fused arm reproduced ×2, p = 0.146, corrected 2026-09-28), retrieval holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
 | [BEAM: how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M, a **20 % relative loss for a 76× larger haystack**. The benchmark paper's own baselines lose 60 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
 
 ## What "full-haystack" means
@@ -113,7 +122,8 @@ on the harder one.
 ## Ground rules for anything published here
 
 1. **A HIT counts only if it replays.** Judge noise and sampling variance
-   produce false positives, so every cited result was re-run.
+   produce false positives, so every cited engine result was re-run. The
+   comparison arms say when they rest on one run.
 2. **One configuration, no cherry-picking.** A headline number comes from one
    uniform configuration across the full question set, never a best-of-N.
 3. **Caveats stay attached to the number.** A lower bound or a trade-off is

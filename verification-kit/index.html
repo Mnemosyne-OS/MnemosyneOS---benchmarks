@@ -317,13 +317,13 @@
     </div>
     <div class="stat">
       <div class="n">72.9%</div>
-      <div class="frac">35 / 48 · composed · July floor</div>
+      <div class="frac">35 / 48 · composed · July</div>
       <div class="d">Full engine, with memory consolidation, <b>flexible</b> judge — 30/40 carried from the baseline + 5/8 measured on multi-session. <span class="badge-v ok">✓ recomputable</span></div>
     </div>
     <div class="stat reported">
-      <div class="n">77.1%</div>
-      <div class="frac">37 / 48 · measured · <b>strict</b> judge</div>
-      <div class="d">Full engine + the lexical channel, August — one 48-question run, reproduced twice, verdict for verdict. <span class="badge-v ok">✓ recomputable</span></div>
+      <div class="n">72.9%</div>
+      <div class="frac">35 / 48 · measured · <b>strict</b> judge</div>
+      <div class="d">Full engine + the lexical channel, August — two runs of the same 48 questions, a HIT counts only if both are a HIT. Corrected 2026-09-28 (was 37/48, <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/blob/main/ERRATUM.md">erratum</a>). <span class="badge-v ok">✓ recomputable</span></div>
     </div>
     <div class="stat">
       <div class="n">50%</div>
@@ -366,7 +366,7 @@
 
 <span class="cmt"># and audit the grader itself against the public ground truth</span>
 <span class="cmd">$ node scoring.js --selftest</span>
-<span class="ok">✓</span> self-test: 6/6 expected verdicts reproduced</pre>
+<span class="ok">✓</span> self-test: 22/22 expected verdicts reproduced</pre>
     </div>
     <p class="note"><b>Trace any row yourself.</b> Every question id below is the official LongMemEval id — look it up in the public dataset to see the question, the haystack, and the ground-truth answer.</p>
   </div>
@@ -385,12 +385,13 @@
           <tr><td>Evidence sessions retrieved (deterministic, no LLM)</td><td>38/48</td><td><b>41/48</b></td></tr>
           <tr><td>Answer-bearing chunk served (35 tracked)</td><td>25/35</td><td><b>30/35</b></td></tr>
           <tr><td><b>Holdout</b> — 48 questions never seen in development</td><td>—</td><td><b>+4/−0 sessions · +2/−0 chunks</b></td></tr>
-          <tr><td>End-to-end, <b>strict judge</b>, both-runs replay rule</td><td>29/48 · 60.4%</td><td><b>37/48 · 77.1%</b> (+9/−1 paired, p&nbsp;=&nbsp;0.0215)</td></tr>
-          <tr><td>The same answers, <b>flexible judge</b> (July's grader), same rule</td><td>34/48 · 70.8%</td><td><b>39/48 · 81.3%</b> (+7/−2 paired)</td></tr>
+          <tr><td>End-to-end, <b>strict judge</b>, both-runs replay rule</td><td>29/48 · 60.4% (one run)</td><td><b>35/48 · 72.9%</b> (+9/−3 paired, p&nbsp;=&nbsp;0.146)</td></tr>
+          <tr><td>The same answers, <b>flexible judge</b> (July's grader), same rule</td><td>34/48 · 70.8% (one run)</td><td><b>37/48 · 77.1%</b> (+7/−4 paired, p&nbsp;=&nbsp;0.549)</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="note"><b>Audit it:</b> raw runs and the reading key live in <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/tree/main/lexical-2026-08"><code class="mono">lexical-2026-08/</code></a>; the ledgers are <a href="results/lexical-baseline-strict-48q.jsonl"><code class="mono">lexical-baseline-strict-48q.jsonl</code></a>, <a href="results/lexical-fusion-strict-48q.jsonl"><code class="mono">lexical-fusion-strict-48q.jsonl</code></a> and their <a href="results/lexical-fusion-flexible-48q.jsonl">flexible twins</a> — the <b>same answers under both graders</b>, so the leniency difference is something you check rather than something we assert. All four are mechanically extracted (<code class="mono">extract-ledgers.mjs</code>), both runs named on every row. <code class="mono">node verify.js</code> recomputes every cell above, including the holdout, and fails on any mismatch. The development sample runs ~13 points easier than its parent set (why the holdout exists), the judge's noise floor is ≈2.6 verdicts/48, and <b>no product comparison is claimed</b> — both arms are our own montages under our own protocol.</p>
+    <p class="note"><b>Audit it:</b> raw runs and the reading key live in <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/tree/main/lexical-2026-08"><code class="mono">lexical-2026-08/</code></a>; the ledgers are <a href="results/lexical-baseline-strict-48q.jsonl"><code class="mono">lexical-baseline-strict-48q.jsonl</code></a>, <a href="results/lexical-fusion-strict-48q.jsonl"><code class="mono">lexical-fusion-strict-48q.jsonl</code></a> and their <a href="results/lexical-fusion-flexible-48q.jsonl">flexible twins</a> — the <b>same answers under both graders</b>, so the leniency difference is something you check rather than something we assert. All four are mechanically extracted (<code class="mono">extract-ledgers.mjs</code>), both runs named on every row. <code class="mono">node verify.js</code> recomputes every cell above, including the holdout, and fails on any mismatch. The development sample runs ~13 points easier than its parent set (why the holdout exists), the judge's noise floor is ≈2.6 verdicts/48, and <b>no product comparison is claimed</b> — both arms are our own montages under our own protocol. The holdout measures retrieval only. The answer-side gain is not statistically significant.</p>
+    <p class="note"><b>Corrected on 2026-09-28.</b> The end-to-end rows read 37/48 and 39/48 until an external audit by Julien Gelee. A human reading overturned two judge verdicts: <code class="mono">gpt4_76048e76</code> (expected "bike", the answer says "car first") and <code class="mono">6ade9755</code> (run 2 names the right yoga studio, then says the user is still looking for one). Both are listed in <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/blob/main/lexical-2026-08/human-audit.json"><code class="mono">human-audit.json</code></a>, shown on their ledger rows, and printed by <code class="mono">verify.js</code>. Full record: <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/blob/main/ERRATUM.md">ERRATUM.md</a>.</p>
   </div>
 </section>
 
@@ -435,7 +436,7 @@
       <div class="arrow">→</div>
       <div class="end b"><div class="big">5/8</div><div class="cap">full engine</div></div>
     </div>
-    <p class="note"><b>How 72.9% is built — two separate caveats, kept separate.</b> <b>(1) It is composed, not measured in one run.</b> Only the multi-session category (8 questions) was re-run with the engine; the other 40 rows are carried verbatim from the baseline ledger. There has never been a single 48-question run of the full engine, and <code class="mono">verify.js</code> prints that composition every time it runs. <b>(2) It is a lower bound</b> — those 40 carried questions were never retried with consolidation, so a full re-run can only raise the figure. Also worth stating: 1 of the 5 multi-session HITs (<code class="mono">e831120c</code>) was already a baseline HIT, so the engine's net recovery is <b>4 questions</b>, not 5.</p>
+    <p class="note"><b>How July's 72.9% is built.</b> <b>It is composed, not measured in one run.</b> Only the multi-session category (8 questions) was re-run with the engine; the other 40 rows are carried verbatim from the baseline ledger. There has never been a single 48-question run of the full engine, and <code class="mono">verify.js</code> prints that composition every time it runs. This page also called it a lower bound until 2026-09-28. That claim is withdrawn: nothing showed a full re-run can only raise it, and an August full-engine run of the same 48 questions under the same flexible judge scored 34/48. Also worth stating: 1 of the 5 multi-session HITs (<code class="mono">e831120c</code>) was already a baseline HIT, so the engine's net recovery is <b>4 questions</b>, not 5.</p>
     <p class="note"><b>What we discarded, and why.</b> A HIT counts only if it reproduces on a second run. Two first-run HITs did not, and both are published in the ledger with their discarded verdict intact rather than deleted: <code class="mono">gpt4_59c863d7</code> (model kits) — <i>judge noise</i>: the engine gave the same answer ("6 kits", ground truth "five") in both runs, and only the first judge called it a HIT. <code class="mono">aae3761f</code> (road trips) — <i>answer variance</i>: the first run answered "15 hours" and was correctly scored HIT, the replay found only two of the three trips and answered "11 hours". Both are scored MISS. You may disagree with discarding them — the data to argue the other way is published.</p>
   </div>
 </section>
@@ -466,7 +467,7 @@
 
 <footer>
   <div class="wrap">
-    In this kit: <a href="scoring.js">scoring.js</a> (the whole grader) · <a href="verify.js">verify.js</a> (independent re-scorer) · <a href="results/">results/*.jsonl</a> (per-question verdicts) · <a href="METHODOLOGY.md">METHODOLOGY.md</a> · <a href="RESULTS.md">RESULTS.md</a><br>
+    In this kit: <a href="scoring.js">scoring.js</a> (the grader and the rule that decides) · <a href="verify.js">verify.js</a> (independent re-scorer) · <a href="results/">results/*.jsonl</a> (per-question verdicts) · <a href="METHODOLOGY.md">METHODOLOGY.md</a> · <a href="RESULTS.md">RESULTS.md</a><br>
     Dataset: LongMemEval-M (public). The harness that drives the memory engine is coupled to the private core of Mnemosyne OS and is not published — everything needed to audit the scoring and methodology is here.
   </div>
 </footer>

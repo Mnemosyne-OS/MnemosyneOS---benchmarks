@@ -13,6 +13,7 @@
  *   duel-full.rejudged.json      vector-only full engine, strict re-judge
  *   duel-full-lexfusion.json     + lexical channel, run 1
  *   duel-full-lexfusion-r2.json  + lexical channel, run 2 (independent replay)
+ * and ./human-audit.json, the judge verdicts a human reading overturned.
  *
  * Outputs (../verification-kit/results/), one pair per judge leniency:
  *   lexical-baseline-strict-48q.jsonl    lexical-baseline-flexible-48q.jsonl
@@ -39,6 +40,40 @@ const base = load('duel-full.rejudged.json');
 const r1 = load('duel-full-lexfusion.json');
 const r2 = load('duel-full-lexfusion-r2.json');
 
+// Judge verdicts overturned by a human reading (./human-audit.json). The run
+// files keep the judge's words; the ledgers apply the audit and show both.
+const AUDIT = JSON.parse(readFileSync(join(HERE, 'human-audit.json'), 'utf8')).overrides;
+const auditFor = (file, id, lenity) =>
+  AUDIT.find((o) => o.question_id === id && o.runs.includes(file) && o.leniencies.includes(lenity)) ?? null;
+// The verdict a run counts with: the judge's, unless the audit overturned it.
+const verdictOf = (file, row, lenity) => {
+  const o = auditFor(file, row.id, lenity);
+  return o ? o.verdict === 'HIT' : row.judge[lenity] === true;
+};
+const runEntry = (file, row, lenity) => {
+  const o = auditFor(file, row.id, lenity);
+  return {
+    log: `lexical-2026-08/runs/${file}`,
+    verdict: verdictOf(file, row, lenity) ? 'HIT' : 'MISS',
+    ...(o ? { judge_verdict: row.judge[lenity] ? 'HIT' : 'MISS', overturned_by: 'lexical-2026-08/human-audit.json' } : {}),
+    answer: trunc(row.generated),
+  };
+};
+// Who decided. The harness sent every answer of this campaign to the judge and
+// the judge's verdict is the verdict. The substring heuristic ran too, and its
+// result is kept apart so nobody reads it as the decision. (Until 2026-09-28
+// match_type carried the heuristic's label, which read as "the heuristic
+// decided these rows". It never did.)
+const decidedBy = (r) => ({
+  match_type: 'llm_judge',
+  heuristic_correct: r.judge.heuristic,
+  heuristic_match: r.judge.matchType,
+});
+const auditNote = (id, lenity) => {
+  const o = AUDIT.find((x) => x.question_id === id && x.leniencies.includes(lenity));
+  return o ? { human_audit: { reason: o.reason, found_by: o.found_by, runs: o.runs } } : {};
+};
+
 const byId = (rows) => new Map(rows.map((r) => [r.id, r]));
 const r2M = byId(r2);
 
@@ -58,7 +93,8 @@ const cap = (s) => s[0].toUpperCase() + s.slice(1);
 // expected_* field is derived from the rows the ledger ships with.
 
 const buildBaseline = (lenity) => {
-  const hits = base.filter((r) => r.judge[lenity] === true).length;
+  const BF = 'duel-full.rejudged.json';
+  const hits = base.filter((r) => verdictOf(BF, r, lenity)).length;
   const meta = {
     _meta: {
       run: `LongMemEval-M full-haystack, full engine (spine-sort + dream ledgers), vector-only retrieval — ${lenity.toUpperCase()} judge`,
@@ -73,23 +109,18 @@ const buildBaseline = (lenity) => {
       expected_hits: hits,
       expected_total: 48,
       expected_accuracy_pct: +((100 * hits) / 48).toFixed(1),
-      note: `${cap(lenity)} verdicts extracted from lexical-2026-08/runs/duel-full.rejudged.json by lexical-2026-08/extract-ledgers.mjs. The same raw file carries the other leniency, published as its own ledger. This 48-question sample runs ~13 points easier than its parent set (see the campaign SUMMARY); the paired ledger to read it against is lexical-fusion-${lenity}-48q.jsonl. generated/expected are truncated excerpts; the full strings are in the committed run file.`,
+      note: `${cap(lenity)} verdicts extracted from lexical-2026-08/runs/duel-full.rejudged.json by lexical-2026-08/extract-ledgers.mjs. The same raw file carries the other leniency, published as its own ledger. This arm rests on ONE run: it was never replayed, so the both-runs rule of the fused arm does not apply to it. This 48-question sample runs ~13 points easier than its parent set (see the campaign SUMMARY); the paired ledger to read it against is lexical-fusion-${lenity}-48q.jsonl. match_type is the label of the substring heuristic, recorded for reference only: the LLM judge decided every verdict. generated/expected are truncated excerpts; the full strings are in the committed run file.`,
     },
   };
   const rows = base.map((r) => ({
     question_id: r.id,
     category: r.cat,
-    correct: r.judge[lenity] === true,
-    match_type: r.judge.heuristic ? r.judge.matchType : 'llm_judge',
+    correct: verdictOf(BF, r, lenity),
+    ...decidedBy(r),
+    ...auditNote(r.id, lenity),
     generated: trunc(r.generated),
     expected: trunc(r.gold),
-    runs: [
-      {
-        log: 'lexical-2026-08/runs/duel-full.rejudged.json',
-        verdict: r.judge[lenity] ? 'HIT' : 'MISS',
-        answer: trunc(r.generated),
-      },
-    ],
+    runs: [runEntry(BF, r, lenity)],
   }));
   return { meta, rows, hits };
 };
@@ -97,19 +128,25 @@ const buildBaseline = (lenity) => {
 const buildFusion = (lenity, baselineRows) => {
   const baseCorrect = new Map(baselineRows.map((r) => [r.question_id, r.correct]));
   let disagreements = 0;
+  const F1 = 'duel-full-lexfusion.json';
+  const F2 = 'duel-full-lexfusion-r2.json';
   const rows = r1.map((r) => {
     const twin = r2M.get(r.id);
     if (!twin) throw new Error(`run 2 is missing question ${r.id}`);
-    const stable = r.judge[lenity] === twin.judge[lenity];
+    const v1 = verdictOf(F1, r, lenity);
+    const v2 = verdictOf(F2, twin, lenity);
+    const stable = v1 === v2;
     if (!stable) disagreements++;
+    const audited = !!(auditFor(F1, r.id, lenity) || auditFor(F2, twin.id, lenity));
     return {
       question_id: r.id,
       category: r.cat,
-      // Replay rule: a HIT counts only if BOTH independent runs judged it a HIT.
+      // Replay rule: a HIT counts only if BOTH independent runs are a HIT.
       // Applied identically to both leniencies — a rule that only ever tightened
       // the number we like least would not be a rule.
-      correct: r.judge[lenity] === true && twin.judge[lenity] === true,
-      match_type: r.judge.heuristic ? r.judge.matchType : 'llm_judge',
+      correct: v1 && v2,
+      ...decidedBy(r),
+      ...auditNote(r.id, lenity),
       replay_stable: stable,
       baseline_correct: baseCorrect.has(r.id) ? baseCorrect.get(r.id) : null,
       generated: trunc(r.generated),
@@ -117,20 +154,11 @@ const buildFusion = (lenity, baselineRows) => {
       ...(stable
         ? {}
         : {
-            discard_reason: `${lenity} verdict differed between the two runs; scored by the conjunction, both verdicts kept visible in the committed run files`,
+            discard_reason: audited
+              ? `the two runs disagree after the human audit (lexical-2026-08/human-audit.json); scored by the conjunction`
+              : `${lenity} verdict differed between the two runs; scored by the conjunction, both verdicts kept visible in the committed run files`,
           }),
-      runs: [
-        {
-          log: 'lexical-2026-08/runs/duel-full-lexfusion.json',
-          verdict: r.judge[lenity] ? 'HIT' : 'MISS',
-          answer: trunc(r.generated),
-        },
-        {
-          log: 'lexical-2026-08/runs/duel-full-lexfusion-r2.json',
-          verdict: twin.judge[lenity] ? 'HIT' : 'MISS',
-          answer: trunc(twin.generated),
-        },
-      ],
+      runs: [runEntry(F1, r, lenity), runEntry(F2, twin, lenity)],
     };
   });
   const hits = rows.filter((r) => r.correct).length;
@@ -153,7 +181,7 @@ const buildFusion = (lenity, baselineRows) => {
       replay_rule:
         'A HIT counts only if it reproduces on a second independent run of the same configuration. Both runs are named per row in `runs` and committed in lexical-2026-08/runs/.',
       composition_note: `Paired against lexical-baseline-${lenity}-48q.jsonl: +${gains} gained, −${regressions} regressed, per the baseline_correct field on every row. This sample was used during development; the transfer check on 48 UNSEEN questions is the deterministic-retrieval holdout in lexical-2026-08/runs/recall-hold-{off,on}.json, recomputed by verify.js.`,
-      note: `${cap(lenity)} verdicts extracted mechanically by lexical-2026-08/extract-ledgers.mjs; the same run files carry the other leniency, published as its own ledger. generated/expected are truncated excerpts; full strings are in the committed run files.`,
+      note: `${cap(lenity)} verdicts extracted mechanically by lexical-2026-08/extract-ledgers.mjs; the same run files carry the other leniency, published as its own ledger. Judge verdicts overturned by the human audit of 2026-09-27/28 (lexical-2026-08/human-audit.json) are applied here and stay visible on their rows. match_type is 'llm_judge' on every row because the judge decided every verdict; the substring heuristic's own result is in heuristic_correct / heuristic_match. generated/expected are truncated excerpts; full strings are in the committed run files.`,
     },
   };
   return { meta, rows, hits, gains, regressions, disagreements };
