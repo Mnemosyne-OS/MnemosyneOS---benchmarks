@@ -32,7 +32,9 @@ gate, not a formality.
    transcript.)
 2. **Never publish the harness, the core engine, or anything that reveals engine
    internals.** The harness lives in the private monorepo and stays there. This
-   repo publishes *evidence*, not implementation.
+   repo publishes *evidence*, not implementation. One exception, decided on
+   2026-09-30: the prompt the reader receives in a pre-registered run is
+   published verbatim with its protocol, so the answers can be replayed.
 3. **Never present a composed number as a measured one.** See below — this is the
    mistake that was already made once here and had to be corrected.
 4. **Never silently drop a verdict.** A discarded HIT stays in the ledger with
