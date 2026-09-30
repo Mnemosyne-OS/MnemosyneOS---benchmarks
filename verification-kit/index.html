@@ -309,7 +309,22 @@
 </header>
 
 <div class="wrap">
-  <div class="stats reveal">
+  <p class="label" style="margin-top:40px">Latest · the rerun of 2026-09-30, protocol published before it ran</p>
+  <div class="stats reveal" style="margin-top:12px">
+    <div class="stat">
+      <div class="n">77.1%</div>
+      <div class="frac">37 / 48 · holdout · official judge</div>
+      <div class="d">48 questions the engine had never answered, graded by the official LongMemEval judge (gpt-4o). A HIT counts only if both passes are a HIT. <span class="badge-v ok">✓ recomputable</span></div>
+    </div>
+    <div class="stat">
+      <div class="n">85.4%</div>
+      <div class="frac">41 / 48 · dev · <b>strict</b> judge</div>
+      <div class="d">The 48 questions of the earlier campaigns, used to tune the engine. Strict judge read by gemini-3.5-flash. <span class="badge-v ok">✓ recomputable</span></div>
+    </div>
+  </div>
+  <p class="note">Reader gemini-3.8-flash. Every answer, every raw judge reply, the human audit and a <code class="mono">verify.js</code> are in <a href="https://github.com/Mnemosyne-OS/MnemosyneOS---benchmarks/tree/main/longmemeval-rerun-2026-10"><code class="mono">longmemeval-rerun-2026-10/</code></a>. The reader, the engine and the strict judge's model all changed since August, so the figures below do not chain into these.</p>
+  <p class="label" style="margin-top:40px">Earlier campaigns, July and August 2026</p>
+  <div class="stats reveal" style="margin-top:12px">
     <div class="stat">
       <div class="n">64.6%</div>
       <div class="frac">31 / 48 · full-haystack</div>
