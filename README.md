@@ -21,7 +21,9 @@ numbers instead of trusting them.
 
 | Benchmark | Score | Judge | Campaign |
 |---|---|---|---|
-| LongMemEval-M, full haystack | **72.9 %** (35/48) | strict | [2026-08](lexical-2026-08/SUMMARY.md) |
+| LongMemEval-M, full haystack, holdout, pre-registered | **77.1 %** (37/48) | official LongMemEval (gpt-4o) | [2026-10](longmemeval-rerun-2026-10/SUMMARY.md) |
+| LongMemEval-M, full haystack, dev, pre-registered | **85.4 %** (41/48) | strict (gemini-3.5-flash) | [2026-10](longmemeval-rerun-2026-10/SUMMARY.md) |
+| LongMemEval-M, full haystack | **72.9 %** (35/48) | strict (gemini-2.5-flash) | [2026-08](lexical-2026-08/SUMMARY.md) |
 | LongMemEval-M, full haystack | **77.1 %** (37/48) | flexible, same answers | [2026-08](lexical-2026-08/SUMMARY.md) |
 | LongMemEval-M, full haystack | **72.9 %** (35/48), composed | flexible | [2026-07](fullhaystack-2026-07/SUMMARY.md) |
 | BEAM, 100K tier | **61.7 %** (400 questions) | BEAM's official judge | [2026-09](beam-2026-09/SUMMARY.md) |
@@ -30,13 +32,19 @@ numbers instead of trusting them.
 Each score names its judge. Two judges grade the same answers differently, so
 two scores from two judges never form a progression.
 
+The 2026-10 rerun followed a protocol published before it ran. Its holdout
+set had never been answered before. Its dev set is the 48 questions of the
+earlier campaigns. The two dev scores differ by the engine, the reader and the
+strict judge's model at once, so they do not measure one change.
+
 ## Recompute the numbers yourself
 
 The [**verification kit**](verification-kit/) ships the exact grader, the
 per-question verdicts behind each LongMemEval score, and a tool that recomputes
-the accuracy from those verdicts. The BEAM campaign has its own
-[`verify.js`](beam-2026-09/verify.js). Both run offline, with no memory engine
-and no dependencies:
+the accuracy from those verdicts. The 2026-10 rerun has its own
+[`verify.js`](longmemeval-rerun-2026-10/verify.js), and so does the BEAM
+campaign ([`verify.js`](beam-2026-09/verify.js)). All three run offline, with no
+memory engine and no dependencies:
 
 ```bash
 cd verification-kit

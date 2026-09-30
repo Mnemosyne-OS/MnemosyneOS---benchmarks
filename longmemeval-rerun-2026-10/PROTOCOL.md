@@ -173,7 +173,23 @@ The substring heuristic of `scoring.js` is recorded and decides nothing.
 
 ## 10. Deviations
 
-None yet.
+Logged on 2026-09-30, after the run. The run itself went from 14:30 to
+16:49 UTC the same day.
+
+1. **The monorepo commit changed during the run.** Section 4 names
+   `f9cc5ba52`. The run logs name `f9cc5ba52`, `4cdb41402`, `1785e0abe`,
+   `419a8886e` and `e817b72c3`. Another working session committed changes to
+   the app's image studio and neural map while the run was going. None of
+   these commits touches `packages/core-engine` or the benchmark harness, and
+   every run file records the engine dist SHA-256 fixed in section 4.
+   `verify.js` checks the dist in every file.
+2. **Section 9 asks for ledgers extracted by script.** The raw run files are
+   published instead, untruncated, and `verify.js` reads them directly. There
+   is no intermediate file to trust.
+3. **Network.** For the first 35 minutes, some reader calls took up to 343
+   seconds because of a slow network route to Vertex. One holdout question
+   (`001be529`, vector arm, pass 2) failed once and succeeded on its retry,
+   as section 6 allows. No question ended as an infrastructure failure.
 
 ## 11. What the development runs measured (dev set, before the freeze)
 

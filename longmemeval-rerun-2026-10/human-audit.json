@@ -1,0 +1,73 @@
+{
+  "_about": "Judge verdicts overturned by a human reading of the full answer, as PROTOCOL.md section 8 allows. The judged-*.json files are left exactly as the judges wrote them. Scores are published before and after this list, side by side.",
+  "audited": "2026-09-30. Every question where the two judges disagree (12), and every YES given to an answer that says it cannot tell, in both sets, both arms, both passes. A wrong answer that both judges called YES is not covered by this reading.",
+  "overrides": [
+    {
+      "set": "dev",
+      "question_id": "gpt4_2487a7cb",
+      "runs": ["judged-dev-fused-p1.json", "judged-dev-fused-p2.json", "judged-dev-vector-p1.json", "judged-dev-vector-p2.json"],
+      "judges": ["strict"],
+      "verdict": "MISS",
+      "expected": "'Data Analysis using Python' webinar",
+      "answer_says": "There is no record in the memory context of an \"Effective Time Management\" workshop",
+      "reason": "The answer says it cannot tell which event came first, so it does not give the expected event. The strict judge said YES in all four runs; the official judge said NO.",
+      "found_by": "Claude (audit pass), validated by Tony Trochet (Yaka), 2026-09-30"
+    },
+    {
+      "set": "dev",
+      "question_id": "gpt4_76048e76",
+      "runs": ["judged-dev-vector-p1.json", "judged-dev-vector-p2.json"],
+      "judges": ["official"],
+      "verdict": "MISS",
+      "expected": "bike",
+      "answer_says": "You took care of your car first in February.",
+      "reason": "A-vs-B substitution: the answer picks the car. The same failure Julien Gelee found in the July run. The official judge said YES in both vector passes; the strict judge said NO.",
+      "found_by": "Claude (audit pass), validated by Tony Trochet (Yaka), 2026-09-30"
+    },
+    {
+      "set": "holdout",
+      "question_id": "0bc8ad93",
+      "runs": ["judged-holdout-fused-p1.json"],
+      "judges": ["official", "strict"],
+      "verdict": "MISS",
+      "expected": "No, you did not visit with a friend.",
+      "answer_says": "The context does not state whether you attended that visit with a friend or alone.",
+      "reason": "The answer says it cannot tell; the expected answer is a definite no. Both judges said YES in this pass. The second pass was already a MISS, so the both-passes score does not change.",
+      "found_by": "Claude (audit pass), validated by Tony Trochet (Yaka), 2026-09-30"
+    },
+    {
+      "set": "holdout",
+      "question_id": "0bc8ad93",
+      "runs": ["judged-holdout-vector-p1.json"],
+      "judges": ["official"],
+      "verdict": "MISS",
+      "expected": "No, you did not visit with a friend.",
+      "answer_says": "there is no record of you visiting a museum two months ago (around January 2023), nor whether an[yone accompanied you]",
+      "reason": "The answer says there is no record; the expected answer is a definite no. The official judge said YES in this pass. The second pass was already a MISS, so the both-passes score does not change.",
+      "found_by": "Claude (audit pass), validated by Tony Trochet (Yaka), 2026-09-30"
+    },
+    {
+      "set": "holdout",
+      "question_id": "07741c45",
+      "runs": ["judged-holdout-vector-p1.json"],
+      "judges": ["strict"],
+      "verdict": "MISS",
+      "expected": "in a shoe rack in my closet",
+      "answer_says": "Current location: Taking up space on the closet floor ... Planned location: a shoe rack inside the closet",
+      "reason": "The answer gives the closet floor as the current place and the shoe rack as a plan, the reverse of the expected answer. The strict judge said YES in this pass; the official judge said NO.",
+      "found_by": "Claude (audit pass), validated by Tony Trochet (Yaka), 2026-09-30"
+    }
+  ],
+  "kept_as_judged": [
+    {
+      "set": "holdout",
+      "question_id": "15745da0",
+      "note": "Expected 'three months'. The answer says 3 months as of 2023/05/20, then 'roughly 3.5 months' as of the question date. The official judge said NO twice, the strict judge YES twice. Arguable in the answer's favour, so left as judged."
+    },
+    {
+      "set": "dev",
+      "question_id": "gpt4_59c863d7",
+      "note": "Expected 'five model kits'. The haystack mentions more kits than the expected answer counts. A dataset issue, not a judge error: the expected answer is never overruled."
+    }
+  ]
+}
