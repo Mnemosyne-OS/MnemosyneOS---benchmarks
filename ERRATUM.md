@@ -84,10 +84,25 @@ it: [`longmemeval-rerun-2026-10/`](longmemeval-rerun-2026-10/SUMMARY.md). Sessio
 were anonymized before ingestion, the official judge receives the question, and
 a question counts only when both passes are correct.
 
-Julien also asked for the rule that combines heuristic and judge with the raw
-judge outputs, the full `aae3761f` transcript, the holdout sampling rule and
-the exact LongMemEval-M version. They will be added here.
+Julien also asked for four more pieces. Where each one stands:
+
+- **The rule that combines heuristic and judge** is in `scoring.js` as
+  `finalVerdict()` (item 2 above).
+- **The raw judge outputs.** For the rerun, every judge prompt and raw reply is
+  published in `longmemeval-rerun-2026-10/runs/judged-*.json`.
+- **The holdout sampling rule and the exact LongMemEval-M version** are in
+  sections 2 and 3 of `longmemeval-rerun-2026-10/PROTOCOL.md`, with the
+  corpus file's SHA-256.
+- **The full `aae3761f` transcript of July does not exist.** The July harness
+  kept only the first ~200 characters of each answer in its logs
+  (`fullhaystack-2026-07/logs/spine-dream-multirun.log` and `exp-verify.log`),
+  and the full text was never saved elsewhere. What the SUMMARY says about the
+  two runs ("15 hours", then "11 hours") rests on those truncated lines. The
+  rerun keeps every answer untruncated: `aae3761f` is in its dev set, with its
+  full answers and verdicts in the four `runs/*-dev-*` files.
 
 The July campaign stays as published under its DOI. This erratum applies to it.
 
 Thank you to Julien Gelee for reading the logs and for writing it all down.
+This audit covered the published files, ledgers and arithmetic. It does not
+evaluate the product or the closed engine.
