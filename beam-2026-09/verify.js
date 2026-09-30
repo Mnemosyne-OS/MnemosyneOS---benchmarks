@@ -186,8 +186,9 @@ console.log('\nDegradation across the tiers');
   const s10m = scoreOf(read('beam-10M-v1.judged-gpt-4.1-mini.json')).overall;
   const rel = ((s100 - s10m) / s100) * 100;
   pass(`${pct(s100)}% -> ${pct(s10m)}%  =  ${rel.toFixed(0)}% relative loss`);
-  console.log("   For scale, BEAM's own paper reports its baselines falling 0.30 -> 0.12 over the");
-  console.log('   same jump, a 60% relative loss. That figure is theirs and is NOT recomputed here.');
+  console.log("   For scale, Table 1 of BEAM's paper (arXiv 2510.27246) over the same jump:");
+  console.log('   RAG baselines lose 22-29%, LIGHT 23-35%, models reading the whole conversation');
+  console.log('   50-57%. Those figures are theirs and are NOT recomputed here.');
 }
 
 console.log('');

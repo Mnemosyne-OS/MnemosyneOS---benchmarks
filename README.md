@@ -99,7 +99,8 @@ Mnemosyne OS was run at two of its tiers, 100K and 10M, graded by **BEAM's own
 judge**.
 
 **A 76× larger haystack costs 20 % of the score** (61.7 % at 100K, 49.2 % at
-10M). The benchmark paper's own baselines lose 60 % over the same range. That
+10M). In the benchmark paper, the RAG baselines lose 22 to 29 % over the same
+range, and the models that read the whole conversation lose 50 to 57 %. That
 ratio compares Mnemosyne OS to itself on one rig, and it is what the campaign
 is published for. Other systems report BEAM scores with their own reader and
 judge, so those scores measure different setups. Details are in the
@@ -115,7 +116,7 @@ The files in [`verification-kit/`](verification-kit/) are the source behind it.
 |---|---|---|
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
 | [Lexical channel: hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 35/48** (fused arm reproduced ×2, p = 0.146, corrected 2026-09-28), retrieval holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
-| [BEAM: how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M, a **20 % relative loss for a 76× larger haystack**. The benchmark paper's own baselines lose 60 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
+| [BEAM: how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M, a **20 % relative loss for a 76× larger haystack**. The paper's RAG baselines lose 22 to 29 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
 
 ## What "full-haystack" means
 

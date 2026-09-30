@@ -69,12 +69,20 @@ reasoning is in the audit file.
 6. **The substring heuristic matched "3" in "30"** and "4" in "14". The judge
    overruled every such case in our runs, so no published verdict changed.
    The heuristic now matches whole numbers only, and the self-test covers it.
+7. **"The benchmark paper's own baselines lose 60 % on BEAM."** Added on
+   2026-09-30, after Julien Gelee pointed at it. Table 1 of the BEAM paper
+   (arXiv 2510.27246) shows no row going from 0.30 to 0.12. From 100K to 10M,
+   its RAG baselines lose 22 to 29 %, its LIGHT method 23 to 35 %, and the
+   models that read the whole conversation 50 to 57 %. Mnemosyne OS loses 20 %,
+   in the range of the RAG baselines. The README, the BEAM `verify.js` and the
+   website now say so.
 
 ## What comes next
 
-We will rerun LongMemEval in full: the whole engine on all 48 questions in one
-run, session ids anonymized before ingestion, a judge that receives the
-question, and two passes. The result will be published whatever it is.
+The full LongMemEval rerun ran on 2026-09-30 under a protocol published before
+it: [`longmemeval-rerun-2026-10/`](longmemeval-rerun-2026-10/SUMMARY.md). Session ids
+were anonymized before ingestion, the official judge receives the question, and
+a question counts only when both passes are correct.
 
 Julien also asked for the rule that combines heuristic and judge with the raw
 judge outputs, the full `aae3761f` transcript, the holdout sampling rule and
