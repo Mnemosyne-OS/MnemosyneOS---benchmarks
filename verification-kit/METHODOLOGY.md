@@ -136,9 +136,10 @@ were discarded for failing to reproduce:
 - `gpt4_59c863d7` (model kits) — **judge noise**: the engine gave the *same*
   answer ("6 kits", ground truth "five") in both runs; the first judge scored it
   HIT, the replay scored it MISS. Scored MISS.
-- `aae3761f` (road trips) — **answer variance**: the first run answered "15
-  hours" (correct, scored HIT), the replay answered "11 hours" — it found only
-  two of the three trips — and was correctly scored MISS. Scored MISS.
+- `aae3761f` (road trips) — **answer variance**: the first run was scored HIT,
+  but its logged answer is cut at ~200 characters, before any total. The replay
+  found only two of the three trips, answered "11 hours", and was correctly
+  scored MISS. Scored MISS.
 
 Both are kept visible in the ledger with their discarded verdict rather than
 deleted. You may disagree with discarding them — the data to argue the other way

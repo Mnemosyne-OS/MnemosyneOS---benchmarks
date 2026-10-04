@@ -15,7 +15,9 @@ numbers instead of trusting them.
 > **Erratum, 2026-09-28.** An external audit by Julien Gelee found a wrong
 > verdict and several sentences that claimed more than the files show. The
 > August scores went from 77.1 % to 72.9 % (strict) and from 81.3 % to 77.1 %
-> (flexible). Everything that changed is in [ERRATUM.md](ERRATUM.md).
+> (flexible). Everything that changed is in [ERRATUM.md](ERRATUM.md). This
+> audit covered the published files, ledgers and arithmetic. It does not
+> evaluate the product or the closed engine.
 
 ## The numbers
 

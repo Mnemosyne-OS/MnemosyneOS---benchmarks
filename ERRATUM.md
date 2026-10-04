@@ -100,6 +100,12 @@ Julien also asked for four more pieces. Where each one stands:
   two runs ("15 hours", then "11 hours") rests on those truncated lines. The
   rerun keeps every answer untruncated: `aae3761f` is in its dev set, with its
   full answers and verdicts in the four `runs/*-dev-*` files.
+- **Two quoted answers did not match their logs** (fixed 2026-10-03, reported by
+  Julien Gelee). In `verification-kit/results/engine-multisession-8q.jsonl`, run 1
+  of `aae3761f` was quoted as ending "... total 15 hours.", and the replay of
+  `3a704032` was shortened. Both are now quoted exactly as logged. The log of
+  run 1 of `aae3761f` is cut before any total, so it does not show the "15
+  hours" the SUMMARY used to state. No verdict and no score changes.
 
 The July campaign stays as published under its DOI. This erratum applies to it.
 

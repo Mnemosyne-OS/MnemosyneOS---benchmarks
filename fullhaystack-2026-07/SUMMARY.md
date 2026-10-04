@@ -99,10 +99,10 @@ behind every verdict**, is published at
 - `gpt4_59c863d7` — **judge noise.** The engine gave the *same* answer ("6 model
   kits"; ground truth "five") on both runs. The first run's judge scored it HIT,
   the replay scored it MISS. The first verdict was simply wrong.
-- `aae3761f` — **answer variance.** Run 1 answered "15 hours" and was correctly
-  scored HIT; run 2 found only two of the three trips, answered "11 hours", and
-  was correctly scored MISS. The judge was right both times; the engine wasn't
-  stable.
+- `aae3761f` — **answer variance.** Run 1 was scored HIT. Its logged answer is
+  cut at ~200 characters, before any total, so the log does not show what it
+  answered. Run 2 found only two of the three trips, answered "11 hours", and
+  was correctly scored MISS. The verdict did not reproduce.
 
 Both are scored **MISS** under rule #1 below. Note also that `e831120c` was
 already a baseline HIT — so the engine's **net recovery is 4 questions**, not 5.
