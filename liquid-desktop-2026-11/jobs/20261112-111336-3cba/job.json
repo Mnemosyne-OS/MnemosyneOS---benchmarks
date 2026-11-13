@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-3cba",
+  "name": "speed LFM2.5-230M · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2.5-230M-GGUF/03502067c64c/LFM2.5-230M-Q4_K_M.gguf\" --chip cuda --name \"LFM2.5-230M Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "LFM2.5-230M",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2.5-230M-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-54f9"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.728Z",
+  "startedAt": "2026-11-12T15:37:32.854Z",
+  "endedAt": "2026-11-12T15:37:39.856Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

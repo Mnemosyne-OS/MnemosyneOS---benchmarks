@@ -1,0 +1,30 @@
+benchq: job 20261112-111336-503b "speed LFM3-1.7B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM3-1.7B-GGUF/cd0c74c575b5/LFM3-1.7B-Q4_K_M.gguf" --chip cpu --name "LFM3-1.7B Q4_K_M"
+benchq: started 2026-11-12T15:15:09.598Z
+
+LFM3-1.7B Q4_K_M · cpu: 30.4 tok/s generation, 291.6 tok/s prompt, load 1.1 s
+{
+  "model": "LFM3-1.7B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.02,
+  "gpuLayers": 0,
+  "loadMs": 1102,
+  "warmupMs": 5866,
+  "promptTokens": 512,
+  "promptTokPerSec": 291.6,
+  "promptTokPerSecMin": 274.9,
+  "promptTokPerSecMax": 303.6,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 30.4,
+  "genTokPerSecMin": 30,
+  "genTokPerSecMax": 32.7,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 28091
+}
+
+benchq: ended 2026-11-12T15:15:38.509Z code=0 signal=null

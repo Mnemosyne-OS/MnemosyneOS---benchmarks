@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-fb27",
+  "name": "speed Phi-4-mini · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__Phi-4-mini-instruct-GGUF/78eb92a46fc3/Phi-4-mini-instruct-Q4_K_M.gguf\" --chip cuda --name \"Phi-4-mini Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "Phi-4-mini",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/Phi-4-mini-instruct-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-afc8"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.823Z",
+  "startedAt": "2026-11-12T16:04:37.272Z",
+  "endedAt": "2026-11-12T16:04:59.145Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

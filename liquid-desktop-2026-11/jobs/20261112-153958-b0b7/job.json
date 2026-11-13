@@ -1,0 +1,30 @@
+{
+  "id": "20261112-153958-b0b7",
+  "name": "ov LFM3-1.7B · cpu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/LFM3-1.7B-int4-ov\" --device CPU --name LFM3-1.7B",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "LFM3-1.7B",
+    "chip": "cpu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:58.974Z",
+  "startedAt": "2026-11-12T19:42:28.645Z",
+  "endedAt": "2026-11-12T19:43:03.839Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

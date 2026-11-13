@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-fc49",
+  "name": "speed SmolLM3-3B · cpu",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf\" --chip cpu --name \"SmolLM3-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cpu",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "SmolLM3-3B",
+    "quant": "Q4_K_M",
+    "repo": "ggml-org/SmolLM3-3B-GGUF",
+    "chip": "cpu"
+  },
+  "after": [
+    "20261112-111336-a8c3"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.839Z",
+  "startedAt": "2026-11-12T16:11:38.920Z",
+  "endedAt": "2026-11-12T16:12:37.125Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,21 @@
+{
+  "model": "LFM2.5-1.2B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 20782,
+  "genTokens": 128,
+  "genTokPerSec": 70.8,
+  "genTokPerSecMin": 38.6,
+  "genTokPerSecMax": 72.6,
+  "firstTokenMs": 57,
+  "repeat": 3,
+  "procCores": 1.05,
+  "baselineCpuPct": 22.2,
+  "machineCpuPct": 23.6,
+  "addedCpuPct": 1.3,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 1944,
+  "logicalCpus": 22
+}

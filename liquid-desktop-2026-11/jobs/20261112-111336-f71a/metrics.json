@@ -1,0 +1,23 @@
+{
+  "model": "LFM3-VL-2B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.02,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1240,
+  "warmupMs": 6751,
+  "promptTokens": 512,
+  "promptTokPerSec": 277.2,
+  "promptTokPerSecMin": 269.2,
+  "promptTokPerSecMax": 288.4,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 29.7,
+  "genTokPerSecMin": 28.1,
+  "genTokPerSecMax": 30.1,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 30299
+}

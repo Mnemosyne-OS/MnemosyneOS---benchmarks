@@ -1,0 +1,23 @@
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 1469,
+  "warmupMs": 1722,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2241.8,
+  "promptTokPerSecMin": 2148.1,
+  "promptTokPerSecMax": 2251.6,
+  "genTokens": 32,
+  "firstTokenMs": 40,
+  "genTokPerSec": 52.3,
+  "genTokPerSecMin": 52,
+  "genTokPerSecMax": 54.5,
+  "repeat": 3,
+  "vramMB": 2000,
+  "totalMs": 16187
+}

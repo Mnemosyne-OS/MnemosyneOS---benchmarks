@@ -1,0 +1,29 @@
+{
+  "id": "20261112-171822-040e",
+  "name": "router Qwen3-1.7B-npu · npu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-router.py\" --model \"<models>/ov/qwen3-1.7b-int4-ov-npu\" --device NPU --set \"<private>/phrases-7lang.json\" --name Qwen3-1.7B-npu --no-think",
+  "shell": "auto",
+  "needs": [
+    "npu",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 3600000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-night",
+  "note": null,
+  "series": "ov-router",
+  "tags": {
+    "model": "Qwen3-1.7B-npu",
+    "chip": "npu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T21:18:22.323Z",
+  "startedAt": "2026-11-12T21:24:20.224Z",
+  "endedAt": "2026-11-12T21:26:52.351Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

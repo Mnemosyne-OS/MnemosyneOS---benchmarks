@@ -1,0 +1,23 @@
+benchq: job 20261112-172727-fff9 "longdoc LFM2.5-1.2B · NPU"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-longdoc.py" --model "<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov" --device NPU --doc "<private>/design-doc.txt" --name LFM2.5-1.2B --cpu-summary "<jobs>/20261112-172726-5c8c/summary.txt"
+benchq: started 2026-11-12T21:53:14.276Z
+
+longdoc LFM2.5-1.2B · NPU: 3399-token document, first word after 6.9 s, 25.3 tok/s, 0.11 CPU cores
+{
+  "model": "LFM2.5-1.2B",
+  "device": "NPU",
+  "deviceName": "Intel(R) AI Boost",
+  "promptTokens": 3399,
+  "maxPrompt": 4096,
+  "loadMs": 62652,
+  "firstTokenMs": 6880,
+  "genTokPerSec": 25.3,
+  "totalS": 11.9,
+  "procCores": 0.11,
+  "addedCpuPct": 3.7,
+  "rssMB": 2483,
+  "overlapWithCpu": 0.57
+}
+
+benchq: ended 2026-11-12T21:54:41.664Z code=0 signal=null

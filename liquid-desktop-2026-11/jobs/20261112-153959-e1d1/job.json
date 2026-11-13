@@ -1,0 +1,29 @@
+{
+  "id": "20261112-153959-e1d1",
+  "name": "ov LFM3-1.7B · rtx",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/LFM3-1.7B-int4-ov\" --device GPU.1 --name LFM3-1.7B",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "LFM3-1.7B",
+    "chip": "rtx"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:59.749Z",
+  "startedAt": "2026-11-12T19:46:45.722Z",
+  "endedAt": "2026-11-12T19:49:24.463Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

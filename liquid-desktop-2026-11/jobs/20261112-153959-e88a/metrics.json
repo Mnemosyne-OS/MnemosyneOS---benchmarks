@@ -1,0 +1,21 @@
+{
+  "model": "Qwen3-1.7B",
+  "device": "GPU.1",
+  "deviceName": "NVIDIA GeForce RTX 4050 Laptop GPU (dGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 26512,
+  "genTokens": 128,
+  "genTokPerSec": 5.4,
+  "genTokPerSecMin": 5.2,
+  "genTokPerSecMax": 5.5,
+  "firstTokenMs": 1562,
+  "repeat": 3,
+  "procCores": 1.65,
+  "baselineCpuPct": 16.6,
+  "machineCpuPct": 29.4,
+  "addedCpuPct": 12.8,
+  "baselineNvPct": 38.2,
+  "nvUtilPct": 75.2,
+  "rssMB": 1881,
+  "logicalCpus": 22
+}

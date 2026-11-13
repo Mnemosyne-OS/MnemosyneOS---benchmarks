@@ -1,0 +1,23 @@
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 1.78,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2971,
+  "warmupMs": 2527,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2238.5,
+  "promptTokPerSecMin": 2172.4,
+  "promptTokPerSecMax": 2250.1,
+  "genTokens": 29,
+  "firstTokenMs": 66,
+  "genTokPerSec": 39.9,
+  "genTokPerSecMin": 39.3,
+  "genTokPerSecMax": 54.5,
+  "repeat": 3,
+  "vramMB": 1821,
+  "totalMs": 20922
+}

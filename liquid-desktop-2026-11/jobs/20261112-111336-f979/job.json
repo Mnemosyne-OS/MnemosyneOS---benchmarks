@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-f979",
+  "name": "speed SmolLM3-3B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf\" --chip cuda --name \"SmolLM3-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "SmolLM3-3B",
+    "quant": "Q4_K_M",
+    "repo": "ggml-org/SmolLM3-3B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-a8c3"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.836Z",
+  "startedAt": "2026-11-12T16:10:04.555Z",
+  "endedAt": "2026-11-12T16:10:28.713Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

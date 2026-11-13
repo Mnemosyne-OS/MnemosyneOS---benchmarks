@@ -1,0 +1,23 @@
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 1.78,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2090,
+  "warmupMs": 4145,
+  "promptTokens": 4096,
+  "promptTokPerSec": 192.9,
+  "promptTokPerSecMin": 190.6,
+  "promptTokPerSecMax": 196.9,
+  "genTokens": 29,
+  "firstTokenMs": 419,
+  "genTokPerSec": 21.4,
+  "genTokPerSecMin": 21,
+  "genTokPerSecMax": 22.2,
+  "repeat": 3,
+  "vramMB": 1820,
+  "totalMs": 82649
+}

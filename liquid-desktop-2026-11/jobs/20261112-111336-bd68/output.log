@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-bd68 "speed Phi-4-mini · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Phi-4-mini-instruct-GGUF/78eb92a46fc3/Phi-4-mini-instruct-Q4_K_M.gguf" --chip vulkan-arc --name "Phi-4-mini Q4_K_M"
+benchq: started 2026-11-12T16:05:23.430Z
+
+[node-llama-cpp] load_arch_hparams: Phi SWA is currently disabled - results might be suboptimal for some models (see https://github.com/ggml-org/llama.cpp/pull/13676)
+Phi-4-mini Q4_K_M · vulkan-arc: 15.4 tok/s generation, 267.6 tok/s prompt, load 2.9 s
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.32,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2850,
+  "warmupMs": 9823,
+  "promptTokens": 512,
+  "promptTokPerSec": 267.6,
+  "promptTokPerSecMin": 260.5,
+  "promptTokPerSecMax": 271.5,
+  "genTokens": 128,
+  "firstTokenMs": 456,
+  "genTokPerSec": 15.4,
+  "genTokPerSecMin": 15.2,
+  "genTokPerSecMax": 16.6,
+  "repeat": 3,
+  "vramMB": 2386,
+  "totalMs": 48386
+}
+
+benchq: ended 2026-11-12T16:06:13.938Z code=0 signal=null

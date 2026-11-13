@@ -1,0 +1,30 @@
+{
+  "id": "20261112-171821-82f0",
+  "name": "router LFM2.5-1.2B · cpu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-router.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device CPU --set \"<private>/phrases-7lang.json\" --name LFM2.5-1.2B ",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 3600000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-night",
+  "note": null,
+  "series": "ov-router",
+  "tags": {
+    "model": "LFM2.5-1.2B",
+    "chip": "cpu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T21:18:21.908Z",
+  "startedAt": "2026-11-12T21:21:19.451Z",
+  "endedAt": "2026-11-12T21:23:24.199Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

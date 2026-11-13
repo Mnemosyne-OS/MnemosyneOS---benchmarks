@@ -1,0 +1,38 @@
+benchq: job 20261112-111336-b518 "speed d1-2B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__d1-2B-GGUF/4a181094d1b6/d1-2B-Q4_K_M.gguf" --chip vulkan-arc --name "d1-2B Q4_K_M"
+benchq: started 2026-11-12T15:19:06.642Z
+
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 215, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 215, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 215, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 215, got -1
+d1-2B Q4_K_M · vulkan-arc: 28.4 tok/s generation, 629 tok/s prompt, load 1.3 s
+{
+  "model": "d1-2B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 1.02,
+  "gpuLayers": 25,
+  "loadMs": 1316,
+  "warmupMs": 5612,
+  "promptTokens": 512,
+  "promptTokPerSec": 629,
+  "promptTokPerSecMin": 600.7,
+  "promptTokPerSecMax": 634.9,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 28.4,
+  "genTokPerSecMin": 28.4,
+  "genTokPerSecMax": 28.8,
+  "repeat": 3,
+  "vramMB": 1042,
+  "totalMs": 27500
+}
+
+benchq: ended 2026-11-12T15:19:35.798Z code=0 signal=null

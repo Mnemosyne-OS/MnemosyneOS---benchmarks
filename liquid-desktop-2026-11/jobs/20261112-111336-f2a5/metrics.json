@@ -1,0 +1,23 @@
+{
+  "model": "Qwen3.5-4B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.55,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2574,
+  "warmupMs": 1331,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1842.8,
+  "promptTokPerSecMin": 1754.3,
+  "promptTokPerSecMax": 1886.2,
+  "genTokens": 32,
+  "firstTokenMs": 68,
+  "genTokPerSec": 35.9,
+  "genTokPerSecMin": 33.1,
+  "genTokPerSecMax": 36,
+  "repeat": 3,
+  "vramMB": 2604,
+  "totalMs": 16296
+}

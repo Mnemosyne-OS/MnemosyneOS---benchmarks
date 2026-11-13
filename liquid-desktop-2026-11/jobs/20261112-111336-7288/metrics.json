@@ -1,0 +1,23 @@
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.32,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2106,
+  "warmupMs": 1915,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1989.2,
+  "promptTokPerSecMin": 1946.6,
+  "promptTokPerSecMax": 2063.2,
+  "genTokens": 32,
+  "firstTokenMs": 39,
+  "genTokPerSec": 41.9,
+  "genTokPerSecMin": 38.7,
+  "genTokPerSecMax": 44.2,
+  "repeat": 3,
+  "vramMB": 2370,
+  "totalMs": 18076
+}

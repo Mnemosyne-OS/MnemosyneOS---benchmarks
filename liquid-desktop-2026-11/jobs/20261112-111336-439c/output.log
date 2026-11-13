@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-439c "speed Qwen3-4B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-4B-GGUF/bc640142c66e/Qwen3-4B-Q4_K_M.gguf" --chip vulkan-arc --name "Qwen3-4B Q4_K_M"
+benchq: started 2026-11-12T16:15:32.216Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-4B Q4_K_M · vulkan-arc: 16.4 tok/s generation, 244 tok/s prompt, load 2.2 s
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.33,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2217,
+  "warmupMs": 8566,
+  "promptTokens": 512,
+  "promptTokPerSec": 244,
+  "promptTokPerSecMin": 242.2,
+  "promptTokPerSecMax": 245.5,
+  "genTokens": 126,
+  "firstTokenMs": 513,
+  "genTokPerSec": 16.4,
+  "genTokPerSecMin": 16.2,
+  "genTokPerSecMax": 16.5,
+  "repeat": 3,
+  "vramMB": 2377,
+  "totalMs": 44236
+}
+
+benchq: ended 2026-11-12T16:16:18.444Z code=0 signal=null

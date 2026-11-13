@@ -1,0 +1,23 @@
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.78,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1715,
+  "warmupMs": 10695,
+  "promptTokens": 512,
+  "promptTokPerSec": 132.6,
+  "promptTokPerSecMin": 120.1,
+  "promptTokPerSecMax": 133.5,
+  "genTokens": 125,
+  "firstTokenMs": 1116,
+  "genTokPerSec": 16.9,
+  "genTokPerSecMin": 15.5,
+  "genTokPerSecMax": 18.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 57112
+}

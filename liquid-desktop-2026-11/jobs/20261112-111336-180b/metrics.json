@@ -1,0 +1,23 @@
+{
+  "model": "gemma-4-E2B-it Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.89,
+  "gpuLayers": 36,
+  "partialOffload": false,
+  "loadMs": 2488,
+  "warmupMs": 20715,
+  "promptTokens": 512,
+  "promptTokPerSec": 1053.2,
+  "promptTokPerSecMin": 219.2,
+  "promptTokPerSecMax": 1055.9,
+  "genTokens": 125,
+  "firstTokenMs": 147,
+  "genTokPerSec": 21.5,
+  "genTokPerSecMin": 21.4,
+  "genTokPerSecMax": 21.5,
+  "repeat": 3,
+  "vramMB": 1410,
+  "totalMs": 46697
+}

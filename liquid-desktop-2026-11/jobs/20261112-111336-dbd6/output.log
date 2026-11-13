@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-dbd6 "prompt 4k Qwen3.5-4B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Qwen3.5-4B-GGUF/e87f176479d0/Qwen3.5-4B-Q4_K_M.gguf" --chip vulkan-arc --name "Qwen3.5-4B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:47:11.348Z
+
+Qwen3.5-4B Q4_K_M · vulkan-arc: 14.8 tok/s generation, 173.7 tok/s prompt, load 3.0 s
+{
+  "model": "Qwen3.5-4B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.55,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2961,
+  "warmupMs": 3779,
+  "promptTokens": 4096,
+  "promptTokPerSec": 173.7,
+  "promptTokPerSecMin": 173.5,
+  "promptTokPerSecMax": 174.3,
+  "genTokens": 32,
+  "firstTokenMs": 1009,
+  "genTokPerSec": 14.8,
+  "genTokPerSecMin": 14.8,
+  "genTokPerSecMax": 14.9,
+  "repeat": 3,
+  "vramMB": 2605,
+  "totalMs": 91099
+}
+
+benchq: ended 2026-11-12T15:48:44.964Z code=0 signal=null

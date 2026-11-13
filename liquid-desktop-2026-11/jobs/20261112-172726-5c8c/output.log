@@ -1,0 +1,23 @@
+benchq: job 20261112-172726-5c8c "longdoc LFM2.5-1.2B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-longdoc.py" --model "<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov" --device CPU --doc "<private>/design-doc.txt" --name LFM2.5-1.2B
+benchq: started 2026-11-12T21:52:44.185Z
+
+longdoc LFM2.5-1.2B · CPU: 3399-token document, first word after 10.5 s, 42.9 tok/s, 4.42 CPU cores
+{
+  "model": "LFM2.5-1.2B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "promptTokens": 3399,
+  "maxPrompt": null,
+  "loadMs": 2461,
+  "firstTokenMs": 10461,
+  "genTokPerSec": 42.9,
+  "totalS": 14.2,
+  "procCores": 4.42,
+  "addedCpuPct": 27.7,
+  "rssMB": 2393,
+  "overlapWithCpu": null
+}
+
+benchq: ended 2026-11-12T21:53:13.567Z code=0 signal=null

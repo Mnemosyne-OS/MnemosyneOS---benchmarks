@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-f2a5 "prompt 4k Qwen3.5-4B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Qwen3.5-4B-GGUF/e87f176479d0/Qwen3.5-4B-Q4_K_M.gguf" --chip cuda --name "Qwen3.5-4B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:46:31.241Z
+
+Qwen3.5-4B Q4_K_M · cuda: 35.9 tok/s generation, 1842.8 tok/s prompt, load 2.6 s
+{
+  "model": "Qwen3.5-4B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.55,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2574,
+  "warmupMs": 1331,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1842.8,
+  "promptTokPerSecMin": 1754.3,
+  "promptTokPerSecMax": 1886.2,
+  "genTokens": 32,
+  "firstTokenMs": 68,
+  "genTokPerSec": 35.9,
+  "genTokPerSecMin": 33.1,
+  "genTokPerSecMax": 36,
+  "repeat": 3,
+  "vramMB": 2604,
+  "totalMs": 16296
+}
+
+benchq: ended 2026-11-12T15:46:48.753Z code=0 signal=null

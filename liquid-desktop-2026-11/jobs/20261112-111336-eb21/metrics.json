@@ -1,0 +1,23 @@
+{
+  "model": "LFM2.5-8B-A1B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 4.8,
+  "gpuLayers": 25,
+  "partialOffload": false,
+  "loadMs": 5315,
+  "warmupMs": 5716,
+  "promptTokens": 4096,
+  "promptTokPerSec": 155.3,
+  "promptTokPerSecMin": 154,
+  "promptTokPerSecMax": 156.4,
+  "genTokens": 31,
+  "firstTokenMs": 1831,
+  "genTokPerSec": 32.9,
+  "genTokPerSecMin": 30.9,
+  "genTokPerSecMax": 33.4,
+  "repeat": 3,
+  "vramMB": 4910,
+  "totalMs": 102473
+}

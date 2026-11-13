@@ -1,0 +1,23 @@
+{
+  "model": "gemma-4-E4B-it Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 4.64,
+  "gpuLayers": 43,
+  "partialOffload": false,
+  "loadMs": 6685,
+  "warmupMs": 4165,
+  "promptTokens": 512,
+  "promptTokPerSec": 3125,
+  "promptTokPerSecMin": 2480.9,
+  "promptTokPerSecMax": 3376.8,
+  "genTokens": 125,
+  "firstTokenMs": 68,
+  "genTokPerSec": 37.7,
+  "genTokPerSecMin": 37.7,
+  "genTokPerSecMax": 41.2,
+  "repeat": 3,
+  "vramMB": 2885,
+  "totalMs": 23291
+}

@@ -1,0 +1,34 @@
+{
+  "id": "20261112-042210-ee8d",
+  "name": "prompt 4k LFM2-1.2B · vulkan-arc",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2-1.2B-GGUF/5399e76c648f/LFM2-1.2B-Q4_K_M-hip-optimized.gguf\" --chip vulkan-arc --name \"LFM2-1.2B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": null,
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, vulkan-arc",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "LFM2-1.2B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2-1.2B-GGUF",
+    "chip": "vulkan-arc"
+  },
+  "after": [
+    "20261112-042210-560e"
+  ],
+  "status": "cancelled",
+  "submittedAt": "2026-11-12T08:22:10.913Z",
+  "startedAt": null,
+  "endedAt": "2026-11-12T15:13:15.441Z",
+  "exitCode": null,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,21 @@
+{
+  "model": "LFM3-1.7B",
+  "device": "GPU.1",
+  "deviceName": "NVIDIA GeForce RTX 4050 Laptop GPU (dGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 24013,
+  "genTokens": 128,
+  "genTokPerSec": 3.6,
+  "genTokPerSecMin": 2.3,
+  "genTokPerSecMax": 4.8,
+  "firstTokenMs": 1306,
+  "repeat": 3,
+  "procCores": 1.64,
+  "baselineCpuPct": 9.4,
+  "machineCpuPct": 46.7,
+  "addedCpuPct": 37.3,
+  "baselineNvPct": 1.6,
+  "nvUtilPct": 83.1,
+  "rssMB": 1754,
+  "logicalCpus": 22
+}

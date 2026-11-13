@@ -1,0 +1,22 @@
+{
+  "model": "LFM3-1.7B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.02,
+  "gpuLayers": 0,
+  "loadMs": 1102,
+  "warmupMs": 5866,
+  "promptTokens": 512,
+  "promptTokPerSec": 291.6,
+  "promptTokPerSecMin": 274.9,
+  "promptTokPerSecMax": 303.6,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 30.4,
+  "genTokPerSecMin": 30,
+  "genTokPerSecMax": 32.7,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 28091
+}

@@ -1,0 +1,30 @@
+{
+  "id": "20261112-153959-9290",
+  "name": "ov LFM3-1.7B · arc",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/LFM3-1.7B-int4-ov\" --device GPU.0 --name LFM3-1.7B",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "LFM3-1.7B",
+    "chip": "arc"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:59.121Z",
+  "startedAt": "2026-11-12T19:43:04.833Z",
+  "endedAt": "2026-11-12T19:43:49.660Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-4749",
+  "name": "speed Qwen3-1.7B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/Qwen__Qwen3-1.7B-GGUF/90862c4b9d27/Qwen3-1.7B-Q8_0.gguf\" --chip cuda --name \"Qwen3-1.7B Q8_0\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "Qwen3-1.7B",
+    "quant": "Q8_0",
+    "repo": "Qwen/Qwen3-1.7B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-2430"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.787Z",
+  "startedAt": "2026-11-12T15:52:16.438Z",
+  "endedAt": "2026-11-12T15:52:30.689Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

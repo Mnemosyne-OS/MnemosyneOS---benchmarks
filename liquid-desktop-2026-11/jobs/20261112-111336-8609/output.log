@@ -1,0 +1,35 @@
+benchq: job 20261112-111336-8609 "speed gemma-4-E4B-it · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf" --chip vulkan-arc --name "gemma-4-E4B-it Q4_K_M"
+benchq: started 2026-11-12T15:56:33.335Z
+
+[node-llama-cpp] load: control-looking token:      1 '<eos>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: '</s>' is a normal token here, removing it from EOG list
+gemma-4-E4B-it Q4_K_M · vulkan-arc: 12.6 tok/s generation, 346.2 tok/s prompt, load 3.6 s
+{
+  "model": "gemma-4-E4B-it Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 4.64,
+  "gpuLayers": 43,
+  "partialOffload": false,
+  "loadMs": 3596,
+  "warmupMs": 11799,
+  "promptTokens": 512,
+  "promptTokPerSec": 346.2,
+  "promptTokPerSecMin": 345.2,
+  "promptTokPerSecMax": 346.7,
+  "genTokens": 125,
+  "firstTokenMs": 429,
+  "genTokPerSec": 12.6,
+  "genTokPerSecMin": 12.5,
+  "genTokPerSecMax": 12.6,
+  "repeat": 3,
+  "vramMB": 2885,
+  "totalMs": 53133
+}
+
+benchq: ended 2026-11-12T15:57:28.594Z code=0 signal=null

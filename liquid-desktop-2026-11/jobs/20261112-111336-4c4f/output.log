@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-4c4f "speed Phi-4-mini · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Phi-4-mini-instruct-GGUF/78eb92a46fc3/Phi-4-mini-instruct-Q4_K_M.gguf" --chip cpu --name "Phi-4-mini Q4_K_M"
+benchq: started 2026-11-12T16:06:15.650Z
+
+[node-llama-cpp] load_arch_hparams: Phi SWA is currently disabled - results might be suboptimal for some models (see https://github.com/ggml-org/llama.cpp/pull/13676)
+Phi-4-mini Q4_K_M · cpu: 16.6 tok/s generation, 134 tok/s prompt, load 1.9 s
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.32,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1860,
+  "warmupMs": 10038,
+  "promptTokens": 512,
+  "promptTokPerSec": 134,
+  "promptTokPerSecMin": 116,
+  "promptTokPerSecMax": 139.3,
+  "genTokens": 128,
+  "firstTokenMs": 720,
+  "genTokPerSec": 16.6,
+  "genTokPerSecMin": 14.2,
+  "genTokPerSecMax": 18.5,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 53096
+}
+
+benchq: ended 2026-11-12T16:07:09.896Z code=0 signal=null

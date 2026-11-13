@@ -119,6 +119,7 @@ The files in [`verification-kit/`](verification-kit/) are the source behind it.
 | [LongMemEval-M full-haystack](fullhaystack-2026-07/SUMMARY.md) (2026-07) | **64.6 % → 72.9 %**, multi-session recall **1/8 → 5/8** | [16 raw run logs](fullhaystack-2026-07/logs/) |
 | [Lexical channel: hybrid retrieval, fully local](lexical-2026-08/SUMMARY.md) (2026-08) | strict judge **29/48 → 35/48** (fused arm reproduced ×2, p = 0.146, corrected 2026-09-28), retrieval holdout on 48 unseen questions **+4/−0 sessions, zero regressions** | [11 raw run files](lexical-2026-08/runs/) |
 | [BEAM: how far the score falls when the haystack grows](beam-2026-09/SUMMARY.md) (2026-09) | BEAM's own judge: **61.7 %** at the 100K tier, **49.2 %** at 10M, a **20 % relative loss for a 76× larger haystack**. The paper's RAG baselines lose 22 to 29 % | [7 raw run files](beam-2026-09/runs/) + [`verify.js`](beam-2026-09/verify.js) |
+| [Liquid models on one laptop: speed, not memory](liquid-desktop-2026-11/SUMMARY.md) (2026-11) | 20 small models on CPU, RTX 4050 Laptop, Intel Arc iGPU and Intel NPU, median of 3. **Not a memory score**: nothing in it compares with the rows above. [Live page](https://mnemosyne-os.github.io/MnemosyneOS---benchmarks/liquid-desktop-2026-11/) | [241 raw jobs](liquid-desktop-2026-11/jobs/), failed and cancelled ones kept, + [`verify.js`](liquid-desktop-2026-11/verify.js) |
 
 ## What "full-haystack" means
 

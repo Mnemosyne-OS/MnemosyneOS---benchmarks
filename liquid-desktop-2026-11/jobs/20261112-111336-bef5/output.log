@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-bef5 "prompt 4k Qwen3-4B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-4B-GGUF/bc640142c66e/Qwen3-4B-Q4_K_M.gguf" --chip cuda --name "Qwen3-4B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:17:16.546Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-4B Q4_K_M · cuda: 43.9 tok/s generation, 1865.2 tok/s prompt, load 2.0 s
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.33,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 1952,
+  "warmupMs": 1122,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1865.2,
+  "promptTokPerSecMin": 1750.1,
+  "promptTokPerSecMax": 1941.2,
+  "genTokens": 30,
+  "firstTokenMs": 42,
+  "genTokPerSec": 43.9,
+  "genTokPerSecMin": 40.5,
+  "genTokPerSecMax": 44.9,
+  "repeat": 3,
+  "vramMB": 2376,
+  "totalMs": 15287
+}
+
+benchq: ended 2026-11-12T16:17:32.863Z code=0 signal=null

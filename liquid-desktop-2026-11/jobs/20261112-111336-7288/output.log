@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-7288 "prompt 4k Phi-4-mini · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Phi-4-mini-instruct-GGUF/78eb92a46fc3/Phi-4-mini-instruct-Q4_K_M.gguf" --chip cuda --name "Phi-4-mini Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:07:11.879Z
+
+[node-llama-cpp] load_arch_hparams: Phi SWA is currently disabled - results might be suboptimal for some models (see https://github.com/ggml-org/llama.cpp/pull/13676)
+Phi-4-mini Q4_K_M · cuda: 41.9 tok/s generation, 1989.2 tok/s prompt, load 2.1 s
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.32,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2106,
+  "warmupMs": 1915,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1989.2,
+  "promptTokPerSecMin": 1946.6,
+  "promptTokPerSecMax": 2063.2,
+  "genTokens": 32,
+  "firstTokenMs": 39,
+  "genTokPerSec": 41.9,
+  "genTokPerSecMin": 38.7,
+  "genTokPerSecMax": 44.2,
+  "repeat": 3,
+  "vramMB": 2370,
+  "totalMs": 18076
+}
+
+benchq: ended 2026-11-12T16:07:31.090Z code=0 signal=null

@@ -1,0 +1,23 @@
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.33,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2217,
+  "warmupMs": 8566,
+  "promptTokens": 512,
+  "promptTokPerSec": 244,
+  "promptTokPerSecMin": 242.2,
+  "promptTokPerSecMax": 245.5,
+  "genTokens": 126,
+  "firstTokenMs": 513,
+  "genTokPerSec": 16.4,
+  "genTokPerSecMin": 16.2,
+  "genTokPerSecMax": 16.5,
+  "repeat": 3,
+  "vramMB": 2377,
+  "totalMs": 44236
+}

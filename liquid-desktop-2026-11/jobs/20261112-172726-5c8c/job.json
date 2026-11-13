@@ -1,0 +1,27 @@
+{
+  "id": "20261112-172726-5c8c",
+  "name": "longdoc LFM2.5-1.2B · cpu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-longdoc.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device CPU --doc \"<private>/design-doc.txt\" --name LFM2.5-1.2B",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 3600000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-night",
+  "note": null,
+  "series": "ov-longdoc",
+  "tags": {},
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T21:27:26.674Z",
+  "startedAt": "2026-11-12T21:52:44.139Z",
+  "endedAt": "2026-11-12T21:53:13.567Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

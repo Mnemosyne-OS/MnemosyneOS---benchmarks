@@ -1,0 +1,30 @@
+benchq: job 20261112-153959-9290 "ov LFM3-1.7B · arc"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-speed.py" --model "<models>/ov/LFM3-1.7B-int4-ov" --device GPU.0 --name LFM3-1.7B
+benchq: started 2026-11-12T19:43:04.922Z
+
+ov-speed: measuring the idle machine for 10 s
+LFM3-1.7B · GPU.0: 45.4 tok/s, 0.99 CPU cores used, +4.4 % machine CPU
+{
+  "model": "LFM3-1.7B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 21565,
+  "genTokens": 128,
+  "genTokPerSec": 45.4,
+  "genTokPerSecMin": 35.2,
+  "genTokPerSecMax": 48.1,
+  "firstTokenMs": 78,
+  "repeat": 3,
+  "procCores": 0.99,
+  "baselineCpuPct": 15.6,
+  "machineCpuPct": 20.0,
+  "addedCpuPct": 4.4,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2267,
+  "logicalCpus": 22
+}
+
+benchq: ended 2026-11-12T19:43:49.660Z code=0 signal=null

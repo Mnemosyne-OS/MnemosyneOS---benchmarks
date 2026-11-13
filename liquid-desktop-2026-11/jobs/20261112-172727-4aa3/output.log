@@ -1,0 +1,23 @@
+benchq: job 20261112-172727-4aa3 "longdoc LFM2.5-1.2B · GPU.0"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-longdoc.py" --model "<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov" --device GPU.0 --doc "<private>/design-doc.txt" --name LFM2.5-1.2B --cpu-summary "<jobs>/20261112-172726-5c8c/summary.txt"
+benchq: started 2026-11-12T21:54:42.618Z
+
+longdoc LFM2.5-1.2B · GPU.0: 3399-token document, first word after 2.1 s, 67.9 tok/s, 0.95 CPU cores
+{
+  "model": "LFM2.5-1.2B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "promptTokens": 3399,
+  "maxPrompt": null,
+  "loadMs": 1277,
+  "firstTokenMs": 2106,
+  "genTokPerSec": 67.9,
+  "totalS": 3.7,
+  "procCores": 0.95,
+  "addedCpuPct": 7.3,
+  "rssMB": 1306,
+  "overlapWithCpu": 0.33
+}
+
+benchq: ended 2026-11-12T21:54:59.192Z code=0 signal=null

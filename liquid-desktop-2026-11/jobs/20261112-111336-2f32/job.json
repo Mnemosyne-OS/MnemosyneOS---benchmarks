@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-2f32",
+  "name": "speed d1-3B · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"d1-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "d1-3B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/d1-3B-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-b9a0"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.694Z",
+  "startedAt": "2026-11-12T15:29:55.067Z",
+  "endedAt": "2026-11-12T15:30:10.608Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

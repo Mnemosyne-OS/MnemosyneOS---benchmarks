@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-f979 "speed SmolLM3-3B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf" --chip cuda --name "SmolLM3-3B Q4_K_M"
+benchq: started 2026-11-12T16:10:04.608Z
+
+SmolLM3-3B Q4_K_M · cuda: 48.9 tok/s generation, 2790.6 tok/s prompt, load 2.3 s
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 1.78,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2256,
+  "warmupMs": 5542,
+  "promptTokens": 512,
+  "promptTokPerSec": 2790.6,
+  "promptTokPerSecMin": 2790.5,
+  "promptTokPerSecMax": 2801.5,
+  "genTokens": 125,
+  "firstTokenMs": 45,
+  "genTokPerSec": 48.9,
+  "genTokPerSecMin": 46.8,
+  "genTokPerSecMax": 49.9,
+  "repeat": 3,
+  "vramMB": 1820,
+  "totalMs": 23019
+}
+
+benchq: ended 2026-11-12T16:10:28.713Z code=0 signal=null

@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-e951",
+  "name": "prompt 4k granite-4.2-3b · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"granite-4.2-3b Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, vulkan-nvidia",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "granite-4.2-3b",
+    "quant": "Q4_K_M",
+    "repo": "ibm-granite/granite-4.2-3b-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-91d9"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.818Z",
+  "startedAt": "2026-11-12T16:03:00.901Z",
+  "endedAt": "2026-11-12T16:03:18.843Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-9dc2 "prompt 4k Qwen3.5-4B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Qwen3.5-4B-GGUF/e87f176479d0/Qwen3.5-4B-Q4_K_M.gguf" --chip vulkan-nvidia --name "Qwen3.5-4B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:46:49.306Z
+
+Qwen3.5-4B Q4_K_M · vulkan-nvidia: 41 tok/s generation, 1517.2 tok/s prompt, load 4.3 s
+{
+  "model": "Qwen3.5-4B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 2.55,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 4303,
+  "warmupMs": 1446,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1517.2,
+  "promptTokPerSecMin": 1446,
+  "promptTokPerSecMax": 1570.4,
+  "genTokens": 32,
+  "firstTokenMs": 102,
+  "genTokPerSec": 41,
+  "genTokPerSecMin": 39,
+  "genTokPerSecMax": 41.2,
+  "repeat": 3,
+  "vramMB": 2605,
+  "totalMs": 19173
+}
+
+benchq: ended 2026-11-12T15:47:09.747Z code=0 signal=null

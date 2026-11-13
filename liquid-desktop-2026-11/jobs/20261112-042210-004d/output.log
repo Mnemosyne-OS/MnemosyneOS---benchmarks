@@ -1,0 +1,16 @@
+benchq: job 20261112-042210-004d "prompt 4k LFM2.5-1.2B-Thinking · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-1.2B-Thinking-GGUF/b71945805f7d/LFM2.5-1.2B-Thinking-Q4_K_M.gguf" --chip cuda --name "LFM2.5-1.2B-Thinking Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:11:38.864Z
+
+file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/evaluator/LlamaContext/LlamaContext.js:286
+            throw new Error("No sequences left");
+                  ^
+
+Error: No sequences left
+    at LlamaContext.getSequence (file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/evaluator/LlamaContext/LlamaContext.js:286:19)
+    at file:///<bench-queue>/scripts/gguf-speed.mjs:135:24
+
+Node.js v22.13.0
+
+benchq: ended 2026-11-12T15:11:43.742Z code=1 signal=null

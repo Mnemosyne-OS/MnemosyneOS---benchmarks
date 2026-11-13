@@ -1,0 +1,30 @@
+benchq: job 20261112-042210-a7e7 "prompt 4k d1-2B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__d1-2B-GGUF/4a181094d1b6/d1-2B-Q4_K_M.gguf" --chip vulkan-nvidia --name "d1-2B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T08:30:20.481Z
+
+d1-2B Q4_K_M · vulkan-nvidia: 91.1 tok/s generation, 5107.3 tok/s prompt, load 2.2 s
+{
+  "model": "d1-2B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 1.02,
+  "gpuLayers": 25,
+  "loadMs": 2156,
+  "warmupMs": 158,
+  "promptTokens": 4096,
+  "promptTokPerSec": 5107.3,
+  "promptTokPerSecMin": 5047.6,
+  "promptTokPerSecMax": 5206.4,
+  "genTokens": 32,
+  "firstTokenMs": 25,
+  "genTokPerSec": 91.1,
+  "genTokPerSecMin": 90.3,
+  "genTokPerSecMax": 94.1,
+  "repeat": 3,
+  "vramMB": 1043,
+  "totalMs": 8268
+}
+
+benchq: ended 2026-11-12T08:30:30.033Z code=0 signal=null

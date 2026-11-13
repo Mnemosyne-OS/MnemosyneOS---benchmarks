@@ -1,0 +1,23 @@
+{
+  "model": "LFM2-2.6B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.46,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1217,
+  "warmupMs": 6707,
+  "promptTokens": 512,
+  "promptTokPerSec": 167.2,
+  "promptTokPerSecMin": 166,
+  "promptTokPerSecMax": 168,
+  "genTokens": 128,
+  "firstTokenMs": 560,
+  "genTokPerSec": 24.8,
+  "genTokPerSecMin": 23.4,
+  "genTokPerSecMax": 26.5,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 35047
+}

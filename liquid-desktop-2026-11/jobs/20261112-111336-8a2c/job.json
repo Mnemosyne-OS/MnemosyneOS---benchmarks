@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-8a2c",
+  "name": "speed d1-3B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf\" --chip cuda --name \"d1-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "d1-3B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/d1-3B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-b9a0"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.693Z",
+  "startedAt": "2026-11-12T15:29:39.003Z",
+  "endedAt": "2026-11-12T15:29:53.190Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,21 @@
+{
+  "model": "LFM3-1.7B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 4112,
+  "genTokens": 128,
+  "genTokPerSec": 25.7,
+  "genTokPerSecMin": 24.1,
+  "genTokPerSecMax": 26.0,
+  "firstTokenMs": 149,
+  "repeat": 3,
+  "procCores": 3.93,
+  "baselineCpuPct": 17.2,
+  "machineCpuPct": 36.5,
+  "addedCpuPct": 19.2,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2369,
+  "logicalCpus": 22
+}

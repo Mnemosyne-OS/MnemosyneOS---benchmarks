@@ -1,0 +1,34 @@
+{
+  "id": "20261112-042210-0247",
+  "name": "prompt 4k LFM3-1.7B · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM3-1.7B-GGUF/cd0c74c575b5/LFM3-1.7B-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"LFM3-1.7B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, vulkan-nvidia",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "LFM3-1.7B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-042210-baf7"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T08:22:10.792Z",
+  "startedAt": "2026-11-12T08:26:05.540Z",
+  "endedAt": "2026-11-12T08:26:19.371Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null,
+  "heldForMorning": true
+}

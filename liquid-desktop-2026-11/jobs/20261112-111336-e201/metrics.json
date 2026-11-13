@@ -1,0 +1,23 @@
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 2204,
+  "warmupMs": 9095,
+  "promptTokens": 512,
+  "promptTokPerSec": 284.8,
+  "promptTokPerSecMin": 277.1,
+  "promptTokPerSecMax": 285.7,
+  "genTokens": 128,
+  "firstTokenMs": 443,
+  "genTokPerSec": 18.2,
+  "genTokPerSecMin": 18.2,
+  "genTokPerSecMax": 18.2,
+  "repeat": 3,
+  "vramMB": 2000,
+  "totalMs": 43870
+}

@@ -1,0 +1,23 @@
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.32,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 2859,
+  "warmupMs": 3343,
+  "promptTokens": 4096,
+  "promptTokPerSec": 110.8,
+  "promptTokPerSecMin": 107.4,
+  "promptTokPerSecMax": 144.6,
+  "genTokens": 32,
+  "firstTokenMs": 583,
+  "genTokPerSec": 14.5,
+  "genTokPerSecMin": 13.3,
+  "genTokPerSecMax": 15.8,
+  "repeat": 3,
+  "vramMB": 2386,
+  "totalMs": 124555
+}

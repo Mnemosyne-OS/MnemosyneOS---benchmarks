@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-f71a",
+  "name": "speed LFM3-VL-2B · cpu",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM3-VL-2B-GGUF/1add221a5ea6/LFM3-VL-2B-Q4_K_M.gguf\" --chip cpu --name \"LFM3-VL-2B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cpu",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "LFM3-VL-2B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM3-VL-2B-GGUF",
+    "chip": "cpu"
+  },
+  "after": [
+    "20261112-111336-b8e6"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.721Z",
+  "startedAt": "2026-11-12T15:35:28.342Z",
+  "endedAt": "2026-11-12T15:35:59.578Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,478 @@
+<title>Liquid Desktop Bench</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..800&family=IBM+Plex+Sans:wght@400;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a dark lab console. A particle hero where each dot is one generated token, then one chart per question, each with its setup line. Single dark theme by choice. */
+:root {
+  color-scheme: dark;
+  --bg: #0b0e13;
+  --surface: #11161e;
+  --surface-2: #161c26;
+  --line: #242c39;
+  --grid: #1c2330;
+  --fg: #e8ecf1;
+  --fg-2: #aab4c0;
+  --muted: #7c8897;
+  --c-cuda: #3987e5;
+  --c-vk: #d95926;
+  --c-arc: #199e70;
+  --c-cpu: #c98500;
+  --c-npu: #d55181;
+  --c-other: #5d6878;
+  --display: "Archivo", "Arial Narrow", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", Arial, sans-serif;
+  --mono: "JetBrains Mono", Consolas, "Courier New", monospace;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.55;
+}
+.wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header.hero { position: relative; border-bottom: 1px solid var(--line); background: radial-gradient(ellipse at 20% 0%, #15202f 0%, var(--bg) 60%); }
+.hero-inner { padding-block: 36px 0; display: flex; flex-direction: column; gap: 10px; }
+.eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--display); font-stretch: 80%; font-weight: 800; font-size: clamp(40px, 8vw, 84px); line-height: .95; margin: 0; letter-spacing: -.01em; text-wrap: balance; }
+h1 em { font-style: normal; color: var(--c-arc); }
+.lede { font-size: 18px; color: var(--fg-2); max-width: 64ch; margin: 0; }
+#flow { display: block; width: 100%; height: 340px; margin-top: 18px; }
+.flow-note { font-family: var(--mono); font-size: 12px; color: var(--muted); padding-block: 8px 18px; }
+main { display: flex; flex-direction: column; gap: 56px; padding-block: 40px 72px; }
+.kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; }
+.kpi { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; display: flex; flex-direction: column; gap: 4px; }
+.kpi b { font-family: var(--display); font-stretch: 85%; font-weight: 700; font-size: 36px; line-height: 1; font-variant-numeric: tabular-nums; }
+.kpi span { color: var(--fg-2); font-size: 14px; }
+section.chart { display: flex; flex-direction: column; gap: 12px; }
+h2 { font-family: var(--display); font-stretch: 85%; font-weight: 700; font-size: clamp(26px, 4vw, 36px); line-height: 1.1; margin: 0; text-wrap: balance; }
+.q { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--c-arc); }
+.sub { color: var(--fg-2); margin: 0; max-width: 72ch; }
+.setup { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; min-width: 0; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.chip-btn { font: 600 13px var(--body); color: var(--fg-2); background: var(--surface-2); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px 6px 10px; cursor: pointer; display: inline-flex; gap: 8px; align-items: center; }
+.chip-btn i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+.chip-btn[aria-pressed="true"] { color: var(--fg); border-color: var(--fg-2); background: #1d2532; }
+.chip-btn:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--fg-2); }
+.legend i { width: 10px; height: 10px; border-radius: 3px; display: inline-block; margin-right: 6px; vertical-align: -1px; }
+.legend .hollow { background: transparent; border: 2px solid var(--c-other); border-radius: 50%; }
+.legend .dot { border-radius: 50%; }
+svg { display: block; width: 100%; height: auto; overflow: visible; }
+svg text { fill: var(--fg-2); font: 12px var(--mono); }
+svg .name { fill: var(--fg-2); font: 13px var(--body); }
+svg .name.liq { fill: var(--fg); font-weight: 600; }
+svg .val { fill: var(--fg); font: 600 12px var(--mono); }
+svg .ax { fill: var(--muted); font: 11px var(--mono); }
+svg .grid { stroke: var(--grid); stroke-width: 1; }
+svg .pill { fill: none; stroke: var(--fg-2); stroke-width: 1; }
+svg .pilltx { fill: var(--fg-2); font: 600 9px var(--mono); letter-spacing: .08em; }
+svg .hit { fill: transparent; cursor: default; }
+svg .note { fill: var(--muted); font: 11px var(--mono); }
+.grid2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px 18px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.card h3 { margin: 0; font-size: 16px; }
+.big { font-family: var(--display); font-stretch: 85%; font-weight: 700; font-size: 44px; line-height: 1; font-variant-numeric: tabular-nums; }
+.tag { font-family: var(--mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.callout { border-left: 3px solid var(--c-npu); background: var(--surface); border-radius: 0 10px 10px 0; padding: 14px 16px; color: var(--fg-2); }
+.callout b { color: var(--fg); }
+a { color: #8cc4ff; }
+a:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+#tip { position: fixed; pointer-events: none; z-index: 20; background: #0a0d12; border: 1px solid var(--fg-2); border-radius: 8px; padding: 10px 12px; font-size: 13px; color: var(--fg); max-width: 300px; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+#tip .t { font-weight: 600; margin-bottom: 4px; }
+#tip .r { font-family: var(--mono); font-size: 12px; color: var(--fg-2); }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 16px; }
+summary { cursor: pointer; font-weight: 600; }
+.tw { overflow-x: auto; margin-top: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 13px; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+td.n { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); }
+ul.plain { margin: 0; padding-left: 18px; color: var(--fg-2); display: flex; flex-direction: column; gap: 6px; }
+footer { border-top: 1px solid var(--line); padding-block: 24px 40px; color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Mnemosyne OS lab · November 12, 2026 · one laptop, four kinds of chips</span>
+    <h1>Liquid models on a <em>real</em> desktop</h1>
+    <p class="lede">20 small language models timed on the same laptop: an NVIDIA RTX, the Intel Arc built into the processor, the CPU, and the Intel NPU. Every number below is a median of measured runs, never an estimate.</p>
+  </div>
+  <div class="wrap">
+    <canvas id="flow" aria-label="Token flow: LFM2.5-1.2B generating on four chips, one dot per token, at the measured speed"></canvas>
+    <div class="flow-note">Each dot is one generated token of LFM2.5-1.2B, released at the speed measured on that chip. The CPU number below is how much of the processor each chip leaves busy.</div>
+  </div>
+</header>
+
+<div class="wrap">
+<main>
+  <div class="kpis" id="kpis"></div>
+
+  <section class="chart" id="s-speed">
+    <span class="q">Question 1</span>
+    <h2>How fast does each model write, on each chip?</h2>
+    <p class="sub">Tokens generated per second, 128-token answers. Pick a chip; Liquid models carry the LIQUID tag.</p>
+    <div class="toolbar" id="speed-tools" role="group" aria-label="Chip"></div>
+    <div class="panel"><svg id="speed" role="img" aria-label="Generation speed by model"></svg></div>
+    <span class="setup" id="speed-setup"></span>
+  </section>
+
+  <section class="chart" id="s-size">
+    <span class="q">Question 2</span>
+    <h2>Speed for the size: who gets the most from each gigabyte?</h2>
+    <p class="sub">Each dot is a model on the RTX through Vulkan, the backend the Mnemosyne OS installer ships. Up and to the left is more speed per gigabyte.</p>
+    <div class="legend"><span><i class="dot" style="background:var(--c-cuda)"></i>Liquid AI</span><span><i class="hollow"></i>Other publishers</span></div>
+    <div class="panel"><svg id="size" role="img" aria-label="Generation speed against file size"></svg></div>
+    <span class="setup">RTX 4050 Laptop 6 GB · Vulkan · Q4_K_M unless marked · file size on disk</span>
+  </section>
+
+  <section class="chart" id="s-arc">
+    <span class="q">Question 3</span>
+    <h2>A laptop without a graphics card: how close does the Intel Arc get?</h2>
+    <p class="sub">Arc speed as a share of the RTX, both through Vulkan.</p>
+    <div class="panel"><svg id="arc" role="img" aria-label="Arc speed as a share of RTX speed"></svg></div>
+    <span class="setup" id="arc-setup"></span>
+  </section>
+
+  <section class="chart" id="s-prompt">
+    <span class="q">Question 4</span>
+    <h2>A 4,096-token prompt, as when memory fills the context: how long before the first word?</h2>
+    <p class="sub">Seconds to read the prompt and write the first token. Shorter is better.</p>
+    <div class="toolbar" id="prompt-tools" role="group" aria-label="Chip"></div>
+    <div class="panel"><svg id="prompt" role="img" aria-label="Time to first word on a 4,096-token prompt"></svg></div>
+    <span class="setup" id="prompt-setup"></span>
+  </section>
+
+  <section class="chart" id="s-npu">
+    <span class="q">Question 5</span>
+    <h2>The Intel NPU: almost no CPU at all</h2>
+    <p class="sub">Through OpenVINO GenAI. Each dot is one model on one chip: speed against the CPU cores the process keeps busy. Down at the left is where a background assistant should live.</p>
+    <div class="legend"><span><i style="background:var(--c-npu)"></i>NPU</span><span><i style="background:var(--c-arc)"></i>Arc</span><span><i style="background:var(--c-cpu)"></i>CPU</span></div>
+    <div class="panel"><svg id="npu" role="img" aria-label="Speed against CPU cores used"></svg></div>
+    <span class="setup">openvino-genai 2026.4.1 · NPU driver 32.0.100.4724 · int4 exports · 128 tokens, median of 3 · RTX through OpenVINO (OpenCL) left out: 3.6 to 9.5 tok/s, use llama.cpp there</span>
+    <div class="grid2" id="npu-cards"></div>
+    <div class="callout"><b>LFM3-1.7B does not compile on the NPU yet.</b> Intel's NPU compiler sees two attention masks (full and sliding-window) on the same node and stops, under every setting we tried. Reported to Intel: <a href="https://github.com/openvinotoolkit/openvino/issues/39790">openvinotoolkit/openvino#39790</a>. On the Arc and the CPU it runs well.</div>
+  </section>
+
+  <section class="chart" id="s-data">
+    <h2>Every number, and how it was measured</h2>
+    <ul class="plain">
+      <li>Machine: Intel Core Ultra 7 155H (Arc iGPU, AI Boost NPU), NVIDIA RTX 4050 Laptop 6 GB capped at 25 W by the laptop's power profile, 32 GB RAM, Windows 11.</li>
+      <li>GGUF runs: llama.cpp through node-llama-cpp 3.22.3, all layers on the GPU unless marked partial, context 4,096 (8,192 for the long prompt), temperature 0, one warm-up pass, median of 3 runs.</li>
+      <li>Each file comes from Hugging Face and is checked by its sha256; Q4_K_M unless the table says otherwise.</li>
+      <li>A bench queue runs one measurement at a time, so no run slows another. Failed or invalid runs were re-queued and measured again.</li>
+      <li>Time to first word = 4,096 ÷ prompt tokens per second + time to the first generated token.</li>
+    </ul>
+    <details>
+      <summary>All 80 generation runs (table)</summary>
+      <div class="tw"><table id="table"></table></div>
+    </details>
+    <p class="setup" id="missing"></p>
+  </section>
+</main>
+</div>
+
+<footer>
+  <div class="wrap">Measured by <a href="https://mnemosyne-os.io">Mnemosyne OS</a>, a local-first desktop memory OS · November 12, 2026 · Liquid AI's models are published by Liquid AI; this page is independent.</div>
+</footer>
+<div id="tip" hidden></div>
+
+<script>
+const DATA = {"speed":[{"model":"d1-2B","chip":"cuda","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1629,"vramMB":1042,"gen":84.4,"genMin":83.7,"genMax":84.8,"prompt":5278.2,"promptMin":5217.4,"promptMax":5306.8,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-03c6"},{"model":"LFM2.5-1.2B-Thinking","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1442,"vramMB":697,"gen":135.3,"genMin":122.5,"genMax":141.2,"prompt":5820.9,"promptMin":5485.2,"promptMax":5872.9,"promptTokens":512,"firstTokenMs":22,"job":"20261112-111336-09bd"},{"model":"gemma-4-E2B-it","chip":"cuda","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":3258,"vramMB":1408,"gen":67.6,"genMin":67.3,"genMax":68.2,"prompt":9104.1,"promptMin":8490.4,"promptMax":9188.9,"promptTokens":512,"firstTokenMs":30,"job":"20261112-111336-0b0a"},{"model":"LFM2.5-230M","chip":"cpu","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":0,"loadMs":252,"vramMB":0,"gen":149.4,"genMin":123,"genMax":149.6,"prompt":2371.4,"promptMin":2214.2,"promptMax":2436.5,"promptTokens":512,"firstTokenMs":185,"job":"20261112-111336-12a5"},{"model":"LFM3-1.7B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":2113,"vramMB":1043,"gen":87.4,"genMin":85.1,"genMax":87.7,"prompt":4219.9,"promptMin":4206.4,"promptMax":4346.7,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-1677"},{"model":"gemma-4-E2B-it","chip":"vulkan-arc","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":2488,"vramMB":1410,"gen":21.5,"genMin":21.4,"genMax":21.5,"prompt":1053.2,"promptMin":219.2,"promptMax":1055.9,"promptTokens":512,"firstTokenMs":147,"job":"20261112-111336-180b"},{"model":"LFM2-1.2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1118,"vramMB":697,"gen":135.8,"genMin":132.2,"genMax":136.9,"prompt":5638.9,"promptMin":5516.4,"promptMax":5756.4,"promptTokens":512,"firstTokenMs":23,"job":"20261112-111336-1e77"},{"model":"Phi-4-mini","chip":"vulkan-nvidia","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":4086,"vramMB":2370,"gen":49.4,"genMin":47.6,"genMax":52.4,"prompt":2387.9,"promptMin":2295.2,"promptMax":2498.9,"promptTokens":512,"firstTokenMs":63,"job":"20261112-111336-1f9f"},{"model":"LFM2.5-2.6B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":2027,"vramMB":1590,"gen":26.9,"genMin":26.9,"genMax":26.9,"prompt":402.6,"promptMin":398.2,"promptMax":403.2,"promptTokens":512,"firstTokenMs":328,"job":"20261112-111336-26f0"},{"model":"Qwen3-1.7B","chip":"vulkan-arc","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":2532,"vramMB":1745,"gen":24,"genMin":23.9,"genMax":24,"prompt":331.8,"promptMin":329.6,"promptMax":331.9,"promptTokens":512,"firstTokenMs":393,"job":"20261112-111336-282b"},{"model":"LFM2.5-2.6B","chip":"cuda","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1818,"vramMB":1590,"gen":58,"genMin":57.3,"genMax":58.7,"prompt":3111.2,"promptMin":2812.2,"promptMax":3221,"promptTokens":512,"firstTokenMs":28,"job":"20261112-111336-2a4d"},{"model":"granite-4.2-3b","chip":"vulkan-nvidia","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":3121,"vramMB":2001,"gen":52,"genMin":46.1,"genMax":52.9,"prompt":2357.6,"promptMin":2280,"promptMax":2361.8,"promptTokens":512,"firstTokenMs":66,"job":"20261112-111336-2b91"},{"model":"LFM2.5-350M","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":369,"vramMB":217,"gen":130.4,"genMin":127.6,"genMax":131.9,"prompt":3090,"promptMin":3075.2,"promptMax":3124.4,"promptTokens":512,"firstTokenMs":51,"job":"20261112-111336-2d93"},{"model":"LFM2-2.6B","chip":"vulkan-arc","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":1200,"vramMB":1490,"gen":24.6,"genMin":24.4,"genMax":24.8,"prompt":391.8,"promptMin":390.7,"promptMax":392.7,"promptTokens":512,"firstTokenMs":346,"job":"20261112-111336-2db7"},{"model":"d1-3B","chip":"vulkan-nvidia","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":2426,"vramMB":1591,"gen":64.5,"genMin":63.9,"genMax":66.9,"prompt":2621.9,"promptMin":2536.2,"promptMax":2872.4,"promptTokens":512,"firstTokenMs":51,"job":"20261112-111336-2f32"},{"model":"LFM2-2.6B","chip":"cuda","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":1729,"vramMB":1490,"gen":66.9,"genMin":64.3,"genMax":68,"prompt":3131.7,"promptMin":3129.4,"promptMax":3160.5,"promptTokens":512,"firstTokenMs":29,"job":"20261112-111336-3538"},{"model":"LFM2.5-350M","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":938,"vramMB":218,"gen":308.7,"genMin":303.7,"genMax":315.7,"prompt":17331.3,"promptMin":15071.9,"promptMax":17663.5,"promptTokens":512,"firstTokenMs":14,"job":"20261112-111336-39c4"},{"model":"LFM2.5-230M","chip":"cuda","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":373,"vramMB":146,"gen":370.9,"genMin":342.6,"genMax":377.7,"prompt":27156.8,"promptMin":26739.4,"promptMax":34862.7,"promptTokens":512,"firstTokenMs":8,"job":"20261112-111336-3cba"},{"model":"LFM2.5-230M","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":873,"vramMB":146,"gen":375.2,"genMin":340.7,"genMax":392.6,"prompt":29066,"promptMin":19552.2,"promptMax":30560.8,"promptTokens":512,"firstTokenMs":10,"job":"20261112-111336-41a1"},{"model":"Qwen3-4B","chip":"vulkan-arc","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":2217,"vramMB":2377,"gen":16.4,"genMin":16.2,"genMax":16.5,"prompt":244,"promptMin":242.2,"promptMax":245.5,"promptTokens":512,"firstTokenMs":513,"job":"20261112-111336-439c"},{"model":"Qwen3-1.7B","chip":"cuda","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":2070,"vramMB":1744,"gen":60.1,"genMin":59.9,"genMax":60.2,"prompt":4131.3,"promptMin":3982.7,"promptMax":5600.4,"promptTokens":512,"firstTokenMs":27,"job":"20261112-111336-4749"},{"model":"gemma-4-E2B-it","chip":"vulkan-nvidia","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":3458,"vramMB":1410,"gen":68,"genMin":66.7,"genMax":70.5,"prompt":7317,"promptMin":41.9,"promptMax":8194.2,"promptTokens":512,"firstTokenMs":35,"job":"20261112-111336-4753"},{"model":"LFM2-1.2B","chip":"cuda","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":828,"vramMB":696,"gen":131.9,"genMin":128.8,"genMax":132.7,"prompt":7015.9,"promptMin":5783.7,"promptMax":7186.9,"promptTokens":512,"firstTokenMs":15,"job":"20261112-111336-4820"},{"model":"SmolLM3-3B","chip":"vulkan-arc","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":2165,"vramMB":1820,"gen":23.5,"genMin":23.4,"genMax":23.6,"prompt":323.1,"promptMin":321.7,"promptMax":324,"promptTokens":512,"firstTokenMs":409,"job":"20261112-111336-4abe"},{"model":"Phi-4-mini","chip":"cpu","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":0,"loadMs":1860,"vramMB":0,"gen":16.6,"genMin":14.2,"genMax":18.5,"prompt":134,"promptMin":116,"promptMax":139.3,"promptTokens":512,"firstTokenMs":720,"job":"20261112-111336-4c4f"},{"model":"d1-2B","chip":"vulkan-nvidia","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1939,"vramMB":1043,"gen":76.5,"genMin":75.2,"genMax":76.9,"prompt":4076.3,"promptMin":3875.8,"promptMax":4446.2,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-4ec4"},{"model":"d1-3B","chip":"vulkan-arc","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1615,"vramMB":1590,"gen":28.3,"genMin":27.8,"genMax":28.3,"prompt":401,"promptMin":399.3,"promptMax":405.5,"promptTokens":512,"firstTokenMs":334,"job":"20261112-111336-500a"},{"model":"LFM3-1.7B","chip":"cpu","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":0,"loadMs":1102,"vramMB":0,"gen":30.4,"genMin":30,"genMax":32.7,"prompt":291.6,"promptMin":274.9,"promptMax":303.6,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-503b"},{"model":"LFM2.5-1.2B","chip":"cuda","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":647,"vramMB":696,"gen":131.5,"genMin":130.1,"genMax":134.1,"prompt":7176.1,"promptMin":7161.7,"promptMax":7206.6,"promptTokens":512,"firstTokenMs":16,"job":"20261112-111336-5c67"},{"model":"LFM2.5-1.2B-Thinking","chip":"cpu","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":0,"loadMs":597,"vramMB":0,"gen":47.8,"genMin":36.7,"genMax":50.2,"prompt":389.1,"promptMin":326.6,"promptMax":391.6,"promptTokens":512,"firstTokenMs":324,"job":"20261112-111336-6226"},{"model":"LFM3-1.7B","chip":"cuda","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1197,"vramMB":1042,"gen":86,"genMin":85.8,"genMax":88.5,"prompt":5208.4,"promptMin":5178,"promptMax":5532,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-6282"},{"model":"LFM2.5-350M","chip":"cpu","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":0,"loadMs":294,"vramMB":0,"gen":128.8,"genMin":126.4,"genMax":129.3,"prompt":1485.5,"promptMin":1476,"promptMax":1489,"promptTokens":512,"firstTokenMs":139,"job":"20261112-111336-645d"},{"model":"LFM2.5-1.2B-Thinking","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":715,"vramMB":696,"gen":54.8,"genMin":54.7,"genMax":55.2,"prompt":924.8,"promptMin":923.6,"promptMax":929.5,"promptTokens":512,"firstTokenMs":143,"job":"20261112-111336-6a69"},{"model":"LFM2.5-1.2B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":725,"vramMB":696,"gen":48.1,"genMin":35.3,"genMax":49.3,"prompt":888.6,"promptMin":861.4,"promptMax":926.5,"promptTokens":512,"firstTokenMs":148,"job":"20261112-111336-6c81"},{"model":"Qwen3-1.7B","chip":"vulkan-nvidia","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":3267,"vramMB":1746,"gen":54.9,"genMin":53.2,"genMax":56.1,"prompt":3577.3,"promptMin":89.6,"promptMax":4684.8,"promptTokens":512,"firstTokenMs":35,"job":"20261112-111336-6d8e"},{"model":"gemma-4-E4B-it","chip":"cuda","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":4500,"vramMB":2884,"gen":33.8,"genMin":30.4,"genMax":36.5,"prompt":3243.7,"promptMin":3095.7,"promptMax":3247.8,"promptTokens":512,"firstTokenMs":51,"job":"20261112-111336-726d"},{"model":"d1-3B","chip":"cpu","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":0,"loadMs":1669,"vramMB":0,"gen":25.7,"genMin":22.7,"genMax":26.2,"prompt":157.7,"promptMin":149.4,"promptMax":159.9,"promptTokens":512,"firstTokenMs":668,"job":"20261112-111336-7972"},{"model":"granite-4.2-3b","chip":"cpu","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":0,"loadMs":1420,"vramMB":0,"gen":19.9,"genMin":19.7,"genMax":20.4,"prompt":122.9,"promptMin":120.1,"promptMax":125.1,"promptTokens":512,"firstTokenMs":926,"job":"20261112-111336-79cb"},{"model":"LFM2.5-230M","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":320,"vramMB":145,"gen":165.1,"genMin":160.3,"genMax":166.7,"prompt":5009,"promptMin":4970.2,"promptMax":5127.9,"promptTokens":512,"firstTokenMs":33,"job":"20261112-111336-7c14"},{"model":"LFM2-1.2B","chip":"cpu","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":0,"loadMs":622,"vramMB":0,"gen":50.2,"genMin":49,"genMax":51,"prompt":393.2,"promptMin":390.1,"promptMax":394.9,"promptTokens":512,"firstTokenMs":235,"job":"20261112-111336-7caf"},{"model":"d1-2B","chip":"cpu","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":0,"loadMs":1233,"vramMB":0,"gen":30.9,"genMin":28.2,"genMax":31.8,"prompt":267.1,"promptMin":259.5,"promptMax":293.8,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-8255"},{"model":"SmolLM3-3B","chip":"vulkan-nvidia","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":3501,"vramMB":1821,"gen":53,"genMin":52.5,"genMax":58.1,"prompt":2467,"promptMin":2424.3,"promptMax":2580,"promptTokens":512,"firstTokenMs":63,"job":"20261112-111336-8475"},{"model":"LFM2-2.6B","chip":"cpu","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":0,"loadMs":1217,"vramMB":0,"gen":24.8,"genMin":23.4,"genMax":26.5,"prompt":167.2,"promptMin":166,"promptMax":168,"promptTokens":512,"firstTokenMs":560,"job":"20261112-111336-84ce"},{"model":"gemma-4-E4B-it","chip":"vulkan-arc","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":3596,"vramMB":2885,"gen":12.6,"genMin":12.5,"genMax":12.6,"prompt":346.2,"promptMin":345.2,"promptMax":346.7,"promptTokens":512,"firstTokenMs":429,"job":"20261112-111336-8609"},{"model":"LFM3-VL-2B","chip":"cuda","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1949,"vramMB":1042,"gen":83.8,"genMin":73.4,"genMax":84.8,"prompt":5210,"promptMin":5127.3,"promptMax":5255.4,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-8698"},{"model":"LFM2.5-1.2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1425,"vramMB":697,"gen":136.2,"genMin":123.8,"genMax":137.1,"prompt":5591.4,"promptMin":5576.3,"promptMax":5723.1,"promptTokens":512,"firstTokenMs":23,"job":"20261112-111336-898a"},{"model":"d1-3B","chip":"cuda","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1635,"vramMB":1590,"gen":62.6,"genMin":62.2,"genMax":63.2,"prompt":3289.2,"promptMin":3202.5,"promptMax":3444.7,"promptTokens":512,"firstTokenMs":30,"job":"20261112-111336-8a2c"},{"model":"Qwen3.5-4B","chip":"cuda","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":4014,"vramMB":2604,"gen":35.3,"genMin":35.2,"genMax":35.3,"prompt":1941.9,"promptMin":1921.8,"promptMax":1981.4,"promptTokens":512,"firstTokenMs":88,"job":"20261112-111336-8f63"},{"model":"granite-4.2-3b","chip":"cuda","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":1705,"vramMB":2000,"gen":44.6,"genMin":44.2,"genMax":44.9,"prompt":2432.2,"promptMin":2407.4,"promptMax":2441.2,"promptTokens":512,"firstTokenMs":42,"job":"20261112-111336-8f84"},{"model":"Qwen3-4B","chip":"cpu","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":0,"loadMs":1801,"vramMB":0,"gen":16.7,"genMin":15.5,"genMax":16.8,"prompt":106.7,"promptMin":92.6,"promptMax":112.6,"promptTokens":512,"firstTokenMs":831,"job":"20261112-111336-8f94"},{"model":"LFM2.5-8B-A1B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":25,"loadMs":9927,"vramMB":4910,"gen":32.1,"genMin":29,"genMax":34.8,"prompt":152,"promptMin":142.1,"promptMax":153.3,"promptTokens":512,"firstTokenMs":1887,"job":"20261112-111336-9275"},{"model":"Qwen3-4B","chip":"cuda","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":2312,"vramMB":2376,"gen":38.8,"genMin":38.7,"genMax":39.3,"prompt":2049.2,"promptMin":2028.6,"promptMax":2068.3,"promptTokens":512,"firstTokenMs":44,"job":"20261112-111336-9a00"},{"model":"Qwen3.5-4B","chip":"cpu","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":0,"loadMs":2894,"vramMB":0,"gen":12.5,"genMin":12.2,"genMax":13.5,"prompt":86.3,"promptMin":78.7,"promptMax":88.2,"promptTokens":512,"firstTokenMs":1165,"job":"20261112-111336-a1ab"},{"model":"LFM2.5-2.6B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":2817,"vramMB":1591,"gen":58,"genMin":57.7,"genMax":60.2,"prompt":2582.6,"promptMin":2478.7,"promptMax":2587.6,"promptTokens":512,"firstTokenMs":49,"job":"20261112-111336-b16e"},{"model":"LFM2.5-350M","chip":"cuda","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":363,"vramMB":218,"gen":338.3,"genMin":333.3,"genMax":343.8,"prompt":19194.4,"promptMin":18905.5,"promptMax":21606.7,"promptTokens":512,"firstTokenMs":8,"job":"20261112-111336-b3c4"},{"model":"d1-2B","chip":"vulkan-arc","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1316,"vramMB":1042,"gen":28.4,"genMin":28.4,"genMax":28.8,"prompt":629,"promptMin":600.7,"promptMax":634.9,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-b518"},{"model":"LFM2.5-1.2B-Thinking","chip":"cuda","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":645,"vramMB":696,"gen":130.1,"genMin":130,"genMax":131.7,"prompt":6822.5,"promptMin":6566.5,"promptMax":7113.4,"promptTokens":512,"firstTokenMs":16,"job":"20261112-111336-b8ea"},{"model":"LFM3-VL-2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":2479,"vramMB":1043,"gen":81.4,"genMin":80.4,"genMax":86.8,"prompt":4412.4,"promptMin":4091.3,"promptMax":4443.4,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-b918"},{"model":"Phi-4-mini","chip":"vulkan-arc","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":2850,"vramMB":2386,"gen":15.4,"genMin":15.2,"genMax":16.6,"prompt":267.6,"promptMin":260.5,"promptMax":271.5,"promptTokens":512,"firstTokenMs":456,"job":"20261112-111336-bd68"},{"model":"Qwen3-4B","chip":"vulkan-nvidia","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":3795,"vramMB":2378,"gen":43.4,"genMin":40.1,"genMax":46.5,"prompt":1986.7,"promptMin":1839,"promptMax":2099,"promptTokens":512,"firstTokenMs":71,"job":"20261112-111336-bf3b"},{"model":"LFM2.5-1.2B","chip":"cpu","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":0,"loadMs":615,"vramMB":0,"gen":43,"genMin":38.8,"genMax":43.5,"prompt":340.6,"promptMin":338.8,"promptMax":385.9,"promptTokens":512,"firstTokenMs":246,"job":"20261112-111336-cecc"},{"model":"LFM3-1.7B","chip":"vulkan-arc","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1259,"vramMB":1042,"gen":34.5,"genMin":34.5,"genMax":34.5,"prompt":652,"promptMin":648.2,"promptMax":656.1,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-cf92"},{"model":"gemma-4-E4B-it","chip":"vulkan-nvidia","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":6685,"vramMB":2885,"gen":37.7,"genMin":37.7,"genMax":41.2,"prompt":3125,"promptMin":2480.9,"promptMax":3376.8,"promptTokens":512,"firstTokenMs":68,"job":"20261112-111336-d0df"},{"model":"LFM2-2.6B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":1967,"vramMB":1491,"gen":66.8,"genMin":65.3,"genMax":67,"prompt":2520,"promptMin":2494.1,"promptMax":2733.5,"promptTokens":512,"firstTokenMs":49,"job":"20261112-111336-d13c"},{"model":"LFM2.5-2.6B","chip":"cpu","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":0,"loadMs":1847,"vramMB":0,"gen":23.2,"genMin":19.9,"genMax":25.5,"prompt":165.8,"promptMin":157.1,"promptMax":170.4,"promptTokens":512,"firstTokenMs":648,"job":"20261112-111336-d2a1"},{"model":"Qwen3.5-4B","chip":"vulkan-nvidia","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":5058,"vramMB":2605,"gen":33.6,"genMin":33.3,"genMax":33.8,"prompt":1494.8,"promptMin":41.5,"promptMax":1509.4,"promptTokens":512,"firstTokenMs":125,"job":"20261112-111336-d35d"},{"model":"Qwen3-1.7B","chip":"cpu","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":0,"loadMs":599,"vramMB":0,"gen":30.2,"genMin":30,"genMax":30.8,"prompt":151.1,"promptMin":138.4,"promptMax":152.3,"promptTokens":512,"firstTokenMs":611,"job":"20261112-111336-dcfa"},{"model":"LFM3-VL-2B","chip":"vulkan-arc","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1350,"vramMB":1042,"gen":29.3,"genMin":29.2,"genMax":29.5,"prompt":621.8,"promptMin":605,"promptMax":626.3,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-e04c"},{"model":"granite-4.2-3b","chip":"vulkan-arc","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":2204,"vramMB":2000,"gen":18.2,"genMin":18.2,"genMax":18.2,"prompt":284.8,"promptMin":277.1,"promptMax":285.7,"promptTokens":512,"firstTokenMs":443,"job":"20261112-111336-e201"},{"model":"Qwen3.5-4B","chip":"vulkan-arc","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":4680,"vramMB":2605,"gen":16.1,"genMin":15.9,"genMax":16.1,"prompt":204.3,"promptMin":204.1,"promptMax":205,"promptTokens":512,"firstTokenMs":1018,"job":"20261112-111336-e389"},{"model":"gemma-4-E4B-it","chip":"cpu","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":0,"loadMs":3330,"vramMB":0,"gen":13.5,"genMin":12.4,"genMax":13.8,"prompt":158.8,"promptMin":155.5,"promptMax":179.7,"promptTokens":512,"firstTokenMs":679,"job":"20261112-111336-e6b5"},{"model":"gemma-4-E2B-it","chip":"cpu","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":0,"loadMs":2252,"vramMB":0,"gen":21.6,"genMin":20.6,"genMax":21.9,"prompt":570.2,"promptMin":541.5,"promptMax":597.2,"promptTokens":512,"firstTokenMs":212,"job":"20261112-111336-ecfb"},{"model":"LFM2.5-8B-A1B","chip":"cpu","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":0,"loadMs":10426,"vramMB":0,"gen":19.9,"genMin":10.2,"genMax":25.6,"prompt":150.3,"promptMin":134,"promptMax":153.4,"promptTokens":512,"firstTokenMs":765,"job":"20261112-111336-edde"},{"model":"LFM2-1.2B","chip":"vulkan-arc","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":717,"vramMB":696,"gen":49.5,"genMin":49.4,"genMax":49.5,"prompt":916.1,"promptMin":906.7,"promptMax":922.3,"promptTokens":512,"firstTokenMs":146,"job":"20261112-111336-f05c"},{"model":"LFM3-VL-2B","chip":"cpu","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":0,"loadMs":1240,"vramMB":0,"gen":29.7,"genMin":28.1,"genMax":30.1,"prompt":277.2,"promptMin":269.2,"promptMax":288.4,"promptTokens":512,"firstTokenMs":1,"job":"20261112-111336-f71a"},{"model":"SmolLM3-3B","chip":"cuda","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":2256,"vramMB":1820,"gen":48.9,"genMin":46.8,"genMax":49.9,"prompt":2790.6,"promptMin":2790.5,"promptMax":2801.5,"promptTokens":512,"firstTokenMs":45,"job":"20261112-111336-f979"},{"model":"Phi-4-mini","chip":"cuda","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":2501,"vramMB":2370,"gen":43.4,"genMin":42.7,"genMax":43.5,"prompt":2438.7,"promptMin":2414.9,"promptMax":2612.2,"promptTokens":512,"firstTokenMs":38,"job":"20261112-111336-fb27"},{"model":"SmolLM3-3B","chip":"cpu","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":0,"loadMs":1715,"vramMB":0,"gen":16.9,"genMin":15.5,"genMax":18.8,"prompt":132.6,"promptMin":120.1,"promptMax":133.5,"promptTokens":512,"firstTokenMs":1116,"job":"20261112-111336-fc49"},{"model":"LFM2.5-8B-A1B","chip":"cuda","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":20,"loadMs":16941,"vramMB":4516,"gen":44.7,"genMin":40.5,"genMax":48.3,"prompt":1466.7,"promptMin":1348.7,"promptMax":1830.9,"promptTokens":512,"firstTokenMs":472,"job":"20261112-122224-5ecc"},{"model":"LFM2.5-8B-A1B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":20,"loadMs":7206,"vramMB":4520,"gen":42.6,"genMin":33.6,"genMax":45.4,"prompt":989.4,"promptMin":610.9,"promptMax":1174.4,"promptTokens":512,"firstTokenMs":621,"job":"20261112-122224-daa3"}],"prompt4k":[{"model":"LFM3-1.7B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":2057,"vramMB":1043,"gen":73.8,"genMin":72.5,"genMax":75.4,"prompt":4044.1,"promptMin":4031.1,"promptMax":4069.6,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-68ec"},{"model":"LFM3-1.7B","chip":"vulkan-arc","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1699,"vramMB":1042,"gen":25.8,"genMin":25.7,"genMax":25.9,"prompt":540.6,"promptMin":539.5,"promptMax":541.9,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-9c19"},{"model":"d1-2B","chip":"cuda","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1175,"vramMB":1042,"gen":80,"genMin":79.7,"genMax":82.6,"prompt":4865.8,"promptMin":4855.4,"promptMax":4868.6,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-5fdf"},{"model":"LFM2.5-1.2B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":845,"vramMB":696,"gen":48.8,"genMin":45.7,"genMax":49.7,"prompt":759.3,"promptMin":748.1,"promptMax":764.5,"promptTokens":4096,"firstTokenMs":147,"job":"20261112-111336-a618"},{"model":"LFM2.5-1.2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1391,"vramMB":697,"gen":152,"genMin":138.8,"genMax":154,"prompt":6057,"promptMin":5639.8,"promptMax":6167.7,"promptTokens":4096,"firstTokenMs":21,"job":"20261112-111336-1371"},{"model":"d1-2B","chip":"vulkan-arc","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1356,"vramMB":1042,"gen":23.9,"genMin":23.8,"genMax":24.6,"prompt":625.1,"promptMin":592.2,"promptMax":637.4,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-0eaf"},{"model":"d1-2B","chip":"vulkan-nvidia","repo":"LiquidAI/d1-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1683,"vramMB":1043,"gen":75.2,"genMin":73.8,"genMax":75.6,"prompt":4027.3,"promptMin":4025.1,"promptMax":4457.1,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-dc1c"},{"model":"LFM3-1.7B","chip":"cuda","repo":"LiquidAI/LFM3-1.7B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1175,"vramMB":1042,"gen":82.9,"genMin":81.8,"genMax":84,"prompt":4749.3,"promptMin":4679.6,"promptMax":4776,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-9c51"},{"model":"LFM2.5-1.2B","chip":"cuda","repo":"LiquidAI/LFM2.5-1.2B-Instruct-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":555,"vramMB":696,"gen":143,"genMin":142.7,"genMax":144.3,"prompt":6635.4,"promptMin":6628.4,"promptMax":6651.2,"promptTokens":4096,"firstTokenMs":15,"job":"20261112-111336-7fc0"},{"model":"Qwen3-4B","chip":"vulkan-arc","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":2005,"vramMB":2377,"gen":18.2,"genMin":17.9,"genMax":18.2,"prompt":119.8,"promptMin":117.8,"promptMax":121.2,"promptTokens":4096,"firstTokenMs":511,"job":"20261112-111336-07d9"},{"model":"LFM2.5-230M","chip":"cuda","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":311,"vramMB":146,"gen":393.4,"genMin":372.9,"genMax":396.6,"prompt":27603.5,"promptMin":27467,"promptMax":27787.7,"promptTokens":4096,"firstTokenMs":9,"job":"20261112-111336-0a4d"},{"model":"granite-4.2-3b","chip":"cuda","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":1469,"vramMB":2000,"gen":52.3,"genMin":52,"genMax":54.5,"prompt":2241.8,"promptMin":2148.1,"promptMax":2251.6,"promptTokens":4096,"firstTokenMs":40,"job":"20261112-111336-1ce8"},{"model":"LFM2.5-230M","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":874,"vramMB":146,"gen":407.6,"genMin":400.5,"genMax":410.1,"prompt":24590.1,"promptMin":22066.7,"promptMax":25971,"promptTokens":4096,"firstTokenMs":9,"job":"20261112-111336-1d3e"},{"model":"LFM2.5-350M","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":361,"vramMB":217,"gen":121.2,"genMin":95.5,"genMax":124.3,"prompt":2376,"promptMin":2278.8,"promptMax":2388.1,"promptTokens":4096,"firstTokenMs":53,"job":"20261112-111336-238f"},{"model":"SmolLM3-3B","chip":"cuda","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":1960,"vramMB":1820,"gen":44.4,"genMin":44.1,"genMax":44.7,"prompt":2362.9,"promptMin":2307,"promptMax":2373.5,"promptTokens":4096,"firstTokenMs":57,"job":"20261112-111336-2642"},{"model":"LFM2.5-350M","chip":"cuda","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":324,"vramMB":218,"gen":358.3,"genMin":356.6,"genMax":358.9,"prompt":19578.2,"promptMin":19577.3,"promptMax":19645.4,"promptTokens":4096,"firstTokenMs":8,"job":"20261112-111336-3630"},{"model":"LFM2-2.6B","chip":"vulkan-arc","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":1398,"vramMB":1490,"gen":30.8,"genMin":30.5,"genMax":30.8,"prompt":372,"promptMin":372,"promptMax":372.6,"promptTokens":4096,"firstTokenMs":333,"job":"20261112-111336-3893"},{"model":"gemma-4-E2B-it","chip":"cuda","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":2273,"vramMB":1408,"gen":62,"genMin":61.5,"genMax":62,"prompt":7830.4,"promptMin":7826.8,"promptMax":7919.2,"promptTokens":4096,"firstTokenMs":29,"job":"20261112-111336-38cf"},{"model":"LFM2.5-2.6B","chip":"cuda","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1482,"vramMB":1590,"gen":61.6,"genMin":61.5,"genMax":62.1,"prompt":3033.3,"promptMin":3025,"promptMax":3054.7,"promptTokens":4096,"firstTokenMs":29,"job":"20261112-111336-4445"},{"model":"LFM3-VL-2B","chip":"vulkan-arc","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1288,"vramMB":1042,"gen":26.7,"genMin":26.4,"genMax":26.9,"prompt":531.5,"promptMin":506.1,"promptMax":534.5,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-4ae4"},{"model":"gemma-4-E2B-it","chip":"vulkan-arc","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":2298,"vramMB":1410,"gen":23.3,"genMin":23.2,"genMax":23.4,"prompt":360,"promptMin":357.6,"promptMax":360.5,"promptTokens":4096,"firstTokenMs":141,"job":"20261112-111336-512d"},{"model":"LFM3-VL-2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1928,"vramMB":1043,"gen":80.9,"genMin":80.8,"genMax":80.9,"prompt":4068.7,"promptMin":4035.7,"promptMax":4072,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-53b4"},{"model":"LFM2.5-350M","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-350M-GGUF","quant":"Q4_K_M","sizeGB":0.21,"gpuLayers":17,"loadMs":932,"vramMB":218,"gen":329.6,"genMin":328.3,"genMax":334.6,"prompt":15836.7,"promptMin":15806.6,"promptMax":16224.2,"promptTokens":4096,"firstTokenMs":11,"job":"20261112-111336-5cde"},{"model":"LFM2.5-2.6B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1891,"vramMB":1590,"gen":23.3,"genMin":21.8,"genMax":23.5,"prompt":365.2,"promptMin":359.6,"promptMax":367.3,"promptTokens":4096,"firstTokenMs":340,"job":"20261112-111336-63b2"},{"model":"Phi-4-mini","chip":"vulkan-arc","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":2859,"vramMB":2386,"gen":14.5,"genMin":13.3,"genMax":15.8,"prompt":110.8,"promptMin":107.4,"promptMax":144.6,"promptTokens":4096,"firstTokenMs":583,"job":"20261112-111336-6fbc"},{"model":"LFM2.5-1.2B-Thinking","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":898,"vramMB":696,"gen":49.9,"genMin":47.5,"genMax":49.9,"prompt":804.9,"promptMin":782.9,"promptMax":809.9,"promptTokens":4096,"firstTokenMs":145,"job":"20261112-111336-7151"},{"model":"Phi-4-mini","chip":"cuda","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":2106,"vramMB":2370,"gen":41.9,"genMin":38.7,"genMax":44.2,"prompt":1989.2,"promptMin":1946.6,"promptMax":2063.2,"promptTokens":4096,"firstTokenMs":39,"job":"20261112-111336-7288"},{"model":"SmolLM3-3B","chip":"vulkan-arc","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":2090,"vramMB":1820,"gen":21.4,"genMin":21,"genMax":22.2,"prompt":192.9,"promptMin":190.6,"promptMax":196.9,"promptTokens":4096,"firstTokenMs":419,"job":"20261112-111336-7325"},{"model":"Qwen3-4B","chip":"vulkan-nvidia","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":3313,"vramMB":2378,"gen":48.2,"genMin":48.2,"genMax":49.5,"prompt":1974,"promptMin":1878,"promptMax":2021.4,"promptTokens":4096,"firstTokenMs":64,"job":"20261112-111336-791e"},{"model":"LFM2.5-2.6B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":2610,"vramMB":1591,"gen":53.4,"genMin":6.1,"genMax":61.5,"prompt":2658.2,"promptMin":542.1,"promptMax":2737.5,"promptTokens":4096,"firstTokenMs":46,"job":"20261112-111336-84ad"},{"model":"d1-3B","chip":"cuda","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1412,"vramMB":1590,"gen":54.6,"genMin":54.1,"genMax":55.7,"prompt":2986,"promptMin":2969.3,"promptMax":2987.5,"promptTokens":4096,"firstTokenMs":29,"job":"20261112-111336-85a6"},{"model":"Qwen3-1.7B","chip":"vulkan-nvidia","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":2835,"vramMB":1746,"gen":69,"genMin":68.1,"genMax":69.8,"prompt":4532.1,"promptMin":4150.5,"promptMax":4662.3,"promptTokens":4096,"firstTokenMs":30,"job":"20261112-111336-8982"},{"model":"gemma-4-E2B-it","chip":"vulkan-nvidia","repo":"unsloth/gemma-4-E2B-it-GGUF","quant":"Q4_K_M","sizeGB":2.89,"gpuLayers":36,"loadMs":3791,"vramMB":1410,"gen":54.6,"genMin":50.4,"genMax":60.5,"prompt":6594.5,"promptMin":6473.6,"promptMax":7048,"promptTokens":4096,"firstTokenMs":33,"job":"20261112-111336-8f09"},{"model":"LFM2.5-1.2B-Thinking","chip":"cuda","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":560,"vramMB":696,"gen":137.3,"genMin":136.4,"genMax":139.4,"prompt":6550,"promptMin":6531.7,"promptMax":6563.4,"promptTokens":4096,"firstTokenMs":17,"job":"20261112-111336-90db"},{"model":"d1-3B","chip":"vulkan-arc","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":1610,"vramMB":1590,"gen":28.9,"genMin":28.9,"genMax":29.2,"prompt":375.4,"promptMin":374.5,"promptMax":378,"promptTokens":4096,"firstTokenMs":330,"job":"20261112-111336-91ec"},{"model":"Qwen3-1.7B","chip":"cuda","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":1495,"vramMB":1744,"gen":63.5,"genMin":61.9,"genMax":67.5,"prompt":4394.1,"promptMin":4363.6,"promptMax":4510.4,"promptTokens":4096,"firstTokenMs":24,"job":"20261112-111336-96b3"},{"model":"LFM3-VL-2B","chip":"cuda","repo":"LiquidAI/LFM3-VL-2B-GGUF","quant":"Q4_K_M","sizeGB":1.02,"gpuLayers":25,"loadMs":1380,"vramMB":1042,"gen":85.8,"genMin":85.5,"genMax":86.4,"prompt":4582.4,"promptMin":4564.3,"promptMax":4623.8,"promptTokens":4096,"firstTokenMs":1,"job":"20261112-111336-9c9d"},{"model":"d1-3B","chip":"vulkan-nvidia","repo":"LiquidAI/d1-3B-GGUF","quant":"Q4_K_M","sizeGB":1.56,"gpuLayers":31,"loadMs":2458,"vramMB":1591,"gen":55,"genMin":53.5,"genMax":57.9,"prompt":2568.6,"promptMin":2518.8,"promptMax":2799.7,"promptTokens":4096,"firstTokenMs":45,"job":"20261112-111336-9dba"},{"model":"Qwen3.5-4B","chip":"vulkan-nvidia","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":4303,"vramMB":2605,"gen":41,"genMin":39,"genMax":41.2,"prompt":1517.2,"promptMin":1446,"promptMax":1570.4,"promptTokens":4096,"firstTokenMs":102,"job":"20261112-111336-9dc2"},{"model":"gemma-4-E4B-it","chip":"vulkan-nvidia","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":5583,"vramMB":2885,"gen":37.7,"genMin":36.1,"genMax":38.1,"prompt":2817.6,"promptMin":2737.2,"promptMax":2890.6,"promptTokens":4096,"firstTokenMs":67,"job":"20261112-111336-a26b"},{"model":"LFM2-1.2B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1484,"vramMB":697,"gen":157.2,"genMin":156.2,"genMax":161.4,"prompt":6367.6,"promptMin":5878.9,"promptMax":6373.5,"promptTokens":4096,"firstTokenMs":21,"job":"20261112-111336-b17c"},{"model":"granite-4.2-3b","chip":"vulkan-arc","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":1667,"vramMB":2000,"gen":19.1,"genMin":18.8,"genMax":19.6,"prompt":204.8,"promptMin":203.9,"promptMax":208.2,"promptTokens":4096,"firstTokenMs":437,"job":"20261112-111336-bbf7"},{"model":"Qwen3-4B","chip":"cuda","repo":"Qwen/Qwen3-4B-GGUF","quant":"Q4_K_M","sizeGB":2.33,"gpuLayers":37,"loadMs":1952,"vramMB":2376,"gen":43.9,"genMin":40.5,"genMax":44.9,"prompt":1865.2,"promptMin":1750.1,"promptMax":1941.2,"promptTokens":4096,"firstTokenMs":42,"job":"20261112-111336-bef5"},{"model":"LFM2-2.6B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":2237,"vramMB":1491,"gen":54.9,"genMin":52.4,"genMax":55.2,"prompt":2418.2,"promptMin":2416.1,"promptMax":2421.8,"promptTokens":4096,"firstTokenMs":49,"job":"20261112-111336-ca33"},{"model":"SmolLM3-3B","chip":"vulkan-nvidia","repo":"ggml-org/SmolLM3-3B-GGUF","quant":"Q4_K_M","sizeGB":1.78,"gpuLayers":37,"loadMs":2971,"vramMB":1821,"gen":39.9,"genMin":39.3,"genMax":54.5,"prompt":2238.5,"promptMin":2172.4,"promptMax":2250.1,"promptTokens":4096,"firstTokenMs":66,"job":"20261112-111336-cfb6"},{"model":"LFM2.5-1.2B-Thinking","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-1.2B-Thinking-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":1390,"vramMB":697,"gen":126.6,"genMin":121.8,"genMax":137.4,"prompt":5603.3,"promptMin":5535.5,"promptMax":5895.4,"promptTokens":4096,"firstTokenMs":21,"job":"20261112-111336-d305"},{"model":"LFM2.5-230M","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-230M-GGUF","quant":"Q4_K_M","sizeGB":0.14,"gpuLayers":15,"loadMs":328,"vramMB":145,"gen":161.9,"genMin":160.9,"genMax":164,"prompt":3387.7,"promptMin":3381.1,"promptMax":3416.5,"promptTokens":4096,"firstTokenMs":34,"job":"20261112-111336-d591"},{"model":"gemma-4-E4B-it","chip":"cuda","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":3222,"vramMB":2884,"gen":33.4,"genMin":30.2,"genMax":36.1,"prompt":2994.9,"promptMin":2778.9,"promptMax":3039.4,"promptTokens":4096,"firstTokenMs":49,"job":"20261112-111336-d921"},{"model":"Qwen3.5-4B","chip":"vulkan-arc","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":2961,"vramMB":2605,"gen":14.8,"genMin":14.8,"genMax":14.9,"prompt":173.7,"promptMin":173.5,"promptMax":174.3,"promptTokens":4096,"firstTokenMs":1009,"job":"20261112-111336-dbd6"},{"model":"LFM2-1.2B","chip":"cuda","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":616,"vramMB":696,"gen":138.3,"genMin":138.2,"genMax":138.9,"prompt":6537.3,"promptMin":6430.7,"promptMax":6733.6,"promptTokens":4096,"firstTokenMs":15,"job":"20261112-111336-e1c0"},{"model":"Phi-4-mini","chip":"vulkan-nvidia","repo":"unsloth/Phi-4-mini-instruct-GGUF","quant":"Q4_K_M","sizeGB":2.32,"gpuLayers":33,"loadMs":3871,"vramMB":2370,"gen":42.5,"genMin":42.3,"genMax":42.7,"prompt":1855,"promptMin":1841.8,"promptMax":1855.2,"promptTokens":4096,"firstTokenMs":72,"job":"20261112-111336-e2ce"},{"model":"granite-4.2-3b","chip":"vulkan-nvidia","repo":"ibm-granite/granite-4.2-3b-GGUF","quant":"Q4_K_M","sizeGB":2.09,"gpuLayers":41,"loadMs":3022,"vramMB":2001,"gen":56.5,"genMin":49.7,"genMax":57.8,"prompt":2324.8,"promptMin":2317.8,"promptMax":2387.5,"promptTokens":4096,"firstTokenMs":55,"job":"20261112-111336-e951"},{"model":"Qwen3-1.7B","chip":"vulkan-arc","repo":"Qwen/Qwen3-1.7B-GGUF","quant":"Q8_0","sizeGB":1.71,"gpuLayers":29,"loadMs":1606,"vramMB":1745,"gen":23.2,"genMin":23.2,"genMax":23.3,"prompt":215.2,"promptMin":212.5,"promptMax":215.5,"promptTokens":4096,"firstTokenMs":389,"job":"20261112-111336-e9a1"},{"model":"LFM2.5-8B-A1B","chip":"vulkan-arc","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":25,"loadMs":5315,"vramMB":4910,"gen":32.9,"genMin":30.9,"genMax":33.4,"prompt":155.3,"promptMin":154,"promptMax":156.4,"promptTokens":4096,"firstTokenMs":1831,"job":"20261112-111336-eb21"},{"model":"LFM2-1.2B","chip":"vulkan-arc","repo":"LiquidAI/LFM2-1.2B-GGUF","quant":"Q4_K_M","sizeGB":0.68,"gpuLayers":17,"loadMs":678,"vramMB":696,"gen":55.3,"genMin":55,"genMax":55.3,"prompt":819.9,"promptMin":814.4,"promptMax":822.7,"promptTokens":4096,"firstTokenMs":144,"job":"20261112-111336-ef12"},{"model":"Qwen3.5-4B","chip":"cuda","repo":"unsloth/Qwen3.5-4B-GGUF","quant":"Q4_K_M","sizeGB":2.55,"gpuLayers":33,"loadMs":2574,"vramMB":2604,"gen":35.9,"genMin":33.1,"genMax":36,"prompt":1842.8,"promptMin":1754.3,"promptMax":1886.2,"promptTokens":4096,"firstTokenMs":68,"job":"20261112-111336-f2a5"},{"model":"LFM2-2.6B","chip":"cuda","repo":"LiquidAI/LFM2-2.6B-GGUF","quant":"Q4_K_M","sizeGB":1.46,"gpuLayers":31,"loadMs":969,"vramMB":1490,"gen":58.3,"genMin":58.3,"genMax":58.6,"prompt":2975.8,"promptMin":2941.9,"promptMax":3005.5,"promptTokens":4096,"firstTokenMs":27,"job":"20261112-111336-f5ef"},{"model":"gemma-4-E4B-it","chip":"vulkan-arc","repo":"unsloth/gemma-4-E4B-it-GGUF","quant":"Q4_K_M","sizeGB":4.64,"gpuLayers":43,"loadMs":3353,"vramMB":2885,"gen":14.1,"genMin":14.1,"genMax":14.1,"prompt":216.8,"promptMin":216.6,"promptMax":217.8,"promptTokens":4096,"firstTokenMs":409,"job":"20261112-111336-fffb"},{"model":"LFM2.5-8B-A1B","chip":"cuda","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":20,"loadMs":3194,"vramMB":4556,"gen":39.3,"genMin":36.4,"genMax":41.2,"prompt":1233.1,"promptMin":1165.1,"promptMax":1239.9,"promptTokens":4096,"firstTokenMs":471,"job":"20261112-122224-e033"},{"model":"LFM2.5-8B-A1B","chip":"vulkan-nvidia","repo":"LiquidAI/LFM2.5-8B-A1B-GGUF","quant":"Q4_K_M","sizeGB":4.8,"gpuLayers":20,"loadMs":5639,"vramMB":4560,"gen":37.8,"genMin":31.2,"genMax":47.4,"prompt":1050.4,"promptMin":974,"promptMax":1197,"promptTokens":4096,"firstTokenMs":764,"job":"20261112-122224-f495"}],"ov":[{"model":"LFM2.5-1.2B","chip":"arc","device":"Intel(R) Arc(TM) Graphics (iGPU)","gen":70.8,"cores":1.05,"rssMB":1944,"job":"20261112-153958-1b1f"},{"model":"LFM2.5-1.2B","chip":"cpu","device":"Intel(R) Core(TM) Ultra 7 155H","gen":41.6,"cores":3.49,"rssMB":1521,"job":"20261112-153958-2042"},{"model":"LFM2.5-1.2B","chip":"npu","device":"Intel(R) AI Boost","gen":26.2,"cores":0.09,"rssMB":2444,"job":"20261112-153958-8da6"},{"model":"LFM3-1.7B","chip":"cpu","device":"Intel(R) Core(TM) Ultra 7 155H","gen":25.7,"cores":3.93,"rssMB":2369,"job":"20261112-153958-b0b7"},{"model":"Qwen3-1.7B","chip":"arc","device":"Intel(R) Arc(TM) Graphics (iGPU)","gen":33.4,"cores":1.82,"rssMB":2689,"job":"20261112-153959-1755"},{"model":"Qwen3-1.7B","chip":"cpu","device":"Intel(R) Core(TM) Ultra 7 155H","gen":26.5,"cores":4.16,"rssMB":2565,"job":"20261112-153959-8eb3"},{"model":"LFM3-1.7B","chip":"arc","device":"Intel(R) Arc(TM) Graphics (iGPU)","gen":45.4,"cores":0.99,"rssMB":2267,"job":"20261112-153959-9290"},{"model":"LFM3-1.7B","chip":"rtx","device":"NVIDIA GeForce RTX 4050 Laptop GPU (dGPU)","gen":3.6,"cores":1.64,"rssMB":1754,"job":"20261112-153959-e1d1"},{"model":"Qwen3-1.7B","chip":"rtx","device":"NVIDIA GeForce RTX 4050 Laptop GPU (dGPU)","gen":5.4,"cores":1.65,"rssMB":1881,"job":"20261112-153959-e88a"},{"model":"LFM2.5-1.2B","chip":"rtx","device":"NVIDIA GeForce RTX 4050 Laptop GPU (dGPU)","gen":9.5,"cores":1.64,"rssMB":1294,"job":"20261112-153959-eab2"},{"model":"Qwen3-1.7B-npu-export","chip":"npu","device":"Intel(R) AI Boost","gen":22.8,"cores":0.07,"rssMB":2312,"job":"20261112-162010-c57b"},{"model":"Qwen3-1.7B-npu-export","chip":"cpu","device":"Intel(R) Core(TM) Ultra 7 155H","gen":30.8,"cores":4.13,"rssMB":2208,"job":"20261112-162011-3a84"},{"model":"Qwen3-1.7B-npu-export","chip":"arc","device":"Intel(R) Arc(TM) Graphics (iGPU)","gen":44.9,"cores":0.84,"rssMB":2195,"job":"20261112-162011-a4af"}],"router":[{"model":"LFM2.5-1.2B","chip":"npu","score":79,"of":140,"medianMs":891,"cores":0.04,"perLang":{"fr":12,"en":13,"es":10,"de":11,"pt":10,"ru":12,"zh":11},"job":"20261112-171821-69d9"},{"model":"LFM2.5-1.2B","chip":"cpu","score":78,"of":140,"medianMs":746,"cores":4.26,"perLang":{"fr":12,"en":12,"es":10,"de":11,"pt":10,"ru":12,"zh":11},"job":"20261112-171821-82f0"},{"model":"Qwen3-1.7B-npu","chip":"npu","score":0,"of":140,"medianMs":864,"cores":0.07,"perLang":{"fr":0,"en":0,"es":0,"de":0,"pt":0,"ru":0,"zh":0},"job":"20261112-171822-040e"},{"model":"Qwen3-1.7B-npu","chip":"cpu","score":61,"of":140,"medianMs":1093,"cores":3.81,"perLang":{"fr":9,"en":10,"es":7,"de":10,"pt":8,"ru":9,"zh":8},"job":"20261112-171822-43dc"},{"model":"LFM2.5-1.2B","chip":"arc","score":79,"of":140,"medianMs":283,"cores":0.96,"perLang":{"fr":12,"en":13,"es":10,"de":11,"pt":10,"ru":12,"zh":11},"job":"20261112-171822-ae04"},{"model":"Qwen3-1.7B-npu","chip":"arc","score":64,"of":140,"medianMs":474,"cores":0.98,"perLang":{"fr":9,"en":10,"es":6,"de":9,"pt":9,"ru":11,"zh":10},"job":"20261112-171822-e96d"}],"longdoc":[{"device":"CPU","promptTokens":3399,"firstTokenMs":10461,"gen":42.9,"cores":4.42,"job":"20261112-172726-5c8c"},{"device":"GPU.0","promptTokens":3399,"firstTokenMs":2106,"gen":67.9,"cores":0.95,"job":"20261112-172727-4aa3"},{"device":"NPU","promptTokens":3399,"firstTokenMs":6880,"gen":25.3,"cores":0.11,"job":"20261112-172727-fff9"}],"meta":{"machine":"HP laptop \u00b7 Intel Core Ultra 7 155H (Arc iGPU, AI Boost NPU) \u00b7 RTX 4050 Laptop 6 GB at 25 W \u00b7 32 GB RAM","date":"2026-11-12"}};
+const CHIPS = [
+  { id: 'cuda', label: 'RTX · CUDA', color: 'var(--c-cuda)' },
+  { id: 'vulkan-nvidia', label: 'RTX · Vulkan', color: 'var(--c-vk)' },
+  { id: 'vulkan-arc', label: 'Arc · Vulkan', color: 'var(--c-arc)' },
+  { id: 'cpu', label: 'CPU', color: 'var(--c-cpu)' },
+];
+const isLiquid = (r) => (r.repo || '').startsWith('LiquidAI/');
+const fmt = (v, d = 1) => (v == null ? '·' : Number(v).toFixed(d));
+const NS = 'http://www.w3.org/2000/svg';
+const tip = document.getElementById('tip');
+
+function el(tag, attrs, parent, text) {
+  const e = document.createElementNS(NS, tag);
+  for (const k in attrs) e.setAttribute(k, attrs[k]);
+  if (text != null) e.textContent = text;
+  if (parent) parent.appendChild(e);
+  return e;
+}
+function showTip(ev, title, lines) {
+  tip.innerHTML = '';
+  const t = document.createElement('div'); t.className = 't'; t.textContent = title; tip.appendChild(t);
+  for (const l of lines) { const r = document.createElement('div'); r.className = 'r'; r.textContent = l; tip.appendChild(r); }
+  tip.hidden = false;
+  const x = Math.min(ev.clientX + 14, window.innerWidth - tip.offsetWidth - 8);
+  const y = Math.min(ev.clientY + 14, window.innerHeight - tip.offsetHeight - 8);
+  tip.style.left = x + 'px'; tip.style.top = y + 'px';
+}
+function hideTip() { tip.hidden = true; }
+function bindTip(node, title, lines) {
+  node.addEventListener('pointermove', (e) => showTip(e, title, lines));
+  node.addEventListener('pointerleave', hideTip);
+}
+function partial(r) { return r.gpuLayers != null && r.chip !== 'cpu' && r.model === 'LFM2.5-8B-A1B' && r.gpuLayers < 25; }
+function liquidPill(svg, x, y) {
+  el('rect', { x, y: y - 9, width: 46, height: 14, rx: 7, class: 'pill' }, svg);
+  el('text', { x: x + 23, y: y + 1.5, 'text-anchor': 'middle', class: 'pilltx' }, svg, 'LIQUID');
+}
+
+/* KPIs */
+(function kpis() {
+  const box = document.getElementById('kpis');
+  const models = new Set(DATA.speed.map((r) => r.model));
+  const liq = new Set(DATA.speed.filter(isLiquid).map((r) => r.model));
+  const vk = DATA.speed.filter((r) => r.chip === 'vulkan-nvidia');
+  const cu = DATA.speed.filter((r) => r.chip === 'cuda');
+  const ratios = vk.map((v) => { const c = cu.find((x) => x.model === v.model); return c ? v.gen / c.gen : null; }).filter(Boolean).sort((a, b) => a - b);
+  const med = ratios[Math.floor(ratios.length / 2)];
+  const npu = DATA.ov.find((r) => r.model === 'LFM2.5-1.2B' && r.chip === 'npu');
+  const items = [
+    [models.size, 'models timed, ' + liq.size + ' from Liquid AI'],
+    [DATA.speed.length + DATA.prompt4k.length + DATA.ov.length, 'measurements, each a median'],
+    [Math.round(med * 100) + ' %', 'Vulkan speed vs CUDA on the RTX (median)'],
+    [fmt(npu.cores, 2), 'CPU cores used by LFM2.5-1.2B on the NPU'],
+  ];
+  for (const [b, s] of items) { const d = document.createElement('div'); d.className = 'kpi'; d.innerHTML = '<b></b><span></span>'; d.querySelector('b').textContent = b; d.querySelector('span').textContent = s; box.appendChild(d); }
+})();
+
+/* Toolbar */
+function toolbar(id, chips, onPick, initial) {
+  const box = document.getElementById(id);
+  const btns = chips.map((c) => {
+    const b = document.createElement('button');
+    b.className = 'chip-btn'; b.type = 'button'; b.id = id + '-' + c.id;
+    b.innerHTML = '<i></i><span></span>'; b.querySelector('i').style.background = c.color; b.querySelector('span').textContent = c.label;
+    b.setAttribute('aria-pressed', String(c.id === initial));
+    b.addEventListener('click', () => { btns.forEach((x) => x.setAttribute('aria-pressed', 'false')); b.setAttribute('aria-pressed', 'true'); onPick(c); });
+    box.appendChild(b); return b;
+  });
+}
+
+/* Horizontal bars */
+function hbars(svgId, rows, opts) {
+  const svg = document.getElementById(svgId); svg.innerHTML = '';
+  const W = 1000, rowH = 26, top = 8, left = 236, right = 120;
+  const H = top + rows.length * rowH + 30;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const max = opts.max || Math.max(...rows.map((r) => r.v)) * 1.05;
+  const x = (v) => left + (v / max) * (W - left - right);
+  const ticks = opts.ticks || 4;
+  for (let i = 0; i <= ticks; i++) {
+    const v = (max / ticks) * i; const xx = x(v);
+    el('line', { x1: xx, x2: xx, y1: top - 4, y2: H - 24, class: 'grid' }, svg);
+    el('text', { x: xx, y: H - 8, 'text-anchor': 'middle', class: 'ax' }, svg, opts.tickFmt ? opts.tickFmt(v) : Math.round(v));
+  }
+  rows.forEach((r, i) => {
+    const y = top + i * rowH;
+    const liq = r.liquid;
+    el('text', { x: left - (liq ? 60 : 10), y: y + 16, 'text-anchor': 'end', class: 'name' + (liq ? ' liq' : '') }, svg, r.label);
+    if (liq) liquidPill(svg, left - 54, y + 12);
+    const w = Math.max(2, x(r.v) - left);
+    el('path', { d: `M${left},${y + 5} h${w - 4} a4,4 0 0 1 4,4 v8 a4,4 0 0 1 -4,4 h-${w - 4} z`, fill: r.color, opacity: liq || opts.noDim ? 1 : 0.55 }, svg);
+    el('text', { x: x(r.v) + 6, y: y + 16, class: 'val' }, svg, r.text);
+    const hit = el('rect', { x: 0, y: y, width: W, height: rowH, class: 'hit' }, svg);
+    bindTip(hit, r.tipTitle, r.tipLines);
+  });
+}
+
+/* Q1: generation speed */
+function drawSpeed(chip) {
+  const rows = DATA.speed.filter((r) => r.chip === chip.id).sort((a, b) => b.gen - a.gen).map((r) => ({
+    label: r.model + (r.quant !== 'Q4_K_M' ? ' (' + r.quant + ')' : ''), liquid: isLiquid(r), v: r.gen, color: chip.color,
+    text: fmt(r.gen) + (partial(r) ? ' · partial' : ''),
+    tipTitle: r.model + ' · ' + chip.label,
+    tipLines: [fmt(r.gen) + ' tok/s (runs ' + fmt(r.genMin) + ' to ' + fmt(r.genMax) + ')', r.quant + ' · ' + fmt(r.sizeGB, 2) + ' GB file' + (r.vramMB ? ' · ' + r.vramMB + ' MB VRAM' : ''), 'load ' + fmt(r.loadMs / 1000) + ' s' + (partial(r) ? ' · ' + r.gpuLayers + ' of 25 layers on the GPU' : ''), 'job ' + r.job],
+  }));
+  hbars('speed', rows, { max: 400, ticks: 4 });
+  document.getElementById('speed-setup').textContent = chip.label + ' · 512-token prompt, 128 tokens written · median of 3 after a warm-up · LFM2.5-8B-A1B does not fit the 6 GB card whole: part of it runs on the CPU there.';
+}
+toolbar('speed-tools', CHIPS, drawSpeed, 'vulkan-nvidia');
+drawSpeed(CHIPS[1]);
+
+/* Q2: scatter speed vs size, RTX Vulkan */
+(function drawSize() {
+  const svg = document.getElementById('size');
+  const rows = DATA.speed.filter((r) => r.chip === 'vulkan-nvidia');
+  const W = 1000, H = 460, L = 64, R = 30, T = 16, B = 46;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const xmax = 5, ymax = 400;
+  const x = (v) => L + (v / xmax) * (W - L - R);
+  const y = (v) => H - B - (v / ymax) * (H - T - B);
+  for (let i = 0; i <= 5; i++) { el('line', { x1: x(i), x2: x(i), y1: T, y2: H - B, class: 'grid' }, svg); el('text', { x: x(i), y: H - B + 18, 'text-anchor': 'middle', class: 'ax' }, svg, i + ' GB'); }
+  for (let v = 0; v <= 400; v += 100) { el('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: 'grid' }, svg); el('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'ax' }, svg, v); }
+  el('text', { x: L, y: H - 6, class: 'ax' }, svg, 'file size');
+  el('text', { x: 14, y: T + 4, class: 'ax', transform: `rotate(90 14 ${T + 4})` }, svg, 'tok/s');
+  const labelled = new Set(['LFM2.5-230M', 'LFM2.5-350M', 'LFM2.5-1.2B', 'LFM3-1.7B', 'LFM2.5-8B-A1B', 'gemma-4-E2B-it']);
+  const leftLabel = new Set(['LFM2.5-8B-A1B']);
+  const order = rows.slice().sort((a, b) => Number(isLiquid(a)) - Number(isLiquid(b)));
+  for (const r of order) {
+    const liq = isLiquid(r); const cx = x(r.sizeGB), cy = y(r.gen);
+    const c = el('circle', { cx, cy, r: 7, fill: liq ? 'var(--c-cuda)' : 'var(--bg)', stroke: liq ? 'var(--bg)' : 'var(--c-other)', 'stroke-width': liq ? 2 : 2.5 }, svg);
+    if (labelled.has(r.model)) {
+      const left = leftLabel.has(r.model);
+      el('text', { x: left ? cx - 4 : cx + 11, y: left ? cy - 14 : cy - 10, 'text-anchor': left ? 'end' : 'start', class: liq ? 'val' : 'ax' }, svg, r.model + (partial(r) ? ' (partial)' : ''));
+    }
+    const hit = el('circle', { cx, cy, r: 14, class: 'hit' }, svg);
+    bindTip(hit, r.model + (liq ? ' · Liquid AI' : ''), [fmt(r.gen) + ' tok/s on RTX · Vulkan', fmt(r.sizeGB, 2) + ' GB · ' + r.quant, (r.gen / r.sizeGB).toFixed(0) + ' tok/s per GB']);
+  }
+})();
+
+/* Q3: Arc share of RTX (Vulkan) */
+(function drawArc() {
+  const rows = [];
+  for (const a of DATA.speed.filter((r) => r.chip === 'vulkan-arc')) {
+    const v = DATA.speed.find((r) => r.chip === 'vulkan-nvidia' && r.model === a.model);
+    if (!v) continue;
+    const share = (a.gen / v.gen) * 100;
+    rows.push({ label: a.model + (partial(v) ? ' *' : ''), liquid: isLiquid(a), v: share, color: 'var(--c-arc)', text: Math.round(share) + ' %', tipTitle: a.model, tipLines: ['Arc ' + fmt(a.gen) + ' tok/s · RTX ' + fmt(v.gen) + ' tok/s', partial(v) ? 'RTX run is partial (not all layers on the card), so the share is flattered' : 'both through Vulkan'] });
+  }
+  rows.sort((a, b) => b.v - a.v);
+  hbars('arc', rows, { max: 100, ticks: 4, tickFmt: (v) => Math.round(v) + ' %' });
+  const vals = rows.filter((r) => !r.label.endsWith('*')).map((r) => r.v).sort((a, b) => a - b);
+  document.getElementById('arc-setup').textContent = 'Median ' + Math.round(vals[Math.floor(vals.length / 2)]) + ' % of the RTX · * LFM2.5-8B-A1B: the RTX run is partial, so its share is flattered · Arc and RTX both through Vulkan, same build.';
+})();
+
+/* Q4: prompt 4k, time to first word */
+const P_CHIPS = CHIPS.filter((c) => c.id !== 'cuda' && DATA.prompt4k.some((r) => r.chip === c.id));
+function drawPrompt(chip) {
+  const rows = DATA.prompt4k.filter((r) => r.chip === chip.id && r.prompt > 0).map((r) => {
+    const s = (r.promptTokens || 4096) / r.prompt + (r.firstTokenMs || 0) / 1000;
+    return { label: r.model + (r.quant !== 'Q4_K_M' ? ' (' + r.quant + ')' : ''), liquid: isLiquid(r), v: s, color: chip.color, text: (s < 10 ? s.toFixed(2) + ' s' : s.toFixed(1) + ' s') + (partial(r) ? ' · partial' : ''), tipTitle: r.model + ' · ' + chip.label, tipLines: [fmt(r.prompt, 0) + ' prompt tok/s (runs ' + fmt(r.promptMin, 0) + ' to ' + fmt(r.promptMax, 0) + ')', 'first token ' + (r.firstTokenMs || 0) + ' ms after the prompt', 'job ' + r.job] };
+  }).sort((a, b) => a.v - b.v);
+  const max = Math.max(...rows.map((r) => r.v)) * 1.05;
+  hbars('prompt', rows, { max, ticks: 4, tickFmt: (v) => (v < 10 ? v.toFixed(1) : Math.round(v)) + ' s' });
+  const have = new Set(DATA.prompt4k.filter((r) => r.chip === chip.id).map((r) => r.model));
+  const missing = [...new Set(DATA.speed.map((r) => r.model))].filter((m) => !have.has(m));
+  document.getElementById('prompt-setup').textContent = chip.label + ' · 4,096-token prompt · median of 3' + (missing.length ? ' · not measured on this chip: ' + missing.join(', ') : '');
+}
+toolbar('prompt-tools', P_CHIPS, drawPrompt, 'vulkan-nvidia');
+drawPrompt(P_CHIPS[0]);
+
+/* Q5: NPU scatter, speed vs cores (NPU, Arc, CPU only) */
+(function drawNpu() {
+  const svg = document.getElementById('npu');
+  const colors = { npu: 'var(--c-npu)', arc: 'var(--c-arc)', cpu: 'var(--c-cpu)' };
+  const rows = DATA.ov.filter((r) => colors[r.chip]);
+  const W = 1000, H = 400, L = 64, R = 40, T = 16, B = 46;
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+  const xmax = 4.5, ymax = 80;
+  const x = (v) => L + (v / xmax) * (W - L - R);
+  const y = (v) => H - B - (v / ymax) * (H - T - B);
+  for (let i = 0; i <= 4; i++) { el('line', { x1: x(i), x2: x(i), y1: T, y2: H - B, class: 'grid' }, svg); el('text', { x: x(i), y: H - B + 18, 'text-anchor': 'middle', class: 'ax' }, svg, i + (i === 1 ? ' core' : ' cores')); }
+  for (let v = 0; v <= 80; v += 20) { el('line', { x1: L, x2: W - R, y1: y(v), y2: y(v), class: 'grid' }, svg); el('text', { x: L - 8, y: y(v) + 4, 'text-anchor': 'end', class: 'ax' }, svg, v); }
+  el('text', { x: L, y: H - 6, class: 'ax' }, svg, 'CPU cores kept busy by the process');
+  el('text', { x: 14, y: T + 4, class: 'ax', transform: `rotate(90 14 ${T + 4})` }, svg, 'tok/s');
+  const short = (m) => m.replace('-npu-export', ' (NPU export)');
+  const offsets = { 'LFM3-1.7B|arc': -14, 'Qwen3-1.7B-npu-export|arc': 16, 'LFM3-1.7B|cpu': -12, 'Qwen3-1.7B|cpu': 18, 'Qwen3-1.7B-npu-export|cpu': -6 };
+  for (const r of rows) {
+    const cx = x(r.cores), cy = y(r.gen); const liq = r.model.startsWith('LFM');
+    const left = r.cores > 3;
+    el('circle', { cx, cy, r: 8, fill: colors[r.chip], stroke: 'var(--surface)', 'stroke-width': 2 }, svg);
+    el('text', { x: left ? cx - 12 : cx + 12, y: cy + 4 + (offsets[r.model + '|' + r.chip] || 0), 'text-anchor': left ? 'end' : 'start', class: liq ? 'val' : 'ax' }, svg, short(r.model) + ' · ' + fmt(r.gen) + ' tok/s');
+    const hit = el('circle', { cx, cy, r: 16, class: 'hit' }, svg);
+    bindTip(hit, short(r.model) + ' · ' + r.chip.toUpperCase(), [fmt(r.gen) + ' tok/s', fmt(r.cores, 2) + ' CPU cores · ' + r.rssMB + ' MB RAM', r.device, 'job ' + r.job]);
+  }
+})();
+
+/* NPU cards: routing accuracy and long document */
+(function npuCards() {
+  const box = document.getElementById('npu-cards');
+  const rt = (m, c) => DATA.router.find((r) => r.model === m && r.chip === c);
+  const ld = (d) => DATA.longdoc.find((r) => r.device === d);
+  const a = rt('LFM2.5-1.2B', 'npu'), ac = rt('LFM2.5-1.2B', 'cpu'), q = rt('Qwen3-1.7B-npu', 'npu'), qc = rt('Qwen3-1.7B-npu', 'cpu');
+  const cards = [
+    ['Same answers on the NPU', a.score + ' / ' + a.of, 'LFM2.5-1.2B routing voice commands on the NPU (' + ac.score + ' / ' + ac.of + ' on the CPU), ' + a.medianMs + ' ms per sentence, ' + fmt(a.cores, 2) + ' CPU cores.'],
+    ['An NPU export that answers wrong', q.score + ' / ' + q.of, 'A Qwen3-1.7B export made for the NPU compiles and runs, but no answer is right, with no error raised (' + qc.score + ' / ' + qc.of + ' on the CPU).'],
+    ['Long document, first word', (ld('GPU.0').firstTokenMs / 1000).toFixed(1) + ' s', 'LFM2.5-1.2B reading a ' + ld('CPU').promptTokens + '-token document: Arc ' + (ld('GPU.0').firstTokenMs / 1000).toFixed(1) + ' s, NPU ' + (ld('NPU').firstTokenMs / 1000).toFixed(1) + ' s for ' + fmt(ld('NPU').cores, 2) + ' cores, CPU ' + (ld('CPU').firstTokenMs / 1000).toFixed(1) + ' s for ' + fmt(ld('CPU').cores, 1) + ' cores.'],
+  ];
+  for (const [h, big, p] of cards) {
+    const d = document.createElement('div'); d.className = 'card';
+    d.innerHTML = '<span class="tag"></span><span class="big"></span><p style="margin:0;color:var(--fg-2)"></p>';
+    d.querySelector('.tag').textContent = h; d.querySelector('.big').textContent = big; d.querySelector('p').textContent = p;
+    box.appendChild(d);
+  }
+  const note = document.createElement('p'); note.className = 'setup'; note.style.gridColumn = '1 / -1';
+  note.textContent = 'Routing test: 20 voice commands × 7 languages, labels ours; only French is real speech, the other six are translations.';
+  box.appendChild(note);
+})();
+
+/* Table view + missing runs */
+(function table() {
+  const t = document.getElementById('table');
+  const head = ['Model', 'Publisher repo', 'Quant', 'GB', 'Chip', 'tok/s', 'min', 'max', 'prompt tok/s', 'VRAM MB', 'GPU layers', 'job'];
+  t.innerHTML = '<tr>' + head.map((h) => '<th>' + h + '</th>').join('') + '</tr>';
+  const rows = DATA.speed.slice().sort((a, b) => a.model.localeCompare(b.model) || a.chip.localeCompare(b.chip));
+  for (const r of rows) {
+    const tr = document.createElement('tr');
+    const cells = [r.model, r.repo, r.quant, fmt(r.sizeGB, 2), r.chip, fmt(r.gen), fmt(r.genMin), fmt(r.genMax), fmt(r.prompt, 0), r.vramMB ?? '·', r.gpuLayers ?? '·', r.job];
+    cells.forEach((c, i) => { const td = document.createElement('td'); td.textContent = c; if (i >= 3 && i <= 10 && i !== 4) td.className = 'n'; tr.appendChild(td); });
+    t.appendChild(tr);
+  }
+  const keys = new Set(DATA.prompt4k.map((r) => r.model + '|' + r.chip));
+  const chipsWith = new Set(DATA.prompt4k.map((r) => r.chip));
+  const noChip = CHIPS.filter((c) => !chipsWith.has(c.id)).map((c) => c.label);
+  const miss = DATA.speed.filter((r) => chipsWith.has(r.chip) && !keys.has(r.model + '|' + r.chip)).map((r) => r.model + ' on ' + r.chip);
+  const parts = [];
+  if (noChip.length) parts.push('The 4,096-token prompt was not run on: ' + noChip.join(', ') + '.');
+  if (miss.length) parts.push('Long-prompt runs missing elsewhere: ' + miss.join(', ') + '.');
+  document.getElementById('missing').textContent = parts.join(' ');
+})();
+
+/* Hero: token flow, one dot per generated token */
+(function flow() {
+  const cv = document.getElementById('flow');
+  const ov = (c) => DATA.ov.find((r) => r.model === 'LFM2.5-1.2B' && r.chip === c);
+  const sp = (c) => DATA.speed.find((r) => r.model === 'LFM2.5-1.2B' && r.chip === c);
+  const lanes = [
+    { name: 'RTX 4050 · llama.cpp Vulkan', rate: sp('vulkan-nvidia').gen, color: '#d95926', cores: null },
+    { name: 'Intel Arc iGPU · OpenVINO', rate: ov('arc').gen, color: '#199e70', cores: ov('arc').cores },
+    { name: 'CPU · llama.cpp', rate: sp('cpu').gen, color: '#c98500', cores: null },
+    { name: 'Intel NPU · OpenVINO', rate: ov('npu').gen, color: '#d55181', cores: ov('npu').cores },
+  ];
+  const ctx = cv.getContext('2d');
+  let W = 0, H = 0, dpr = 1;
+  function size() { dpr = Math.min(2, window.devicePixelRatio || 1); W = cv.clientWidth; H = cv.clientHeight; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); }
+  size();
+  const parts = [];
+  const acc = lanes.map(() => 0);
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const laneY = (i) => 30 + i * ((H - 70) / (lanes.length - 1 || 1));
+  const labelW = () => Math.min(300, W * 0.36);
+  const SPEED = 140; // px per second for every dot: density shows the rate
+  function seed() { parts.length = 0; lanes.forEach((l, i) => { const n = Math.round(l.rate * ((W - labelW()) / SPEED)); for (let k = 0; k < n; k++) parts.push({ lane: i, x: labelW() + (k / l.rate) * SPEED, j: (Math.random() - 0.5) * 10, r: 1.2 + Math.random() * 1.6 }); }); }
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    lanes.forEach((l, i) => {
+      const y = laneY(i);
+      ctx.strokeStyle = 'rgba(170,180,192,0.12)'; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(labelW(), y); ctx.lineTo(W, y); ctx.stroke();
+      ctx.fillStyle = '#e8ecf1'; ctx.font = '600 15px "IBM Plex Sans", Arial, sans-serif'; ctx.textBaseline = 'alphabetic';
+      ctx.fillText(l.name, 0, y - 4);
+      ctx.fillStyle = l.color; ctx.font = '700 22px "JetBrains Mono", Consolas, monospace';
+      ctx.fillText(l.rate.toFixed(1) + ' tok/s', 0, y + 20);
+      if (l.cores != null) { ctx.fillStyle = '#7c8897'; ctx.font = '12px "JetBrains Mono", Consolas, monospace'; ctx.fillText(l.cores.toFixed(2) + ' CPU cores', 150, y + 18); }
+    });
+    for (const p of parts) {
+      const l = lanes[p.lane]; const y = laneY(p.lane) + p.j;
+      const fade = Math.min(1, (p.x - labelW()) / 60);
+      ctx.globalAlpha = 0.85 * fade; ctx.fillStyle = l.color; ctx.beginPath(); ctx.arc(p.x, y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  seed(); draw();
+  if (reduce) return;
+  let raf = 0, last = performance.now();
+  function step(now) {
+    const dt = Math.min(0.05, (now - last) / 1000); last = now;
+    lanes.forEach((l, i) => { acc[i] += l.rate * dt; while (acc[i] >= 1) { acc[i] -= 1; parts.push({ lane: i, x: labelW(), j: (Math.random() - 0.5) * 10, r: 1.2 + Math.random() * 1.6 }); } });
+    for (const p of parts) p.x += SPEED * dt;
+    for (let k = parts.length - 1; k >= 0; k--) if (parts[k].x > W + 4) parts.splice(k, 1);
+    draw(); raf = requestAnimationFrame(step);
+  }
+  function start() { if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); } }
+  function stop() { if (raf) { cancelAnimationFrame(raf); raf = 0; } }
+  document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+  window.addEventListener('resize', () => { size(); seed(); draw(); });
+  start();
+})();
+</script>

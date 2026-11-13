@@ -1,0 +1,30 @@
+benchq: job 20261112-111336-39c4 "speed LFM2.5-350M · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-350M-GGUF/657e078c9408/LFM2.5-350M-Q4_K_M.gguf" --chip vulkan-nvidia --name "LFM2.5-350M Q4_K_M"
+benchq: started 2026-11-12T15:21:17.173Z
+
+LFM2.5-350M Q4_K_M · vulkan-nvidia: 308.7 tok/s generation, 17331.3 tok/s prompt, load 0.9 s
+{
+  "model": "LFM2.5-350M Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 0.21,
+  "gpuLayers": 17,
+  "loadMs": 938,
+  "warmupMs": 732,
+  "promptTokens": 512,
+  "promptTokPerSec": 17331.3,
+  "promptTokPerSecMin": 15071.9,
+  "promptTokPerSecMax": 17663.5,
+  "genTokens": 128,
+  "firstTokenMs": 14,
+  "genTokPerSec": 308.7,
+  "genTokPerSecMin": 303.7,
+  "genTokPerSecMax": 315.7,
+  "repeat": 3,
+  "vramMB": 218,
+  "totalMs": 5355
+}
+
+benchq: ended 2026-11-12T15:21:23.314Z code=0 signal=null

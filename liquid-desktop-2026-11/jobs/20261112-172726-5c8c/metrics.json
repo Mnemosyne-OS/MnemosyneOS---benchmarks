@@ -1,0 +1,15 @@
+{
+  "model": "LFM2.5-1.2B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "promptTokens": 3399,
+  "maxPrompt": null,
+  "loadMs": 2461,
+  "firstTokenMs": 10461,
+  "genTokPerSec": 42.9,
+  "totalS": 14.2,
+  "procCores": 4.42,
+  "addedCpuPct": 27.7,
+  "rssMB": 2393,
+  "overlapWithCpu": null
+}

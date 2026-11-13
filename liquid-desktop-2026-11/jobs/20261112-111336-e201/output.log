@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-e201 "speed granite-4.2-3b · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf" --chip vulkan-arc --name "granite-4.2-3b Q4_K_M"
+benchq: started 2026-11-12T16:01:04.509Z
+
+granite-4.2-3b Q4_K_M · vulkan-arc: 18.2 tok/s generation, 284.8 tok/s prompt, load 2.2 s
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 2204,
+  "warmupMs": 9095,
+  "promptTokens": 512,
+  "promptTokPerSec": 284.8,
+  "promptTokPerSecMin": 277.1,
+  "promptTokPerSecMax": 285.7,
+  "genTokens": 128,
+  "firstTokenMs": 443,
+  "genTokPerSec": 18.2,
+  "genTokPerSecMin": 18.2,
+  "genTokPerSecMax": 18.2,
+  "repeat": 3,
+  "vramMB": 2000,
+  "totalMs": 43870
+}
+
+benchq: ended 2026-11-12T16:01:50.125Z code=0 signal=null

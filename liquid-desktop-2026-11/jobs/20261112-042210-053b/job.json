@@ -1,0 +1,33 @@
+{
+  "id": "20261112-042210-053b",
+  "name": "prompt 4k d1-3B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf\" --chip cuda --name \"d1-3B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, cuda",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "d1-3B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/d1-3B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-042210-553f"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T08:22:10.867Z",
+  "startedAt": "2026-11-12T15:09:58.396Z",
+  "endedAt": "2026-11-12T15:10:07.917Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

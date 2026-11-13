@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-d921",
+  "name": "prompt 4k gemma-4-E4B-it · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf\" --chip cuda --name \"gemma-4-E4B-it Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, cuda",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "gemma-4-E4B-it",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/gemma-4-E4B-it-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-a0cc"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.805Z",
+  "startedAt": "2026-11-12T15:58:25.749Z",
+  "endedAt": "2026-11-12T15:58:40.619Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

@@ -1,0 +1,38 @@
+benchq: job 20261112-111336-dc1c "prompt 4k d1-2B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__d1-2B-GGUF/4a181094d1b6/d1-2B-Q4_K_M.gguf" --chip vulkan-nvidia --name "d1-2B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:20:20.966Z
+
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 119, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 119, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 119, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 88, got -1
+[node-llama-cpp] Checkpoint max position mismatch: expected 119, got -1
+d1-2B Q4_K_M · vulkan-nvidia: 75.2 tok/s generation, 4027.3 tok/s prompt, load 1.7 s
+{
+  "model": "d1-2B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 1.02,
+  "gpuLayers": 25,
+  "loadMs": 1683,
+  "warmupMs": 1669,
+  "promptTokens": 4096,
+  "promptTokPerSec": 4027.3,
+  "promptTokPerSecMin": 4025.1,
+  "promptTokPerSecMax": 4457.1,
+  "genTokens": 32,
+  "firstTokenMs": 1,
+  "genTokPerSec": 75.2,
+  "genTokPerSecMin": 73.8,
+  "genTokPerSecMax": 75.6,
+  "repeat": 3,
+  "vramMB": 1043,
+  "totalMs": 12489
+}
+
+benchq: ended 2026-11-12T15:20:34.336Z code=0 signal=null

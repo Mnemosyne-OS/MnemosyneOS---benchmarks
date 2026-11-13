@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-7c14 "speed LFM2.5-230M · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-230M-GGUF/03502067c64c/LFM2.5-230M-Q4_K_M.gguf" --chip vulkan-arc --name "LFM2.5-230M Q4_K_M"
+benchq: started 2026-11-12T15:37:48.990Z
+
+LFM2.5-230M Q4_K_M · vulkan-arc: 165.1 tok/s generation, 5009 tok/s prompt, load 0.3 s
+{
+  "model": "LFM2.5-230M Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 0.14,
+  "gpuLayers": 15,
+  "partialOffload": false,
+  "loadMs": 320,
+  "warmupMs": 1227,
+  "promptTokens": 512,
+  "promptTokPerSec": 5009,
+  "promptTokPerSecMin": 4970.2,
+  "promptTokPerSecMax": 5127.9,
+  "genTokens": 49,
+  "firstTokenMs": 33,
+  "genTokPerSec": 165.1,
+  "genTokPerSecMin": 160.3,
+  "genTokPerSecMax": 166.7,
+  "repeat": 3,
+  "vramMB": 145,
+  "totalMs": 6816
+}
+
+benchq: ended 2026-11-12T15:37:57.251Z code=0 signal=null

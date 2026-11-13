@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-d35d",
+  "name": "speed Qwen3.5-4B · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__Qwen3.5-4B-GGUF/e87f176479d0/Qwen3.5-4B-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"Qwen3.5-4B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "Qwen3.5-4B",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/Qwen3.5-4B-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-e281"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.764Z",
+  "startedAt": "2026-11-12T15:43:26.364Z",
+  "endedAt": "2026-11-12T15:44:19.862Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

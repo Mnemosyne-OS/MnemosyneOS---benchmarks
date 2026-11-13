@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-4820 "speed LFM2-1.2B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2-1.2B-GGUF/5399e76c648f/LFM2-1.2B-Q4_K_M.gguf" --chip cuda --name "LFM2-1.2B Q4_K_M"
+benchq: started 2026-11-12T15:38:37.251Z
+
+LFM2-1.2B Q4_K_M · cuda: 131.9 tok/s generation, 7015.9 tok/s prompt, load 0.8 s
+{
+  "model": "LFM2-1.2B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 0.68,
+  "gpuLayers": 17,
+  "partialOffload": false,
+  "loadMs": 828,
+  "warmupMs": 1320,
+  "promptTokens": 512,
+  "promptTokPerSec": 7015.9,
+  "promptTokPerSecMin": 5783.7,
+  "promptTokPerSecMax": 7186.9,
+  "genTokens": 128,
+  "firstTokenMs": 15,
+  "genTokPerSec": 131.9,
+  "genTokPerSecMin": 128.8,
+  "genTokPerSecMax": 132.7,
+  "repeat": 3,
+  "vramMB": 696,
+  "totalMs": 6897
+}
+
+benchq: ended 2026-11-12T15:38:44.974Z code=0 signal=null

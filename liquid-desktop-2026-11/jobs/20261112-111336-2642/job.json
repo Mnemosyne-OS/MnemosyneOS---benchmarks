@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-2642",
+  "name": "prompt 4k SmolLM3-3B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf\" --chip cuda --name \"SmolLM3-3B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, cuda",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "SmolLM3-3B",
+    "quant": "Q4_K_M",
+    "repo": "ggml-org/SmolLM3-3B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-a8c3"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.841Z",
+  "startedAt": "2026-11-12T16:12:37.346Z",
+  "endedAt": "2026-11-12T16:12:58.303Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}
