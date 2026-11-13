@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-7325 "prompt 4k SmolLM3-3B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf" --chip vulkan-arc --name "SmolLM3-3B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:13:23.585Z
+
+SmolLM3-3B Q4_K_M · vulkan-arc: 21.4 tok/s generation, 192.9 tok/s prompt, load 2.1 s
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 1.78,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2090,
+  "warmupMs": 4145,
+  "promptTokens": 4096,
+  "promptTokPerSec": 192.9,
+  "promptTokPerSecMin": 190.6,
+  "promptTokPerSecMax": 196.9,
+  "genTokens": 29,
+  "firstTokenMs": 419,
+  "genTokPerSec": 21.4,
+  "genTokPerSecMin": 21,
+  "genTokPerSecMax": 22.2,
+  "repeat": 3,
+  "vramMB": 1820,
+  "totalMs": 82649
+}
+
+benchq: ended 2026-11-12T16:14:48.456Z code=0 signal=null

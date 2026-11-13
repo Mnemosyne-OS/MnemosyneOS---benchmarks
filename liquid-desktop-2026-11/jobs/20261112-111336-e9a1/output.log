@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-e9a1 "prompt 4k Qwen3-1.7B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-1.7B-GGUF/90862c4b9d27/Qwen3-1.7B-Q8_0.gguf" --chip vulkan-arc --name "Qwen3-1.7B Q8_0" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:54:30.905Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-1.7B Q8_0 · vulkan-arc: 23.2 tok/s generation, 215.2 tok/s prompt, load 1.6 s
+{
+  "model": "Qwen3-1.7B Q8_0",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 1.71,
+  "gpuLayers": 29,
+  "partialOffload": false,
+  "loadMs": 1606,
+  "warmupMs": 2172,
+  "promptTokens": 4096,
+  "promptTokPerSec": 215.2,
+  "promptTokPerSecMin": 212.5,
+  "promptTokPerSecMax": 215.5,
+  "genTokens": 30,
+  "firstTokenMs": 389,
+  "genTokPerSec": 23.2,
+  "genTokPerSecMin": 23.2,
+  "genTokPerSecMax": 23.3,
+  "repeat": 3,
+  "vramMB": 1745,
+  "totalMs": 68567
+}
+
+benchq: ended 2026-11-12T15:55:41.307Z code=0 signal=null

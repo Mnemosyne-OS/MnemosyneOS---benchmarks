@@ -1,0 +1,30 @@
+benchq: job 20261112-153958-8da6 "ov LFM2.5-1.2B · npu"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-speed.py" --model "<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov" --device NPU --name LFM2.5-1.2B
+benchq: started 2026-11-12T19:40:00.143Z
+
+ov-speed: measuring the idle machine for 10 s
+LFM2.5-1.2B · NPU: 26.2 tok/s, 0.09 CPU cores used, +-11.4 % machine CPU
+{
+  "model": "LFM2.5-1.2B",
+  "device": "NPU",
+  "deviceName": "Intel(R) AI Boost",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 41704,
+  "genTokens": 128,
+  "genTokPerSec": 26.2,
+  "genTokPerSecMin": 21.6,
+  "genTokPerSecMax": 26.4,
+  "firstTokenMs": 1371,
+  "repeat": 3,
+  "procCores": 0.09,
+  "baselineCpuPct": 32.9,
+  "machineCpuPct": 21.4,
+  "addedCpuPct": -11.4,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2444,
+  "logicalCpus": 22
+}
+
+benchq: ended 2026-11-12T19:41:16.989Z code=0 signal=null

@@ -1,0 +1,30 @@
+{
+  "id": "20261112-153958-2042",
+  "name": "ov LFM2.5-1.2B · cpu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device CPU --name LFM2.5-1.2B",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "LFM2.5-1.2B",
+    "chip": "cpu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:58.672Z",
+  "startedAt": "2026-11-12T19:41:18.386Z",
+  "endedAt": "2026-11-12T19:41:45.891Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

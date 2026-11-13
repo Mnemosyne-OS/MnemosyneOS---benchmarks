@@ -1,0 +1,22 @@
+{
+  "model": "LFM2.5-1.2B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 0.68,
+  "gpuLayers": 17,
+  "loadMs": 1425,
+  "warmupMs": 1306,
+  "promptTokens": 512,
+  "promptTokPerSec": 5591.4,
+  "promptTokPerSecMin": 5576.3,
+  "promptTokPerSecMax": 5723.1,
+  "genTokens": 128,
+  "firstTokenMs": 23,
+  "genTokPerSec": 136.2,
+  "genTokPerSecMin": 123.8,
+  "genTokPerSecMax": 137.1,
+  "repeat": 3,
+  "vramMB": 697,
+  "totalMs": 8178
+}

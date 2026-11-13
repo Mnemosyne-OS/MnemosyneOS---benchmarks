@@ -1,0 +1,30 @@
+{
+  "id": "20261112-171822-ae04",
+  "name": "router LFM2.5-1.2B · arc",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-router.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device GPU.0 --set \"<private>/phrases-7lang.json\" --name LFM2.5-1.2B ",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 3600000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-night",
+  "note": null,
+  "series": "ov-router",
+  "tags": {
+    "model": "LFM2.5-1.2B",
+    "chip": "arc"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T21:18:22.110Z",
+  "startedAt": "2026-11-12T21:23:25.974Z",
+  "endedAt": "2026-11-12T21:24:19.731Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

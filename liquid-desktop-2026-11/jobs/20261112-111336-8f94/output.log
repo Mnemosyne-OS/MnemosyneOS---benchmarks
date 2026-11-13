@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-8f94 "speed Qwen3-4B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-4B-GGUF/bc640142c66e/Qwen3-4B-Q4_K_M.gguf" --chip cpu --name "Qwen3-4B Q4_K_M"
+benchq: started 2026-11-12T16:16:20.353Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-4B Q4_K_M · cpu: 16.7 tok/s generation, 106.7 tok/s prompt, load 1.8 s
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.33,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1801,
+  "warmupMs": 10092,
+  "promptTokens": 512,
+  "promptTokPerSec": 106.7,
+  "promptTokPerSecMin": 92.6,
+  "promptTokPerSecMax": 112.6,
+  "genTokens": 126,
+  "firstTokenMs": 831,
+  "genTokPerSec": 16.7,
+  "genTokPerSecMin": 15.5,
+  "genTokPerSecMax": 16.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 53167
+}
+
+benchq: ended 2026-11-12T16:17:14.569Z code=0 signal=null

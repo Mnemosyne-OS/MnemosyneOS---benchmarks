@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-726d",
+  "name": "speed gemma-4-E4B-it · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf\" --chip cuda --name \"gemma-4-E4B-it Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cuda",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "gemma-4-E4B-it",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/gemma-4-E4B-it-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-111336-a0cc"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.800Z",
+  "startedAt": "2026-11-12T15:55:43.132Z",
+  "endedAt": "2026-11-12T15:56:06.309Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

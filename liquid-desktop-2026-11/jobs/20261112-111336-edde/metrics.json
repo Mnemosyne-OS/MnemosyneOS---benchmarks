@@ -1,0 +1,23 @@
+{
+  "model": "LFM2.5-8B-A1B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 4.8,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 10426,
+  "warmupMs": 10377,
+  "promptTokens": 512,
+  "promptTokPerSec": 150.3,
+  "promptTokPerSecMin": 134,
+  "promptTokPerSecMax": 153.4,
+  "genTokens": 127,
+  "firstTokenMs": 765,
+  "genTokPerSec": 19.9,
+  "genTokPerSecMin": 10.2,
+  "genTokPerSecMax": 25.6,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 61565
+}

@@ -1,0 +1,35 @@
+benchq: job 20261112-111336-e6b5 "speed gemma-4-E4B-it · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf" --chip cpu --name "gemma-4-E4B-it Q4_K_M"
+benchq: started 2026-11-12T15:57:29.544Z
+
+[node-llama-cpp] load: control-looking token:      1 '<eos>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: '</s>' is a normal token here, removing it from EOG list
+gemma-4-E4B-it Q4_K_M · cpu: 13.5 tok/s generation, 158.8 tok/s prompt, load 3.3 s
+{
+  "model": "gemma-4-E4B-it Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 4.64,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 3330,
+  "warmupMs": 11413,
+  "promptTokens": 512,
+  "promptTokPerSec": 158.8,
+  "promptTokPerSecMin": 155.5,
+  "promptTokPerSecMax": 179.7,
+  "genTokens": 125,
+  "firstTokenMs": 679,
+  "genTokPerSec": 13.5,
+  "genTokPerSecMin": 12.4,
+  "genTokPerSecMax": 13.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 54979
+}
+
+benchq: ended 2026-11-12T15:58:25.679Z code=0 signal=null

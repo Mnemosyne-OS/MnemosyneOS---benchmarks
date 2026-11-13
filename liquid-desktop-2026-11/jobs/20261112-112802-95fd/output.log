@@ -1,0 +1,20 @@
+benchq: job 20261112-112802-95fd "prompt 4k LFM2.5-8B-A1B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-8B-A1B-GGUF/49c148317070/LFM2.5-8B-A1B-Q4_K_M.gguf" --chip vulkan-nvidia --name "LFM2.5-8B-A1B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:20:01.300Z
+
+file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/gguf/insights/utils/resolveModelGpuLayersOption.js:80
+                throw new InsufficientMemoryError("Not enough VRAM to fit the model with the specified settings" + getCapErrorMessage(vramCapIsSet));
+                      ^
+
+InsufficientMemoryError: Not enough VRAM to fit the model with the specified settings
+    at resolveModelGpuLayersOption (file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/gguf/insights/utils/resolveModelGpuLayersOption.js:80:23)
+    at async LlamaModel._create (file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/evaluator/LlamaModel/LlamaModel.js:532:38)
+    at async file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/bindings/Llama.js:366:24
+    at async withLock (file:///<app>/node_modules/.pnpm/lifecycle-utils@4.5.2/node_modules/lifecycle-utils/dist/withLock.js:23:16)
+    at async Llama.loadModel (file:///<app>/node_modules/.pnpm/node-llama-cpp@3.22.3_typescript@5.9.3/node_modules/node-llama-cpp/dist/bindings/Llama.js:362:16)
+    at async file:///<bench-queue>/scripts/gguf-speed.mjs:101:11
+
+Node.js v22.13.0
+
+benchq: ended 2026-11-12T16:20:04.228Z code=1 signal=null

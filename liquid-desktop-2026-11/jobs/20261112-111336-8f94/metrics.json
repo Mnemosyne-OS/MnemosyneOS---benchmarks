@@ -1,0 +1,23 @@
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.33,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1801,
+  "warmupMs": 10092,
+  "promptTokens": 512,
+  "promptTokPerSec": 106.7,
+  "promptTokPerSecMin": 92.6,
+  "promptTokPerSecMax": 112.6,
+  "genTokens": 126,
+  "firstTokenMs": 831,
+  "genTokPerSec": 16.7,
+  "genTokPerSecMin": 15.5,
+  "genTokPerSecMax": 16.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 53167
+}

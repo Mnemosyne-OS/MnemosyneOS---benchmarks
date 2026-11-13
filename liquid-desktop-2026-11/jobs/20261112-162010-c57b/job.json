@@ -1,0 +1,29 @@
+{
+  "id": "20261112-162010-c57b",
+  "name": "ov Qwen3-1.7B-npu-export · npu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/qwen3-1.7b-int4-ov-npu\" --device NPU --name Qwen3-1.7B-npu-export",
+  "shell": "auto",
+  "needs": [
+    "npu",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": null,
+  "series": "ov-load",
+  "tags": {
+    "model": "Qwen3-1.7B-npu-export",
+    "chip": "npu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T20:20:10.948Z",
+  "startedAt": "2026-11-12T20:20:11.812Z",
+  "endedAt": "2026-11-12T20:21:03.924Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

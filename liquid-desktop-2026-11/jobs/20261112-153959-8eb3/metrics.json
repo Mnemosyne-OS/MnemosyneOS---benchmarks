@@ -1,0 +1,21 @@
+{
+  "model": "Qwen3-1.7B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 4523,
+  "genTokens": 128,
+  "genTokPerSec": 26.5,
+  "genTokPerSecMin": 26.3,
+  "genTokPerSecMax": 26.5,
+  "firstTokenMs": 111,
+  "repeat": 3,
+  "procCores": 4.16,
+  "baselineCpuPct": 20.7,
+  "machineCpuPct": 39.1,
+  "addedCpuPct": 18.4,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2565,
+  "logicalCpus": 22
+}

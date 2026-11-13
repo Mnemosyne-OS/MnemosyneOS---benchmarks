@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-e951 "prompt 4k granite-4.2-3b · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf" --chip vulkan-nvidia --name "granite-4.2-3b Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:03:00.947Z
+
+granite-4.2-3b Q4_K_M · vulkan-nvidia: 56.5 tok/s generation, 2324.8 tok/s prompt, load 3.0 s
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 3022,
+  "warmupMs": 1798,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2324.8,
+  "promptTokPerSecMin": 2317.8,
+  "promptTokPerSecMax": 2387.5,
+  "genTokens": 32,
+  "firstTokenMs": 55,
+  "genTokPerSec": 56.5,
+  "genTokPerSecMin": 49.7,
+  "genTokPerSecMax": 57.8,
+  "repeat": 3,
+  "vramMB": 2001,
+  "totalMs": 16881
+}
+
+benchq: ended 2026-11-12T16:03:18.843Z code=0 signal=null

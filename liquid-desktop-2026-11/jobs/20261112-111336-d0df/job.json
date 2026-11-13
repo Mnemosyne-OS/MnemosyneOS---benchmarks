@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-d0df",
+  "name": "speed gemma-4-E4B-it · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"gemma-4-E4B-it Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "gemma-4-E4B-it",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/gemma-4-E4B-it-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-a0cc"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.801Z",
+  "startedAt": "2026-11-12T15:56:07.211Z",
+  "endedAt": "2026-11-12T15:56:31.817Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

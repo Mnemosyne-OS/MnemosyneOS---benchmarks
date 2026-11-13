@@ -1,0 +1,35 @@
+{
+  "id": "20261112-042210-67ee",
+  "name": "prompt 4k LFM2.5-8B-A1B · vulkan-arc",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2.5-8B-A1B-GGUF/49c148317070/LFM2.5-8B-A1B-Q4_K_M.gguf\" --chip vulkan-arc --name \"LFM2.5-8B-A1B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": null,
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, vulkan-arc",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "LFM2.5-8B-A1B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2.5-8B-A1B-GGUF",
+    "chip": "vulkan-arc"
+  },
+  "after": [
+    "20261112-042210-55c5"
+  ],
+  "status": "cancelled",
+  "submittedAt": "2026-11-12T08:22:10.858Z",
+  "startedAt": null,
+  "endedAt": "2026-11-12T09:07:14.358Z",
+  "exitCode": null,
+  "error": "not run: download LFM2.5-8B-A1B Q4_K_M ended failed",
+  "retryOf": null,
+  "heldForMorning": true
+}

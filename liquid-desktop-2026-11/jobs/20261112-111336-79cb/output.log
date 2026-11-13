@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-79cb "speed granite-4.2-3b · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf" --chip cpu --name "granite-4.2-3b Q4_K_M"
+benchq: started 2026-11-12T16:01:50.667Z
+
+granite-4.2-3b Q4_K_M · cpu: 19.9 tok/s generation, 122.9 tok/s prompt, load 1.4 s
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.09,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1420,
+  "warmupMs": 10019,
+  "promptTokens": 512,
+  "promptTokPerSec": 122.9,
+  "promptTokPerSecMin": 120.1,
+  "promptTokPerSecMax": 125.1,
+  "genTokens": 128,
+  "firstTokenMs": 926,
+  "genTokPerSec": 19.9,
+  "genTokPerSecMin": 19.7,
+  "genTokPerSecMax": 20.4,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 50222
+}
+
+benchq: ended 2026-11-12T16:02:41.872Z code=0 signal=null

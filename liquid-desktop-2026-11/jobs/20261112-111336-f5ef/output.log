@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-f5ef "prompt 4k LFM2-2.6B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2-2.6B-GGUF/a759abdc5955/LFM2-2.6B-Q4_K_M.gguf" --chip cuda --name "LFM2-2.6B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:41:49.991Z
+
+LFM2-2.6B Q4_K_M · cuda: 58.3 tok/s generation, 2975.8 tok/s prompt, load 1.0 s
+{
+  "model": "LFM2-2.6B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 1.46,
+  "gpuLayers": 31,
+  "partialOffload": false,
+  "loadMs": 969,
+  "warmupMs": 789,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2975.8,
+  "promptTokPerSecMin": 2941.9,
+  "promptTokPerSecMax": 3005.5,
+  "genTokens": 32,
+  "firstTokenMs": 27,
+  "genTokPerSec": 58.3,
+  "genTokPerSecMin": 58.3,
+  "genTokPerSecMax": 58.6,
+  "repeat": 3,
+  "vramMB": 1490,
+  "totalMs": 9696
+}
+
+benchq: ended 2026-11-12T15:42:00.680Z code=0 signal=null

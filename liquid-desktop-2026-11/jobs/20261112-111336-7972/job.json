@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-7972",
+  "name": "speed d1-3B · cpu",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf\" --chip cpu --name \"d1-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cpu",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "d1-3B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/d1-3B-GGUF",
+    "chip": "cpu"
+  },
+  "after": [
+    "20261112-111336-b9a0"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.696Z",
+  "startedAt": "2026-11-12T15:30:43.236Z",
+  "endedAt": "2026-11-12T15:31:21.843Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

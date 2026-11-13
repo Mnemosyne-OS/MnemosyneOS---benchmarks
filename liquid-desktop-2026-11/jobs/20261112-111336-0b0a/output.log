@@ -1,0 +1,35 @@
+benchq: job 20261112-111336-0b0a "speed gemma-4-E2B-it · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__gemma-4-E2B-it-GGUF/0314792d7f1f/gemma-4-E2B-it-Q4_K_M.gguf" --chip cuda --name "gemma-4-E2B-it Q4_K_M"
+benchq: started 2026-11-12T15:48:45.679Z
+
+[node-llama-cpp] load: control-looking token:      1 '<eos>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:     50 '<|tool_response>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: control-looking token:    212 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+[node-llama-cpp] load: '</s>' is a normal token here, removing it from EOG list
+gemma-4-E2B-it Q4_K_M · cuda: 67.6 tok/s generation, 9104.1 tok/s prompt, load 3.3 s
+{
+  "model": "gemma-4-E2B-it Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.89,
+  "gpuLayers": 36,
+  "partialOffload": false,
+  "loadMs": 3258,
+  "warmupMs": 2308,
+  "promptTokens": 512,
+  "promptTokPerSec": 9104.1,
+  "promptTokPerSecMin": 8490.4,
+  "promptTokPerSecMax": 9188.9,
+  "genTokens": 125,
+  "firstTokenMs": 30,
+  "genTokPerSec": 67.6,
+  "genTokPerSecMin": 67.3,
+  "genTokPerSecMax": 68.2,
+  "repeat": 3,
+  "vramMB": 1408,
+  "totalMs": 13278
+}
+
+benchq: ended 2026-11-12T15:48:59.978Z code=0 signal=null

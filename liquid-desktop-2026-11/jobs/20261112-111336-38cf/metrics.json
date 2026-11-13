@@ -1,0 +1,23 @@
+{
+  "model": "gemma-4-E2B-it Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.89,
+  "gpuLayers": 36,
+  "partialOffload": false,
+  "loadMs": 2273,
+  "warmupMs": 717,
+  "promptTokens": 4096,
+  "promptTokPerSec": 7830.4,
+  "promptTokPerSecMin": 7826.8,
+  "promptTokPerSecMax": 7919.2,
+  "genTokens": 29,
+  "firstTokenMs": 29,
+  "genTokPerSec": 62,
+  "genTokPerSecMin": 61.5,
+  "genTokPerSecMax": 62,
+  "repeat": 3,
+  "vramMB": 1408,
+  "totalMs": 8286
+}

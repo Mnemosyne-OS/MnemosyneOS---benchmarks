@@ -1,0 +1,29 @@
+{
+  "id": "20261112-172727-4aa3",
+  "name": "longdoc LFM2.5-1.2B · GPU.0",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-longdoc.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device GPU.0 --doc \"<private>/design-doc.txt\" --name LFM2.5-1.2B --cpu-summary \"<jobs>/20261112-172726-5c8c/summary.txt\"",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 3600000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-night",
+  "note": null,
+  "series": "ov-longdoc",
+  "tags": {},
+  "after": [
+    "20261112-172726-5c8c"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T21:27:27.554Z",
+  "startedAt": "2026-11-12T21:54:42.573Z",
+  "endedAt": "2026-11-12T21:54:59.192Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

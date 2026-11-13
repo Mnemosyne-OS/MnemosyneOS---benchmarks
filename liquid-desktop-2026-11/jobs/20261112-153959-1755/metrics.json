@@ -1,0 +1,21 @@
+{
+  "model": "Qwen3-1.7B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 28914,
+  "genTokens": 128,
+  "genTokPerSec": 33.4,
+  "genTokPerSecMin": 23.5,
+  "genTokPerSecMax": 35.9,
+  "firstTokenMs": 64,
+  "repeat": 3,
+  "procCores": 1.82,
+  "baselineCpuPct": 16.5,
+  "machineCpuPct": 24.4,
+  "addedCpuPct": 7.8,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2689,
+  "logicalCpus": 22
+}

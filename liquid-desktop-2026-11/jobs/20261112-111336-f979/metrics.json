@@ -1,0 +1,23 @@
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 1.78,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 2256,
+  "warmupMs": 5542,
+  "promptTokens": 512,
+  "promptTokPerSec": 2790.6,
+  "promptTokPerSecMin": 2790.5,
+  "promptTokPerSecMax": 2801.5,
+  "genTokens": 125,
+  "firstTokenMs": 45,
+  "genTokPerSec": 48.9,
+  "genTokPerSecMin": 46.8,
+  "genTokPerSecMax": 49.9,
+  "repeat": 3,
+  "vramMB": 1820,
+  "totalMs": 23019
+}

@@ -1,0 +1,23 @@
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 3022,
+  "warmupMs": 1798,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2324.8,
+  "promptTokPerSecMin": 2317.8,
+  "promptTokPerSecMax": 2387.5,
+  "genTokens": 32,
+  "firstTokenMs": 55,
+  "genTokPerSec": 56.5,
+  "genTokPerSecMin": 49.7,
+  "genTokPerSecMax": 57.8,
+  "repeat": 3,
+  "vramMB": 2001,
+  "totalMs": 16881
+}

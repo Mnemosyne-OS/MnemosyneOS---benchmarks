@@ -1,0 +1,21 @@
+{
+  "model": "Qwen3-1.7B-npu-export",
+  "device": "NPU",
+  "deviceName": "Intel(R) AI Boost",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 15037,
+  "genTokens": 128,
+  "genTokPerSec": 22.8,
+  "genTokPerSecMin": 21.4,
+  "genTokPerSecMax": 23.3,
+  "firstTokenMs": 1311,
+  "repeat": 3,
+  "procCores": 0.07,
+  "baselineCpuPct": 21.2,
+  "machineCpuPct": 13.4,
+  "addedCpuPct": -7.8,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2312,
+  "logicalCpus": 22
+}

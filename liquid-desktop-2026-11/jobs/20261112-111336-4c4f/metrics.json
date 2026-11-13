@@ -1,0 +1,23 @@
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.32,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1860,
+  "warmupMs": 10038,
+  "promptTokens": 512,
+  "promptTokPerSec": 134,
+  "promptTokPerSecMin": 116,
+  "promptTokPerSecMax": 139.3,
+  "genTokens": 128,
+  "firstTokenMs": 720,
+  "genTokPerSec": 16.6,
+  "genTokPerSecMin": 14.2,
+  "genTokPerSecMax": 18.5,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 53096
+}

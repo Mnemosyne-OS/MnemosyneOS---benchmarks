@@ -1,0 +1,15 @@
+{
+  "model": "LFM2.5-1.2B",
+  "device": "NPU",
+  "deviceName": "Intel(R) AI Boost",
+  "promptTokens": 3399,
+  "maxPrompt": 4096,
+  "loadMs": 62652,
+  "firstTokenMs": 6880,
+  "genTokPerSec": 25.3,
+  "totalS": 11.9,
+  "procCores": 0.11,
+  "addedCpuPct": 3.7,
+  "rssMB": 2483,
+  "overlapWithCpu": 0.57
+}

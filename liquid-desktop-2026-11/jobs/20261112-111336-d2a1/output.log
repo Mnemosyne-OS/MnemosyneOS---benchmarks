@@ -1,0 +1,30 @@
+benchq: job 20261112-111336-d2a1 "speed LFM2.5-2.6B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-2.6B-GGUF/e7caca5d835a/LFM2.5-2.6B-Q4_K_M.gguf" --chip cpu --name "LFM2.5-2.6B Q4_K_M"
+benchq: started 2026-11-12T15:23:19.582Z
+
+LFM2.5-2.6B Q4_K_M · cpu: 23.2 tok/s generation, 165.8 tok/s prompt, load 1.8 s
+{
+  "model": "LFM2.5-2.6B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.56,
+  "gpuLayers": 0,
+  "loadMs": 1847,
+  "warmupMs": 7445,
+  "promptTokens": 512,
+  "promptTokPerSec": 165.8,
+  "promptTokPerSecMin": 157.1,
+  "promptTokPerSecMax": 170.4,
+  "genTokens": 128,
+  "firstTokenMs": 648,
+  "genTokPerSec": 23.2,
+  "genTokPerSecMin": 19.9,
+  "genTokPerSecMax": 25.5,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 40177
+}
+
+benchq: ended 2026-11-12T15:24:00.772Z code=0 signal=null

@@ -1,0 +1,33 @@
+{
+  "id": "20261112-042210-c44c",
+  "name": "prompt 4k gemma-4-E2B-it · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__gemma-4-E2B-it-GGUF/0314792d7f1f/gemma-4-E2B-it-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"gemma-4-E2B-it Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": null,
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, vulkan-nvidia",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "gemma-4-E2B-it",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/gemma-4-E2B-it-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-042210-1042"
+  ],
+  "status": "cancelled",
+  "submittedAt": "2026-11-12T08:22:10.942Z",
+  "startedAt": null,
+  "endedAt": "2026-11-12T15:13:15.391Z",
+  "exitCode": null,
+  "error": null,
+  "retryOf": null
+}

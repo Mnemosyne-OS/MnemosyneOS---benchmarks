@@ -1,0 +1,15 @@
+{
+  "model": "LFM2.5-1.2B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "promptTokens": 3399,
+  "maxPrompt": null,
+  "loadMs": 1277,
+  "firstTokenMs": 2106,
+  "genTokPerSec": 67.9,
+  "totalS": 3.7,
+  "procCores": 0.95,
+  "addedCpuPct": 7.3,
+  "rssMB": 1306,
+  "overlapWithCpu": 0.33
+}

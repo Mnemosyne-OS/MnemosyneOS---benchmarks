@@ -1,0 +1,23 @@
+{
+  "model": "LFM2.5-1.2B-Thinking Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 0.68,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 597,
+  "warmupMs": 3674,
+  "promptTokens": 512,
+  "promptTokPerSec": 389.1,
+  "promptTokPerSecMin": 326.6,
+  "promptTokPerSecMax": 391.6,
+  "genTokens": 128,
+  "firstTokenMs": 324,
+  "genTokPerSec": 47.8,
+  "genTokPerSecMin": 36.7,
+  "genTokPerSecMax": 50.2,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 19439
+}

@@ -1,0 +1,30 @@
+{
+  "id": "20261112-153959-8eb3",
+  "name": "ov Qwen3-1.7B · cpu",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/Qwen3-1.7B-int4-ov\" --device CPU --name Qwen3-1.7B",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "Qwen3-1.7B",
+    "chip": "cpu"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:59.286Z",
+  "startedAt": "2026-11-12T19:43:50.995Z",
+  "endedAt": "2026-11-12T19:44:24.834Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

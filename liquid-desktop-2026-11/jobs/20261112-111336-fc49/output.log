@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-fc49 "speed SmolLM3-3B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf" --chip cpu --name "SmolLM3-3B Q4_K_M"
+benchq: started 2026-11-12T16:11:38.962Z
+
+SmolLM3-3B Q4_K_M · cpu: 16.9 tok/s generation, 132.6 tok/s prompt, load 1.7 s
+{
+  "model": "SmolLM3-3B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.78,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1715,
+  "warmupMs": 10695,
+  "promptTokens": 512,
+  "promptTokPerSec": 132.6,
+  "promptTokPerSecMin": 120.1,
+  "promptTokPerSecMax": 133.5,
+  "genTokens": 125,
+  "firstTokenMs": 1116,
+  "genTokPerSec": 16.9,
+  "genTokPerSecMin": 15.5,
+  "genTokPerSecMax": 18.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 57112
+}
+
+benchq: ended 2026-11-12T16:12:37.124Z code=0 signal=null

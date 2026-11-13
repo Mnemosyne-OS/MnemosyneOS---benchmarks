@@ -1,0 +1,23 @@
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.09,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1420,
+  "warmupMs": 10019,
+  "promptTokens": 512,
+  "promptTokPerSec": 122.9,
+  "promptTokPerSecMin": 120.1,
+  "promptTokPerSecMax": 125.1,
+  "genTokens": 128,
+  "firstTokenMs": 926,
+  "genTokPerSec": 19.9,
+  "genTokPerSecMin": 19.7,
+  "genTokPerSecMax": 20.4,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 50222
+}

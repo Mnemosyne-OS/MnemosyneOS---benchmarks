@@ -1,0 +1,23 @@
+{
+  "model": "LFM2-2.6B Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 1.46,
+  "gpuLayers": 31,
+  "partialOffload": false,
+  "loadMs": 969,
+  "warmupMs": 789,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2975.8,
+  "promptTokPerSecMin": 2941.9,
+  "promptTokPerSecMax": 3005.5,
+  "genTokens": 32,
+  "firstTokenMs": 27,
+  "genTokPerSec": 58.3,
+  "genTokPerSecMin": 58.3,
+  "genTokPerSecMax": 58.6,
+  "repeat": 3,
+  "vramMB": 1490,
+  "totalMs": 9696
+}

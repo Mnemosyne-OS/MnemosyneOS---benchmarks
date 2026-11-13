@@ -1,0 +1,22 @@
+{
+  "model": "LFM2.5-350M Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 0.21,
+  "gpuLayers": 0,
+  "loadMs": 294,
+  "warmupMs": 1694,
+  "promptTokens": 512,
+  "promptTokPerSec": 1485.5,
+  "promptTokPerSecMin": 1476,
+  "promptTokPerSecMax": 1489,
+  "genTokens": 128,
+  "firstTokenMs": 139,
+  "genTokPerSec": 128.8,
+  "genTokPerSecMin": 126.4,
+  "genTokPerSecMax": 129.3,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 7196
+}

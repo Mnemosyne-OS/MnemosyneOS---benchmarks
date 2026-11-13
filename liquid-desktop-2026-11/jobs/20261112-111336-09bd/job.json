@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-09bd",
+  "name": "speed LFM2.5-1.2B-Thinking · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2.5-1.2B-Thinking-GGUF/b71945805f7d/LFM2.5-1.2B-Thinking-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"LFM2.5-1.2B-Thinking Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "LFM2.5-1.2B-Thinking",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2.5-1.2B-Thinking-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-ccc5"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.706Z",
+  "startedAt": "2026-11-12T15:32:47.773Z",
+  "endedAt": "2026-11-12T15:32:57.412Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

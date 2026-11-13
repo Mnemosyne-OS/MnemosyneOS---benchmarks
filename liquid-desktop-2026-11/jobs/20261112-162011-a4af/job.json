@@ -1,0 +1,30 @@
+{
+  "id": "20261112-162011-a4af",
+  "name": "ov Qwen3-1.7B-npu-export · arc",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/qwen3-1.7b-int4-ov-npu\" --device GPU.0 --name Qwen3-1.7B-npu-export",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": null,
+  "series": "ov-load",
+  "tags": {
+    "model": "Qwen3-1.7B-npu-export",
+    "chip": "arc"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T20:20:11.229Z",
+  "startedAt": "2026-11-12T20:21:36.148Z",
+  "endedAt": "2026-11-12T20:22:15.359Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

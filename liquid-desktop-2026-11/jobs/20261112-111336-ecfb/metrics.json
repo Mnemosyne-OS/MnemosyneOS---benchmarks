@@ -1,0 +1,23 @@
+{
+  "model": "gemma-4-E2B-it Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 2.89,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 2252,
+  "warmupMs": 6285,
+  "promptTokens": 512,
+  "promptTokPerSec": 570.2,
+  "promptTokPerSecMin": 541.5,
+  "promptTokPerSecMax": 597.2,
+  "genTokens": 125,
+  "firstTokenMs": 212,
+  "genTokPerSec": 21.6,
+  "genTokPerSecMin": 20.6,
+  "genTokPerSecMax": 21.9,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 29934
+}

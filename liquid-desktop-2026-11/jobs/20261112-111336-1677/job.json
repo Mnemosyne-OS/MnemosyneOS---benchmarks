@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-1677",
+  "name": "speed LFM3-1.7B · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM3-1.7B-GGUF/cd0c74c575b5/LFM3-1.7B-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"LFM3-1.7B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "LFM3-1.7B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM3-1.7B-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-107c"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.613Z",
+  "startedAt": "2026-11-12T15:14:23.464Z",
+  "endedAt": "2026-11-12T15:14:39.861Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

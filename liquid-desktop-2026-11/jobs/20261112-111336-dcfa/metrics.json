@@ -1,0 +1,23 @@
+{
+  "model": "Qwen3-1.7B Q8_0",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.71,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 599,
+  "warmupMs": 6426,
+  "promptTokens": 512,
+  "promptTokPerSec": 151.1,
+  "promptTokPerSecMin": 138.4,
+  "promptTokPerSecMax": 152.3,
+  "genTokens": 126,
+  "firstTokenMs": 611,
+  "genTokPerSec": 30.2,
+  "genTokPerSecMin": 30,
+  "genTokPerSecMax": 30.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 32526
+}

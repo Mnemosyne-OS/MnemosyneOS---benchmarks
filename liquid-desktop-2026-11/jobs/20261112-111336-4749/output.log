@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-4749 "speed Qwen3-1.7B · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-1.7B-GGUF/90862c4b9d27/Qwen3-1.7B-Q8_0.gguf" --chip cuda --name "Qwen3-1.7B Q8_0"
+benchq: started 2026-11-12T15:52:16.484Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-1.7B Q8_0 · cuda: 60.1 tok/s generation, 4131.3 tok/s prompt, load 2.1 s
+{
+  "model": "Qwen3-1.7B Q8_0",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 1.71,
+  "gpuLayers": 29,
+  "partialOffload": false,
+  "loadMs": 2070,
+  "warmupMs": 2491,
+  "promptTokens": 512,
+  "promptTokPerSec": 4131.3,
+  "promptTokPerSecMin": 3982.7,
+  "promptTokPerSecMax": 5600.4,
+  "genTokens": 126,
+  "firstTokenMs": 27,
+  "genTokPerSec": 60.1,
+  "genTokPerSecMin": 59.9,
+  "genTokPerSecMax": 60.2,
+  "repeat": 3,
+  "vramMB": 1744,
+  "totalMs": 13271
+}
+
+benchq: ended 2026-11-12T15:52:30.688Z code=0 signal=null

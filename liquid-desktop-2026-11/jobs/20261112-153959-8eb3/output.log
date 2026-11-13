@@ -1,0 +1,30 @@
+benchq: job 20261112-153959-8eb3 "ov Qwen3-1.7B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-speed.py" --model "<models>/ov/Qwen3-1.7B-int4-ov" --device CPU --name Qwen3-1.7B
+benchq: started 2026-11-12T19:43:51.072Z
+
+ov-speed: measuring the idle machine for 10 s
+Qwen3-1.7B · CPU: 26.5 tok/s, 4.16 CPU cores used, +18.4 % machine CPU
+{
+  "model": "Qwen3-1.7B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 4523,
+  "genTokens": 128,
+  "genTokPerSec": 26.5,
+  "genTokPerSecMin": 26.3,
+  "genTokPerSecMax": 26.5,
+  "firstTokenMs": 111,
+  "repeat": 3,
+  "procCores": 4.16,
+  "baselineCpuPct": 20.7,
+  "machineCpuPct": 39.1,
+  "addedCpuPct": 18.4,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2565,
+  "logicalCpus": 22
+}
+
+benchq: ended 2026-11-12T19:44:24.834Z code=0 signal=null

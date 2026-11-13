@@ -1,0 +1,29 @@
+{
+  "id": "20261112-153959-eab2",
+  "name": "ov LFM2.5-1.2B · rtx",
+  "command": "\"python\" -I \"<bench-queue>/scripts/ov-speed.py\" --model \"<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov\" --device GPU.1 --name LFM2.5-1.2B",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 43200000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "npu-test",
+  "note": "'what",
+  "series": "ov-load",
+  "tags": {
+    "model": "LFM2.5-1.2B",
+    "chip": "rtx"
+  },
+  "after": [],
+  "status": "done",
+  "submittedAt": "2026-11-12T19:39:59.601Z",
+  "startedAt": "2026-11-12T19:45:21.361Z",
+  "endedAt": "2026-11-12T19:46:45.256Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

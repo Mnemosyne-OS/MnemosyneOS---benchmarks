@@ -1,0 +1,33 @@
+{
+  "id": "20261112-043414-7949",
+  "name": "prompt 4k LFM2.5-2.6B · cuda",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2.5-2.6B-GGUF/e7caca5d835a/LFM2.5-2.6B-Q4_K_M.gguf\" --chip cuda --name \"LFM2.5-2.6B Q4_K_M\" --prompt-tokens 4096 --ctx 8192 --gen 32",
+  "shell": null,
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF prompt 4k, cuda",
+  "series": "gguf-prompt-4k",
+  "tags": {
+    "model": "LFM2.5-2.6B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2.5-2.6B-GGUF",
+    "chip": "cuda"
+  },
+  "after": [
+    "20261112-043414-5f55"
+  ],
+  "status": "cancelled",
+  "submittedAt": "2026-11-12T08:34:14.444Z",
+  "startedAt": null,
+  "endedAt": "2026-11-12T15:13:15.577Z",
+  "exitCode": null,
+  "error": null,
+  "retryOf": null
+}

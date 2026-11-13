@@ -1,0 +1,23 @@
+{
+  "model": "Qwen3-1.7B Q8_0",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 1.71,
+  "gpuLayers": 29,
+  "partialOffload": false,
+  "loadMs": 2835,
+  "warmupMs": 804,
+  "promptTokens": 4096,
+  "promptTokPerSec": 4532.1,
+  "promptTokPerSecMin": 4150.5,
+  "promptTokPerSecMax": 4662.3,
+  "genTokens": 30,
+  "firstTokenMs": 30,
+  "genTokPerSec": 69,
+  "genTokPerSecMin": 68.1,
+  "genTokPerSecMax": 69.8,
+  "repeat": 3,
+  "vramMB": 1746,
+  "totalMs": 10645
+}

@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-1f9f "speed Phi-4-mini · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/unsloth__Phi-4-mini-instruct-GGUF/78eb92a46fc3/Phi-4-mini-instruct-Q4_K_M.gguf" --chip vulkan-nvidia --name "Phi-4-mini Q4_K_M"
+benchq: started 2026-11-12T16:04:59.363Z
+
+[node-llama-cpp] load_arch_hparams: Phi SWA is currently disabled - results might be suboptimal for some models (see https://github.com/ggml-org/llama.cpp/pull/13676)
+Phi-4-mini Q4_K_M · vulkan-nvidia: 49.4 tok/s generation, 2387.9 tok/s prompt, load 4.1 s
+{
+  "model": "Phi-4-mini Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 2.32,
+  "gpuLayers": 33,
+  "partialOffload": false,
+  "loadMs": 4086,
+  "warmupMs": 4342,
+  "promptTokens": 512,
+  "promptTokPerSec": 2387.9,
+  "promptTokPerSecMin": 2295.2,
+  "promptTokPerSecMax": 2498.9,
+  "genTokens": 128,
+  "firstTokenMs": 63,
+  "genTokPerSec": 49.4,
+  "genTokPerSecMin": 47.6,
+  "genTokPerSecMax": 52.4,
+  "repeat": 3,
+  "vramMB": 2370,
+  "totalMs": 20957
+}
+
+benchq: ended 2026-11-12T16:05:21.401Z code=0 signal=null

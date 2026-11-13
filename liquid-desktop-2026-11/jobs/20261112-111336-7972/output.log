@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-7972 "speed d1-3B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf" --chip cpu --name "d1-3B Q4_K_M"
+benchq: started 2026-11-12T15:30:43.282Z
+
+d1-3B Q4_K_M · cpu: 25.7 tok/s generation, 157.7 tok/s prompt, load 1.7 s
+{
+  "model": "d1-3B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.56,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 1669,
+  "warmupMs": 7199,
+  "promptTokens": 512,
+  "promptTokPerSec": 157.7,
+  "promptTokPerSecMin": 149.4,
+  "promptTokPerSecMax": 159.9,
+  "genTokens": 128,
+  "firstTokenMs": 668,
+  "genTokPerSec": 25.7,
+  "genTokPerSecMin": 22.7,
+  "genTokPerSecMax": 26.2,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 37635
+}
+
+benchq: ended 2026-11-12T15:31:21.842Z code=0 signal=null

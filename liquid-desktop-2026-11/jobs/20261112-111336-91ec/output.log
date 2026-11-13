@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-91ec "prompt 4k d1-3B · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf" --chip vulkan-arc --name "d1-3B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T15:31:51.589Z
+
+d1-3B Q4_K_M · vulkan-arc: 28.9 tok/s generation, 375.4 tok/s prompt, load 1.6 s
+{
+  "model": "d1-3B Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 1.56,
+  "gpuLayers": 31,
+  "partialOffload": false,
+  "loadMs": 1610,
+  "warmupMs": 2003,
+  "promptTokens": 4096,
+  "promptTokPerSec": 375.4,
+  "promptTokPerSecMin": 374.5,
+  "promptTokPerSecMax": 378,
+  "genTokens": 32,
+  "firstTokenMs": 330,
+  "genTokPerSec": 28.9,
+  "genTokPerSecMin": 28.9,
+  "genTokPerSecMax": 29.2,
+  "repeat": 3,
+  "vramMB": 1590,
+  "totalMs": 43342
+}
+
+benchq: ended 2026-11-12T15:32:36.457Z code=0 signal=null

@@ -1,0 +1,33 @@
+{
+  "id": "20261112-111336-8475",
+  "name": "speed SmolLM3-3B · vulkan-nvidia",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/ggml-org__SmolLM3-3B-GGUF/4965cb60b150/SmolLM3-Q4_K_M.gguf\" --chip vulkan-nvidia --name \"SmolLM3-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "nvidia",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-nvidia",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "SmolLM3-3B",
+    "quant": "Q4_K_M",
+    "repo": "ggml-org/SmolLM3-3B-GGUF",
+    "chip": "vulkan-nvidia"
+  },
+  "after": [
+    "20261112-111336-a8c3"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.837Z",
+  "startedAt": "2026-11-12T16:10:30.674Z",
+  "endedAt": "2026-11-12T16:10:54.872Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

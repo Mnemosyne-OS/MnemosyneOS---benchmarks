@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-500a",
+  "name": "speed d1-3B · vulkan-arc",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__d1-3B-GGUF/bb1e436ea78e/d1-3B-Q4_K_M.gguf\" --chip vulkan-arc --name \"d1-3B Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-arc",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "d1-3B",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/d1-3B-GGUF",
+    "chip": "vulkan-arc"
+  },
+  "after": [
+    "20261112-111336-b9a0"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.695Z",
+  "startedAt": "2026-11-12T15:30:11.111Z",
+  "endedAt": "2026-11-12T15:30:41.441Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

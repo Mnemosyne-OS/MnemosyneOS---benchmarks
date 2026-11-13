@@ -1,0 +1,34 @@
+benchq: job 20261112-122224-f495 "prompt 4k LFM2.5-8B-A1B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-8B-A1B-GGUF/49c148317070/LFM2.5-8B-A1B-Q4_K_M.gguf" --chip vulkan-nvidia --name "LFM2.5-8B-A1B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T18:07:07.704Z
+
+gguf-speed: max layers + context 8192 do not fit, trying fewer layers
+gguf-speed: 28 layers + context 8192 do not fit, trying fewer layers
+gguf-speed: 24 layers + context 8192 do not fit, trying fewer layers
+LFM2.5-8B-A1B Q4_K_M · vulkan-nvidia: 37.8 tok/s generation, 1050.4 tok/s prompt, load 5.6 s
+{
+  "model": "LFM2.5-8B-A1B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 4.8,
+  "gpuLayers": 20,
+  "partialOffload": true,
+  "loadMs": 5639,
+  "warmupMs": 3175,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1050.4,
+  "promptTokPerSecMin": 974,
+  "promptTokPerSecMax": 1197,
+  "genTokens": 31,
+  "firstTokenMs": 764,
+  "genTokPerSec": 37.8,
+  "genTokPerSecMin": 31.2,
+  "genTokPerSecMax": 47.4,
+  "repeat": 3,
+  "vramMB": 4560,
+  "totalMs": 30032
+}
+
+benchq: ended 2026-11-12T18:07:39.143Z code=0 signal=null

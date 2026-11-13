@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-edde "speed LFM2.5-8B-A1B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM2.5-8B-A1B-GGUF/49c148317070/LFM2.5-8B-A1B-Q4_K_M.gguf" --chip cpu --name "LFM2.5-8B-A1B Q4_K_M"
+benchq: started 2026-11-12T15:26:38.446Z
+
+LFM2.5-8B-A1B Q4_K_M · cpu: 19.9 tok/s generation, 150.3 tok/s prompt, load 10.4 s
+{
+  "model": "LFM2.5-8B-A1B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 4.8,
+  "gpuLayers": 0,
+  "partialOffload": false,
+  "loadMs": 10426,
+  "warmupMs": 10377,
+  "promptTokens": 512,
+  "promptTokPerSec": 150.3,
+  "promptTokPerSecMin": 134,
+  "promptTokPerSecMax": 153.4,
+  "genTokens": 127,
+  "firstTokenMs": 765,
+  "genTokPerSec": 19.9,
+  "genTokPerSecMin": 10.2,
+  "genTokPerSecMax": 25.6,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 61565
+}
+
+benchq: ended 2026-11-12T15:27:42.846Z code=0 signal=null

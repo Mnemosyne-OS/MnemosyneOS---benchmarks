@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-1ce8 "prompt 4k granite-4.2-3b · cuda"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf" --chip cuda --name "granite-4.2-3b Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:02:42.891Z
+
+granite-4.2-3b Q4_K_M · cuda: 52.3 tok/s generation, 2241.8 tok/s prompt, load 1.5 s
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "cuda",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "cuda",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 1469,
+  "warmupMs": 1722,
+  "promptTokens": 4096,
+  "promptTokPerSec": 2241.8,
+  "promptTokPerSecMin": 2148.1,
+  "promptTokPerSecMax": 2251.6,
+  "genTokens": 32,
+  "firstTokenMs": 40,
+  "genTokPerSec": 52.3,
+  "genTokPerSecMin": 52,
+  "genTokPerSecMax": 54.5,
+  "repeat": 3,
+  "vramMB": 2000,
+  "totalMs": 16187
+}
+
+benchq: ended 2026-11-12T16:02:59.997Z code=0 signal=null

@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-2d93",
+  "name": "speed LFM2.5-350M · vulkan-arc",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/LiquidAI__LFM2.5-350M-GGUF/657e078c9408/LFM2.5-350M-Q4_K_M.gguf\" --chip vulkan-arc --name \"LFM2.5-350M Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "arc",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, vulkan-arc",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "LFM2.5-350M",
+    "quant": "Q4_K_M",
+    "repo": "LiquidAI/LFM2.5-350M-GGUF",
+    "chip": "vulkan-arc"
+  },
+  "after": [
+    "20261112-111336-cc7c"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.660Z",
+  "startedAt": "2026-11-12T15:21:25.139Z",
+  "endedAt": "2026-11-12T15:21:33.900Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

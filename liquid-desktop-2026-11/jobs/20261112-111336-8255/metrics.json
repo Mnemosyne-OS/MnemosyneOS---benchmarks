@@ -1,0 +1,22 @@
+{
+  "model": "d1-2B Q4_K_M",
+  "chip": "cpu",
+  "device": "cpu",
+  "backend": "cpu",
+  "sizeGB": 1.02,
+  "gpuLayers": 0,
+  "loadMs": 1233,
+  "warmupMs": 5898,
+  "promptTokens": 512,
+  "promptTokPerSec": 267.1,
+  "promptTokPerSecMin": 259.5,
+  "promptTokPerSecMax": 293.8,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 30.9,
+  "genTokPerSecMin": 28.2,
+  "genTokPerSecMax": 31.8,
+  "repeat": 3,
+  "vramMB": 0,
+  "totalMs": 28979
+}

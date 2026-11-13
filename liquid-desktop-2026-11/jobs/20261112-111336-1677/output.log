@@ -1,0 +1,30 @@
+benchq: job 20261112-111336-1677 "speed LFM3-1.7B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/LiquidAI__LFM3-1.7B-GGUF/cd0c74c575b5/LFM3-1.7B-Q4_K_M.gguf" --chip vulkan-nvidia --name "LFM3-1.7B Q4_K_M"
+benchq: started 2026-11-12T15:14:23.546Z
+
+LFM3-1.7B Q4_K_M · vulkan-nvidia: 87.4 tok/s generation, 4219.9 tok/s prompt, load 2.1 s
+{
+  "model": "LFM3-1.7B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 1.02,
+  "gpuLayers": 25,
+  "loadMs": 2113,
+  "warmupMs": 2965,
+  "promptTokens": 512,
+  "promptTokPerSec": 4219.9,
+  "promptTokPerSecMin": 4206.4,
+  "promptTokPerSecMax": 4346.7,
+  "genTokens": 128,
+  "firstTokenMs": 1,
+  "genTokPerSec": 87.4,
+  "genTokPerSecMin": 85.1,
+  "genTokPerSecMax": 87.7,
+  "repeat": 3,
+  "vramMB": 1043,
+  "totalMs": 14966
+}
+
+benchq: ended 2026-11-12T15:14:39.861Z code=0 signal=null

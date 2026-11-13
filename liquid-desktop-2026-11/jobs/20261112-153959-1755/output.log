@@ -1,0 +1,30 @@
+benchq: job 20261112-153959-1755 "ov Qwen3-1.7B · arc"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-speed.py" --model "<models>/ov/Qwen3-1.7B-int4-ov" --device GPU.0 --name Qwen3-1.7B
+benchq: started 2026-11-12T19:44:25.199Z
+
+ov-speed: measuring the idle machine for 10 s
+Qwen3-1.7B · GPU.0: 33.4 tok/s, 1.82 CPU cores used, +7.8 % machine CPU
+{
+  "model": "Qwen3-1.7B",
+  "device": "GPU.0",
+  "deviceName": "Intel(R) Arc(TM) Graphics (iGPU)",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 28914,
+  "genTokens": 128,
+  "genTokPerSec": 33.4,
+  "genTokPerSecMin": 23.5,
+  "genTokPerSecMax": 35.9,
+  "firstTokenMs": 64,
+  "repeat": 3,
+  "procCores": 1.82,
+  "baselineCpuPct": 16.5,
+  "machineCpuPct": 24.4,
+  "addedCpuPct": 7.8,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 2689,
+  "logicalCpus": 22
+}
+
+benchq: ended 2026-11-12T19:45:20.797Z code=0 signal=null

@@ -1,0 +1,32 @@
+benchq: job 20261112-111336-791e "prompt 4k Qwen3-4B · vulkan-nvidia"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/Qwen__Qwen3-4B-GGUF/bc640142c66e/Qwen3-4B-Q4_K_M.gguf" --chip vulkan-nvidia --name "Qwen3-4B Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:17:34.612Z
+
+[node-llama-cpp] load: control-looking token: 128247 '</s>' was not control-type; this is probably a bug in the model. its type will be overridden
+Qwen3-4B Q4_K_M · vulkan-nvidia: 48.2 tok/s generation, 1974 tok/s prompt, load 3.3 s
+{
+  "model": "Qwen3-4B Q4_K_M",
+  "chip": "vulkan-nvidia",
+  "device": "NVIDIA GeForce RTX 4050 Laptop GPU",
+  "backend": "vulkan",
+  "sizeGB": 2.33,
+  "gpuLayers": 37,
+  "partialOffload": false,
+  "loadMs": 3313,
+  "warmupMs": 1157,
+  "promptTokens": 4096,
+  "promptTokPerSec": 1974,
+  "promptTokPerSecMin": 1878,
+  "promptTokPerSecMax": 2021.4,
+  "genTokens": 30,
+  "firstTokenMs": 64,
+  "genTokPerSec": 48.2,
+  "genTokPerSecMin": 48.2,
+  "genTokPerSecMax": 49.5,
+  "repeat": 3,
+  "vramMB": 2378,
+  "totalMs": 15670
+}
+
+benchq: ended 2026-11-12T16:17:51.416Z code=0 signal=null

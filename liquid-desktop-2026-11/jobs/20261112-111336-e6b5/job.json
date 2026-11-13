@@ -1,0 +1,34 @@
+{
+  "id": "20261112-111336-e6b5",
+  "name": "speed gemma-4-E4B-it · cpu",
+  "command": "node \"<bench-queue>/scripts/gguf-speed.mjs\" --model \"<models>/unsloth__gemma-4-E4B-it-GGUF/bfc15c382204/gemma-4-E4B-it-Q4_K_M.gguf\" --chip cpu --name \"gemma-4-E4B-it Q4_K_M\"",
+  "shell": "auto",
+  "needs": [
+    "cpu",
+    "ram",
+    "speed"
+  ],
+  "priority": 0,
+  "timeoutMs": 1800000,
+  "collect": [],
+  "envNames": [],
+  "submittedBy": "night 2026-11-12",
+  "note": "GGUF speed, cpu",
+  "series": "gguf-speed-v2",
+  "tags": {
+    "model": "gemma-4-E4B-it",
+    "quant": "Q4_K_M",
+    "repo": "unsloth/gemma-4-E4B-it-GGUF",
+    "chip": "cpu"
+  },
+  "after": [
+    "20261112-111336-a0cc"
+  ],
+  "status": "done",
+  "submittedAt": "2026-11-12T15:13:36.804Z",
+  "startedAt": "2026-11-12T15:57:29.498Z",
+  "endedAt": "2026-11-12T15:58:25.679Z",
+  "exitCode": 0,
+  "error": null,
+  "retryOf": null
+}

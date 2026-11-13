@@ -1,0 +1,31 @@
+benchq: job 20261112-111336-bbf7 "prompt 4k granite-4.2-3b · vulkan-arc"
+benchq: cwd <bench-queue>
+benchq: $ node "<bench-queue>/scripts/gguf-speed.mjs" --model "<models>/ibm-granite__granite-4.2-3b-GGUF/c40945d71cd9/granite-4.2-3b-Q4_K_M.gguf" --chip vulkan-arc --name "granite-4.2-3b Q4_K_M" --prompt-tokens 4096 --ctx 8192 --gen 32
+benchq: started 2026-11-12T16:03:19.014Z
+
+granite-4.2-3b Q4_K_M · vulkan-arc: 19.1 tok/s generation, 204.8 tok/s prompt, load 1.7 s
+{
+  "model": "granite-4.2-3b Q4_K_M",
+  "chip": "vulkan-arc",
+  "device": "Intel(R) Arc(TM) Graphics",
+  "backend": "vulkan",
+  "sizeGB": 2.09,
+  "gpuLayers": 41,
+  "partialOffload": false,
+  "loadMs": 1667,
+  "warmupMs": 3505,
+  "promptTokens": 4096,
+  "promptTokPerSec": 204.8,
+  "promptTokPerSecMin": 203.9,
+  "promptTokPerSecMax": 208.2,
+  "genTokens": 32,
+  "firstTokenMs": 437,
+  "genTokPerSec": 19.1,
+  "genTokPerSecMin": 18.8,
+  "genTokPerSecMax": 19.6,
+  "repeat": 3,
+  "vramMB": 2000,
+  "totalMs": 76199
+}
+
+benchq: ended 2026-11-12T16:04:37.067Z code=0 signal=null

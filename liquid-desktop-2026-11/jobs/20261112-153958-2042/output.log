@@ -1,0 +1,30 @@
+benchq: job 20261112-153958-2042 "ov LFM2.5-1.2B · cpu"
+benchq: cwd <bench-queue>
+benchq: $ "python" -I "<bench-queue>/scripts/ov-speed.py" --model "<models>/ov/LFM2.5-1.2B-Instruct-int4-gq-ov" --device CPU --name LFM2.5-1.2B
+benchq: started 2026-11-12T19:41:18.437Z
+
+ov-speed: measuring the idle machine for 10 s
+LFM2.5-1.2B · CPU: 41.6 tok/s, 3.49 CPU cores used, +6.7 % machine CPU
+{
+  "model": "LFM2.5-1.2B",
+  "device": "CPU",
+  "deviceName": "Intel(R) Core(TM) Ultra 7 155H",
+  "engine": "openvino-genai 2026.4.1.0-3408-ab01d1771e4",
+  "loadMs": 1883,
+  "genTokens": 128,
+  "genTokPerSec": 41.6,
+  "genTokPerSecMin": 40.8,
+  "genTokPerSecMax": 45.3,
+  "firstTokenMs": 107,
+  "repeat": 3,
+  "procCores": 3.49,
+  "baselineCpuPct": 36.6,
+  "machineCpuPct": 43.3,
+  "addedCpuPct": 6.7,
+  "baselineNvPct": 0.0,
+  "nvUtilPct": 0,
+  "rssMB": 1521,
+  "logicalCpus": 22
+}
+
+benchq: ended 2026-11-12T19:41:45.891Z code=0 signal=null
